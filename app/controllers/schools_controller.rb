@@ -7,11 +7,11 @@ class SchoolsController < ApplicationController
       @location = Geokit::Geocoders::GoogleGeocoder.geocode(params[:address], :bias => boston_bounds)
       @walk_zone = WalkZone.find_by_name(params[:grade_level])
       @walk_zone_schools = School.find(:all, :origin => @location, :within => @walk_zone.distance).select {|school| school.walk_zones.include?(@walk_zone) }
-      @other_schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
+      @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
     elsif params[:grade_level].present?
       @schools = School.school_level_finder(params[:grade_level])
     else
-      @schools = School.all(:order => :name)
+      @walk_zone_schools = School.all(:order => :name)
     end
 
     respond_to do |format|

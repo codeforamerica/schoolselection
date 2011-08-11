@@ -28,6 +28,8 @@ body {
   h4{ font-weight: bold; font-size: 1.3em; color: #333; }
 
   .italic{ font-style: italic; }
+  .nobold{ font-weight: normal; }
+  
   #container{ @include container; margin-top: 30px; margin-bottom: 30px; }
   #search-form{ 
     @include border-radius(10px);
@@ -43,6 +45,6 @@ body {
     table{ margin-bottom: 0;}
   }
   .other-school-listing{
-    padding: 2px 10px 0 20px;
+    padding: 2px 10px 0 0;
   }
 }
