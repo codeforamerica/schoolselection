@@ -1,4 +1,5 @@
 Schoolselection::Application.routes.draw do
+  root :to => "schools#index"
   resources :mail_clusters
 
   resources :school_levels
