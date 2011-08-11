@@ -16,8 +16,7 @@
           %table
             %tr
               %td{:colspan=>"9"}
-                %h3
-                  %strong= school.name
+                %h3= school.name
             %tr
               %td{:width=>'250px'}
                 = school.address
@@ -54,5 +53,4 @@
 %h2== Other #{params[:grade_level]}s
 - @other_schools.each do |other_school|
   .other-school-listing
-    %h3
-      %strong= other_school.name
+    %h4= other_school.name
