@@ -5,8 +5,6 @@ gem 'rails', '3.1.0.rc5'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,7 +16,6 @@ end
 
 gem 'jquery-rails'
 gem 'paperclip'
-gem 'mysql2', '~> 0.3.6'
 gem "compass", ">= 0.11.5"
 
 # Use unicorn as the web server
@@ -32,6 +29,7 @@ group :development do
   gem "haml-rails"
   gem 'nokogiri'
   gem 'mechanize'
+  gem 'mysql2', '~> 0.3.6'
 end
 
 group :test do
