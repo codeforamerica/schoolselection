@@ -12,6 +12,7 @@ gem 'rails', '3.1.0.rc5'
 gem 'jquery-rails'
 gem 'paperclip'
 gem "compass", ">= 0.11.5"
+gem "haml-rails"
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
@@ -25,7 +26,6 @@ end
 
 group :development do
   gem 'rails3-generators'
-  gem "haml-rails"
   gem 'nokogiri'
   gem 'mechanize'
   gem 'mysql2', '~> 0.3.6'
