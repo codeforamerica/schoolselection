@@ -1,0 +1,19 @@
+%h1 Listing school_levels
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @school_levels.each do |school_level|
+    %tr
+      %td= school_level.name
+      %td= link_to 'Show', school_level
+      %td= link_to 'Edit', edit_school_level_path(school_level)
+      %td= link_to 'Destroy', school_level, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New School level', new_school_level_path

@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  features: MyText
+  address: MyString
+  city_id: 1
+  state_id: 1
+  zipcode: MyString
+  lat: MyString
+  lng: MyString
+  phone: MyString
+  fax: MyString
+  website: MyString
+  assignment_zone_id: 1
+  school_type_id: 1
+  cluster_id: 1
+  school_group_id: 1
+  start_grade: MyString
+  end_grade: MyString
+  start_time: MyString
+  end_time: MyString
+  early_dismissal_time: MyString
+  breakfast: MyString
+  lunch: MyString
+  dinner: MyString
+  principal_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  features: MyText
+  address: MyString
+  city_id: 1
+  state_id: 1
+  zipcode: MyString
+  lat: MyString
+  lng: MyString
+  phone: MyString
+  fax: MyString
+  website: MyString
+  assignment_zone_id: 1
+  school_type_id: 1
+  cluster_id: 1
+  school_group_id: 1
+  start_grade: MyString
+  end_grade: MyString
+  start_time: MyString
+  end_time: MyString
+  early_dismissal_time: MyString
+  breakfast: MyString
+  lunch: MyString
+  dinner: MyString
+  principal_id: 1

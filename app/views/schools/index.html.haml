@@ -1,0 +1,38 @@
+%h1 Schools
+
+%table
+  - @schools.each do |school|
+    %tr
+      %td
+        %table
+          %tr
+            %td{:colspan=>"9"}
+              %h3= link_to school.name, school.website
+          %tr
+            %td
+              = school.address
+              %br/
+              == #{school.city.name}, #{school.state.abbreviation} #{school.zipcode}
+              - unless school.phone
+                %br/
+                == Phone: #{school.phone}
+              - unless school.fax
+                %br/
+                == Fax: #{school.fax}
+            %td
+              = school.assignment_zone.name
+              %br/
+              = school.school_type.name
+              %br/
+              = school.mail_cluster.name
+              %br/
+              = school.school_group.name
+            %td
+              = school.grades
+              %br/
+              = school.hours
+              %br/
+              = school.early_dismissal_time
+%br
+
+= link_to 'New School', new_school_path

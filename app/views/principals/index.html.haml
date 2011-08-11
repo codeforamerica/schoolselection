@@ -1,0 +1,25 @@
+%h1 Listing principals
+
+%table
+  %tr
+    %th First name
+    %th Last name
+    %th Titles
+    %th Biography
+    %th
+    %th
+    %th
+
+  - @principals.each do |principal|
+    %tr
+      %td= principal.first_name
+      %td= principal.last_name
+      %td= principal.titles
+      %td= principal.biography
+      %td= link_to 'Show', principal
+      %td= link_to 'Edit', edit_principal_path(principal)
+      %td= link_to 'Destroy', principal, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Principal', new_principal_path

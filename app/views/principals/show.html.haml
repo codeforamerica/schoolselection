@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @principal.first_name
+%p
+  %b Last name:
+  = @principal.last_name
+%p
+  %b Titles:
+  = @principal.titles
+%p
+  %b Biography:
+  = @principal.biography
+
+= link_to 'Edit', edit_principal_path(@principal)
+\|
+= link_to 'Back', principals_path

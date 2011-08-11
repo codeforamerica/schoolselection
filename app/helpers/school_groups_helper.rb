@@ -1,0 +1,2 @@
+module SchoolGroupsHelper
+end

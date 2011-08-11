@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @assignment_zone.name
+
+= link_to 'Edit', edit_assignment_zone_path(@assignment_zone)
+\|
+= link_to 'Back', assignment_zones_path

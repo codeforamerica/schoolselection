@@ -1,0 +1,13 @@
+= form_for @mail_cluster do |f|
+  -if @mail_cluster.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@mail_cluster.errors.count, "error")} prohibited this mail_cluster from being saved:"
+      %ul
+        - @mail_cluster.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

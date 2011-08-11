@@ -1,0 +1,81 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @school.name
+%p
+  %b Description:
+  = @school.description
+%p
+  %b Features:
+  = @school.features
+%p
+  %b Address:
+  = @school.address
+%p
+  %b City:
+  = @school.city_id
+%p
+  %b State:
+  = @school.state_id
+%p
+  %b Zipcode:
+  = @school.zipcode
+%p
+  %b Lat:
+  = @school.lat
+%p
+  %b Lng:
+  = @school.lng
+%p
+  %b Phone:
+  = @school.phone
+%p
+  %b Fax:
+  = @school.fax
+%p
+  %b Website:
+  = @school.website
+%p
+  %b Assignment zone:
+  = @school.assignment_zone_id
+%p
+  %b School type:
+  = @school.school_type_id
+%p
+  %b Cluster:
+  = @school.cluster_id
+%p
+  %b School group:
+  = @school.school_group_id
+%p
+  %b Start grade:
+  = @school.start_grade
+%p
+  %b End grade:
+  = @school.end_grade
+%p
+  %b Start time:
+  = @school.start_time
+%p
+  %b End time:
+  = @school.end_time
+%p
+  %b Early dismissal time:
+  = @school.early_dismissal_time
+%p
+  %b Breakfast:
+  = @school.breakfast
+%p
+  %b Lunch:
+  = @school.lunch
+%p
+  %b Dinner:
+  = @school.dinner
+%p
+  %b Principal:
+  = @school.principal_id
+
+= link_to 'Edit', edit_school_path(@school)
+\|
+= link_to 'Back', schools_path

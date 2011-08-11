@@ -1,0 +1,10 @@
+#flash{ text-align: center; font-weight: bold; font-size: 120%; padding: 5px 5px 5px 0; margin-bottom: 20px; border: none; }
+#flash.notice{ color: #006600; background-color: $flashgreen; display: none; }
+#flash.alert{ color: #333333; background-color: $flashred; display: none; }  
+.fieldWithErrors{ padding: 2px; background-color: $flashred; display: table; }
+#error_explanation{ padding: 10px 10px 1px 10px; margin-bottom: 25px; background-color: $flashred; font-size: 1em;}
+#error_explanation h2{ font-size: 24px; letter-spacing: -1px; font-weight: bold; margin-bottom: .5em; text-align: left; font-weight: bold; padding: 5px 5px 5px 15px; background-color: $flashred; color: #222222; }
+#error_explanation p{ font-weight: bold; color: #222222; margin-bottom: 0; padding: 5px; }
+#error_explanation ul li{ font-size: 1em; font-weight: bold; list-style: square; color: #222222; margin-left: 30px; }
+.error{ font-size: 14px; font-weight: bold; color: #222222; }
+.room_error{ padding: 12px 0px 0px 30px; font-size: 12px; font-weight: normal; color: #222222; }

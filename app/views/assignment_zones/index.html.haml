@@ -1,0 +1,19 @@
+%h1 Listing assignment_zones
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @assignment_zones.each do |assignment_zone|
+    %tr
+      %td= assignment_zone.name
+      %td= link_to 'Show', assignment_zone
+      %td= link_to 'Edit', edit_assignment_zone_path(assignment_zone)
+      %td= link_to 'Destroy', assignment_zone, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Assignment zone', new_assignment_zone_path

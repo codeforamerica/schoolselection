@@ -1,0 +1,22 @@
+= form_for @principal do |f|
+  -if @principal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@principal.errors.count, "error")} prohibited this principal from being saved:"
+      %ul
+        - @principal.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :titles
+    = f.text_field :titles
+  .field
+    = f.label :biography
+    = f.text_area :biography
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,2 @@
+module MailClustersHelper
+end

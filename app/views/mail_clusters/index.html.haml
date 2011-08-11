@@ -1,0 +1,19 @@
+%h1 Listing mail_clusters
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @mail_clusters.each do |mail_cluster|
+    %tr
+      %td= mail_cluster.name
+      %td= link_to 'Show', mail_cluster
+      %td= link_to 'Edit', edit_mail_cluster_path(mail_cluster)
+      %td= link_to 'Destroy', mail_cluster, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Mail cluster', new_mail_cluster_path
