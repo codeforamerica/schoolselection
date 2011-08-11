@@ -25,7 +25,7 @@ html.css('table.views-view-grid td a').each do |link|
       :principal          => Principal.find_or_create_by_first_name_and_last_name(page.at_css('.field-field-principal-name').try(:inner_text).try(:split, ' ').try(:at, 1).try(:at, 2))
     )
   
-    school[:lat], school[:lng] = page.at_css('.map-link a')['href'].match(/(\d+\.\d+).*-(\d+\.\d+)/).try(:values_at, 1,2)
+    # school[:lat], school[:lng] = page.at_css('.map-link a')['href'].match(/(\d+\.\d+).*-(\d+\.\d+)/).try(:values_at, 1,2)
   
     school[:start_time], school[:end_time] = page.at_css('.field-field-school-hours').try(:inner_text).match(/(\d{1,2}:\d{2} [ap].m\.) - (\d{1,2}:\d{2} [ap].m\.)/).try(:values_at, 1,2)
   

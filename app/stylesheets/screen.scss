@@ -22,5 +22,10 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
   
-  #container{ @include container; }
+  #container{ @include container; margin-top: 20px; }
+  #search-form{ 
+    background-color: gray; margin-bottom: 20px; padding: 10px; color: white; font-size: 16px; 
+    input{ font-size: 15px;}
+    select{ font-size: 15px;}
+  }
 }

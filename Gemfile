@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'paperclip'
 gem "compass", ">= 0.11.5"
 gem "haml-rails"
+gem "geokit"
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
@@ -28,7 +29,7 @@ group :development do
   gem 'rails3-generators'
   gem 'nokogiri'
   gem 'mechanize'
-  gem 'mysql2', '~> 0.3.6'
+  gem 'pg', :require => 'pg'
 end
 
 group :test do

@@ -467,4 +467,21 @@ body #container {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
+  margin-top: 20px;
+}
+/* line 26, ../../stylesheets/screen.scss */
+body #search-form {
+  background-color: gray;
+  margin-bottom: 20px;
+  padding: 10px;
+  color: white;
+  font-size: 16px;
+}
+/* line 28, ../../stylesheets/screen.scss */
+body #search-form input {
+  font-size: 15px;
+}
+/* line 29, ../../stylesheets/screen.scss */
+body #search-form select {
+  font-size: 15px;
 }
