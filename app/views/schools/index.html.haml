@@ -1,52 +1,58 @@
 #search-form
   = form_tag('/schools', :method => :get) do
-    Address:&nbsp;
-    = text_field_tag :address
+    Your address:&nbsp;
+    = text_field_tag :address, params[:address]
     &nbsp;School Level:&nbsp;
-    = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"])
+    = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
-- if params[:address].present?
-  %h2== #{@schools.size} schools within #{@walk_zone_distance} miles of #{@location.street_address}, #{@location.city}, #{@location.state}
-- else
-  %h2 All Schools
+=raw results_title(params)
 
-%table
-  - @schools.each do |school|
-    %tr
-      %td
-        %table
-          %tr
-            %td{:colspan=>"9"}
-              %h3= link_to school.name, school_path(school)
-          %tr
-            %td{:width=>'250px'}
-              = school.address
-              %br/
-              == #{school.city.name}, #{school.state.abbreviation} #{school.zipcode}
-              - unless school.phone
+- @walk_zone_schools.each do |school|
+  %div{:class=>cycle("school-listing odd", "school-listing even")}
+    %table
+      %tr
+        %td
+          %table
+            %tr
+              %td{:colspan=>"9"}
+                %h3
+                  %strong= school.name
+            %tr
+              %td{:width=>'250px'}
+                = school.address
                 %br/
-                == Phone: #{school.phone}
-              - unless school.fax
-                %br/
-                == Fax: #{school.fax}
-              - unless school.website.blank?
-                %br/
-                = link_to "Website", school.website
-            %td{:width=>'250px'}
-              - unless school.assignment_zone.blank?
-                = school.assignment_zone.name
-              - unless school.school_type.blank?
-                %br/
-                = school.school_type.name
-              - unless school.school_group.blank?
-                %br/
-                = school.school_group.name
-            %td
-              = school.grades
-              - unless school.hours.blank?
-                %br/
-                = school.hours
-              - unless school.early_dismissal_time.blank?
-                %br/
-                = school.early_dismissal_time
+                == #{school.city.name}, #{school.state.abbreviation} #{school.zipcode}
+                - unless school.phone
+                  %br/
+                  == Phone: #{school.phone}
+                - unless school.fax
+                  %br/
+                  == Fax: #{school.fax}
+                - unless school.website.blank?
+                  %br/
+                  = link_to "Website", school.website
+              %td{:width=>'250px'}
+                - unless school.assignment_zone.blank?
+                  = school.assignment_zone.name
+                - unless school.school_type.blank?
+                  %br/
+                  = school.school_type.name
+                - unless school.school_group.blank?
+                  %br/
+                  = school.school_group.name
+              %td
+                = school.grades
+                - unless school.hours.blank?
+                  %br/
+                  = school.hours
+                - unless school.early_dismissal_time.blank?
+                  %br/
+                  = school.early_dismissal_time
+
+%br/
+%h2== Other #{params[:grade_level]}s
+- @other_schools.each do |other_school|
+  .other-school-listing
+    %h3
+      %strong= other_school.name

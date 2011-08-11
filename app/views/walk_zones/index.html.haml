@@ -1,0 +1,21 @@
+%h1 Listing walk_zones
+
+%table
+  %tr
+    %th Name
+    %th Distance
+    %th
+    %th
+    %th
+
+  - @walk_zones.each do |walk_zone|
+    %tr
+      %td= walk_zone.name
+      %td= walk_zone.distance
+      %td= link_to 'Show', walk_zone
+      %td= link_to 'Edit', edit_walk_zone_path(walk_zone)
+      %td= link_to 'Destroy', walk_zone, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Walk zone', new_walk_zone_path

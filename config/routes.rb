@@ -1,4 +1,6 @@
 Schoolselection::Application.routes.draw do
+  resources :walk_zones
+
   root :to => "schools#index"
   resources :mail_clusters
 

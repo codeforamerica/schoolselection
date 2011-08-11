@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @walk_zone.name
+%p
+  %b Distance:
+  = @walk_zone.distance
+
+= link_to 'Edit', edit_walk_zone_path(@walk_zone)
+\|
+= link_to 'Back', walk_zones_path

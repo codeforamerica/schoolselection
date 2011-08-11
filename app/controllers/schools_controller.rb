@@ -2,18 +2,14 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    if params[:address].present?
-      @location = Geokit::Geocoders::GoogleGeocoder.geocode(params[:address], :bias => Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds)
-      
-      if params[:grade_level] == 'Elementary School'
-        @walk_zone_distance = 1
-      elsif params[:grade_level] == 'Middle School'
-        @walk_zone_distance = 1.5
-      elsif params[:grade_level] == 'High School'
-        @walk_zone_distance = 2
-      end
-      
-      @schools = School.find(:all, :origin => @location, :within => @walk_zone_distance)
+    if params[:address].present? && params[:grade_level].present?
+      boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
+      @location = Geokit::Geocoders::GoogleGeocoder.geocode(params[:address], :bias => boston_bounds)
+      @walk_zone = WalkZone.find_by_name(params[:grade_level])
+      @walk_zone_schools = School.find(:all, :origin => @location, :within => @walk_zone.distance).select {|school| school.walk_zones.include?(@walk_zone) }
+      @other_schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
+    elsif params[:grade_level].present?
+      @schools = School.school_level_finder(params[:grade_level])
     else
       @schools = School.all(:order => :name)
     end
