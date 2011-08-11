@@ -32,6 +32,7 @@ group :development do
 end
 
 group :test do
+  gem "sqlite3"
   gem "rspec"
   gem "rspec-rails"
   gem "factory_girl"
