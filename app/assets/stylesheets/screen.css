@@ -506,6 +506,11 @@ body #container {
   margin-bottom: 30px;
 }
 /* line 35, ../../stylesheets/screen.scss */
+body #map_container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+/* line 36, ../../stylesheets/screen.scss */
 body #search-form {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -519,17 +524,17 @@ body #search-form {
   color: white;
   font-size: 16px;
 }
-/* line 38, ../../stylesheets/screen.scss */
+/* line 39, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 39, ../../stylesheets/screen.scss */
+/* line 40, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 41, ../../stylesheets/screen.scss */
+/* line 42, ../../stylesheets/screen.scss */
 body .school-listing {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -541,11 +546,11 @@ body .school-listing {
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 47, ../../stylesheets/screen.scss */
 body .school-listing table {
   margin-bottom: 0;
 }
-/* line 48, ../../stylesheets/screen.scss */
+/* line 49, ../../stylesheets/screen.scss */
 body .other-school-listing {
   padding: 0 0 10px 16px;
 }

@@ -32,6 +32,7 @@ body {
   .nobold{ font-weight: normal; }
   
   #container{ @include container; margin-top: 30px; margin-bottom: 30px; }
+  #map_container{ width: 100%; margin-bottom: 30px; }
   #search-form{ 
     @include border-radius(10px);
     background-color: #777; margin-bottom: 30px; padding: 18px; color: white; font-size: 16px;

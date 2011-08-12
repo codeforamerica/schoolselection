@@ -1,3 +1,5 @@
+= gmaps("markers" => {"data" => @json}, "map_options" => { "provider" => "openlayers", "auto_adjust" => true, "center_longitude" => @longitude, "center_latitude" => @latitude })
+
 #search-form
   = form_tag('/schools', :method => :get) do
     Your address:&nbsp;

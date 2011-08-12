@@ -49,6 +49,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    crack (0.1.8)
     diff-lcs (1.1.2)
     erubis (2.7.0)
     execjs (1.2.4)
@@ -56,6 +57,8 @@ GEM
     factory_girl (2.0.3)
     fssm (0.2.7)
     geokit (1.6.0)
+    gmaps4rails (0.11.0)
+      crack
     haml (3.1.2)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -162,6 +165,7 @@ DEPENDENCIES
   compass (>= 0.11.5)
   factory_girl
   geokit
+  gmaps4rails
   haml-rails
   jquery-rails
   mechanize

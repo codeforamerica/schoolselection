@@ -1,4 +1,5 @@
 class School < ActiveRecord::Base
+  acts_as_gmappable
   acts_as_mappable  :lat_column_name => :latitude,
                     :lng_column_name => :longitude
   
@@ -28,5 +29,10 @@ class School < ActiveRecord::Base
     errors.add(:address, "Could not Geocode address") if !geo.success
     self.latitude, self.longitude = geo.lat,geo.lng if geo.success
     self.save
+  end
+  
+  def gmaps4rails_address
+    #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+    "#{self.address}, #{self.city.try(:name)}, #{self.try(:state)}" 
   end
 end
