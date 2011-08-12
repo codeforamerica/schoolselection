@@ -22,6 +22,7 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
   font-size: 14px;
+  background-image: url(/images/canvas.jpg);
   background-color: #f9f9f9;
   text-align: left;
   
