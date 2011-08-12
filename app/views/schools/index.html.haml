@@ -1,5 +1,7 @@
-/= gmaps4rails(@json)
-= gmaps("markers" => {"data" => @json}, "map_options" => { "provider" => "openlayers", "auto_adjust" => true, "center_longitude" => @longitude, "center_latitude" => @latitude })
+- if @circle.present?
+  = gmaps("circles" => {"data" => @circle}, "markers" => {"data" => @markers}, "map_options" => { "provider" => "googlemaps", "center_latitude" => @location.lat, "center_longitude" => @location.lng, "zoom" => 12, "auto_adjust" => false })
+- else
+  = gmaps("markers" => {"data" => @markers}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
 
 #search-form
   = form_tag('/schools', :method => :get) do
@@ -12,7 +14,7 @@
 #page
   - if params[:address].present? && params[:grade_level].present?
     - if @location.success == false
-      %h2 We couldn't find that address &mdash; please try again...
+      %h2 We couldn't find that address &mdash; please try again
     - else
       =raw walk_zone_results_title(params)
       - if @walk_zone_schools.present?
