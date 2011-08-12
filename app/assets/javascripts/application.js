@@ -7,5 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-/*= require gmaps4rails/openlayers.js*/
-= require gmaps4rails/googlemaps.js
+= require gmaps4rails/openlayers.js
+/*= require gmaps4rails/googlemaps.js
+*/

@@ -32,7 +32,6 @@ body {
   .nobold{ font-weight: normal; }
   
   #container{ @include container; margin-top: 30px; margin-bottom: 30px; }
-  #map_container{ width: 100%; margin-bottom: 30px; }
   #search-form{ 
     @include border-radius(10px);
     background-color: #777; margin-bottom: 30px; padding: 18px; color: white; font-size: 16px;
@@ -48,5 +47,30 @@ body {
   }
   .other-school-listing{
     padding: 0 0 10px 16px;
+  }
+  #map_container {
+    padding: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc #ccc #999 #ccc;
+    -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  #gmaps4rails_map {
+    width: 100%;
+    height: 400px;
+  }
+
+  .bing_map {
+     position: absolute;
+     top: 20;
+     left: 10;
+     width: 400px;
+     height: 400px;
+     border:#555555 2px solid;
   }
 }
