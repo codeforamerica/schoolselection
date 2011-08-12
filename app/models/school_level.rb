@@ -1,7 +1,7 @@
 class SchoolLevel < ActiveRecord::Base
   
   has_and_belongs_to_many :walk_zones
-  has_many :schools
+  has_many :schools, :order => 'name'
   
   
   def self.ids_by_walk_zone_distance(distance)
