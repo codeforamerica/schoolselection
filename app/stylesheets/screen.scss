@@ -22,7 +22,7 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
   font-size: 14px;
-  background-color: #EEE;
+  background-color: #f9f9f9;
   
   h1{ font-weight: bold; font-size: 3em; color: #333; }
   h2{ font-weight: bold; font-size: 1.8em; color: #333; }
@@ -52,8 +52,7 @@ body {
   }
   #page{ padding: 0 20px 20px 20px;
     .school-listing{ 
-      background-color: #ddd;
-      border: solid 1px #AAA;
+      background-color: $yellow;
       padding: 10px 15px 10px 10px;
       margin-bottom: 20px;
       table{ margin-bottom: 0;}

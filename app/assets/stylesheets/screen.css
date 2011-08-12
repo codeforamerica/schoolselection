@@ -148,7 +148,7 @@ body {
   color: #333333;
   font-size: 75%;
   font-size: 14px;
-  background-color: #EEE;
+  background-color: #f9f9f9;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -546,16 +546,15 @@ body #page {
 }
 /* line 54, ../../stylesheets/screen.scss */
 body #page .school-listing {
-  background-color: #ddd;
-  border: solid 1px #AAA;
+  background-color: #fefeb3;
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 59, ../../stylesheets/screen.scss */
+/* line 58, ../../stylesheets/screen.scss */
 body #page .school-listing table {
   margin-bottom: 0;
 }
-/* line 61, ../../stylesheets/screen.scss */
+/* line 60, ../../stylesheets/screen.scss */
 body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }
