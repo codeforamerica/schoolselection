@@ -23,27 +23,30 @@ body {
   @include blueprint-interaction;
   font-size: 14px;
   background-color: #f9f9f9;
+  text-align: left;
   
-  h1{ font-weight: bold; font-size: 3em; color: #333; }
+  h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-weight: bold; font-size: 1.8em; color: #333; }
   h3{ font-weight: bold; font-size: 1.35em; margin-bottom: 0.5em; color: #333; }
   h4{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
 
+  ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
-  #container{ @include container; margin-top: 20px; margin-bottom: 30px; background-color: white; border: solid 1px #BBB;}
-  #map_container {
-    padding: 6px;
-    -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-    -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-    box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-    width: 936px;
+  
+  #header{ @include container; margin-top: 5px; margin-bottom: 10px;}
+  
+  #container{ @include container; margin-top: 20px; background-color: white; border: solid 1px #BBB;}
+  
+  #map_container { 
+    padding: 6px; width: 936px; 
+    -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px; 
+    -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px; 
+    box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px; 
   }
-
-  #gmaps4rails_map {
-    width: 100%;
-    height: 400px;
-  }
+  
+  #gmaps4rails_map { width: 100%; height: 400px; }
+  
   #search-form{ 
     background-color: #777; margin: 0 0 25px 0; padding: 18px; color: white; font-size: 16px;
     input{ font-size: 15px; margin-right: 10px; border: 1px solid #666;}
@@ -56,8 +59,13 @@ body {
       margin-bottom: 20px;
       table{ margin-bottom: 0;}
     }
-    .other-school-listing{
-      padding: 0 0 10px 16px;
-    }
+    .other-school-listing{ padding: 0 0 10px 16px; }
   }
+  #footer{ 
+    @include container;
+    font-family: georgia;
+    background-color: #777;
+    border-left: solid 1px #BBB;
+    border-right: solid 1px #BBB;
+    color: white; text-align: center; padding: 18px 0 18px 0;  }
 }

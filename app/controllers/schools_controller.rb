@@ -7,7 +7,7 @@ class SchoolsController < ApplicationController
       @walk_zone_schools = School.find(:all, :origin => @location, :within => walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', walk_zone.school_levels])
       @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
       @markers = (@walk_zone_schools + @schools).to_gmaps4rails
-      @circle = "[{'lng': #{@location.lng}, 'lat': #{@location.lat}, 'radius': #{walk_zone.distance * 1609.344}, 'strokeColor': '#33cc00', 'strokeOpacity': 0.01, 'fillColor': '#33cc00', 'fillOpacity': 0.35}]"
+      @circle = "[{'lng': #{@location.lng}, 'lat': #{@location.lat}, 'radius': #{walk_zone.distance * 1609.344}, 'strokeColor': '#33cc00', 'strokeOpacity': 0.035, 'fillColor': '#33cc00', 'fillOpacity': 0.35}]"
     else
       @location = BOSTON
       @schools = School.school_level_finder(params[:grade_level])
