@@ -502,34 +502,45 @@ body #container {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 /* line 35, ../../stylesheets/screen.scss */
+body #map_container {
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #777;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  width: 935px;
+}
+/* line 46, ../../stylesheets/screen.scss */
+body #gmaps4rails_map {
+  width: 100%;
+  height: 400px;
+}
+/* line 50, ../../stylesheets/screen.scss */
 body #search-form {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
   background-color: #777;
-  margin-bottom: 30px;
+  margin: 0 0 25px 0;
   padding: 18px;
   color: white;
   font-size: 16px;
 }
-/* line 38, ../../stylesheets/screen.scss */
+/* line 52, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
   margin-right: 10px;
+  border: 1px solid #666;
 }
-/* line 39, ../../stylesheets/screen.scss */
+/* line 53, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 41, ../../stylesheets/screen.scss */
+/* line 55, ../../stylesheets/screen.scss */
 body .school-listing {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -541,37 +552,11 @@ body .school-listing {
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 60, ../../stylesheets/screen.scss */
 body .school-listing table {
   margin-bottom: 0;
 }
-/* line 48, ../../stylesheets/screen.scss */
+/* line 62, ../../stylesheets/screen.scss */
 body .other-school-listing {
   padding: 0 0 10px 16px;
-}
-/* line 51, ../../stylesheets/screen.scss */
-body #map_container {
-  padding: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ccc #ccc #999 #ccc;
-  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 100%;
-  margin-bottom: 30px;
-}
-/* line 63, ../../stylesheets/screen.scss */
-body #gmaps4rails_map {
-  width: 100%;
-  height: 400px;
-}
-/* line 68, ../../stylesheets/screen.scss */
-body .bing_map {
-  position: absolute;
-  top: 20;
-  left: 10;
-  width: 400px;
-  height: 400px;
-  border: #555555 2px solid;
 }

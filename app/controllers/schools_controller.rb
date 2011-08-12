@@ -6,7 +6,7 @@ class SchoolsController < ApplicationController
       walk_zone = WalkZone.find_by_name(params[:grade_level])
       @walk_zone_schools = School.find(:all, :origin => @location, :within => walk_zone.distance, :order => 'distance').select {|school| school.walk_zones.include?(walk_zone) }
       @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
-      @json = (@walk_zone_schools + @schools).to_gmaps4rails
+      @json = @walk_zone_schools.to_gmaps4rails
     else
       if params[:grade_level].present?
         @schools = School.school_level_finder(params[:grade_level])
