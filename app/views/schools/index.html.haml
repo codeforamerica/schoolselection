@@ -6,15 +6,20 @@
     = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
-- if params[:address].present? && @location.success == false
-  %h3 We couldn't find that address &mdash; please try again...
-- elsif params[:address].present?
-  =raw walk_zone_results_title(params)
-  - if @walk_zone_schools.present?
-    - @walk_zone_schools.each do |school|
-      = render :partial => 'listing', :locals => {:school => school}
-    %br/
-- elsif @schools.present?
+- if params[:address].present? && params[:grade_level].present?
+  - if @location.success == false
+    %h2 We couldn't find that address &mdash; please try again...
+  - else
+    =raw walk_zone_results_title(params)
+    - if @walk_zone_schools.present?
+      - @walk_zone_schools.each do |school|
+        = render :partial => 'listing', :locals => {:school => school}
+      %br/
+      =raw normal_results_title(params)
+      - @schools.each do |school|
+        .other-school-listing
+          %h3= school.name        
+- else
   =raw normal_results_title(params)
   - @schools.each do |school|
     .other-school-listing
