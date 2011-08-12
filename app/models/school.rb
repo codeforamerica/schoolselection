@@ -20,6 +20,8 @@ class School < ActiveRecord::Base
       WalkZone.find_by_distance(1.5).schools
     elsif school_level == "High School"
       WalkZone.find_by_distance(2.0).schools
+    else
+      School.all(:order => :name)
     end
   end
     
@@ -34,5 +36,9 @@ class School < ActiveRecord::Base
   def gmaps4rails_address
     #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.address}, #{self.city.try(:name)}, #{self.try(:state)}" 
+  end
+  
+  def gmaps4rails_infowindow
+    "<strong>#{self.name}</strong><br />#{self.address}<br />#{self.city.try(:name)}, #{self.state.try(:abbreviation)}"
   end
 end

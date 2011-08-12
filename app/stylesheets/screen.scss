@@ -31,7 +31,7 @@ body {
 
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
-  #container{ @include container; margin-top: 20px; margin-bottom: 30px; background-color: white; border: solid 1px #AAA;}
+  #container{ @include container; margin-top: 20px; margin-bottom: 30px; background-color: white; border: solid 1px #BBB;}
   #map_container {
     padding: 6px;
     -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;

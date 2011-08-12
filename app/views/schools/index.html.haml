@@ -15,18 +15,10 @@
   - if params[:address].present? && params[:grade_level].present?
     - if @location.success == false
       %h2 We couldn't find that address &mdash; please try again
+      = render :partial => 'normal_listings'
     - else
-      =raw walk_zone_results_title(params)
-      - if @walk_zone_schools.present?
-        - @walk_zone_schools.each do |school|
-          = render :partial => 'listing', :locals => {:school => school}
-        %br/
-        =raw normal_results_title(params)
-        - @schools.each do |school|
-          .other-school-listing
-            %h4= school.name        
+      = render :partial => 'walk_zone_listings'
+      %br/
+      = render :partial => 'normal_listings'
   - else
-    =raw normal_results_title(params)
-    - @schools.each do |school|
-      .other-school-listing
-        %h4= school.name
+    = render :partial => 'normal_listings'
