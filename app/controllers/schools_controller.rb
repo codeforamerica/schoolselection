@@ -8,10 +8,10 @@ class SchoolsController < ApplicationController
       @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
       @json = @walk_zone_schools.to_gmaps4rails
     else
-      if params[:grade_level].present?
-        @schools = School.school_level_finder(params[:grade_level])
-      else
+      if params[:grade_level].blank? || params[:grade_level] == 'All Schools'
         @schools = School.all(:order => :name)
+      else
+        @schools = School.school_level_finder(params[:grade_level])
       end
       @location = BOSTON
       @json = @schools.to_gmaps4rails

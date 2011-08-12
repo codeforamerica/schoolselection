@@ -148,6 +148,7 @@ body {
   color: #333333;
   font-size: 75%;
   font-size: 14px;
+  background-color: #EEE;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -462,41 +463,41 @@ body .removed {
   background: #990000;
   color: white;
 }
-/* line 26, ../../stylesheets/screen.scss */
+/* line 27, ../../stylesheets/screen.scss */
 body h1 {
   font-weight: bold;
   font-size: 3em;
   color: #333;
 }
-/* line 27, ../../stylesheets/screen.scss */
+/* line 28, ../../stylesheets/screen.scss */
 body h2 {
   font-weight: bold;
   font-size: 1.8em;
   color: #333;
 }
-/* line 28, ../../stylesheets/screen.scss */
+/* line 29, ../../stylesheets/screen.scss */
 body h3 {
   font-weight: bold;
   font-size: 1.35em;
   margin-bottom: 0.5em;
   color: #333;
 }
-/* line 29, ../../stylesheets/screen.scss */
+/* line 30, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 0.5em;
   color: #333;
 }
-/* line 31, ../../stylesheets/screen.scss */
+/* line 32, ../../stylesheets/screen.scss */
 body .italic {
   font-style: italic;
 }
-/* line 32, ../../stylesheets/screen.scss */
+/* line 33, ../../stylesheets/screen.scss */
 body .nobold {
   font-weight: normal;
 }
-/* line 34, ../../stylesheets/screen.scss */
+/* line 35, ../../stylesheets/screen.scss */
 body #container {
   width: 950px;
   margin: 0 auto;
@@ -504,24 +505,23 @@ body #container {
   *zoom: 1;
   margin-top: 20px;
   margin-bottom: 30px;
+  background-color: white;
+  border: solid 1px #999;
 }
-/* line 35, ../../stylesheets/screen.scss */
+/* line 36, ../../stylesheets/screen.scss */
 body #map_container {
   padding: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #777;
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 935px;
+  width: 936px;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 44, ../../stylesheets/screen.scss */
 body #gmaps4rails_map {
   width: 100%;
   height: 400px;
 }
-/* line 50, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
 body #search-form {
   background-color: #777;
   margin: 0 0 25px 0;
@@ -529,34 +529,37 @@ body #search-form {
   color: white;
   font-size: 16px;
 }
-/* line 52, ../../stylesheets/screen.scss */
+/* line 50, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
   margin-right: 10px;
   border: 1px solid #666;
 }
-/* line 53, ../../stylesheets/screen.scss */
+/* line 51, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 55, ../../stylesheets/screen.scss */
-body .school-listing {
+/* line 53, ../../stylesheets/screen.scss */
+body #page {
+  padding: 0 20px 20px 20px;
+}
+/* line 54, ../../stylesheets/screen.scss */
+body #page .school-listing {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  background-color: #eee;
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 60, ../../stylesheets/screen.scss */
-body .school-listing table {
+/* line 58, ../../stylesheets/screen.scss */
+body #page .school-listing table {
   margin-bottom: 0;
 }
-/* line 62, ../../stylesheets/screen.scss */
-body .other-school-listing {
+/* line 60, ../../stylesheets/screen.scss */
+body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }

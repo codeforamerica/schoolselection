@@ -22,6 +22,7 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
   font-size: 14px;
+  background-color: #EEE;
   
   h1{ font-weight: bold; font-size: 3em; color: #333; }
   h2{ font-weight: bold; font-size: 1.8em; color: #333; }
@@ -31,16 +32,13 @@ body {
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
   
-  #container{ @include container; margin-top: 20px; margin-bottom: 30px; }
+  #container{ @include container; margin-top: 20px; margin-bottom: 30px; background-color: white; border: solid 1px #999;}
   #map_container {
     padding: 6px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #777;
     -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
     -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
     box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-    width: 935px;
+    width: 936px;
   }
 
   #gmaps4rails_map {
@@ -52,14 +50,15 @@ body {
     input{ font-size: 15px; margin-right: 10px; border: 1px solid #666;}
     select{ font-size: 15px; margin-right: 10px;}
   }
-  .school-listing{ 
-    @include border-radius(10px);
-    background-color: #eee;
-    padding: 10px 15px 10px 10px;
-    margin-bottom: 20px;
-    table{ margin-bottom: 0;}
-  }
-  .other-school-listing{
-    padding: 0 0 10px 16px;
+  #page{ padding: 0 20px 20px 20px;
+    .school-listing{ 
+      @include border-radius(10px);
+      padding: 10px 15px 10px 10px;
+      margin-bottom: 20px;
+      table{ margin-bottom: 0;}
+    }
+    .other-school-listing{
+      padding: 0 0 10px 16px;
+    }
   }
 }
