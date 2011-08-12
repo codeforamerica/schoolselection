@@ -6,7 +6,7 @@ class SchoolsController < ApplicationController
       boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
       @location = Geokit::Geocoders::GoogleGeocoder.geocode(params[:address], :bias => boston_bounds)
       @walk_zone = WalkZone.find_by_name(params[:grade_level])
-      @walk_zone_schools = School.find(:all, :origin => @location, :within => @walk_zone.distance).select {|school| school.walk_zones.include?(@walk_zone) }
+      @walk_zone_schools = School.find(:all, :origin => @location, :within => @walk_zone.distance, :order => 'distance').select {|school| school.walk_zones.include?(@walk_zone) }
       @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
     elsif params[:grade_level].present?
       @schools = School.school_level_finder(params[:grade_level])

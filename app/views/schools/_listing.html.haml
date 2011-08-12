@@ -29,11 +29,16 @@
               - unless school.school_group.blank?
                 %br/
                 = school.school_group.name
-            %td
-              = school.grades
+              - unless school.grades.blank?
+                %br/
+                = school.grades
               - unless school.hours.blank?
                 %br/
                 = school.hours
               - unless school.early_dismissal_time.blank?
                 %br/
                 = school.early_dismissal_time
+            %td
+              Distance: 
+              = school.distance[0..3]
+              mi

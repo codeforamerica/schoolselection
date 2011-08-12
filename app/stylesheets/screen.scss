@@ -21,11 +21,12 @@ body {
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
+  font-size: 14px;
   
   h1{ font-weight: bold; font-size: 3em; color: #333; }
-  h2{ font-weight: bold; font-size: 2.2em; color: #333; }
-  h3{ font-weight: bold; font-size: 1.5em; color: #333; }
-  h4{ font-weight: bold; font-size: 1.3em; color: #333; }
+  h2{ font-weight: bold; font-size: 1.8em; color: #333; }
+  h3{ font-weight: bold; font-size: 1.4em; color: #333; }
+  h4{ font-weight: bold; font-size: 1.25em; color: #333; }
 
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
@@ -45,6 +46,6 @@ body {
     table{ margin-bottom: 0;}
   }
   .other-school-listing{
-    padding: 2px 10px 0 0;
+    padding-left: 16px;
   }
 }
