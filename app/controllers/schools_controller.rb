@@ -11,7 +11,7 @@ class SchoolsController < ApplicationController
     elsif params[:grade_level].present?
       @schools = School.school_level_finder(params[:grade_level])
     else
-      @walk_zone_schools = School.all(:order => :name)
+      @schools = School.all(:order => :name)
     end
 
     respond_to do |format|

@@ -464,10 +464,13 @@ body .removed {
 /* line 25, ../../stylesheets/screen.scss */
 body h1 {
   font-weight: bold;
+  font-size: 2.5em;
+  color: #333;
 }
 /* line 26, ../../stylesheets/screen.scss */
 body h2 {
   font-weight: bold;
+  font-size: 2.2em;
   color: #333;
 }
 /* line 27, ../../stylesheets/screen.scss */
@@ -516,10 +519,12 @@ body #search-form {
 /* line 37, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
+  margin-right: 10px;
 }
 /* line 38, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
+  margin-right: 10px;
 }
 /* line 40, ../../stylesheets/screen.scss */
 body .school-listing {

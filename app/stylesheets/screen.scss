@@ -22,8 +22,8 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
   
-  h1{ font-weight: bold;}
-  h2{ font-weight: bold; color: #333; }
+  h1{ font-weight: bold; font-size: 2.5em; color: #333; }
+  h2{ font-weight: bold; font-size: 2.2em; color: #333; }
   h3{ font-weight: bold; font-size: 1.5em; color: #333; }
   h4{ font-weight: bold; font-size: 1.3em; color: #333; }
 
@@ -34,8 +34,8 @@ body {
   #search-form{ 
     @include border-radius(10px);
     background-color: #777; margin-bottom: 30px; padding: 18px; color: white; font-size: 16px;
-    input{ font-size: 15px;}
-    select{ font-size: 15px;}
+    input{ font-size: 15px; margin-right: 10px;}
+    select{ font-size: 15px; margin-right: 10px;}
   }
   .school-listing{ 
     @include border-radius(10px);
