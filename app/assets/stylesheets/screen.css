@@ -503,10 +503,10 @@ body #container {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 30px;
   background-color: white;
-  border: solid 1px #999;
+  border: solid 1px #AAA;
 }
 /* line 36, ../../stylesheets/screen.scss */
 body #map_container {
@@ -546,20 +546,16 @@ body #page {
 }
 /* line 54, ../../stylesheets/screen.scss */
 body #page .school-listing {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
+  background-color: #ddd;
+  border: solid 1px #AAA;
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 58, ../../stylesheets/screen.scss */
+/* line 59, ../../stylesheets/screen.scss */
 body #page .school-listing table {
   margin-bottom: 0;
 }
-/* line 60, ../../stylesheets/screen.scss */
+/* line 61, ../../stylesheets/screen.scss */
 body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }
