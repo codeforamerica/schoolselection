@@ -477,13 +477,15 @@ body h2 {
 /* line 28, ../../stylesheets/screen.scss */
 body h3 {
   font-weight: bold;
-  font-size: 1.4em;
+  font-size: 1.35em;
+  margin-bottom: 0.5em;
   color: #333;
 }
 /* line 29, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
   font-size: 1.25em;
+  margin-bottom: 0.5em;
   color: #333;
 }
 /* line 31, ../../stylesheets/screen.scss */
@@ -545,5 +547,5 @@ body .school-listing table {
 }
 /* line 48, ../../stylesheets/screen.scss */
 body .other-school-listing {
-  padding-left: 16px;
+  padding: 0 0 10px 16px;
 }
