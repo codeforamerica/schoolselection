@@ -628,7 +628,11 @@ body #page .school-listing table {
 body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }
-/* line 71, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
+body #page #video {
+  padding: 30px 0 35px 0;
+}
+/* line 72, ../../stylesheets/screen.scss */
 body #footer {
   font-family: georgia;
   background-color: #777;
