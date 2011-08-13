@@ -1,4 +1,5 @@
 =raw normal_results_title(params)
+%br/
 - @schools.each do |school|
   .other-school-listing
-    %h4= school.name
+    %h4= link_to school.name, school_path(school)

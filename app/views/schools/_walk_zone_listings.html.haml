@@ -1,4 +1,6 @@
-=raw walk_zone_results_title(params)
+%h2== Walk Zone Schools near #{@location.street_address}, #{@location.city}, #{@location.state} <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
+%p.italic== Fifty percent of each school’s seats are set aside for applicants with walk zone priority. Students have walk zone priority if they live approximately #{@walk_zone.distance} miles or less from the #{params[:grade_level]}.
+
 - if @walk_zone_schools.present?
   - @walk_zone_schools.each do |school|
     %div{:class=>cycle("school-listing odd", "school-listing even")}
@@ -8,7 +10,7 @@
             %table
               %tr
                 %td{:colspan=>"9"}
-                  %h3= school.name
+                  %h3= link_to school.name, school_path(school)
               %tr
                 %td{:width=>'250px'}
                   = school.address
