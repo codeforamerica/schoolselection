@@ -55,7 +55,8 @@ body {
   #gmaps4rails_map { width: 100%; height: 500px; }
   
   #search-form{ 
-    background-color: $blue; padding: 18px; color: white; font-size: 16px; 
+    @include linear-gradient(color-stops($lightblue, $blue));
+    padding: 18px; color: white; font-size: 16px; 
     input{ font-size: 15px; margin-right: 10px; border: 1px solid #666;}
     select{ font-size: 15px; margin-right: 10px;}
   }

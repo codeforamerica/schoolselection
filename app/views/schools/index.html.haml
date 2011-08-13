@@ -7,7 +7,7 @@
   = form_tag('/schools', :method => :get) do
     Your address:&nbsp;
     = text_field_tag :address, params[:address], :width => 100
-    &nbsp;School Level:&nbsp;
+    &nbsp;School level:&nbsp;
     = select_tag :grade_level, options_for_select(['All Schools', 'Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
