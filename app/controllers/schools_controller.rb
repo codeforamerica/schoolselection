@@ -2,19 +2,17 @@ class SchoolsController < ApplicationController
 
   def index   
     if params[:address] && params[:grade_level] != 'All Schools' && geocoded_address(params[:address]).success == true
-      @location = geocoded_address(params[:address])
+      @geocoded_address = geocoded_address(params[:address])
       @walk_zone = WalkZone.find_by_name(params[:grade_level])
-      @walk_zone_schools = School.find(:all, :origin => @location, :within => @walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', @walk_zone.school_levels])
+      @walk_zone_schools = School.find(:all, :origin => @geocoded_address, :within => @walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', @walk_zone.school_levels])
       @schools = (School.school_level_finder(params[:grade_level]) - @walk_zone_schools).sort_by {|x| x.name}
       @markers = (@walk_zone_schools + @schools).to_gmaps4rails
-      @circle = "[{'lng': #{@location.lng}, 'lat': #{@location.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'strokeColor': '#33cc00', 'strokeOpacity': 0.035, 'fillColor': '#33cc00', 'fillOpacity': 0.35}]"
+      @circle = "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'strokeColor': '#33cc00', 'strokeOpacity': 0.035, 'fillColor': '#33cc00', 'fillOpacity': 0.35}]"
     else
       @location = BOSTON
       @schools = School.school_level_finder(params[:grade_level])
       @markers = @schools.to_gmaps4rails
     end
-    @latitude = @location.lat
-    @longitude = @location.lng
 
     respond_to do |format|
       format.html # index.html.erb
