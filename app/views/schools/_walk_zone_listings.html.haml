@@ -1,5 +1,5 @@
 %h2== Walk Zone Schools near #{@location.street_address}, #{@location.city}, #{@location.state} <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
-%p.italic== Fifty percent of each school’s seats are set aside for applicants with walk zone priority. Students have walk zone priority if they live approximately #{@walk_zone.distance} miles or less from the #{params[:grade_level]}.
+%p.italic== Fifty percent of each school’s seats are set aside for applicants with walk zone priority. Students have walk zone priority if they live approximately #{@walk_zone.distance} miles or less from the #{params[:grade_level]}. The walk zone for your address is represented by the green circle above.
 
 - if @walk_zone_schools.present?
   - @walk_zone_schools.each do |school|
@@ -28,21 +28,22 @@
                 %td{:width=>'250px'}
                   - unless school.assignment_zone.blank?
                     = school.assignment_zone.name
+                    %br/
                   - unless school.school_type.blank?
-                    %br/
                     = school.school_type.name
+                    %br/
                   - unless school.school_group.blank?
-                    %br/
                     = school.school_group.name
+                    %br/
                   - unless school.grades.blank?
-                    %br/
                     = school.grades
+                    %br/
                   - unless school.hours.blank?
-                    %br/
                     = school.hours
-                  - unless school.early_dismissal_time.blank?
                     %br/
+                  - unless school.early_dismissal_time.blank?
                     = school.early_dismissal_time
+                    %br/
                 %td
                   Distance: 
                   = school.distance[0..3]
