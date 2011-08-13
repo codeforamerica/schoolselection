@@ -466,33 +466,54 @@ body .removed {
   color: white;
 }
 /* line 29, ../../stylesheets/screen.scss */
+body a {
+  color: #004c99;
+  text-decoration: none;
+}
+/* line 30, ../../stylesheets/screen.scss */
+body a:hover {
+  color: #004c99;
+  text-decoration: underline;
+}
+/* line 31, ../../stylesheets/screen.scss */
+body a.visited {
+  color: #004c99;
+  text-decoration: none;
+}
+/* line 32, ../../stylesheets/screen.scss */
+body a.visited:hover {
+  color: #004c99;
+  text-decoration: underline;
+}
+/* line 34, ../../stylesheets/screen.scss */
 body h1 {
   font-weight: bold;
   font-size: 2.7em;
   color: #333;
   margin: 33px 0 0 0;
 }
-/* line 30, ../../stylesheets/screen.scss */
+/* line 35, ../../stylesheets/screen.scss */
 body h2 {
   font-weight: bold;
   font-size: 1.8em;
   color: #333;
+  margin-bottom: 0.1em;
 }
-/* line 31, ../../stylesheets/screen.scss */
+/* line 36, ../../stylesheets/screen.scss */
 body h3 {
   font-weight: bold;
   font-size: 1.35em;
   margin-bottom: 0.5em;
   color: #333;
 }
-/* line 32, ../../stylesheets/screen.scss */
+/* line 37, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 0.5em;
   color: #333;
 }
-/* line 34, ../../stylesheets/screen.scss */
+/* line 39, ../../stylesheets/screen.scss */
 body ul.horizontal-list {
   margin: 0;
   padding: 0;
@@ -524,15 +545,19 @@ body ul.horizontal-list li:last-child {
 body ul.horizontal-list li.last {
   padding-right: 0;
 }
-/* line 35, ../../stylesheets/screen.scss */
+/* line 40, ../../stylesheets/screen.scss */
 body .italic {
   font-style: italic;
 }
-/* line 36, ../../stylesheets/screen.scss */
+/* line 41, ../../stylesheets/screen.scss */
 body .nobold {
   font-weight: normal;
 }
-/* line 38, ../../stylesheets/screen.scss */
+/* line 42, ../../stylesheets/screen.scss */
+body .red {
+  color: #e63b37;
+}
+/* line 44, ../../stylesheets/screen.scss */
 body #header {
   width: 950px;
   margin: 0 auto;
@@ -541,7 +566,7 @@ body #header {
   margin-top: 5px;
   margin-bottom: 10px;
 }
-/* line 40, ../../stylesheets/screen.scss */
+/* line 46, ../../stylesheets/screen.scss */
 body #container {
   width: 950px;
   margin: 0 auto;
@@ -551,10 +576,10 @@ body #container {
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
-  margin-top: 20px;
+  margin-top: 15px;
   background-color: white;
 }
-/* line 42, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
 body #map_container {
   padding: 6px;
   width: 938px;
@@ -562,49 +587,48 @@ body #map_container {
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
 }
-/* line 49, ../../stylesheets/screen.scss */
+/* line 55, ../../stylesheets/screen.scss */
 body #gmaps4rails_map {
   width: 100%;
-  height: 400px;
+  height: 500px;
 }
-/* line 51, ../../stylesheets/screen.scss */
+/* line 57, ../../stylesheets/screen.scss */
 body #search-form {
-  background-color: #777;
-  margin: 0 0 25px 0;
+  background-color: #134980;
   padding: 18px;
   color: white;
   font-size: 16px;
 }
-/* line 53, ../../stylesheets/screen.scss */
+/* line 59, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
   margin-right: 10px;
   border: 1px solid #666;
 }
-/* line 54, ../../stylesheets/screen.scss */
+/* line 60, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 56, ../../stylesheets/screen.scss */
+/* line 62, ../../stylesheets/screen.scss */
 body #page {
-  padding: 0 20px 20px 20px;
+  padding: 20px;
 }
-/* line 57, ../../stylesheets/screen.scss */
+/* line 63, ../../stylesheets/screen.scss */
 body #page .school-listing {
   background-color: #f8f095;
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 61, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body #page .school-listing table {
   margin-bottom: 0;
 }
-/* line 63, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }
-/* line 65, ../../stylesheets/screen.scss */
+/* line 71, ../../stylesheets/screen.scss */
 body #footer {
   font-family: georgia;
   background-color: #777;
