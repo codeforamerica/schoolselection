@@ -11,14 +11,9 @@
     = select_tag :grade_level, options_for_select(['All Schools', 'Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
-#page  
-  - if params[:address] && params[:grade_level] != 'All Schools' && @geocoded_address.blank?
-    %h4.red We couldn't find that address &mdash; please try again
-    %br/
-  - elsif params[:address] && params[:grade_level] == 'All Schools'
-    %h4.red Please select a grade level to see your walk zone schools
-    %br/
-  - elsif @walk_zone_schools.present?
+#page
+  - if @walk_zone_schools.present?
     = render :partial => 'walk_zone_listings'
     %br/
-  = render :partial => 'normal_listings'
+  - else
+    = render :partial => 'normal_listings'

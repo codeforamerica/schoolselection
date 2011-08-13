@@ -39,7 +39,8 @@ body {
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
-  .red{ color: $flashred; }
+  .alert{ font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashred; }
+  .notice{ font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashgreen; background-color: $lightgreen; border-color: $medgreen; }
   
   #header{ @include container; margin-top: 5px; margin-bottom: 10px;}
   
