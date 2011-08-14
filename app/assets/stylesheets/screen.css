@@ -148,8 +148,8 @@ body {
   color: #333333;
   font-size: 75%;
   font-size: 14px;
-  background-image: url(/images/canvas.jpg);
-  background-color: #f9f9f9;
+  /*  background-image: url(/images/canvas.jpg); */
+  background-color: #e9e9e9;
   text-align: left;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
@@ -555,6 +555,12 @@ body .nobold {
 }
 /* line 34, ../../stylesheets/screen.scss */
 body .alert {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   font-size: 1.25em;
   font-weight: normal;
   margin-bottom: 1em;
@@ -562,6 +568,12 @@ body .alert {
 }
 /* line 35, ../../stylesheets/screen.scss */
 body .notice {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   font-size: 1.25em;
   font-weight: normal;
   margin-bottom: 1em;
@@ -587,10 +599,17 @@ body #container {
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
   box-shadow: 0px 0px 5px #333333;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
   margin-top: 15px;
+  margin-bottom: 30px;
   background-color: white;
 }
-/* line 41, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
 body #navigation {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a62ac), color-stop(100%, #134980));
   background-image: -webkit-linear-gradient(top, #1a62ac, #134980);
@@ -603,7 +622,7 @@ body #navigation {
   font-weight: bold;
   color: white;
 }
-/* line 45, ../../stylesheets/screen.scss */
+/* line 52, ../../stylesheets/screen.scss */
 body #navigation ul.main-nav {
   margin: 0;
   padding: 0;
@@ -634,24 +653,30 @@ body #navigation ul.main-nav li:last-child {
 body #navigation ul.main-nav li.last {
   padding-right: 0;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 53, ../../stylesheets/screen.scss */
 body #navigation a {
   color: white;
 }
-/* line 49, ../../stylesheets/screen.scss */
+/* line 56, ../../stylesheets/screen.scss */
 body #map_container {
-  width: 938px;
-  padding: 6px;
+  width: 930px;
+  padding: 10px;
   -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
   box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
 }
-/* line 57, ../../stylesheets/screen.scss */
+/* line 64, ../../stylesheets/screen.scss */
 body #gmaps4rails_map {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   width: 100%;
   height: 500px;
 }
-/* line 59, ../../stylesheets/screen.scss */
+/* line 66, ../../stylesheets/screen.scss */
 body #search-form {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a62ac), color-stop(100%, #134980));
   background-image: -webkit-linear-gradient(top, #1a62ac, #134980);
@@ -663,44 +688,57 @@ body #search-form {
   color: white;
   font-size: 16px;
 }
-/* line 62, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body #search-form input {
   font-size: 15px;
   margin-right: 10px;
   border: 1px solid #666;
 }
-/* line 63, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 65, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
 body #page {
-  padding: 20px 30px 30px 30px;
+  padding: 20px 25px 25px 25px;
 }
-/* line 66, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #page .school-listing {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   background-color: #f8f095;
+  border: solid 1px #999;
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 70, ../../stylesheets/screen.scss */
+/* line 79, ../../stylesheets/screen.scss */
 body #page .school-listing table {
   margin-bottom: 0;
 }
-/* line 72, ../../stylesheets/screen.scss */
+/* line 81, ../../stylesheets/screen.scss */
 body #page .other-school-listing {
   padding: 0 0 10px 16px;
 }
-/* line 73, ../../stylesheets/screen.scss */
+/* line 82, ../../stylesheets/screen.scss */
 body #page #video {
   padding: 30px 0 35px 0;
 }
-/* line 75, ../../stylesheets/screen.scss */
+/* line 84, ../../stylesheets/screen.scss */
 body #footer {
-  font-family: georgia;
   background-color: #777;
+}
+/* line 86, ../../stylesheets/screen.scss */
+body #footer #inner-footer {
+  width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
   color: white;
-  text-align: center;
+  text-align: left;
   padding: 18px 0 18px 0;
 }

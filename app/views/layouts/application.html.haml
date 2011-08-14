@@ -18,6 +18,7 @@
       /    %li &nbsp;|&nbsp;
       /    %li= link_to 'Your Schools', root_url
       = yield
-      #footer
-        &copy; 2011 Boston Public Schools
-        = yield :scripts
+    #footer
+      #inner-footer
+        = image_tag('/images/logo-small.png')
+      = yield :scripts
