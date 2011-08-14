@@ -606,7 +606,7 @@ body #container {
   -khtml-border-radius: 20px;
   border-radius: 20px;
   margin-top: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   background-color: white;
 }
 /* line 48, ../../stylesheets/screen.scss */
@@ -674,7 +674,7 @@ body #gmaps4rails_map {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   width: 100%;
-  height: 500px;
+  height: 485px;
 }
 /* line 66, ../../stylesheets/screen.scss */
 body #search-form {
@@ -690,6 +690,12 @@ body #search-form {
 }
 /* line 69, ../../stylesheets/screen.scss */
 body #search-form input {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   font-size: 15px;
   margin-right: 10px;
   border: 1px solid #666;
@@ -728,11 +734,7 @@ body #page .other-school-listing {
 body #page #video {
   padding: 30px 0 35px 0;
 }
-/* line 84, ../../stylesheets/screen.scss */
-body #footer {
-  background-color: #777;
-}
-/* line 86, ../../stylesheets/screen.scss */
+/* line 85, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;
@@ -740,5 +742,5 @@ body #footer #inner-footer {
   *zoom: 1;
   color: white;
   text-align: left;
-  padding: 18px 0 18px 0;
+  padding: 0 0 20px 40px;
 }
