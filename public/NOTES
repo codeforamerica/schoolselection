@@ -1,0 +1,11 @@
+grade_level			address			geocoded		results								message
+___________________________________________________________________________
+
+-								- 					-						all
+All Schools			-						-						all										enter grade level and address
+All Schools			present			fail				all										couldn't find address
+All Schools			present			success			all										enter grade level
+School					-						-						schools								enter address
+School					present			fail				schools								couldn't find address
+School					present			success			walkzone + schools		
+

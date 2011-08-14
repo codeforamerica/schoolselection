@@ -7,7 +7,16 @@
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
+    #header
+      = link_to image_tag('/images/logo.png'), root_url
     #container
+      /#navigation
+      /  %ul.main-nav
+      /    %li= link_to 'Home', root_url
+      /    %li &nbsp;|&nbsp;
+      /    %li= link_to 'Schools', schools_path
+      /    %li &nbsp;|&nbsp;
+      /    %li= link_to 'Your Schools', root_url
       = yield
       #footer
         &copy; 2011 Boston Public Schools

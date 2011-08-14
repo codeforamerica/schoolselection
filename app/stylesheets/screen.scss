@@ -2,18 +2,10 @@
 @import "compass/css3";
 @import "compass/layout";
 @import "compass/typography";
-
-// This import applies a global reset to any page that imports this stylesheet.
 @import "blueprint/reset";
-
-// To configure blueprint, edit the partials/base.sass file.
 @import "partials/base";
 @import "partials/errors";
-
-// Import all the default blueprint modules so that we can access their mixins.
 @import "blueprint";
-
-// Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
 body {
@@ -42,12 +34,21 @@ body {
   .alert{ font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashred; }
   .notice{ font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashgreen; background-color: $lightgreen; border-color: $medgreen; }
   
-  #header{ @include container; margin-top: 5px; margin-bottom: 10px;}
+  #header{ @include container; padding-top: 2px; }
   
   #container{ @include container; @include single-box-shadow; margin-top: 15px; background-color: white; }
+
+  #navigation{ 
+    @include linear-gradient(color-stops($lightblue, $blue));
+    padding: 18px 18px 18px 20px; 
+    font-size: 16px; font-weight: bold; color: white; 
+    ul.main-nav{ @include horizontal-list(10px); }
+    a{ color: white; }
+  }
   
   #map_container { 
-    padding: 6px; width: 938px; 
+    width: 938px;
+    padding: 6px;
     -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px; 
     -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px; 
     box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px; 
@@ -61,7 +62,7 @@ body {
     input{ font-size: 15px; margin-right: 10px; border: 1px solid #666;}
     select{ font-size: 15px; margin-right: 10px;}
   }
-  #page{ padding: 20px;
+  #page{ padding: 20px 30px 30px 30px;
     .school-listing{ 
       background-color: $yellow;
       padding: 10px 15px 10px 10px;
