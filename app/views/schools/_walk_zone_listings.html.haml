@@ -1,9 +1,9 @@
 %h2== Walk Zone Schools near #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
-%p.italic== Fifty percent of each school’s seats are set aside for applicants with walk zone priority. Students have walk zone priority if they live  #{@walk_zone.distance} miles or less from #{params[:grade_level] == 'Elementary School' ? 'an' : 'a'} #{params[:grade_level]}. The walk zone for your address is represented by the green circle above.  Your walk zone schools are listed below.
+%p.italic== Fifty percent of each school’s seats are set aside for applicants with walk zone priority. Students have walk zone priority if they live  #{@walk_zone.distance} miles or less from #{params[:grade_level] == 'Elementary School' ? 'an' : 'a'} #{params[:grade_level]}. The walk zone for your address is represented by the green circle above.  Your walk zone schools are listed in green below.
 
 - if @walk_zone_schools.present?
   - @walk_zone_schools.each do |school|
-    %div{:class=>cycle("school-listing odd", "school-listing even")}
+    .walk-zone-listing
       %table
         %tr
           %td

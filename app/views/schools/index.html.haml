@@ -12,6 +12,7 @@
     = submit_tag "Search"
 
 #page
+  =raw search_message(params)
   - if @walk_zone_schools.present?
     = render :partial => 'walk_zone_listings'
     %br/
