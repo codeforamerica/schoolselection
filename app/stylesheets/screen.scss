@@ -34,13 +34,13 @@ body {
   .alert{ @include border-radius(10px); font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashred; }
   .notice{ @include border-radius(10px); font-size: 1.25em; font-weight: normal; margin-bottom: 1em; color: $flashgreen; background-color: $lightgreen; border-color: $medgreen; }
   
-  #header{ @include container; padding-top: 2px; }
+  #header{ @include container; padding-top: 5px; }
   
   #container{ 
     @include container; 
     @include single-box-shadow; 
     @include border-radius(20px); 
-    margin-top: 15px; 
+    margin-top: 10px; 
     margin-bottom: 15px;
     background-color: white; 
   }

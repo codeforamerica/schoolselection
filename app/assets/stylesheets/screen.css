@@ -587,7 +587,7 @@ body #header {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  padding-top: 2px;
+  padding-top: 5px;
 }
 /* line 39, ../../stylesheets/screen.scss */
 body #container {
@@ -605,7 +605,7 @@ body #container {
   -ms-border-radius: 20px;
   -khtml-border-radius: 20px;
   border-radius: 20px;
-  margin-top: 15px;
+  margin-top: 10px;
   margin-bottom: 15px;
   background-color: white;
 }
