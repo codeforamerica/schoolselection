@@ -11,9 +11,9 @@ class SchoolsController < ApplicationController
       
       @assignment_zone_json = "[#{@assignment_zones.map {|x| x.geokitted_coordinates.to_json}[0]}]"
       @markers_json = (@walk_zone_schools + @assignment_zone_schools.flatten).to_gmaps4rails
-      @walk_zone_json = "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'fillColor': '#33cc00', 'fillOpacity': 0.4, 'strokeColor': '#000000', 'strokeOpacity': 0.6, 'strokeWeight': 1.5}]"
+      @walk_zone_json = "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'fillColor': '#33cc00', 'fillOpacity': 0.35, 'strokeColor': '#000000', 'strokeOpacity': 0.6, 'strokeWeight': 1.5}]"
     else
-      @location = BOSTON
+      @location = Geokit::Geocoders::GoogleGeocoder.geocode('Roxbury, Boston, MA')
       @schools = School.school_level_finder(params[:grade_level])
       @markers = @schools.to_gmaps4rails
       @assignment_zones_json = "[#{AssignmentZone.find(1).geokitted_coordinates.to_json}, #{AssignmentZone.find(2).geokitted_coordinates.to_json}, #{AssignmentZone.find(3).geokitted_coordinates.to_json}]"

@@ -40,4 +40,5 @@ class School < ActiveRecord::Base
   def gmaps4rails_infowindow
     "<strong>#{self.name}</strong><br />#{self.address}<br />#{self.city.try(:name)}, #{self.state.try(:abbreviation)}"
   end
+
 end
