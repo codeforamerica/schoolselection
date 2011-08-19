@@ -3,7 +3,7 @@ class SchoolsController < ApplicationController
   def index
     @geocoded_address = geocode_address(params[:address].strip) if params[:address].present?
     
-    if params[:address].present? && params[:grade_level].present? && params[:grade_level] != 'All Schools' && @geocoded_address.success == true && AssignmentZone.find_with_point(@geocoded_address.lat, @geocoded_address.lng).present?
+    if params[:address].present? && params[:grade_level].present? && @geocoded_address.success == true && AssignmentZone.find_with_point(@geocoded_address.lat, @geocoded_address.lng).present?
       @walk_zone = WalkZone.find_by_name(params[:grade_level])
       @walk_zone_schools = School.find(:all, :origin => @geocoded_address, :within => @walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', @walk_zone.school_levels])
       @assignment_zones = AssignmentZone.find_with_point(@geocoded_address.lat, @geocoded_address.lng)
