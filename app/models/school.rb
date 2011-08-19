@@ -1,7 +1,6 @@
 class School < ActiveRecord::Base
-  acts_as_gmappable
-  acts_as_mappable  :lat_column_name => :latitude,
-                    :lng_column_name => :longitude
+  acts_as_gmappable :lat => "lat", :lng => "lng"
+  acts_as_mappable  :lat_column_name => :lat, :lng_column_name => :lng
   
   has_and_belongs_to_many :walk_zones
   belongs_to :assignment_zone
@@ -29,7 +28,7 @@ class School < ActiveRecord::Base
     boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::GoogleGeocoder.geocode("#{address}, #{city.try(:name)}", :bias => boston_bounds)
     errors.add(:address, "Could not Geocode address") if !geo.success
-    self.latitude, self.longitude = geo.lat,geo.lng if geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
     self.save
   end
   

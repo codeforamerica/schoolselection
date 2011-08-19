@@ -11,7 +11,7 @@ class AssignmentZone < ActiveRecord::Base
   end
   
   def schools(grade_level)
-    School.school_level_finder(grade_level).select {|x| self.includes_point?(x.latitude.to_f, x.longitude.to_f) }
+    School.school_level_finder(grade_level).select {|x| self.includes_point?(x.lat.to_f, x.lng.to_f) }
   end
   
   def includes_point?(lat, lng)
