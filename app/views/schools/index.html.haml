@@ -1,7 +1,7 @@
 - if @walk_zone.present?
   = gmaps("markers" => {"data" => @markers_json}, "circles" => {"data" => @walk_zone_json }, "polygons" => {"data" => @assignment_zone_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
 - else
-  = gmaps("polygons" => {"data" => @assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @location.lat, "center_longitude" => @location.lng, "zoom" => 11 })
+  = gmaps("polygons" => {"data" => @assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.5, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @location.lat, "center_longitude" => @location.lng, "zoom" => 11 })
 
 #search-form
   = form_tag('/schools', :method => :get) do
@@ -18,5 +18,5 @@
   - if @assignment_zone_schools.present?
     = render :partial => 'assignment_zone_listings'
   - if @walk_zone_schools.blank? && @assignment_zone_schools.blank?
-    %h2 Welcome to the BPS School Discovery App
-    %p This tool will allow you to search for schools that meet your personal criteria and to which your child is also eligible to apply.To get started, please enter your address and grade level, above.
+    %h2 Welcome to the School Discovery App
+    %p This tool allows parents and guardians to search for eligible shools in the Boston Public School system. Simply enter your home address and the grade level, above, and we'll show you the schools that match your criteria. 
