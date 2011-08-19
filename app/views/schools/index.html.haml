@@ -5,9 +5,9 @@
 
 #search-form
   = form_tag('/schools', :method => :get) do
-    Your address:&nbsp;
+    Home address:&nbsp;
     = text_field_tag :address, "#{address_helper}", :width => 100
-    &nbsp;Grade level:&nbsp;
+    &nbsp;Upcoming grade level:&nbsp;
     = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
@@ -19,4 +19,4 @@
     = render :partial => 'assignment_zone_listings'
   - if @walk_zone_schools.blank? && @assignment_zone_schools.blank?
     %h2 Welcome to the School Discovery App
-    %p This tool allows parents and guardians to search for eligible shools in the Boston Public School system. &nbsp;Simply enter your home address and the grade level, above, and we'll show you the schools to which your child can apply. 
+    %p This tool allows parents and guardians to search for eligible shools in the Boston Public School system. &nbsp;Eligible schools include all schools that are located in your child's "Assignment Zone", or that fall within your child's "Walk Zone" (whose size is determined by your child's upcoming grade level). &nbsp;To see your eligible schools, please enter your child's home address and upcoming grade level in the form above and click "Search".
