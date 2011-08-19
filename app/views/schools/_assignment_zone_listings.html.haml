@@ -1,7 +1,5 @@
-#assignment-zone-schools
+#assignment-zone-schools-header
   %h2== Assignment Zone Schools <span class='small nobold'>&nbsp;(#{@assignment_zone_schools.size} results)</span>
-  %p.italic== Your address is located in the <strong>#{@assignment_zones.first.name} Assignment Zone</strong>, which is represented by the yellow shape on the map, above. &nbsp;Your child is eligible to apply to any of the following assignment zone schools:
+  %p.italic== Your address is located in the <strong>#{@assignment_zones.first.name} Assignment Zone</strong>, which is represented by the yellow shape on the map, above. &nbsp;Below are the assignment zone schools to which your child is eligible to apply.
 
-- @assignment_zone_schools.each do |school|
-  .listing
-    %h4= school.name
+= render :partial => 'listings', :locals => {:schools => @assignment_zone_schools}

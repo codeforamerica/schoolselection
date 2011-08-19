@@ -14,9 +14,11 @@
 #page
   =raw search_message(params)
   - if @walk_zone_schools.present?
-    = render :partial => 'walk_zone_schools'
+    = render :partial => "walk_zone_listings"
+
   - if @assignment_zone_schools.present?
-    = render :partial => 'assignment_zone_listings'
+    = render :partial => "assignment_zone_listings"
+
   - if @walk_zone_schools.blank? && @assignment_zone_schools.blank?
     %h2 Welcome to the School Discovery App
-    %p This tool allows parents and guardians to search for eligible shools in the Boston Public School system. &nbsp;Eligible schools include schools in your child's "Assignment Zone", as well as schools in your child's "Walk Zone" (whose size is determined by your child's upcoming grade level). &nbsp;To see your eligible schools, please enter your child's home address and upcoming grade level in the form above and click "Search".
+    %p This tool allows parents and guardians to search for eligible schools in the Boston Public School system. &nbsp;"Eligible schools" are those schools located in either your child's Assignment Zone (North, East or West) or in your child's Walk Zone (whose size is determined by your child's grade level). &nbsp;High schools and citywide K-8 schools are open to all applicants.  &nbsp;To see your eligible schools, please enter your child's home address and upcoming grade level in the form above and click "Search".

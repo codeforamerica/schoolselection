@@ -1,0 +1,25 @@
+%table.listings
+  %thead
+    %tr
+      %th School Name
+      %th Grades
+      %th School Type
+      %th School Group
+      - if schools.first.try(:distance).present?
+        %th Distance
+  - schools.each do |school|
+    %tr
+      %td
+        %h4= school.name
+      %td
+        - unless school.grades.blank?
+          = school.grades
+      %td
+        - unless school.school_type.blank?
+          = school.school_type.name
+      %td
+        - unless school.school_group.blank?
+          = school.school_group.name
+      - if schools.first.try(:distance).present?
+        %td
+          == #{school.distance[0..3]}&nbsp;mi

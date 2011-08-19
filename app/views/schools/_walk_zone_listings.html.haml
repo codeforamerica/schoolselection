@@ -1,51 +1,5 @@
-#walk-zone-schools
-  %h2== Walk Zone Schools near #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
-  %p.italic== #{params[:grade_level].humanize} students have priority in the school selection process if they live within <strong>#{@walk_zone.distance} miles</strong> of a school. &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;Your child is eligible to apply to any of the following walk zone schools:
+#walk-zone-schools-header
+  %h2== Walk Zone Schools <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
+  %p.italic== #{params[:grade_level].humanize} students have priority in the school selection process if they live within <strong>#{@walk_zone.distance} miles</strong> of a school. &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;Below are the walk zone schools to which your child is eligible to apply.
 
-- if @walk_zone_schools.present?
-  - @walk_zone_schools.each do |school|
-    .walk-zone-listing
-      %table
-        %tr
-          %td
-            %table
-              %tr
-                %td{:colspan=>"9"}
-                  %h3= school.name
-              %tr
-                %td{:width=>'250px'}
-                  = school.address
-                  %br/
-                  == #{school.city.name}, #{school.state.abbreviation} #{school.zipcode}
-                  - unless school.phone
-                    %br/
-                    == Phone: #{school.phone}
-                  - unless school.fax
-                    %br/
-                    == Fax: #{school.fax}
-                  - unless school.website.blank?
-                    %br/
-                    = link_to "Website", school.website
-                %td{:width=>'250px'}
-                  - unless school.assignment_zone.blank?
-                    = school.assignment_zone.name
-                    %br/
-                  - unless school.school_type.blank?
-                    = school.school_type.name
-                    %br/
-                  - unless school.school_group.blank?
-                    = school.school_group.name
-                    %br/
-                  - unless school.grades.blank?
-                    = school.grades
-                    %br/
-                  - unless school.hours.blank?
-                    = school.hours
-                    %br/
-                  - unless school.early_dismissal_time.blank?
-                    = school.early_dismissal_time
-                    %br/
-                %td
-                  Distance: 
-                  = school.distance[0..3]
-                  mi
+= render :partial => "listings", :locals => {:schools => @walk_zone_schools}

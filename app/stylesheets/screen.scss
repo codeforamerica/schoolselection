@@ -78,10 +78,13 @@ body {
       margin-bottom: 20px;
       table{ margin-bottom: 0;}
     }
-    #assignment-zone-schools{ @include border-radius(10px); background-color: $yellow; padding: 12px 20px 5px 20px; margin: 20px 0 20px 0; }
-    #walk-zone-schools{ @include border-radius(10px); background-color: $green; padding: 12px 20px 5px 20px; margin: 5px 0 20px 0; }
-    .listing{ padding: 0 0 10px 20px; }
+    #assignment-zone-schools-header{ @include border-radius(10px); background-color: $yellow; padding: 12px 20px 5px 20px; margin: 20px 0 20px 0; }
+    #walk-zone-schools-header{ @include border-radius(10px); background-color: $green; padding: 12px 20px 5px 20px; margin: 5px 0 20px 0; }
     #video{ padding: 30px 0 35px 0; }
+    table.listings{ padding: 0 15px 10px 15px; 
+      th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
+    }
+    
   }
   #footer{ 
     #inner-footer{
