@@ -23,5 +23,4 @@ module SchoolsHelper
       "<h2>#{params[:grade_level]}s <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     end
   end
-
 end
