@@ -5,8 +5,6 @@ module SchoolsHelper
       "<div class='alert'>The address you entered &mdash; '#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}' &mdash; could not be located within the bounds of any Assignment Zone. Please try again.</div>"
     elsif params[:address].present? && @geocoded_address.success == false
       "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
-    elsif params[:address].blank? && params[:grade_level].blank?
-      "<div class='alert'>Please enter your address and select a grade level to see your eligible schools.</div>"
     elsif params[:address].blank? && params[:grade_level].present?
       "<div class='alert'>Please enter an address to see your eligible schools.</div>"
     end
