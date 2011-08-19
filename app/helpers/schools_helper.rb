@@ -11,8 +11,6 @@ module SchoolsHelper
       "<div class='alert'>Please enter an address to see your eligible schools.</div>"
     elsif params[:address].present? && params[:grade_level] == 'All Schools'
       "<div class='alert'>Please select a grade level to see your eligible schools.</div>"
-    elsif params[:address].blank? && params[:grade_level].blank?
-      "<h2>Welcome to the BPS School Discovery App</h2><br /><p>Pictured above are all of the schools in the Boston Public Schools System.  By entering your address and grade level, above, we will show you to which schools you are eligible to apply.</p>"
     end
   end
   
