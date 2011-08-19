@@ -730,18 +730,31 @@ body #page .walk-zone-listing table {
 }
 /* line 81, ../../stylesheets/screen.scss */
 body #page #assignment-zone-schools {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   background-color: #effa83;
-  padding: 15px 5px 0 5px;
+  padding: 12px 20px 5px 20px;
+  margin: 20px 0 20px 0;
 }
 /* line 82, ../../stylesheets/screen.scss */
 body #page #walk-zone-schools {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   background-color: #9be07b;
-  padding: 15px 5px 0 5px;
-  margin-bottom: 20px;
+  padding: 12px 20px 5px 20px;
+  margin: 5px 0 20px 0;
 }
 /* line 83, ../../stylesheets/screen.scss */
 body #page .listing {
-  padding: 0 0 10px 16px;
+  padding: 0 0 10px 20px;
 }
 /* line 84, ../../stylesheets/screen.scss */
 body #page #video {
