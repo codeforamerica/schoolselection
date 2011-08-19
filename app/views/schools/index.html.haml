@@ -1,7 +1,7 @@
-- if @circle.present?
-  = gmaps("circles" => {"data" => @circle}, "markers" => {"data" => @markers}, "map_options" => { "provider" => "googlemaps", "center_latitude" => @geocoded_address.lat, "center_longitude" => @geocoded_address.lng, "zoom" => 13, "auto_adjust" => false })
+- if @walk_zone.present?
+  = gmaps("markers" => {"data" => @markers_json}, "circles" => {"data" => @walk_zone_json }, "polygons" => {"data" => @assignment_zone_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
 - else
-  = gmaps("markers" => {"data" => @markers}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+  = gmaps("markers" => {"data" => @markers}, "polygons" => {"data" => @assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
 
 #search-form
   = form_tag('/schools', :method => :get) do
@@ -14,6 +14,6 @@
 #page
   =raw search_message(params)
   - if @walk_zone_schools.present?
-    = render :partial => 'walk_zone_listings'
-    %br/
-  = render :partial => 'normal_listings'
+    = render :partial => 'walk_zone_schools'
+  - if @assignment_zone_schools.present?
+    = render :partial => 'assignment_zone_listings'

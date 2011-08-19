@@ -1,0 +1,6 @@
+%h2== #{@assignment_zones.first.name} Assignment Zone Schools <span class='small nobold'>&nbsp;(#{@assignment_zone_schools.size} results)</span>
+%p.italic Under Boston’s student assignment plan, the city is divided into three geographic “zones” — East, West, and North — for elementary and middle schools. Students may apply for: 1. Schools in the zone in which they live; 2. Schools in other zones if the schools are within their “walk zone”; 3. Citywide K–8 and middle schools open to all students. All high schools are citywide.
+
+- @assignment_zone_schools.each do |school|
+  .school-listing
+    %h4= school.name

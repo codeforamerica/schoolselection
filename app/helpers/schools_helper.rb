@@ -1,16 +1,18 @@
 module SchoolsHelper
   
   def search_message(params)
-    if params[:address].present? && @geocoded_address.success == false
+    if @geocoded_address.present? && @geocoded_address.success == true && AssignmentZone.find_with_point(@geocoded_address.lat, @geocoded_address.lng).blank?
+      "<div class='alert'>The address you entered &mdash; '#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}' &mdash; could not be located within the bounds of any Assignment Zone. Please try again.</div>"
+    elsif params[:address].present? && @geocoded_address.success == false
       "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
     elsif params[:address].blank? && params[:grade_level] == 'All Schools'
-      "<div class='notice'>Please enter your address and select a grade level to see your walk zone schools.</div>"
+      "<div class='alert'>Please enter your address and select a grade level to see your eligible schools.</div>"
     elsif params[:address].blank? && params[:grade_level].present?
-      "<div class='notice'>Please enter an address to see your walk zone schools.</div>"
+      "<div class='alert'>Please enter an address to see your eligible schools.</div>"
     elsif params[:address].present? && params[:grade_level] == 'All Schools'
-      "<div class='notice'>Please select a grade level to see your walk zone schools.</div>"
+      "<div class='alert'>Please select a grade level to see your eligible schools.</div>"
     elsif params[:address].blank? && params[:grade_level].blank?
-      "<div class='notice'>Please select a grade level to see your walk zone schools.</div>"
+      "<h2>Welcome to the BPS School Discovery App</h2><br /><p>Pictured above are all of the schools in the Boston Public Schools System.  By entering your address and grade level, above, we will show you to which schools you are eligible to apply.</p>"
     end
   end
   

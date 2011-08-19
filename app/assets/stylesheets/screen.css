@@ -564,7 +564,9 @@ body .alert {
   font-size: 1.25em;
   font-weight: normal;
   margin-bottom: 1em;
-  color: #e63b37;
+  background-color: #ff0000;
+  border: solid 1px #ff0000;
+  color: white;
 }
 /* line 35, ../../stylesheets/screen.scss */
 body .notice {
@@ -674,7 +676,7 @@ body #gmaps4rails_map {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   width: 100%;
-  height: 485px;
+  height: 410px;
 }
 /* line 66, ../../stylesheets/screen.scss */
 body #search-form {

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  assignment_zone_id: 1
+  lat: 1.5
+  lng: 1.5
+
+two:
+  assignment_zone_id: 1
+  lat: 1.5
+  lng: 1.5
