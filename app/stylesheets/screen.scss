@@ -78,7 +78,9 @@ body {
       margin-bottom: 20px;
       table{ margin-bottom: 0;}
     }
-    .school-listing{ padding: 0 0 10px 16px; }
+    #assignment-zone-schools{ background-color: $yellow; padding: 15px 5px 0 5px; }
+    #walk-zone-schools{ background-color: $green; padding: 15px 5px 0 5px; margin-bottom: 20px; }
+    .listing{ padding: 0 0 10px 16px; }
     #video{ padding: 30px 0 35px 0; }
   }
   #footer{ 

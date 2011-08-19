@@ -1,5 +1,7 @@
 %h2== Assignment Zone Schools <span class='small nobold'>&nbsp;(#{@assignment_zone_schools.size} results)</span>
 %p.italic== Your address is located in the #{@assignment_zones.first.name} Assignment Zone, which is represented by the yellow shape on the map, above. &nbsp;The assignment zone schools to which your child can apply are as follows:
-- @assignment_zone_schools.each do |school|
-  .school-listing
-    %h4= school.name
+
+#assignment-zone-schools
+  - @assignment_zone_schools.each do |school|
+    .listing
+      %h4= school.name
