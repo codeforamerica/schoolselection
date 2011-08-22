@@ -1,5 +1,5 @@
-#walk-zone-schools-header
+#listings-header.green
   %h2== Walk Zone Schools <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
-  %p.italic== #{params[:grade_level].humanize} students have priority in the school selection process if they live within <strong>#{@walk_zone.distance} miles</strong> of a school. &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;Below are the walk zone schools to which your child is eligible to apply.
+  %p.italic== Students may apply to any school within their "walk zone"&sup1;, and will be given priority at these schools during the school selection process&sup2;. &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;The walk zone schools for your address are listed below.
 
 = render :partial => "listings", :locals => {:schools => @walk_zone_schools}

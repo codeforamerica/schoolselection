@@ -663,11 +663,8 @@ body #navigation a {
 body #map_container {
   width: 930px;
   padding: 10px;
-  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
 }
-/* line 64, ../../stylesheets/screen.scss */
+/* line 61, ../../stylesheets/screen.scss */
 body #gmaps4rails_map {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -678,19 +675,14 @@ body #gmaps4rails_map {
   width: 100%;
   height: 410px;
 }
-/* line 66, ../../stylesheets/screen.scss */
+/* line 63, ../../stylesheets/screen.scss */
 body #search-form {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a62ac), color-stop(100%, #134980));
-  background-image: -webkit-linear-gradient(top, #1a62ac, #134980);
-  background-image: -moz-linear-gradient(top, #1a62ac, #134980);
-  background-image: -o-linear-gradient(top, #1a62ac, #134980);
-  background-image: -ms-linear-gradient(top, #1a62ac, #134980);
-  background-image: linear-gradient(top, #1a62ac, #134980);
+  background-color: #666;
   padding: 18px;
   color: white;
   font-size: 16px;
 }
-/* line 69, ../../stylesheets/screen.scss */
+/* line 66, ../../stylesheets/screen.scss */
 body #search-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -702,16 +694,16 @@ body #search-form input {
   margin-right: 10px;
   border: 1px solid #666;
 }
-/* line 70, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 72, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body #page {
   padding: 20px 25px 25px 25px;
 }
-/* line 73, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
 body #page .walk-zone-listing {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -724,43 +716,38 @@ body #page .walk-zone-listing {
   padding: 10px 15px 10px 10px;
   margin-bottom: 20px;
 }
-/* line 79, ../../stylesheets/screen.scss */
+/* line 76, ../../stylesheets/screen.scss */
 body #page .walk-zone-listing table {
   margin-bottom: 0;
 }
-/* line 81, ../../stylesheets/screen.scss */
-body #page #assignment-zone-schools-header {
+/* line 78, ../../stylesheets/screen.scss */
+body #page #listings-header {
+  -moz-box-shadow: inset 0 0 5px #333333;
+  -webkit-box-shadow: inset 0 0 5px #333333;
+  -o-box-shadow: inset 0 0 5px #333333;
+  box-shadow: inset 0 0 5px #333333;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  background-color: #f4ff86;
   padding: 12px 20px 5px 20px;
-  margin: 20px 0 20px 0;
+  margin: 10px 0 30px 0;
 }
-/* line 82, ../../stylesheets/screen.scss */
-body #page #walk-zone-schools-header {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
+/* line 79, ../../stylesheets/screen.scss */
+body #page #listings-header.yellow {
+  background-color: #f4fa86;
+}
+/* line 80, ../../stylesheets/screen.scss */
+body #page #listings-header.green {
   background-color: #9be07b;
-  padding: 12px 20px 5px 20px;
-  margin: 5px 0 20px 0;
 }
-/* line 83, ../../stylesheets/screen.scss */
-body #page #video {
-  padding: 30px 0 35px 0;
-}
-/* line 84, ../../stylesheets/screen.scss */
+/* line 81, ../../stylesheets/screen.scss */
 body #page table.listings {
   padding: 0 15px 10px 15px;
 }
-/* line 85, ../../stylesheets/screen.scss */
+/* line 82, ../../stylesheets/screen.scss */
 body #page table.listings th {
   background-color: white !important;
   font-size: 13px;
@@ -768,7 +755,12 @@ body #page table.listings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 90, ../../stylesheets/screen.scss */
+/* line 84, ../../stylesheets/screen.scss */
+body #page #footnotes {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+/* line 87, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

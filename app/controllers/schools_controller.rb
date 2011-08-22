@@ -1,7 +1,7 @@
 class SchoolsController < ApplicationController
 
   def index
-    @geocoded_address = geocode_address(params[:address].strip) if params[:address].present?
+    @geocoded_address ||= geocode_address(params[:address].strip) if params[:address].present?
     
     if params[:address].present? && params[:grade_level].present? && @geocoded_address.success == true && AssignmentZone.find_with_point(@geocoded_address.lat, @geocoded_address.lng).present?
       @walk_zone = WalkZone.find_by_name(params[:grade_level])
