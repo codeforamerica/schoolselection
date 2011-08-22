@@ -8,7 +8,7 @@ class SchoolsController < ApplicationController
       @walk_zone_schools = School.walk_zone_schools(@walk_zone, @geocoded_address)
       @assignment_zones = params[:grade_level] == 'High School' ? AssignmentZone.all : AssignmentZone.find_all_with_point(@geocoded_address.lat, @geocoded_address.lng)
       @assignment_zone_schools = @assignment_zones.map {|x| x.schools_by_grade_level(params[:grade_level])}.flatten - @walk_zone_schools
-      @citywide_schools = School.citywide_schools(params[:grade_level])
+      @citywide_schools = School.citywide_schools(params[:grade_level]) - @assignment_zone_schools
     else
       @assignment_zones = AssignmentZone.all
       @map_center = Geokit::Geocoders::GoogleGeocoder.geocode('Roxbury, Boston, MA')
