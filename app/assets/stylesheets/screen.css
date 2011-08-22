@@ -149,7 +149,7 @@ body {
   font-size: 75%;
   font-size: 14px;
   /*  background-image: url(/images/canvas.jpg); */
-  background-color: #EEE;
+  background-color: #DDD;
   text-align: left;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
@@ -741,7 +741,7 @@ body #page #listings-header.yellow {
 }
 /* line 80, ../../stylesheets/screen.scss */
 body #page #listings-header.green {
-  background-color: #9be07b;
+  background-color: #a5e188;
 }
 /* line 81, ../../stylesheets/screen.scss */
 body #page table.listings {
