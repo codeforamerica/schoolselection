@@ -721,10 +721,14 @@ body #page #listings-header.green {
   background-color: #a5e188;
 }
 /* line 73, ../../stylesheets/screen.scss */
+body #page #listings-header.gray {
+  background-color: #e1e1e1;
+}
+/* line 74, ../../stylesheets/screen.scss */
 body #page table.listings {
   padding: 0 15px 10px 15px;
 }
-/* line 74, ../../stylesheets/screen.scss */
+/* line 75, ../../stylesheets/screen.scss */
 body #page table.listings th {
   background-color: white !important;
   font-size: 13px;
@@ -732,14 +736,14 @@ body #page table.listings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 76, ../../stylesheets/screen.scss */
+/* line 77, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 79, ../../stylesheets/screen.scss */
+/* line 80, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

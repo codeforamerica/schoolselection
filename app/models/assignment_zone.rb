@@ -1,4 +1,5 @@
 class AssignmentZone < ActiveRecord::Base
+  has_many :schools
   has_many :coordinates
   
   def geokitted_coordinates
@@ -10,7 +11,7 @@ class AssignmentZone < ActiveRecord::Base
     self.all.select {|x| x.includes_point?(lat, lng)}
   end
   
-  def schools(grade_level)
+  def schools_by_grade_level(grade_level)
     School.school_level_finder(grade_level).select {|x| self.includes_point?(x.lat.to_f, x.lng.to_f) }
   end
   

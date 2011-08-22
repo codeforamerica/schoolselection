@@ -1,0 +1,5 @@
+#listings-header.gray
+  %h2== Citywide Schools <span class='small nobold'>&nbsp;(#{@citywide_schools.size} results)</span>
+  %p.italic== Students may also apply to the following city-wide #{params[:grade_level].downcase}s:
+    
+= render :partial => 'listings', :locals => {:schools => @citywide_schools}

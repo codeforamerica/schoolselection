@@ -24,7 +24,13 @@ class School < ActiveRecord::Base
     end
   end
   
-  def self.assignment_zone_schools(walk_zone, location)
+  def self.citywide_schools(grade_level)
+    walk_zone = WalkZone.find_by_name(grade_level)
+    assignment_zone = AssignmentZone.find_by_name('Citywide')
+    assignment_zone.schools.find_all {|x| x.walk_zones.include?(walk_zone)}
+  end
+  
+  def self.walk_zone_schools(walk_zone, location)
     self.find(:all, :origin => location, :within => walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', walk_zone.school_levels])
   end
     

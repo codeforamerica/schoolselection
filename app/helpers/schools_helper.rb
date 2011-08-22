@@ -37,7 +37,7 @@ module SchoolsHelper
   end
   
   def markers_json
-    (@walk_zone_schools + @assignment_zone_schools.flatten).to_gmaps4rails
+    (@walk_zone_schools + @assignment_zone_schools.flatten + @citywide_schools).to_gmaps4rails
   end
   
   def walk_zone_map
