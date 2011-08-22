@@ -1,29 +1,28 @@
 - if @walk_zone.present?
-  = gmaps("markers" => {"data" => @markers_json}, "circles" => {"data" => @walk_zone_json }, "polygons" => {"data" => @assignment_zone_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+  = walk_zone_map
 - else
-  = gmaps("polygons" => {"data" => @assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @location.lat, "center_longitude" => @location.lng, "zoom" => 11 })
+  = default_map
 
 #search-form
   = form_tag('/schools', :method => :get) do
     Home address:&nbsp;
-    = text_field_tag :address, "#{address_helper}", :width => 100
+    = text_field_tag :address, "#{converted_address_params}", :width => 100
     &nbsp;Upcoming grade level:&nbsp;
     = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 
 #page
-  =raw search_message(params)
+  =raw alert_message
+  
   - if @walk_zone_schools.present?
     = render :partial => "walk_zone_listings"
-
   - if @assignment_zone_schools.present?
     = render :partial => "assignment_zone_listings"
-
   - if @walk_zone_schools.blank? && @assignment_zone_schools.blank?
-    %h2 Welcome to the School Discovery App
-    %p This tool allows parents and guardians to search for eligible schools in the Boston Public School system. &nbsp;"Eligible schools" are those schools located in either your child's Assignment Zone (North, East or West) or in your child's Walk Zone (whose size is determined by your child's grade level). &nbsp;High schools and citywide K-8 schools are open to all applicants.  &nbsp;To see your eligible schools, please enter your child's home address and upcoming grade level in the form above and click "Search".
+    = render :partial => "welcome"
     
-  #footnotes
-    &sup1; The walk zone radius is 1 mile for elementary students, 1.5 miles for middle school students and 2 miles for high school students.
-    %br/
-    &sup2; Fifty percent (50%) of a school's seats are set aside for students with walk zone priority.
+  - if @walk_zone_schools.present?
+    #footnotes
+      &sup1; The walk zone radius is 1 mile for elementary students, 1.5 miles for middle school students and 2 miles for high school students.
+      %br/
+      &sup2; Fifty percent (50%) of a school's seats are set aside for students with walk zone priority.

@@ -6,7 +6,7 @@ class AssignmentZone < ActiveRecord::Base
     self.coordinates.map {|x| Geokit::LatLng.new(x.lat, x.lng)}
   end
   
-  def self.find_with_point(lat, lng)
+  def self.find_all_with_point(lat, lng)
     self.all.select {|x| x.includes_point?(lat, lng)}
   end
   

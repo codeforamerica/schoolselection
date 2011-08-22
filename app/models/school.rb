@@ -23,6 +23,10 @@ class School < ActiveRecord::Base
       School.all(:order => :name)
     end
   end
+  
+  def self.assignment_zone_schools(walk_zone, location)
+    self.find(:all, :origin => location, :within => walk_zone.distance, :order => 'distance', :conditions => ['school_level_id IN (?)', walk_zone.school_levels])
+  end
     
   def geocode_address!
     boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds

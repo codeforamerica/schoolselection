@@ -31,7 +31,7 @@ body {
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   .italic{ font-style: italic; }
   .nobold{ font-weight: normal; }
-  .alert{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $flashred; border: solid 1px $flashred; color: white; }
+  .alert{ color: #bf1300; font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   
   #header{ @include container; padding-top: 5px; }
@@ -67,21 +67,13 @@ body {
     select{ font-size: 15px; margin-right: 10px;}
   }
   #page{ padding: 20px 25px 25px 25px;
-    .walk-zone-listing{ 
-      @include border-radius(10px);
-      background-color: $lightgreen;
-      border: solid 1px #999;
-      padding: 10px 15px 10px 10px;
-      margin-bottom: 20px;
-      table{ margin-bottom: 0;}
-    }
     #listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
     #listings-header.yellow{ background-color: $yellow; }
     #listings-header.green{ background-color: $green; }
     table.listings{ padding: 0 15px 10px 15px; 
       th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
     }
-    #footnotes{ font-style: italic; margin-bottom: 10px; }
+    #footnotes{ border-top: solid 1px #444; padding-top: 5px;  font-style: italic; margin: 10px 0 10px 0; }
   }
   #footer{ 
     #inner-footer{

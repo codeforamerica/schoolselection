@@ -77,14 +77,14 @@ a img {
 /* line 3, ../../stylesheets/partials/_errors.scss */
 #flash.alert {
   color: #333333;
-  background-color: #f74931;
+  background-color: #f7897a;
   display: none;
 }
 
 /* line 4, ../../stylesheets/partials/_errors.scss */
 .fieldWithErrors {
   padding: 2px;
-  background-color: #f74931;
+  background-color: #f7897a;
   display: table;
 }
 
@@ -92,7 +92,7 @@ a img {
 #error_explanation {
   padding: 10px 10px 1px 10px;
   margin-bottom: 25px;
-  background-color: #f74931;
+  background-color: #f7897a;
   font-size: 1em;
 }
 
@@ -105,7 +105,7 @@ a img {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  background-color: #f74931;
+  background-color: #f7897a;
   color: #222222;
 }
 
@@ -555,18 +555,12 @@ body .nobold {
 }
 /* line 34, ../../stylesheets/screen.scss */
 body .alert {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
+  color: #bf1300;
   font-size: 1.1em;
   font-weight: normal;
   margin-bottom: 1em;
-  background-color: #f74931;
-  border: solid 1px #f74931;
-  color: white;
+  background-color: none;
+  border: none;
 }
 /* line 35, ../../stylesheets/screen.scss */
 body .notice {
@@ -704,23 +698,6 @@ body #page {
   padding: 20px 25px 25px 25px;
 }
 /* line 70, ../../stylesheets/screen.scss */
-body #page .walk-zone-listing {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  background-color: #b8eb78;
-  border: solid 1px #999;
-  padding: 10px 15px 10px 10px;
-  margin-bottom: 20px;
-}
-/* line 76, ../../stylesheets/screen.scss */
-body #page .walk-zone-listing table {
-  margin-bottom: 0;
-}
-/* line 78, ../../stylesheets/screen.scss */
 body #page #listings-header {
   -moz-box-shadow: inset 0 0 5px #333333;
   -webkit-box-shadow: inset 0 0 5px #333333;
@@ -735,19 +712,19 @@ body #page #listings-header {
   padding: 12px 20px 5px 20px;
   margin: 10px 0 30px 0;
 }
-/* line 79, ../../stylesheets/screen.scss */
+/* line 71, ../../stylesheets/screen.scss */
 body #page #listings-header.yellow {
   background-color: #f4fa86;
 }
-/* line 80, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
 body #page #listings-header.green {
   background-color: #a5e188;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #page table.listings {
   padding: 0 15px 10px 15px;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 74, ../../stylesheets/screen.scss */
 body #page table.listings th {
   background-color: white !important;
   font-size: 13px;
@@ -755,12 +732,14 @@ body #page table.listings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 84, ../../stylesheets/screen.scss */
+/* line 76, ../../stylesheets/screen.scss */
 body #page #footnotes {
+  border-top: solid 1px #444;
+  padding-top: 5px;
   font-style: italic;
-  margin-bottom: 10px;
+  margin: 10px 0 10px 0;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 79, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;
