@@ -17,9 +17,6 @@
       %td
         - unless school.school_type.blank?
           = school.school_type.name
-      %td
-        - unless school.school_group.blank?
-          = school.school_group.name
       - if schools.first.try(:distance).present?
         %td
           == #{school.distance[0..3]}&nbsp;mi
