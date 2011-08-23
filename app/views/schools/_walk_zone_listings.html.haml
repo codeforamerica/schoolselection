@@ -1,5 +1,5 @@
 #listings-header.green
   %h2== Walk Zone Schools <span class='small nobold'>&nbsp;(#{@walk_zone_schools.size} results)</span>
-  %p.italic== Students may apply to any school within their "walk zone"&sup1;, and will be given priority at these schools during the school selection process&sup2;. &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;The walk zone schools for your address are listed below.
+  %p.italic== #{params[:grade_level].humanize} students may apply to any school within their "walk zone". &nbsp;The walk zone for your address is represented by the green circle on the map, above. &nbsp;The walk zone schools for your address are listed below.
 
 = render :partial => "listings", :locals => {:schools => @walk_zone_schools}

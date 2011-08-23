@@ -1,4 +1,4 @@
-The School Discovery App is designed to help parents find the schools to which their children can apply and understand the odds of their getting accepted.  To use the system, parents enter an address and a grade level and can then drill down through the list of resulting options.  The search engine logic works as follows:
+The School Discovery App is designed to help parents 1) identify the schools to which their children are eligible to apply and 2) understand the odds of their children getting admitted. To search for schools, parents enter an address and a grade level.  The search engine logic works as follows:
 
 1. if no parameters are entered -> display a blank map and a welcome note (the default page)
 2. if a grade level and no address are entered -> display the default page with an alert message
@@ -6,5 +6,6 @@ The School Discovery App is designed to help parents find the schools to which t
 4. if a grade level and non-Boston address are entered -> display the default page with an alert message
 5. if a grade level and valid address are entered -> display the walk zone and assignment zone schools for that address
 6. if high school and a valid address are entered -> display the walk zone schools and all of the other high schools throughout the city
+
 
 http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
