@@ -4,7 +4,7 @@ class AssignmentZone < ActiveRecord::Base
   
   ####### CLASS METHODS #######
   
-  def self.assignment_zones_by_grade_level(grade_level, location)
+  def self.find_all_with_location_and_grade_level(location, grade_level)
     if grade_level == 'High School'
       self.all
     else

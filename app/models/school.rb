@@ -27,9 +27,12 @@ class School < ActiveRecord::Base
   end
   
   def self.assignment_zone_schools(location, walk_zone, assignment_zones)
-    assignment_zone_ids = assignment_zones.map {|x| x.id}
-    self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id IN (?)', walk_zone.school_levels, assignment_zone_ids])
-    # assignment_zones.map {|x| x.schools_by_grade_level(grade_level)}.flatten - walk_zone_schools
+    if walk_zone.name == 'High School'
+      []
+    else  
+      assignment_zone_ids = assignment_zones.map {|x| x.id}
+      self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id IN (?)', walk_zone.school_levels, assignment_zone_ids])
+    end
   end
   
   def self.citywide_schools(location, walk_zone)

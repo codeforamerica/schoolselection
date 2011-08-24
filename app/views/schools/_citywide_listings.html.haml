@@ -1,5 +1,5 @@
 #listings-header.gray
   %h2== Citywide Schools <span class='small nobold'>&nbsp;(#{@citywide_schools.size} results)</span>
-  %p.italic== #{params[:grade_level].humanize} students may also apply to the following citywide schools.
+  %p.italic== #{params[:grade_level].humanize} students may #{params[:grade_level] == 'High School' ? '' : 'also'} apply to the following citywide schools.
     
 = render :partial => 'listings', :locals => {:schools => @citywide_schools, :template => 'citywide'}
