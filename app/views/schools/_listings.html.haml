@@ -6,21 +6,22 @@
       %th School Type
       - if schools.first.try(:distance).present?
         %th Distance
-        - if template == "walk_zone"
-          %th Walk Time
+        %th
+          - if template == "walk_zone"
+            Walk Time
   - schools.each do |school|
     %tr
       %td
         %h4= school.name
-      %td
+      %td{:width=>'60px'}
         - unless school.grades.blank?
           = school.grades
-      %td
+      %td{:width=>'100px'}
         - unless school.school_type.blank?
           = school.school_type.name
       - if schools.first.try(:distance).present?
-        %td
+        %td{:width=>'60px'}
           =raw distance(school.distance)
-        - if template == "walk_zone"
-          %td
+        %td{:width=>'60px'}
+          - if template == "walk_zone"
             =raw walk_time(school.distance)
