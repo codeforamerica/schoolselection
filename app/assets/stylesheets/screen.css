@@ -667,11 +667,16 @@ body #gmaps4rails_map {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   width: 100%;
-  height: 530px;
+  height: 534px;
 }
 /* line 63, ../../stylesheets/screen.scss */
 body #search-form {
-  background-color: #666;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #777777), color-stop(100%, #666666));
+  background-image: -webkit-linear-gradient(top, #777777, #666666);
+  background-image: -moz-linear-gradient(top, #777777, #666666);
+  background-image: -o-linear-gradient(top, #777777, #666666);
+  background-image: -ms-linear-gradient(top, #777777, #666666);
+  background-image: linear-gradient(top, #777777, #666666);
   padding: 18px;
   color: white;
   font-size: 16px;
