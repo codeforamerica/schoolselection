@@ -6,6 +6,8 @@
       %th School Type
       - if schools.first.try(:distance).present?
         %th Distance
+        - if template == "walk_zone"
+          %th Walk Time
   - schools.each do |school|
     %tr
       %td
@@ -18,4 +20,7 @@
           = school.school_type.name
       - if schools.first.try(:distance).present?
         %td
-          == #{school.distance[0..3]}&nbsp;mi
+          =raw distance(school.distance)
+        - if template == "walk_zone"
+          %td
+            =raw walk_time(school.distance)

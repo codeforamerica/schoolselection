@@ -5,4 +5,4 @@
   - else
     %p.italic== #{params[:grade_level].humanize} students may apply to any school within their assignment zone. &nbsp;Your address is located in the <strong>#{@assignment_zones.first.name} Assignment Zone</strong>, which is represented by the yellow shape on the map, above. &nbsp;The assignment zone schools for your address are listed below.
   
-= render :partial => 'listings', :locals => {:schools => @assignment_zone_schools}
+= render :partial => 'listings', :locals => {:schools => @assignment_zone_schools, :template => 'assignment_zones'}

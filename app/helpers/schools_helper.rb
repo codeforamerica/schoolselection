@@ -8,6 +8,14 @@ module SchoolsHelper
     end
   end
   
+  def distance(distance)
+    "#{distance.to_f.round(2)}&nbsp;mi"
+  end
+  
+  def walk_time(distance)
+    "#{((distance.to_f / 3) * 60).floor}&nbsp;min"
+  end
+  
   def alert_message
     if @geocoded_address.present? && @geocoded_address.success == true && @walk_zone.blank?
       "<div class='alert'>The address you entered &mdash; '#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}' &mdash; could not be located within the Boston School District. Please try again.</div>"
@@ -27,6 +35,8 @@ module SchoolsHelper
       "<h2>#{params[:grade_level]}s <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     end
   end
+  
+  ##### MAP JSON #####
   
   def assignment_zones_json
     (@assignment_zones.map {|az| az.geokitted_coordinates}).to_json
