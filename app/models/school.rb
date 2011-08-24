@@ -31,9 +31,8 @@ class School < ActiveRecord::Base
       []
     else  
       assignment_zone_ids = assignment_zones.map {|x| x.id}
-      self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id IN (?)', walk_zone.school_levels, assignment_zone_ids])
-      # NOTE: this means that a school marked with an assignment_zone of "Citywide" will not show up in the assignment zone results, 
-      # even if it is withing the assignment zone
+      school_level_ids = walk_zone.school_levels.map {|x| x.id}
+      self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id IN (?)', school_level_ids, assignment_zone_ids])
     end
   end
   
