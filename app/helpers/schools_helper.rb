@@ -39,7 +39,7 @@ module SchoolsHelper
   ##### MAP JSON #####
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def default_map
@@ -51,7 +51,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'fillColor': '#33cc00', 'fillOpacity': 0.35, 'strokeColor': '#000000', 'strokeOpacity': 0.6, 'strokeWeight': 1.5}]"
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @walk_zone.distance * 1609.344, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json
