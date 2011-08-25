@@ -39,7 +39,7 @@ module SchoolsHelper
   ####### MAP JSON #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json }, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def default_map
@@ -56,14 +56,14 @@ module SchoolsHelper
   
   def markers_json
     array = []
-    array << @walk_zone_schools.map {|x| create_map_hash(x, 'green')}
-    array << @assignment_zone_schools.map {|x| create_map_hash(x, 'yellow')}
-    array << @citywide_schools.map {|x| create_map_hash(x, 'gray')}    
+    array << @walk_zone_schools.map {|x| create_listing_hash(x, 'green')}
+    array << @assignment_zone_schools.map {|x| create_listing_hash(x, 'yellow')}
+    array << @citywide_schools.map {|x| create_listing_hash(x, 'gray')}    
     array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
     array.flatten.to_json
   end
   
-  def create_map_hash(x, color)
+  def create_listing_hash(x, color)
     {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}"}
   end
 end

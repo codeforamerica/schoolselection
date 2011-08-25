@@ -55,4 +55,8 @@ class School < ActiveRecord::Base
     #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.address}, #{self.city.try(:name)}, #{self.try(:state)}" 
   end
+  # 
+  # def gmaps4rails_sidebar
+  #   "<span class='foo'>#{self.name}</span>"
+  # end
 end
