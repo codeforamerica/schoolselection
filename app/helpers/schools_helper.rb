@@ -38,18 +38,6 @@ module SchoolsHelper
   
   ##### MAP JSON #####
   
-  def assignment_zones_json
-    (@assignment_zones.map {|az| az.geokitted_coordinates}).to_json
-  end
-  
-  def walk_zone_json
-    "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'fillColor': '#33cc00', 'fillOpacity': 0.35, 'strokeColor': '#000000', 'strokeOpacity': 0.6, 'strokeWeight': 1.5}]"
-  end
-  
-  def markers_json
-    (@walk_zone_schools + @assignment_zone_schools.flatten + @citywide_schools).to_gmaps4rails
-  end
-  
   def walk_zone_map
     gmaps("markers" => {"data" => markers_json}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.35, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
@@ -58,4 +46,20 @@ module SchoolsHelper
     gmaps("polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @map_center.lat, "center_longitude" => @map_center.lng, "zoom" => 11 })
   end
   
+  def assignment_zones_json
+    (@assignment_zones.map {|z| z.geokitted_coordinates}).to_json
+  end
+  
+  def walk_zone_json
+    "[{'lng': #{@geocoded_address.lng}, 'lat': #{@geocoded_address.lat}, 'radius': #{@walk_zone.distance * 1609.344}, 'fillColor': '#33cc00', 'fillOpacity': 0.35, 'strokeColor': '#000000', 'strokeOpacity': 0.6, 'strokeWeight': 1.5}]"
+  end
+  
+  def markers_json
+    array = []
+    array << @walk_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/green-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
+    array << @assignment_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/yellow-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
+    array << @citywide_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/gray-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
+    array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
+    array.flatten.to_json
+  end
 end

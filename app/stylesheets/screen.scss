@@ -68,13 +68,15 @@ body {
   }
   #page{ 
     padding: 20px 25px 25px 25px;
-    #listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
-    #listings-header.yellow{ background-color: $yellow; }
-    #listings-header.green{ background-color: $green; }
-    #listings-header.gray{ background-color: $lightgray; }
-    table.listings{ padding: 0 15px 10px 15px; 
+    .listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
+    #green{ background-color: $green; }
+    #yellow{ background-color: $yellow; margin-top: 30px; }
+    #gray{ background-color: $lightgray; margin-top: 30px; }
+    table.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
       th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
     }
+    a.row-block{ display: block; position: relative; }
+    table.listing{ margin-bottom: 0; padding: 0 15px 0 15px; }
     #footnotes{ border-top: solid 1px #444; padding-top: 5px;  font-style: italic; margin: 10px 0 10px 0; }
   }
   #footer{ 

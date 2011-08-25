@@ -59,5 +59,17 @@ class School < ActiveRecord::Base
   def gmaps4rails_infowindow
     "<strong>#{self.name}</strong><br />#{self.address}<br />#{self.city.try(:name)}, #{self.state.try(:abbreviation)}"
   end
+  
+  def gmaps4rails_marker_picture
+   {
+    "picture" => '/images/marker.png',
+     "width" =>  '21',
+     "height" => '38',
+     "shadow_picture" => "/images/shadow.png" ,
+     "shadow_width" => "43",
+     "shadow_height" => "38",
+     "shadow_anchor" => [ 10, 33],
+   }
+  end
 
 end

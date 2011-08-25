@@ -703,7 +703,7 @@ body #page {
   padding: 20px 25px 25px 25px;
 }
 /* line 71, ../../stylesheets/screen.scss */
-body #page #listings-header {
+body #page .listings-header {
   -moz-box-shadow: inset 0 0 5px #333333;
   -webkit-box-shadow: inset 0 0 5px #333333;
   -o-box-shadow: inset 0 0 5px #333333;
@@ -718,23 +718,26 @@ body #page #listings-header {
   margin: 10px 0 30px 0;
 }
 /* line 72, ../../stylesheets/screen.scss */
-body #page #listings-header.yellow {
-  background-color: #f4fa86;
-}
-/* line 73, ../../stylesheets/screen.scss */
-body #page #listings-header.green {
+body #page #green {
   background-color: #a5e188;
 }
+/* line 73, ../../stylesheets/screen.scss */
+body #page #yellow {
+  background-color: #f4fa86;
+  margin-top: 30px;
+}
 /* line 74, ../../stylesheets/screen.scss */
-body #page #listings-header.gray {
+body #page #gray {
   background-color: #e1e1e1;
+  margin-top: 30px;
 }
 /* line 75, ../../stylesheets/screen.scss */
-body #page table.listings {
-  padding: 0 15px 10px 15px;
+body #page table.column-headings {
+  padding: 0 15px 0 15px;
+  margin-bottom: 5px;
 }
 /* line 76, ../../stylesheets/screen.scss */
-body #page table.listings th {
+body #page table.column-headings th {
   background-color: white !important;
   font-size: 13px;
   font-style: italic;
@@ -742,13 +745,23 @@ body #page table.listings th {
   padding-bottom: 10px;
 }
 /* line 78, ../../stylesheets/screen.scss */
+body #page a.row-block {
+  display: block;
+  position: relative;
+}
+/* line 79, ../../stylesheets/screen.scss */
+body #page table.listing {
+  margin-bottom: 0;
+  padding: 0 15px 0 15px;
+}
+/* line 80, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 83, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;
