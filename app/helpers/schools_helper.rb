@@ -18,7 +18,7 @@ module SchoolsHelper
   
   def alert_message
     if @geocoded_address.present? && @geocoded_address.success == true && @walk_zone.blank?
-      "<div class='alert'>The address you entered &mdash; '#{@address}' &mdash; could not be located within the Boston School District. Please try again.</div>"
+      "<div class='alert'>The address you entered &mdash; '#{@address.titleize}' &mdash; could not be located within the Boston School District. Please try again.</div>"
     elsif (params[:address].present? || params[:zipcode].present?) && @geocoded_address.success == false
       "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
     elsif params[:address].blank? && params[:zipcode].blank? && params[:grade_level].present?

@@ -1,11 +1,9 @@
 module Geography
   
   BOSTON = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA')
-  BOSTON_BOUNDS = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
   
   def geocode_address(address)
-    Geokit::Geocoders::GoogleGeocoder.geocode(address, :bias => BOSTON_BOUNDS)
-    # Geokit::Geocoders::GoogleGeocoder.geocode(address)
+    Geokit::Geocoders::GoogleGeocoder.geocode(address, :bias => BOSTON.suggested_bounds)
   end
   
   def inside_polygon?(lat, lng, polygon)
