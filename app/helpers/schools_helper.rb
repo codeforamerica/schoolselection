@@ -56,9 +56,12 @@ module SchoolsHelper
   
   def markers_json
     array = []
-    array << @walk_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/green-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
-    array << @assignment_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/yellow-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
-    array << @citywide_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/gray-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33]}}
+    array << @walk_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/green-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}"}}
+    
+    array << @assignment_zone_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/yellow-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}"}}
+    
+    array << @citywide_schools.map {|x| {:lng => x.lng, :lat => x.lat, :picture => '/images/gray-marker.png', :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}"}}
+    
     array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
     array.flatten.to_json
   end
