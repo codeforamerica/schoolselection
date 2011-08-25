@@ -5,9 +5,11 @@
 
 #search-form
   = form_tag('/schools', :method => :get) do
-    Home address:&nbsp;
-    = text_field_tag :address, "#{converted_address_params}", :width => 100
-    &nbsp;Upcoming grade level:&nbsp;
+    Address:&nbsp;
+    = text_field_tag :address, params[:address], :class => 'address'
+    Zipcode:&nbsp;
+    = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
+    &nbsp;Grade level:&nbsp;
     = select_tag :grade_level, options_for_select(['Elementary School', "Middle School", "High School"], :selected => params[:grade_level])
     = submit_tag "Search"
 

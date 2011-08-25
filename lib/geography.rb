@@ -7,10 +7,6 @@ module Geography
     Geokit::Geocoders::GoogleGeocoder.geocode(address, :bias => BOSTON_BOUNDS)
     # Geokit::Geocoders::GoogleGeocoder.geocode(address)
   end
-
-  def geocode_address(address)
-    Geokit::Geocoders::GoogleGeocoder.geocode(address, :bias => BOSTON_BOUNDS)
-  end
   
   def inside_polygon?(lat, lng, polygon)
     intersects = 0
