@@ -30,9 +30,9 @@ module SchoolsHelper
     if params[:grade_level].blank?
       "<h2>All Schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     elsif @walk_zone_schools.present?
-      "<h2>Other #{params[:grade_level]}s <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
+      "<h2>Other #{params[:grade_level]} schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     else
-      "<h2>#{params[:grade_level]}s <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
+      "<h2>#{params[:grade_level].humanize} schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     end
   end
   
