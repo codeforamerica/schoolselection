@@ -2,6 +2,8 @@
 
 one:
   name: MyString
+  walk_zone_radius: 1.5
 
 two:
   name: MyString
+  walk_zone_radius: 1.5

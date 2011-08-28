@@ -1,18 +1,12 @@
 Schoolselection::Application.routes.draw do
-  resources :walk_zones
-
   root :to => "schools#index"
   resources :mail_clusters
-
-  resources :school_levels
 
   resources :states
 
   resources :cities
 
   resources :school_groups
-
-  resources :school_types
 
   resources :assignment_zones
 

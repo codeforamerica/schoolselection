@@ -18,8 +18,7 @@
           - unless school.grades.blank?
             = school.grades
         %td{:width=>'100px'}
-          - unless school.school_type.blank?
-            = school.school_type.name
+          = school.school_type_name
         - if schools.first.try(:distance).present?
           %td{:width=>'60px'}
             =raw distance(school.distance)

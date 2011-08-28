@@ -2,14 +2,12 @@ class School < ActiveRecord::Base
   # acts_as_gmappable :lat => "lat", :lng => "lng"
   acts_as_mappable  :default_units => :miles, :lat_column_name => :lat, :lng_column_name => :lng
   
-  has_and_belongs_to_many :walk_zones
+  has_and_belongs_to_many :grade_levels
   belongs_to :assignment_zone
   belongs_to :city
   belongs_to :mail_cluster
   belongs_to :principal
   belongs_to :school_group
-  belongs_to :school_level
-  belongs_to :school_type
   belongs_to :state
   
   ##### CLASS METHODS #####
@@ -22,23 +20,22 @@ class School < ActiveRecord::Base
     end
   end
   
-  def self.walk_zone_schools(location, walk_zone)
-    self.find_within(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?)', walk_zone.school_levels])
+  def self.walk_zone_schools(location, grade_level)
+    self.find_within(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?)', grade_level.id])
   end
   
-  def self.assignment_zone_schools(location, walk_zone, assignment_zones)
-    if walk_zone.name == 'High School'
+  def self.assignment_zone_schools(location, grade_level, assignment_zones)
+    if grade_level.name == 'High'
       []
     else  
       assignment_zone_ids = assignment_zones.map {|x| x.id}
-      school_level_ids = walk_zone.school_levels.map {|x| x.id}
-      self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id IN (?)', school_level_ids, assignment_zone_ids])
+      self.find_beyond(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?) AND assignment_zone_id IN (?)', grade_level.id, assignment_zone_ids])
     end
   end
   
-  def self.citywide_schools(location, walk_zone)
+  def self.citywide_schools(location, grade_level)
     assignment_zone = AssignmentZone.find_by_name('Citywide')
-    self.find_beyond(walk_zone.distance, :origin => location, :order => 'distance', :conditions => ['school_level_id IN (?) AND assignment_zone_id = ?', walk_zone.school_levels, assignment_zone.id])
+    self.find_beyond(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?) AND assignment_zone_id = ?', grade_level.id, assignment_zone.id])
   end
   
   ##### INSTANCE METHODS #####

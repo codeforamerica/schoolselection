@@ -17,7 +17,7 @@ module SchoolsHelper
   end
   
   def alert_message
-    if @geocoded_address.present? && @geocoded_address.success == true && @walk_zone.blank?
+    if @geocoded_address.present? && @geocoded_address.success == true && @grade_level.blank?
       "<div class='alert'>The address you entered &mdash; '#{@address.titleize}' &mdash; could not be located within the Boston School District. Please try again.</div>"
     elsif (params[:address].present? || params[:zipcode].present?) && @geocoded_address.success == false
       "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
@@ -51,7 +51,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @walk_zone.distance * 1609.344, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * 1609.344, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json

@@ -1,4 +1,4 @@
-- if @walk_zone.present?
+- if @grade_level.present?
   = walk_zone_map
 - else
   = default_map
@@ -10,7 +10,7 @@
     Zipcode:&nbsp;
     = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
     &nbsp;Grade level:&nbsp;
-    = select_tag :grade_level, options_for_select([['K-5', 'elementary'], ['6-8', 'middle'], ['9-12', 'high']], :selected => params[:grade_level])
+    = select_tag :grade_level, options_from_collection_for_select(@grade_levels, :id, :number, :selected => params[:grade_level])
     = submit_tag "Search"
 
 #page
