@@ -10,10 +10,11 @@
     Zipcode:&nbsp;
     = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
     &nbsp;Grade level:&nbsp;
-    = select_tag :grade_level, options_from_collection_for_select(@grade_levels, :id, :number, :selected => params[:grade_level])
+    = select_tag :grade_level, options_from_collection_for_select(@grade_levels, :number, :number, :selected => params[:grade_level])
     = submit_tag "Search"
 
 #page
+  = debug params
   =raw alert_message
   
   - if @walk_zone_schools.blank? && @assignment_zone_schools.blank? && @citywide_schools.blank?

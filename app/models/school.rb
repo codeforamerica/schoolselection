@@ -26,7 +26,7 @@ class School < ActiveRecord::Base
   
   def self.assignment_zone_schools(location, grade_level, assignment_zones)
     if grade_level.name == 'High'
-      []
+      [] # all high schools should show up as citywide schools, not assignment zone schools
     else  
       assignment_zone_ids = assignment_zones.map {|x| x.id}
       self.find_beyond(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?) AND assignment_zone_id IN (?)', grade_level.id, assignment_zone_ids])
