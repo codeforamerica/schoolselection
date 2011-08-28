@@ -1,6 +1,8 @@
 class AssignmentZone < ActiveRecord::Base
   has_many :schools
-  has_many :coordinates
+  # has_many :coordinates
+  
+  serialize :coordinates
   
   ####### CLASS METHODS #######
   
@@ -18,9 +20,8 @@ class AssignmentZone < ActiveRecord::Base
   
   ####### INSTANCE METHODS #######
   
-  def geokitted_coordinates
-    # make arrays of lat lng pairs into Geokit objects
-    self.coordinates.map {|x| Geokit::LatLng.new(x.lat, x.lng)}
+  def coordinates_hash
+    self.coordinates.map {|x| {:lat => x[0], :lng => x[1]}}
   end
   
   def schools_by_grade_level(grade_level)
@@ -28,21 +29,25 @@ class AssignmentZone < ActiveRecord::Base
   end
   
   def includes_point?(lat, lng)
-    polygon = self.geokitted_coordinates
-    intersects = 0
-    p1 = polygon[0]
-    for i in 1..(polygon.size-1)
-      p2 = polygon[i % polygon.size]
-      if ((lat > [p1.lat,p2.lat].min) &&
-        (lat <= [p1.lat,p2.lat].max) &&
-        (lng <= [p1.lng,p2.lng].max) &&
-        (p1.lat != p2.lat))
-        xinters = (lat-p1.lat)*(p2.lng-p1.lng)/(p2.lat-p1.lat)
-        p1.lng
-        intersects += 1 if (p1.lng == p2.lng || lng <= xinters)
+    polygon = self.coordinates
+    if polygon.blank?
+      return false
+    else
+      intersects = 0
+      p1 = polygon[0]
+      for i in 1..(polygon.size-1)
+        p2 = polygon[i % polygon.size]
+        if ((lat > [p1[0],p2[0]].min) &&
+          (lat <= [p1[0],p2[0]].max) &&
+          (lng <= [p1[1],p2[1]].max) &&
+          (p1[0] != p2[0]))
+          xinters = (lat-p1[0])*(p2[1]-p1[1])/(p2[0]-p1[0])
+          p1[1]
+          intersects += 1 if (p1[1] == p2[1] || lng <= xinters)
+        end
+        p1 = p2
       end
-      p1 = p2
+      (intersects % 2 == 1)
     end
-    (intersects % 2 == 1)
   end
 end

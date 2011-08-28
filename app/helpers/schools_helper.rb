@@ -47,7 +47,7 @@ module SchoolsHelper
   end
   
   def assignment_zones_json
-    (@assignment_zones.map {|z| z.geokitted_coordinates}).to_json
+    (@assignment_zones.map {|z| z.coordinates_hash}).to_json
   end
   
   def walk_zone_json
