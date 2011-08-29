@@ -18,7 +18,7 @@ module SchoolsHelper
   
   def alert_message
     if @geocoded_address.present? && @geocoded_address.success == true && @grade_level.blank?
-      "<div class='alert'>The address you entered &mdash; '#{@address.titleize}' &mdash; could not be located within the Boston School District. Please try again.</div>"
+      "<div class='alert'>The address you entered could not be located within the Boston School District. Please try again.</div>"
     elsif (params[:address].present? || params[:zipcode].present?) && @geocoded_address.success == false
       "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
     elsif params[:address].blank? && params[:zipcode].blank? && params[:grade_level].present?
@@ -39,7 +39,7 @@ module SchoolsHelper
   ####### MAP JSON #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json }, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def default_map
@@ -64,6 +64,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}", :sidebar => "#{x.name}"}
   end
 end

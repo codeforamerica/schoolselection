@@ -1,5 +1,5 @@
 Schoolselection::Application.routes.draw do
-  root :to => "schools#index"
+  root :to => 'high_voltage/pages#show', :id => 'home'
   resources :mail_clusters
 
   resources :states

@@ -8,14 +8,14 @@
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
+    #navigation
+      %ul.main-nav
+        %li.border.on== 1. #{link_to 'Search', root_url}
+        %li.border 2. Discover
+        %li.border 3. Compare
+        %li 4. Connect
+    
     #container
-      /#navigation
-      /  %ul.main-nav
-      /    %li= link_to 'Home', root_url
-      /    %li &nbsp;|&nbsp;
-      /    %li= link_to 'Schools', schools_path
-      /    %li &nbsp;|&nbsp;
-      /    %li= link_to 'Your Schools', root_url
       = yield
     #footer
       = yield :scripts

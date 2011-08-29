@@ -507,13 +507,20 @@ body h3 {
   color: #333;
 }
 /* line 29, ../../stylesheets/screen.scss */
+body h3.red {
+  font-weight: bold;
+  font-size: 1.35em;
+  margin-bottom: 0;
+  color: #bf1300;
+}
+/* line 30, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 0.5em;
   color: #333;
 }
-/* line 31, ../../stylesheets/screen.scss */
+/* line 32, ../../stylesheets/screen.scss */
 body ul.horizontal-list {
   margin: 0;
   padding: 0;
@@ -545,24 +552,24 @@ body ul.horizontal-list li:last-child {
 body ul.horizontal-list li.last {
   padding-right: 0;
 }
-/* line 32, ../../stylesheets/screen.scss */
+/* line 33, ../../stylesheets/screen.scss */
 body .italic {
   font-style: italic;
 }
-/* line 33, ../../stylesheets/screen.scss */
+/* line 34, ../../stylesheets/screen.scss */
 body .nobold {
   font-weight: normal;
 }
-/* line 34, ../../stylesheets/screen.scss */
+/* line 35, ../../stylesheets/screen.scss */
 body .alert {
   color: #bf1300;
-  font-size: 1.1em;
+  font-size: 1.2em;
   font-weight: normal;
   margin-bottom: 1em;
   background-color: none;
   border: none;
 }
-/* line 35, ../../stylesheets/screen.scss */
+/* line 36, ../../stylesheets/screen.scss */
 body .notice {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -577,48 +584,31 @@ body .notice {
   border-color: #85d475;
   color: white;
 }
-/* line 37, ../../stylesheets/screen.scss */
-body #header {
+/* line 38, ../../stylesheets/screen.scss */
+body #navigation {
   width: 950px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  padding-top: 5px;
-}
-/* line 39, ../../stylesheets/screen.scss */
-body #container {
-  width: 950px;
-  margin: 0 auto;
-  overflow: hidden;
-  *zoom: 1;
-  -moz-box-shadow: 0px 0px 5px #333333;
-  -webkit-box-shadow: 0px 0px 5px #333333;
-  -o-box-shadow: 0px 0px 5px #333333;
-  box-shadow: 0px 0px 5px #333333;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   -o-border-radius: 20px;
   -ms-border-radius: 20px;
   -khtml-border-radius: 20px;
   border-radius: 20px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  background-color: white;
-}
-/* line 48, ../../stylesheets/screen.scss */
-body #navigation {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1a62ac), color-stop(100%, #134980));
-  background-image: -webkit-linear-gradient(top, #1a62ac, #134980);
-  background-image: -moz-linear-gradient(top, #1a62ac, #134980);
-  background-image: -o-linear-gradient(top, #1a62ac, #134980);
-  background-image: -ms-linear-gradient(top, #1a62ac, #134980);
-  background-image: linear-gradient(top, #1a62ac, #134980);
-  padding: 18px 18px 18px 20px;
-  font-size: 16px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #999999));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #999999);
+  background-image: -moz-linear-gradient(top, #eeeeee, #999999);
+  background-image: -o-linear-gradient(top, #eeeeee, #999999);
+  background-image: -ms-linear-gradient(top, #eeeeee, #999999);
+  background-image: linear-gradient(top, #eeeeee, #999999);
+  border: 1px solid #777;
+  margin-top: 30px;
+  font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: #333;
 }
-/* line 52, ../../stylesheets/screen.scss */
+/* line 44, ../../stylesheets/screen.scss */
 body #navigation ul.main-nav {
   margin: 0;
   padding: 0;
@@ -634,8 +624,8 @@ body #navigation ul.main-nav li {
   white-space: nowrap;
   display: inline;
   float: left;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 /* line 48, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body #navigation ul.main-nav li:first-child, body #navigation ul.main-nav li.first {
@@ -649,68 +639,63 @@ body #navigation ul.main-nav li:last-child {
 body #navigation ul.main-nav li.last {
   padding-right: 0;
 }
-/* line 53, ../../stylesheets/screen.scss */
+/* line 45, ../../stylesheets/screen.scss */
+body #navigation li {
+  text-align: center;
+  width: 225px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+/* line 46, ../../stylesheets/screen.scss */
+body #navigation li.border {
+  border-right: solid 1px #444;
+  -moz-box-shadow: #333333 0 1px 0;
+  -webkit-box-shadow: #333333 0 1px 0;
+  -o-box-shadow: #333333 0 1px 0;
+  box-shadow: #333333 0 1px 0;
+}
+/* line 47, ../../stylesheets/screen.scss */
+body #navigation li.on {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -o-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: linear-gradient(top, #eeeeee, #ffffff);
+  color: #333;
+}
+/* line 48, ../../stylesheets/screen.scss */
 body #navigation a {
-  color: white;
+  color: #333;
 }
-/* line 56, ../../stylesheets/screen.scss */
-body #map_container {
-  width: 930px;
-  padding: 10px;
+/* line 49, ../../stylesheets/screen.scss */
+body #navigation a:hover {
+  color: #333;
+  text-decoration: none;
 }
-/* line 61, ../../stylesheets/screen.scss */
-body #gmaps4rails_map {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  width: 100%;
-  height: 534px;
+/* line 53, ../../stylesheets/screen.scss */
+body #container {
+  width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid #777;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  background-color: white;
 }
-/* line 63, ../../stylesheets/screen.scss */
-body #search-form {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #777777), color-stop(100%, #666666));
-  background-image: -webkit-linear-gradient(top, #777777, #666666);
-  background-image: -moz-linear-gradient(top, #777777, #666666);
-  background-image: -o-linear-gradient(top, #777777, #666666);
-  background-image: -ms-linear-gradient(top, #777777, #666666);
-  background-image: linear-gradient(top, #777777, #666666);
-  padding: 18px;
-  color: white;
-  font-size: 16px;
-}
-/* line 66, ../../stylesheets/screen.scss */
-body #search-form input {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
-  font-size: 15px;
-  margin-right: 10px;
-  border: 1px solid #666;
-}
-/* line 67, ../../stylesheets/screen.scss */
-body #search-form .address {
-  width: 250px;
-}
-/* line 68, ../../stylesheets/screen.scss */
-body #search-form .zipcode {
-  width: 80px;
-}
-/* line 69, ../../stylesheets/screen.scss */
-body #search-form select {
-  font-size: 15px;
-  margin-right: 10px;
-}
-/* line 71, ../../stylesheets/screen.scss */
+/* line 62, ../../stylesheets/screen.scss */
 body #page {
-  padding: 20px 25px 25px 25px;
+  clear: both;
+  padding: 25px 25px 25px 25px;
 }
-/* line 73, ../../stylesheets/screen.scss */
+/* line 65, ../../stylesheets/screen.scss */
 body #page .listings-header {
   -moz-box-shadow: inset 0 0 5px #333333;
   -webkit-box-shadow: inset 0 0 5px #333333;
@@ -725,26 +710,26 @@ body #page .listings-header {
   padding: 12px 20px 5px 20px;
   margin: 10px 0 30px 0;
 }
-/* line 74, ../../stylesheets/screen.scss */
+/* line 66, ../../stylesheets/screen.scss */
 body #page #green {
   background-color: #a5e188;
 }
-/* line 75, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body #page #yellow {
   background-color: #f4fa86;
   margin-top: 30px;
 }
-/* line 76, ../../stylesheets/screen.scss */
+/* line 68, ../../stylesheets/screen.scss */
 body #page #gray {
   background-color: #e1e1e1;
   margin-top: 30px;
 }
-/* line 77, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body #page table.column-headings {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 78, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
 body #page table.column-headings th {
   background-color: white !important;
   font-size: 13px;
@@ -752,24 +737,119 @@ body #page table.column-headings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 80, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
 body #page a.row-block {
   display: block;
   position: relative;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #page table.listing {
   margin-bottom: 0;
   padding: 0 15px 0 15px;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 75, ../../stylesheets/screen.scss */
+body #page #map_container {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 590px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #map_container {
+  overflow-x: hidden;
+}
+/* line 79, ../../stylesheets/screen.scss */
+body #page #gmaps4rails_map {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  width: 100%;
+  height: 534px;
+}
+/* line 81, ../../stylesheets/screen.scss */
+body #page #map-list {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 270px;
+  list-style: none;
+  padding: 10px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #map-list {
+  overflow-x: hidden;
+}
+/* line 11, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
+body #page #map-list li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+}
+/* line 85, ../../stylesheets/screen.scss */
+body #page #map-list ul#markers_list {
+  padding: 0;
+}
+/* line 87, ../../stylesheets/screen.scss */
+body #page #map-list ul#markers_list a {
+  font-weight: bold;
+}
+/* line 91, ../../stylesheets/screen.scss */
+body #page #search-form {
+  margin-top: 10px;
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 470px;
+  font-size: 18px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #search-form {
+  overflow-x: hidden;
+}
+/* line 95, ../../stylesheets/screen.scss */
+body #page #search-form input {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-right: 10px;
+  border: 1px solid #666;
+}
+/* line 96, ../../stylesheets/screen.scss */
+body #page #search-form .address {
+  width: 250px;
+}
+/* line 97, ../../stylesheets/screen.scss */
+body #page #search-form .zipcode {
+  width: 80px;
+}
+/* line 98, ../../stylesheets/screen.scss */
+body #page #search-form select {
+  font-size: 15px;
+  margin-right: 10px;
+}
+/* line 99, ../../stylesheets/screen.scss */
+body #page #search-form td {
+  padding-bottom: 20px;
+}
+/* line 101, ../../stylesheets/screen.scss */
+body #page #page-footer {
+  clear: both;
+}
+/* line 102, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 85, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

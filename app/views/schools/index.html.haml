@@ -1,27 +1,23 @@
-- if @grade_level.present?
-  = walk_zone_map
-- else
-  = default_map
-
-#search-form
-  = form_tag('/schools', :method => :get) do
-    Address:&nbsp;
-    = text_field_tag :address, params[:address], :class => 'address'
-    Zipcode:&nbsp;
-    = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
-    &nbsp;Grade level:&nbsp;
-    = select_tag :grade_level, options_from_collection_for_select(@grade_levels, :number, :number, :selected => params[:grade_level])
-    = submit_tag "Search"
-
 #page
-  =raw alert_message
-  
-  - if @walk_zone_schools.blank? && @assignment_zone_schools.blank? && @citywide_schools.blank?
-    = render :partial => "welcome"
+  - if @grade_level.present?
+    = walk_zone_map
+    #map-list
+      <ul id="markers_list"></ul>
+    <div id="page-footer"></div>
   - else
-    - if @walk_zone_schools.present?
-      = render :partial => "walk_zone_listings"
-    - if @assignment_zone_schools.present?
-      = render :partial => "assignment_zone_listings"
-    - if @citywide_schools.present?
-      = render :partial => "citywide_listings"
+    %h2 Welcome to the School Discovery App
+    %p.large To get started, please enter your information, below.
+    =raw alert_message
+    #search-form
+      = form_tag('/schools', :method => :get) do
+        %p
+          Address:&nbsp;
+          = text_field_tag :address, params[:address], :class => 'address'
+        %p
+          Zipcode:&nbsp;
+          = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
+        %p
+          Grade level:&nbsp;
+          = select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => params[:grade_level])
+        %p
+          = submit_tag "Search"

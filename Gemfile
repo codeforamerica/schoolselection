@@ -15,6 +15,7 @@ gem "compass", ">= 0.11.5"
 gem "haml-rails"
 gem "geokit"
 gem 'gmaps4rails'
+gem "high_voltage"
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
