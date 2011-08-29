@@ -1,9 +1,19 @@
 #page
   - if @grade_level.present?
+    %h4== Address: #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]}
     = walk_zone_map
     #map-list
       <ul id="markers_list"></ul>
-    <div id="page-footer"></div>
+    #map-page.small
+      = image_tag('green-marker-small.png')
+      &nbsp;Walk Zone School
+      %br/
+      = image_tag('yellow-marker-small.png')
+      &nbsp;Assignment Zone School
+      %br/
+      = image_tag('gray-marker-small.png')
+      &nbsp;Citywide School
+      
   - else
     %h2 Welcome to the School Discovery App
     %p.large To get started, please enter your information, below.
@@ -21,3 +31,6 @@
           = select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => params[:grade_level])
         %p
           = submit_tag "Search"
+        
+  <div id="page-footer"></div>
+  

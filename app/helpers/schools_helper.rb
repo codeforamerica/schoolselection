@@ -59,7 +59,7 @@ module SchoolsHelper
     array << @walk_zone_schools.map {|x| create_listing_hash(x, 'green')}
     array << @assignment_zone_schools.map {|x| create_listing_hash(x, 'yellow')}
     array << @citywide_schools.map {|x| create_listing_hash(x, 'gray')}    
-    array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
+    # array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
     array.flatten.to_json
   end
   

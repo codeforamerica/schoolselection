@@ -10,8 +10,14 @@
   %body
     #navigation
       %ul.main-nav
-        %li.border.on== 1. #{link_to 'Search', root_url}
-        %li.border 2. Discover
+        - if params[:controller] == 'high_voltage/pages'
+          %li.border.on 1. Search
+        - else
+          %li.border== 1. #{link_to 'Search', root_url}
+        - if params[:controller] == 'schools'
+          %li.border.on 2. Discover
+        - else
+          %li.border 2. Discover
         %li.border 3. Compare
         %li 4. Connect
     

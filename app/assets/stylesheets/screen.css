@@ -149,7 +149,7 @@ body {
   font-size: 75%;
   font-size: 14px;
   /*  background-image: url(/images/canvas.jpg); */
-  background-color: #DDD;
+  background-color: #E6E6E6;
   text-align: left;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
@@ -693,7 +693,7 @@ body #container {
 /* line 62, ../../stylesheets/screen.scss */
 body #page {
   clear: both;
-  padding: 25px 25px 25px 25px;
+  padding: 20px;
 }
 /* line 65, ../../stylesheets/screen.scss */
 body #page .listings-header {
@@ -751,52 +751,62 @@ body #page table.listing {
 body #page #map_container {
   display: inline;
   float: left;
-  margin-right: 10px;
-  width: 590px;
+  margin-right: 0;
+  width: 670px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #map_container {
   overflow-x: hidden;
 }
-/* line 79, ../../stylesheets/screen.scss */
-body #page #gmaps4rails_map {
+/* line 77, ../../stylesheets/screen.scss */
+body #page #map_container #gmaps4rails_map {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
+  border: solid 1px #333;
   width: 100%;
   height: 534px;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 80, ../../stylesheets/screen.scss */
 body #page #map-list {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 270px;
-  list-style: none;
-  padding: 10px;
+  width: 230px;
+  padding-top: 5px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #map-list {
   overflow-x: hidden;
 }
-/* line 11, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_bullets.scss */
-body #page #map-list li {
-  list-style-image: none;
-  list-style-type: none;
-  margin-left: 0px;
+/* line 83, ../../stylesheets/screen.scss */
+body #page #map-list ul#markers_list {
+  padding-left: 40px;
 }
 /* line 85, ../../stylesheets/screen.scss */
-body #page #map-list ul#markers_list {
-  padding: 0;
-}
-/* line 87, ../../stylesheets/screen.scss */
 body #page #map-list ul#markers_list a {
   font-weight: bold;
 }
-/* line 91, ../../stylesheets/screen.scss */
+/* line 86, ../../stylesheets/screen.scss */
+body #page #map-list ul#markers_list a:visited {
+  font-weight: bold;
+}
+/* line 90, ../../stylesheets/screen.scss */
+body #page #map-page {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 950px;
+  margin-top: 20px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #map-page {
+  overflow-x: hidden;
+}
+/* line 92, ../../stylesheets/screen.scss */
 body #page #search-form {
   margin-top: 10px;
   display: inline;
@@ -809,7 +819,7 @@ body #page #search-form {
 * html body #page #search-form {
   overflow-x: hidden;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 96, ../../stylesheets/screen.scss */
 body #page #search-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -821,35 +831,35 @@ body #page #search-form input {
   margin-right: 10px;
   border: 1px solid #666;
 }
-/* line 96, ../../stylesheets/screen.scss */
+/* line 97, ../../stylesheets/screen.scss */
 body #page #search-form .address {
   width: 250px;
 }
-/* line 97, ../../stylesheets/screen.scss */
+/* line 98, ../../stylesheets/screen.scss */
 body #page #search-form .zipcode {
   width: 80px;
 }
-/* line 98, ../../stylesheets/screen.scss */
+/* line 99, ../../stylesheets/screen.scss */
 body #page #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 99, ../../stylesheets/screen.scss */
+/* line 100, ../../stylesheets/screen.scss */
 body #page #search-form td {
   padding-bottom: 20px;
 }
-/* line 101, ../../stylesheets/screen.scss */
+/* line 102, ../../stylesheets/screen.scss */
 body #page #page-footer {
   clear: both;
 }
-/* line 102, ../../stylesheets/screen.scss */
+/* line 103, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 108, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;
