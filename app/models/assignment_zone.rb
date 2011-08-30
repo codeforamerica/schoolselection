@@ -3,6 +3,8 @@ class AssignmentZone < ActiveRecord::Base
   
   serialize :coordinates
   
+  # before_save :recalculate_included_schools TODO
+  
   ####### CLASS METHODS #######
   
   def self.find_all_with_location_and_grade_level(location, grade_level)

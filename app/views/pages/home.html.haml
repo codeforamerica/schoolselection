@@ -1,18 +1,5 @@
 #page
   %h2 Welcome to the School Discovery App
-  %p.large To get started, please enter your information, below.
-  #search-form
-    = form_tag('/schools', :method => :get) do
-      %table.search
-        %tr
-          %td Address:
-          %td= text_field_tag :address, params[:address], :class => 'address'
-        %tr
-          %td Zipcode:
-          %td= text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
-        %tr
-          %td Grade Level:
-          %td= select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => params[:grade_level])
-        %tr
-          %td &nbsp;
-          %td= submit_tag "Search"
+  %p.large To find your eligible schools, please enter your home address and your child's upcoming grade level below.
+  
+  = render :partial => 'pages/search_form'

@@ -2,26 +2,35 @@
   %head
     %title Boston Public Schools &mdash; School Discovery App
     = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'facebox.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     = javascript_include_tag 'application'
     = csrf_meta_tag 
+    %script{:type=>"text/javascript"}
+      jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox({
+      loadingImage : 'images/loading.gif',
+      closeImage   : 'images/closelabel.png'
+      })
+      })
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
     #navigation
       %ul.main-nav
         - if params[:controller] == 'high_voltage/pages'
-          %li.border.on 1. Search
+          %li.border.on 1.&nbsp; Search
         - else
-          %li.border== 1. #{link_to 'Search', root_url}
+          %li.border== 1.&nbsp; #{link_to 'Search', root_url({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
         - if params[:controller] == 'schools'
-          %li.border.on 2. Discover
+          %li.border.on 2.&nbsp; Discover
         - else
-          %li.border 2. Discover
-        %li.border 3. Compare
-        %li 4. Connect
+          %li.border 2.&nbsp; Discover
+        %li.border 3.&nbsp; Compare
+        %li 4.&nbsp; Connect
     
     #container
       = yield
+      = link_to 'facebox', school_path(School.first), :rel => 'facebox'
     #footer
       = yield :scripts

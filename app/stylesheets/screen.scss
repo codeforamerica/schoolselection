@@ -34,26 +34,28 @@ body {
   .nobold{ font-weight: normal; }
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
+  .right{ text-align: right; }
+  .gray-box{ @include border-radius(20px); border: solid 1px $bordergray; background-color: #ccc; padding: 20px 10px; color: white; table{ margin-bottom: 0; }}
     
   #navigation{ 
     @include container; 
     @include border-radius(20px); 
-    @include linear-gradient(color-stops(#EEE, #999));
-    border: 1px solid #777;
+    @include linear-gradient(color-stops(#FFF, #AAA));
+    border: 1px solid $bordergray;
     margin-top: 30px; 
     ul.main-nav{ @include horizontal-list; }
     li{ text-align: center; width: 225px; padding-top: 8px; padding-bottom: 8px;}
     li.border{ border-right: solid 1px #444; @include box-shadow(#333 0 1px 0); }
-    li.on{ @include linear-gradient(color-stops(#EEE, #FFF)); color: #333;}
+    li.on{ background-color: white; color: #333;}
     a{ color: #333;}
-    a:hover{ color: #333; text-decoration: none;}
-    font-size: 20px; font-weight: bold; color: #333; 
+    a:hover{ color: #333; text-decoration: underline;}
+    font-size: 18px; font-weight: bold; color: #333; 
   }
   
   #container{ 
     @include container; 
     @include border-radius(20px); 
-    border: 1px solid #777;
+    border: 1px solid $bordergray;
     margin-top: 20px; 
     margin-bottom: 25px;
     background-color: white; 
@@ -66,40 +68,49 @@ body {
     #green{ background-color: $green; }
     #yellow{ background-color: $yellow; margin-top: 30px; }
     #gray{ background-color: $lightgray; margin-top: 30px; }
-    table.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
-      th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
-    }
-    a.row-block{ display: block; position: relative; }
-    table.listing{ margin-bottom: 0; padding: 0 15px 0 15px; }
-  
+    
+    #above-map{ @include column(23, true); padding-bottom: 5px; }
+
     #map_container {
-      @include column(17, true);
-      #gmaps4rails_map { @include border-radius(10px); border: solid 1px #333; width: 100%; height: 534px; }
+      @include column(16);
+      padding-right: 27px;
+      #gmaps4rails_map { @include border-radius(10px); border: solid 1px $bordergray; width: 100%; height: 534px; padding-right: 10px; }
+      .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     
     #map-list{
       @include column(6, true);
-      padding-top: 5px;
-      ul#markers_list{
-        padding-left: 40px;
-        a{ font-weight: bold; }
-        a:visited{ font-weight: bold; }
-      }    
+      #options{
+        height: 405px;
+        margin: 15px 0 15px 0;
+        overflow: scroll;
+        ul#markers_list{ padding-left: 18px;
+          a{ font-weight: bold; }
+          a:visited{ font-weight: bold; }
+        }
+      }
+      #legend{ font-size: 10px; img{margin: 5px 5px -5px 0;} }
     }
     
-    #map-page{ @include column(24, true); margin-top: 20px; }
-
+    #below-map{ @include column(23, true); margin-top: 20px; }
+    
     #search-form{
+      width: 450px;
       margin-top: 10px;
-      @include column(12);
       font-size: 18px; 
-      input{ @include border-radius(5px); font-size: 15px; margin-right: 10px; border: 1px solid #666;}
+      input{ @include border-radius(5px); font-size: 15px; margin-right: 10px; border: 1px solid $bordergray;}
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
       select{ font-size: 15px; margin-right: 10px;}
       td{padding-bottom: 20px; }
     }
     #page-footer{ clear: both; }
+    #school-listings{ border-top: solid 1px $bordergray; margin-top: 20px; padding-top: 20px; }
+    table.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
+      th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
+    }
+    table.listing{ margin-bottom: 0; padding: 0 15px 0 15px; }
+    
     #footnotes{ border-top: solid 1px #444; padding-top: 5px;  font-style: italic; margin: 10px 0 10px 0; }
   
   }

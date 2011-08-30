@@ -1,15 +1,7 @@
 module SchoolsHelper
   
-  def converted_address_params
-    if @geocoded_address.present? && @geocoded_address.success == true
-      "#{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state}"
-    elsif params[:address].present?
-      params[:address]
-    end
-  end
-  
   def distance(distance)
-    "#{distance.to_f.round(2)}&nbsp;mi"
+    "#{distance.to_f.round(2)}&nbsp;miles"
   end
   
   def walk_time(distance)
@@ -34,6 +26,10 @@ module SchoolsHelper
     else
       "<h2>#{params[:grade_level].humanize} schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
     end
+  end
+  
+  def map_legend
+    "#{image_tag('green-marker-small.png')} Walk Zone School <br />#{image_tag('yellow-marker-small.png')} Assignment Zone School <br />#{image_tag('gray-marker-small.png')} Citywide School"
   end
   
   ####### MAP JSON #######
@@ -64,6 +60,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<strong>#{x.name}</strong><br />#{x.address}<br />#{x.city.try(:name)}, #{x.state.try(:abbreviation)}", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>#{x.grades} | #{x.school_type_name}</strong><br />#{raw distance(x.distance)} from you<br />#{x.hours}<br /><strong>#{link_to 'View this school >', '#school', :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
   end
 end

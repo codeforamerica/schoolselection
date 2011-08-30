@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
-
+  layout 'application', :except => :show
+  
   def index
     @grade_levels = GradeLevel.all
     address = params[:address]
@@ -14,6 +15,7 @@ class SchoolsController < ApplicationController
       @walk_zone_schools = School.walk_zone_schools(@geocoded_address, @grade_level)
       @assignment_zone_schools = School.assignment_zone_schools(@geocoded_address, @grade_level, @assignment_zones)
       @citywide_schools = School.citywide_schools(@geocoded_address, @grade_level)
+      @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools).flatten.uniq
     else
       @assignment_zones = AssignmentZone.all
       @map_center = Geokit::Geocoders::GoogleGeocoder.geocode('Roxbury, Boston, MA')

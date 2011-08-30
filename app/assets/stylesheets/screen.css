@@ -584,7 +584,28 @@ body .notice {
   border-color: #85d475;
   color: white;
 }
+/* line 37, ../../stylesheets/screen.scss */
+body .right {
+  text-align: right;
+}
 /* line 38, ../../stylesheets/screen.scss */
+body .gray-box {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  border: solid 1px #777777;
+  background-color: #ccc;
+  padding: 20px 10px;
+  color: white;
+}
+/* line 38, ../../stylesheets/screen.scss */
+body .gray-box table {
+  margin-bottom: 0;
+}
+/* line 40, ../../stylesheets/screen.scss */
 body #navigation {
   width: 950px;
   margin: 0 auto;
@@ -596,19 +617,19 @@ body #navigation {
   -ms-border-radius: 20px;
   -khtml-border-radius: 20px;
   border-radius: 20px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #999999));
-  background-image: -webkit-linear-gradient(top, #eeeeee, #999999);
-  background-image: -moz-linear-gradient(top, #eeeeee, #999999);
-  background-image: -o-linear-gradient(top, #eeeeee, #999999);
-  background-image: -ms-linear-gradient(top, #eeeeee, #999999);
-  background-image: linear-gradient(top, #eeeeee, #999999);
-  border: 1px solid #777;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #aaaaaa));
+  background-image: -webkit-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -moz-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -o-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: linear-gradient(top, #ffffff, #aaaaaa);
+  border: 1px solid #777777;
   margin-top: 30px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
 }
-/* line 44, ../../stylesheets/screen.scss */
+/* line 46, ../../stylesheets/screen.scss */
 body #navigation ul.main-nav {
   margin: 0;
   padding: 0;
@@ -639,14 +660,14 @@ body #navigation ul.main-nav li:last-child {
 body #navigation ul.main-nav li.last {
   padding-right: 0;
 }
-/* line 45, ../../stylesheets/screen.scss */
+/* line 47, ../../stylesheets/screen.scss */
 body #navigation li {
   text-align: center;
   width: 225px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
 body #navigation li.border {
   border-right: solid 1px #444;
   -moz-box-shadow: #333333 0 1px 0;
@@ -654,26 +675,21 @@ body #navigation li.border {
   -o-box-shadow: #333333 0 1px 0;
   box-shadow: #333333 0 1px 0;
 }
-/* line 47, ../../stylesheets/screen.scss */
+/* line 49, ../../stylesheets/screen.scss */
 body #navigation li.on {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #ffffff));
-  background-image: -webkit-linear-gradient(top, #eeeeee, #ffffff);
-  background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
-  background-image: -o-linear-gradient(top, #eeeeee, #ffffff);
-  background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
-  background-image: linear-gradient(top, #eeeeee, #ffffff);
+  background-color: white;
   color: #333;
 }
-/* line 48, ../../stylesheets/screen.scss */
+/* line 50, ../../stylesheets/screen.scss */
 body #navigation a {
   color: #333;
 }
-/* line 49, ../../stylesheets/screen.scss */
+/* line 51, ../../stylesheets/screen.scss */
 body #navigation a:hover {
   color: #333;
-  text-decoration: none;
+  text-decoration: underline;
 }
-/* line 53, ../../stylesheets/screen.scss */
+/* line 55, ../../stylesheets/screen.scss */
 body #container {
   width: 950px;
   margin: 0 auto;
@@ -685,17 +701,17 @@ body #container {
   -ms-border-radius: 20px;
   -khtml-border-radius: 20px;
   border-radius: 20px;
-  border: 1px solid #777;
+  border: 1px solid #777777;
   margin-top: 20px;
   margin-bottom: 25px;
   background-color: white;
 }
-/* line 62, ../../stylesheets/screen.scss */
+/* line 64, ../../stylesheets/screen.scss */
 body #page {
   clear: both;
   padding: 20px;
 }
-/* line 65, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body #page .listings-header {
   -moz-box-shadow: inset 0 0 5px #333333;
   -webkit-box-shadow: inset 0 0 5px #333333;
@@ -710,49 +726,39 @@ body #page .listings-header {
   padding: 12px 20px 5px 20px;
   margin: 10px 0 30px 0;
 }
-/* line 66, ../../stylesheets/screen.scss */
+/* line 68, ../../stylesheets/screen.scss */
 body #page #green {
   background-color: #a5e188;
 }
-/* line 67, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body #page #yellow {
   background-color: #f4fa86;
   margin-top: 30px;
 }
-/* line 68, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
 body #page #gray {
   background-color: #e1e1e1;
   margin-top: 30px;
 }
-/* line 69, ../../stylesheets/screen.scss */
-body #page table.column-headings {
-  padding: 0 15px 0 15px;
-  margin-bottom: 5px;
-}
-/* line 70, ../../stylesheets/screen.scss */
-body #page table.column-headings th {
-  background-color: white !important;
-  font-size: 13px;
-  font-style: italic;
-  font-weight: normal;
-  padding-bottom: 10px;
-}
 /* line 72, ../../stylesheets/screen.scss */
-body #page a.row-block {
-  display: block;
-  position: relative;
-}
-/* line 73, ../../stylesheets/screen.scss */
-body #page table.listing {
-  margin-bottom: 0;
-  padding: 0 15px 0 15px;
-}
-/* line 75, ../../stylesheets/screen.scss */
-body #page #map_container {
+body #page #above-map {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 670px;
+  width: 910px;
+  padding-bottom: 5px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #above-map {
+  overflow-x: hidden;
+}
+/* line 74, ../../stylesheets/screen.scss */
+body #page #map_container {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 630px;
+  padding-right: 27px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #map_container {
@@ -766,60 +772,73 @@ body #page #map_container #gmaps4rails_map {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  border: solid 1px #333;
+  border: solid 1px #777777;
   width: 100%;
   height: 534px;
+  padding-right: 10px;
 }
-/* line 80, ../../stylesheets/screen.scss */
+/* line 78, ../../stylesheets/screen.scss */
+body #page #map_container .balloon {
+  border: solid 1px #777777;
+  height: 300px;
+  width: 300px;
+}
+/* line 81, ../../stylesheets/screen.scss */
 body #page #map-list {
   display: inline;
   float: left;
   margin-right: 0;
   width: 230px;
-  padding-top: 5px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #map-list {
   overflow-x: hidden;
 }
 /* line 83, ../../stylesheets/screen.scss */
-body #page #map-list ul#markers_list {
-  padding-left: 40px;
+body #page #map-list #options {
+  height: 405px;
+  margin: 15px 0 15px 0;
+  overflow: scroll;
 }
-/* line 85, ../../stylesheets/screen.scss */
-body #page #map-list ul#markers_list a {
+/* line 87, ../../stylesheets/screen.scss */
+body #page #map-list #options ul#markers_list {
+  padding-left: 18px;
+}
+/* line 88, ../../stylesheets/screen.scss */
+body #page #map-list #options ul#markers_list a {
   font-weight: bold;
 }
-/* line 86, ../../stylesheets/screen.scss */
-body #page #map-list ul#markers_list a:visited {
+/* line 89, ../../stylesheets/screen.scss */
+body #page #map-list #options ul#markers_list a:visited {
   font-weight: bold;
 }
-/* line 90, ../../stylesheets/screen.scss */
-body #page #map-page {
+/* line 92, ../../stylesheets/screen.scss */
+body #page #map-list #legend {
+  font-size: 10px;
+}
+/* line 92, ../../stylesheets/screen.scss */
+body #page #map-list #legend img {
+  margin: 5px 5px -5px 0;
+}
+/* line 95, ../../stylesheets/screen.scss */
+body #page #below-map {
   display: inline;
   float: left;
   margin-right: 0;
-  width: 950px;
+  width: 910px;
   margin-top: 20px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #page #map-page {
+* html body #page #below-map {
   overflow-x: hidden;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 97, ../../stylesheets/screen.scss */
 body #page #search-form {
+  width: 450px;
   margin-top: 10px;
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 470px;
   font-size: 18px;
 }
-/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #page #search-form {
-  overflow-x: hidden;
-}
-/* line 96, ../../stylesheets/screen.scss */
+/* line 101, ../../stylesheets/screen.scss */
 body #page #search-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -829,37 +848,61 @@ body #page #search-form input {
   border-radius: 5px;
   font-size: 15px;
   margin-right: 10px;
-  border: 1px solid #666;
+  border: 1px solid #777777;
 }
-/* line 97, ../../stylesheets/screen.scss */
+/* line 102, ../../stylesheets/screen.scss */
 body #page #search-form .address {
   width: 250px;
 }
-/* line 98, ../../stylesheets/screen.scss */
+/* line 103, ../../stylesheets/screen.scss */
 body #page #search-form .zipcode {
   width: 80px;
 }
-/* line 99, ../../stylesheets/screen.scss */
+/* line 104, ../../stylesheets/screen.scss */
 body #page #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 100, ../../stylesheets/screen.scss */
+/* line 105, ../../stylesheets/screen.scss */
 body #page #search-form td {
   padding-bottom: 20px;
 }
-/* line 102, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #page #page-footer {
   clear: both;
 }
-/* line 103, ../../stylesheets/screen.scss */
+/* line 108, ../../stylesheets/screen.scss */
+body #page #school-listings {
+  border-top: solid 1px #777777;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+/* line 109, ../../stylesheets/screen.scss */
+body #page table.column-headings {
+  padding: 0 15px 0 15px;
+  margin-bottom: 5px;
+}
+/* line 110, ../../stylesheets/screen.scss */
+body #page table.column-headings th {
+  background-color: white !important;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+/* line 112, ../../stylesheets/screen.scss */
+body #page table.listing {
+  margin-bottom: 0;
+  padding: 0 15px 0 15px;
+}
+/* line 114, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 119, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

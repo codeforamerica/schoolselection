@@ -1,36 +1,36 @@
-#page
-  - if @grade_level.present?
-    %h4== Address: #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]}
-    = walk_zone_map
-    #map-list
-      <ul id="markers_list"></ul>
-    #map-page.small
-      = image_tag('green-marker-small.png')
-      &nbsp;Walk Zone School
-      %br/
-      = image_tag('yellow-marker-small.png')
-      &nbsp;Assignment Zone School
-      %br/
-      = image_tag('gray-marker-small.png')
-      &nbsp;Citywide School
+- if params[:view] == 'list'
+  #page
+    - if @geocoded_address.present?
+      %h3
+        == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
+        %span.small
+          == &nbsp;&nbsp; #{link_to "Search Again", root_url({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
+          == &nbsp;&nbsp; #{link_to "Map View", schools_path({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
+    - if @all_schools.present?
+      = render :partial => 'listings', :locals => {:schools => @all_schools, :template => 'citywide'}
+  
+- else
+  #page
+    - if @grade_level.present?
+      #above-map
+        %h3
+          == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
+          %span.small
+            == &nbsp;&nbsp; #{link_to "Search Again", root_url({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
+            == &nbsp;&nbsp; #{link_to "List View", schools_path({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :view => 'list'})}
+      = walk_zone_map
+      #map-list
+        %h4 Your Eligible Schools
+        #options
+          <ul id="markers_list"></ul>
+        #legend
+          =raw map_legend
       
-  - else
-    %h2 Welcome to the School Discovery App
-    %p.large To get started, please enter your information, below.
-    =raw alert_message
-    #search-form
-      = form_tag('/schools', :method => :get) do
-        %p
-          Address:&nbsp;
-          = text_field_tag :address, params[:address], :class => 'address'
-        %p
-          Zipcode:&nbsp;
-          = text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
-        %p
-          Grade level:&nbsp;
-          = select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => params[:grade_level])
-        %p
-          = submit_tag "Search"
-        
-  <div id="page-footer"></div>
+    - else
+      %h2 Welcome to the School Discovery App
+      %p.large To find your eligible schools, please enter your home address and your child's upcoming grade level below.
+      =raw alert_message
+      = render :partial => 'pages/search_form'
+    
+    <div id="page-footer"></div>
   

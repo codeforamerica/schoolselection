@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828072702) do
+ActiveRecord::Schema.define(:version => 20110830005045) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -101,10 +101,8 @@ ActiveRecord::Schema.define(:version => 20110828072702) do
     t.string   "fax"
     t.string   "website"
     t.integer  "assignment_zone_id"
-    t.integer  "school_type_id"
     t.integer  "mail_cluster_id"
     t.integer  "school_group_id"
-    t.integer  "school_level_id"
     t.string   "grades"
     t.string   "hours"
     t.string   "early_dismissal_time"
@@ -132,8 +130,6 @@ ActiveRecord::Schema.define(:version => 20110828072702) do
   add_index "schools", ["mail_cluster_id"], :name => "index_schools_on_mail_cluster_id"
   add_index "schools", ["principal_id"], :name => "index_schools_on_principal_id"
   add_index "schools", ["school_group_id"], :name => "index_schools_on_school_group_id"
-  add_index "schools", ["school_level_id"], :name => "index_schools_on_school_level_id"
-  add_index "schools", ["school_type_id"], :name => "index_schools_on_school_type_id"
 
   create_table "schools_walk_zones", :id => false, :force => true do |t|
     t.integer "walk_zone_id"
