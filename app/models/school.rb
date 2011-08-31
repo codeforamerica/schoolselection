@@ -10,6 +10,10 @@ class School < ActiveRecord::Base
   belongs_to :school_group
   belongs_to :state
   
+  serialize :parcel_coordinates # expects an array of [lat, lng] arrays
+  
+  # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
+  
   ##### CLASS METHODS #####
   
   def self.find_all_with_school_level(school_level)

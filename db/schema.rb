@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830005045) do
+ActiveRecord::Schema.define(:version => 20110830180243) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20110830005045) do
     t.float    "staff_to_student_ratio"
     t.string   "school_level_name"
     t.string   "school_type_name"
+    t.text     "parcel_coordinates"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
