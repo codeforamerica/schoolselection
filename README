@@ -9,3 +9,14 @@ The School Discovery App is designed to help parents 1) identify the schools to 
 
 
 http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
+
+
+ruby-1.9.2-p290 :082 > parcels.each do |parcel|
+ruby-1.9.2-p290 :083 >     school = schools.find(:first, :bldg_id => parcel.data['BUILD_ID'])
+ruby-1.9.2-p290 :084?>   if school.present?
+ruby-1.9.2-p290 :085?>     rails_school = School.find_by_bpsid(school.sch_id)
+ruby-1.9.2-p290 :086?>     if rails_school.present?
+ruby-1.9.2-p290 :087?>       rails_school.update_attribute(:parcel, parcel.geometry) 
+ruby-1.9.2-p290 :088?>       end
+ruby-1.9.2-p290 :089?>     end
+ruby-1.9.2-p290 :090?>   end
