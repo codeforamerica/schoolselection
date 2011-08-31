@@ -124,11 +124,12 @@ ActiveRecord::Schema.define(:version => 20110830180243) do
     t.float    "staff_to_student_ratio"
     t.string   "school_level_name"
     t.string   "school_type_name"
-    t.text     "parcel_coordinates"
+    t.polygon  "parcel",                        :limit => nil
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
   add_index "schools", ["mail_cluster_id"], :name => "index_schools_on_mail_cluster_id"
+  add_index "schools", ["parcel"], :name => "index_schools_on_parcel", :spatial => true
   add_index "schools", ["principal_id"], :name => "index_schools_on_principal_id"
   add_index "schools", ["school_group_id"], :name => "index_schools_on_school_group_id"
 
