@@ -17,6 +17,8 @@ gem "geokit"
 gem 'gmaps4rails'
 gem "high_voltage"
 gem "spatial_adapter"
+gem 'dbf'
+gem 'nofxx-georuby'
 
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"

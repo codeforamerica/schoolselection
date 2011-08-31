@@ -51,11 +51,15 @@ GEM
       fssm (>= 0.2.7)
       sass (~> 3.1)
     crack (0.1.8)
+    dbf (1.2.9)
+      activesupport (>= 2.3.5)
+      fastercsv (>= 1.4.0)
     diff-lcs (1.1.2)
     erubis (2.7.0)
     execjs (1.2.4)
       multi_json (~> 1.0)
     factory_girl (2.0.3)
+    fastercsv (1.5.4)
     fssm (0.2.7)
     geokit (1.6.0)
     gmaps4rails (0.11.0)
@@ -85,6 +89,7 @@ GEM
     multi_json (1.0.3)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.8.1)
+    nofxx-georuby (1.9.2)
     nokogiri (1.5.0)
     paperclip (2.3.16)
       activerecord (>= 2.3.0)
@@ -168,6 +173,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.1.0.rc)
   compass (>= 0.11.5)
+  dbf
   factory_girl
   geokit
   gmaps4rails
@@ -175,6 +181,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   mechanize
+  nofxx-georuby
   nokogiri
   paperclip
   pg
