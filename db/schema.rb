@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(:version => 20110830180243) do
     t.float         "staff_to_student_ratio"
     t.string        "school_level_name"
     t.string        "school_type_name"
-    t.multi_polygon "parcel",                        :limit => nil, :srid => 4326
+    t.multi_polygon "parcel",                        :limit => nil, :srid => 2249
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
