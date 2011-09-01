@@ -47,7 +47,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * 1609.344, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * 1610, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json
