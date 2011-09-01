@@ -13,6 +13,7 @@ class School < ActiveRecord::Base
   serialize :parcel_coordinates # expects an array of [lat, lng] arrays
   
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
+  before_save :geocode_address!
   
   ##### CLASS METHODS #####
   
@@ -24,9 +25,9 @@ class School < ActiveRecord::Base
     end
   end
   
-  def self.walk_zone_schools(location, grade_level)
-    self.find_within(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?)', grade_level.id])
-  end
+  # def self.walk_zone_schools(location, grade_level)
+  #   self.find_within(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?)', grade_level.id])
+  # end
   
   def self.assignment_zone_schools(location, grade_level, assignment_zones)
     if grade_level.name == 'High'

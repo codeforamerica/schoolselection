@@ -60,6 +60,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>#{x.grades} | #{x.school_type_name}</strong><br />#{raw distance(x.distance)} from you<br />#{x.hours}<br /><strong>#{link_to 'View this school >', '#school', :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>#{x.grades} | #{x.school_type_name}</strong><br />#{x.hours}<br /><strong>#{link_to 'View this school >', '#school', :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
   end
 end
