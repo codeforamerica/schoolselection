@@ -10,14 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830180243) do
+ActiveRecord::Schema.define(:version => 20110901230748) do
 
   create_table "assignment_zones", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "coordinates"
+    t.string        "name"
+    t.datetime      "created_at"
+    t.datetime      "updated_at"
+    t.multi_polygon "shape",      :limit => nil, :srid => 2249
   end
+
+  add_index "assignment_zones", ["shape"], :name => "index_assignment_zones_on_shape", :spatial => true
 
   create_table "cities", :force => true do |t|
     t.string   "name"
