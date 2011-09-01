@@ -10,13 +10,170 @@ The School Discovery App is designed to help parents 1) identify the schools to 
 
 http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
 
+parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
+dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels/schools.dbf')
 
-ruby-1.9.2-p290 :082 > parcels.each do |parcel|
-ruby-1.9.2-p290 :083 >     school = schools.find(:first, :bldg_id => parcel.data['BUILD_ID'])
-ruby-1.9.2-p290 :084?>   if school.present?
-ruby-1.9.2-p290 :085?>     rails_school = School.find_by_bpsid(school.sch_id)
-ruby-1.9.2-p290 :086?>     if rails_school.present?
-ruby-1.9.2-p290 :087?>       rails_school.update_attribute(:parcel, parcel.geometry) 
-ruby-1.9.2-p290 :088?>       end
-ruby-1.9.2-p290 :089?>     end
-ruby-1.9.2-p290 :090?>   end
+parcels.each do |parcel|
+	parcel.geometry.srid = 2249
+	dbf_school = dbf_schools.find(:first, :bldg_id => parcel.data['BUILD_ID'])
+  if dbf_school.present?
+  	rails_school = School.find_by_bpsid(dbf_school.sch_id)
+  	rails_school = School.find_by_name(dbf_school.sch_name)
+    if rails_school.present?
+      rails_school.update_attribute(:parcel, parcel.geometry) 
+    end
+  end
+end
+
+school = School.find_by_name("O'Bryant School of Math & Science")
+dbf_school = schools.to_a.find {|x| x.sch_id == 1030}
+
+parcels.each do |parcel|
+if parcel.data['BUILD_ID'] == dbf_school.bldg_id
+parcel.geometry.srid = 2249
+school.update_attribute(:parcel, parcel.geometry)
+end
+end
+
+NOT FOUND
+"McKay K-8 School" - can't find a parcel with the school.bldg_id
+"Boston Green Academy" - not found in schools.dbf
+"Greater Egleston Community High School" - not found in schools.dbf
+"Hayes School of Music" - not found in schools.dbf
+"Brook Farm/Media High School (School Year 2011-2012)" - not found in 
+"O'Bryant School of Math & Science" - can't find parcel with school.bldg_id
+"UP Academy Charter School of Boston" - not found in schools.dbf
+
+
+
+
+
+4061 Guild Elementary
+4541 Kennedy Patrick Elem
+4322 Otis Elementary
+4543 O'Donnell Elementary
+1070 East Boston High
+2050 Umana Middle School Academy
+4321 Alighieri Elementary
+4450 East Boston EEC
+4360 McKay K-8
+4361 Adams Elementary
+4280 Harvard/Kent Elem
+1050 Charlestown High
+2010 Edwards Middle
+4283 Warren/Prescott
+4381 Eliot K-8
+1450 Quincy Upper School
+4650 Quincy Lower (K-5)
+1200 Snowden International
+1291 McKinley Elementary
+1294 McKinley So. End Acad
+4260 Hurley Elementary
+4640 Blackstone Elementary
+4120 Emerson Elementary
+4121 Mason Elementary
+4531 Clap Elementary
+2090 Gavin Middle
+4022 Perkins Elementary
+1161 Monument High
+1163 Odyssey High
+4590 Tynan Elementary
+4592 Perry K-8
+4530 Russell Elementary
+4680 Orchard Gardens K-8
+2260 Dearborn Middle
+1410 Boston Evening Academy
+1490 Boston Day Academy
+4261 Carter Center
+1210 Madison Park High
+1030 O'Bryant Math & Sci.
+2040 Timilty Middle
+4113 Hale Elementary
+4242 Higginson/Lewis K-8
+4460 Haynes EEC
+4580 Trotter Elementary
+1020 Boston Latin Academy
+4240 Ellis Elementary
+4052 Winthrop Elementary
+4055 King K-8
+2360 Frederick Pilot Middle
+4054 East Zone ELC
+4250 Holland Elementary
+4350 Mather Elementary
+2440 Harbor School
+4340 Marshall Elementary
+4391 Henderson Elementary
+4400 Murphy K-8
+4390 Kenny Elementary
+4151 Taylor Elementary
+1990 Boston International HS
+4440 Ellison/Parks ELC
+4671 Mildred Avenue K-8
+1064 Dorchester Academy
+4150 Fifield Elementary
+4290 Lee Elementary
+4291 Lee Academy
+4084 Holmes Elementary
+1325 Middle School Academy
+4600 Young Achievers K-8
+4690 Mattahunt Elementary
+4070 Chittick Elementary
+4190 Greenwood Elihu Elem
+1101 Social Justice Academy
+1102 Engineering School
+1103 Comm Acad Sci Health
+4561 Philbrick Elementary
+4210 Haley Elementary
+4661 BTU K-8 Pilot
+2950 Rogers Middle
+4192 Roosevelt Upper (2-7)
+4201 Channing Elementary
+4200 Grew Elementary
+4080 Conley Elementary
+2140 Irving Middle
+4560 Sumner Elementary
+4053 Hernandez K-8
+1080 English High
+4370 Mendell Elementary
+4270 Kennedy John F Elemen
+4230 Hennigan Elementary
+1285 New Mission High
+4570 Tobin K-8
+4571 Farragut Elementary
+1010 Boston Latin School
+1440 Kennedy Health Careers Acad
+1265 Fenway High
+1293 McKinley Prep High Sch
+1292 McKinley Middle
+4272 Curley Lower (K1-5)
+4272 Curley Upper (6-8)
+4010 Agassiz Elementary
+4311 Manning Elementary
+4081 Bates Elementary
+4082 Mozart Elementary
+4033 Kilmer Upper (4-8)
+4030 Beethoven Elementary
+4031 Kilmer Lower (K1-3)
+1251 Parkway Tech & Health
+1252 Media Comm Tech High
+4331 Lyndon K-8
+4178 Edison K-8
+4171 Lyon K-8
+1171 Lyon, Mary 9-12
+4173 Winship Elementary
+1195 Boston Comm Lead Acad
+1040 Brighton High
+4621 Baldwin ELC
+4610 Horace Mann
+4620 Jackson/Mann K-8
+4160 Gardner Elementary
+4410 Ohrenberger Elementary
+4140 Everett Elementary
+1215 Boston Adult Tech Acad
+4130 Greenwood Sarah K-8
+1120 Burke High
+4100 Dever Elementary
+2190 McCormack Middle
+4630 Condon Elementary
+4193 Roosevelt K-8 (K1-1)
+4062 Bradley Elementary
