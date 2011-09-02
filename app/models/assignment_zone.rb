@@ -11,6 +11,10 @@ class AssignmentZone < ActiveRecord::Base
     self.where("ST_Within(ST_Transform(ST_GeomFromText('POINT(#{location.lng} #{location.lat})', 4326), 2249), shape)")
   end
   
+  def self.citywide
+    self.find_by_name('Citywide')
+  end
+  
   ####### INSTANCE METHODS #######
   
   def coordinates_hash
