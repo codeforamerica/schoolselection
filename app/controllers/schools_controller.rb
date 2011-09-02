@@ -11,9 +11,9 @@ class SchoolsController < ApplicationController
     
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_all_with_point(@geocoded_address.lat, @geocoded_address.lng).present?
       @grade_level = GradeLevel.find_by_number(grade_level)
-      @assignment_zones = AssignmentZone.find_all_with_location_and_grade_level(@geocoded_address, @grade_level)
-      @walk_zone_schools = @grade_level.walk_zone_schools(@geocoded_address)
-      @assignment_zone_schools = School.assignment_zone_schools(@geocoded_address, @grade_level, @assignment_zones)
+      @assignment_zone = AssignmentZone.find_by_location(@geocoded_address)
+      @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius)
+      @assignment_zone_schools = @grade_level.schools.where(:assignment_zone => @assignment_zone) - @walk_zone_schools
       @citywide_schools = School.citywide_schools(@geocoded_address, @grade_level)
       @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools).flatten.uniq
     else
