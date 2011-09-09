@@ -1,41 +1,41 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (3.1.0.rc5)
-      actionpack (= 3.1.0.rc5)
+    actionmailer (3.1.0)
+      actionpack (= 3.1.0)
       mail (~> 2.3.0)
-    actionpack (3.1.0.rc5)
-      activemodel (= 3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
+    actionpack (3.1.0)
+      activemodel (= 3.1.0)
+      activesupport (= 3.1.0)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       i18n (~> 0.6)
-      rack (~> 1.3.1)
-      rack-cache (~> 1.0.2)
-      rack-mount (~> 0.8.1)
-      rack-test (~> 0.6.0)
-      sprockets (~> 2.0.0.beta.12)
-    activemodel (3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
-      bcrypt-ruby (~> 2.1.4)
+      rack (~> 1.3.2)
+      rack-cache (~> 1.0.3)
+      rack-mount (~> 0.8.2)
+      rack-test (~> 0.6.1)
+      sprockets (~> 2.0.0)
+    activemodel (3.1.0)
+      activesupport (= 3.1.0)
+      bcrypt-ruby (~> 3.0.0)
       builder (~> 3.0.0)
       i18n (~> 0.6)
-    activerecord (3.1.0.rc5)
-      activemodel (= 3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
-      arel (~> 2.1.4)
+    activerecord (3.1.0)
+      activemodel (= 3.1.0)
+      activesupport (= 3.1.0)
+      arel (~> 2.2.1)
       tzinfo (~> 0.3.29)
     activerecord-postgis-adapter (0.4.0)
       pg (>= 0.11.0)
       rgeo-activerecord (~> 0.4.0)
-    activeresource (3.1.0.rc5)
-      activemodel (= 3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
-    activesupport (3.1.0.rc5)
+    activeresource (3.1.0)
+      activemodel (= 3.1.0)
+      activesupport (= 3.1.0)
+    activesupport (3.1.0)
       multi_json (~> 1.0)
     ansi (1.3.0)
-    arel (2.1.4)
-    bcrypt-ruby (2.1.4)
+    arel (2.2.1)
+    bcrypt-ruby (3.0.0)
     builder (3.0.0)
     chunky_png (1.2.1)
     cocaine (0.2.0)
@@ -105,19 +105,19 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
-    rails (3.1.0.rc5)
-      actionmailer (= 3.1.0.rc5)
-      actionpack (= 3.1.0.rc5)
-      activerecord (= 3.1.0.rc5)
-      activeresource (= 3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
+    rails (3.1.0)
+      actionmailer (= 3.1.0)
+      actionpack (= 3.1.0)
+      activerecord (= 3.1.0)
+      activeresource (= 3.1.0)
+      activesupport (= 3.1.0)
       bundler (~> 1.0)
-      railties (= 3.1.0.rc5)
+      railties (= 3.1.0)
     rails3-generators (0.17.4)
       railties (>= 3.0.0)
-    railties (3.1.0.rc5)
-      actionpack (= 3.1.0.rc5)
-      activesupport (= 3.1.0.rc5)
+    railties (3.1.0)
+      actionpack (= 3.1.0)
+      activesupport (= 3.1.0)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -143,11 +143,10 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.6.0)
     sass (3.1.7)
-    sass-rails (3.1.0.rc.5)
-      actionpack (~> 3.1.0.rc1)
-      railties (~> 3.1.0.rc1)
+    sass-rails (3.1.0)
+      actionpack (~> 3.1.0)
+      railties (~> 3.1.0)
       sass (>= 3.1.4)
-      sprockets (>= 2.0.0.beta.9)
     sprockets (2.0.0)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -172,8 +171,8 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgis-adapter
-  coffee-rails (~> 3.1.0.rc)
-  compass (>= 0.11.5)
+  coffee-rails
+  compass
   dbf
   factory_girl
   geokit
@@ -185,12 +184,12 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg
-  rails (= 3.1.0.rc5)
+  rails (= 3.1.0)
   rails3-generators
   rgeo
   rspec
   rspec-rails
-  sass-rails (~> 3.1.0.rc)
+  sass-rails
   sqlite3
   turn
   uglifier
