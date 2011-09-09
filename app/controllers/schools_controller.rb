@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
     @address = "#{address}, #{zipcode}"
     @geocoded_address = geocode_address(@address) if params[:address].present?
     
-    if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_all_with_point(@geocoded_address.lat, @geocoded_address.lng).present?
+    if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
       @grade_level = GradeLevel.find_by_number(grade_level)
       @assignment_zone = AssignmentZone.find_by_location(@geocoded_address)
       

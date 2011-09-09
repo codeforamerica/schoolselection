@@ -13,7 +13,7 @@ class School < ActiveRecord::Base
   serialize :parcel_coordinates # expects an array of [lat, lng] arrays
   
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
-  before_save :geocode_address!
+  # before_save :geocode_address!
   
   ##### CLASS METHODS #####
   
