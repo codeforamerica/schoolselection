@@ -13,7 +13,7 @@ class SchoolsController < ApplicationController
       @grade_level = GradeLevel.find_by_number(grade_level)
       @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
       
-      @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius)
+      @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters)
       @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone) - @walk_zone_schools
       @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide) - @walk_zone_schools
       
