@@ -17,16 +17,15 @@ require 'rgeo/shapefile'
 require 'rgeo/geo_json'
 
 parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112.shp')
-old_parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/school_parcels.shp')
+old_parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/parcels_4326')
 # dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
 # georuby_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
 
 parcels.each do |parcel|
-	#parcel.geometry.srid = 2249
 	dbf_school = dbf_schools.find(:first, :bldg_id => parcel.attributes['BUILD_ID'])
   if dbf_school.present?
-  	rails_school = School.find_by_bpsid(parcel.attributes['SCH_ID'])
-  	rails_school ||= School.find_by_name(parcel.attributes['SCH_NAME'])
+	  rails_school = School.find_by_bpsid(dbf_school.sch_id)
+	  rails_school ||= School.find_by_name(dbf_school.sch_name)
     if rails_school.present?
       rails_school.parcel=nil
       rails_school.save
@@ -70,15 +69,19 @@ CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Tabl
     neighborhood = Neighborhood.find_or_create_by_name(row[7])
     assignment_zone = AssignmentZone.find_or_create_by_name(row[8])
     grades = row[10].split(/\b*-\b*/)
+    puts grades.inspect
     start_grade = GradeLevel.find_by_number(grades[0])
     end_grade = GradeLevel.find_by_number(grades[1])
+    puts [start_grade,end_grade].inspect
     if start_grade.present? && end_grade.present?
       id_range = (start_grade.id..end_grade.id).to_a
       grade_levels = GradeLevel.find(id_range)
-      school = School.create(:bpsid => row[1], :name => row[2], :short_name => row[3], :address => row[4], :city_id => city.id, :zipcode => row[6], :neighborhood_id => neighborhood.id, :assignment_zone_id => assignment_zone.id)
+      puts grade_levels.inspect
+      school = School.find_or_create_by_bpsid(row[1])
       school.grade_levels << grade_levels
+      school.save
     else
-      school = School.create(:bpsid => row[1], :name => row[2], :short_name => row[3], :address => row[4], :city_id => city.id, :zipcode => row[6], :neighborhood_id => neighborhood.id, :assignment_zone_id => assignment_zone.id)		
+      school = School.find_or_create_by_bpsid(row[1])
     end
   end
 end
