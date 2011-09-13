@@ -18,6 +18,7 @@ gem 'gmaps4rails'
 gem "high_voltage"
 gem "rgeo"
 gem "rgeo-shapefile"
+gem "rgeo-geojson", :require => 'rgeo/geo_json'
 gem "activerecord-postgis-adapter"
 gem 'dbf'
 
