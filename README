@@ -14,6 +14,7 @@ SCRIBBLES und SCRABBLES
 
 require 'rgeo'
 require 'rgeo/shapefile'
+require 'rgeo/geo_json'
 
 parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112.shp')
 old_parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/school_parcels.shp')
@@ -37,12 +38,10 @@ end
 
 require 'rgeo'
 require 'rgeo/shapefile'
-parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/school_parcels')
-dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
+require 'rgeo/geo_json'
+parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112')
 parcels.each do |parcel|
-dbf_school = dbf_schools.find(:first, :bldg_id => parcel.attributes['BUILD_ID'])
-if dbf_school.present?
-rails_school = School.find_by_bpsid(dbf_school.sch_id)
+rails_school = School.find_by_bpsid(parcel.attributes['SCH_ID'])
 if rails_school.present?
 rails_school.parcel = parcel.geometry
 rails_school.save!
