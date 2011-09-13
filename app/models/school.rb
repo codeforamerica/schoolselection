@@ -5,6 +5,7 @@ class School < ActiveRecord::Base
   has_and_belongs_to_many :grade_levels
   belongs_to :assignment_zone
   belongs_to :city
+  belongs_to :neighborhood
   belongs_to :mail_cluster
   belongs_to :principal
   belongs_to :school_group
@@ -25,10 +26,10 @@ class School < ActiveRecord::Base
     end
   end
   
-  def self.find_all_within_radius(address, radius_in_miles)
+  def self.find_all_within_radius(address, radius_in_meters)
     # assume that SRID is 2249
-    radius_in_feet = radius_in_miles * 5280
-    self.where("ST_DWithin(parcel, ST_Transform(ST_GeomFromText('POINT(#{address.lng} #{address.lat})', 4326), 2249), #{radius_in_feet})")
+    #radius_in_feet = radius_in_miles * 5280
+    self.where("ST_DWithin(parcel, ST_GeomFromText('POINT(#{address.lng} #{address.lat})'), #{radius_in_meters})")
   end
   
   ##### INSTANCE METHODS #####

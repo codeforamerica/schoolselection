@@ -1,4 +1,6 @@
 Schoolselection::Application.routes.draw do
+  resources :neighborhoods
+
   root :to => 'high_voltage/pages#show', :id => 'home'
   resources :mail_clusters
 

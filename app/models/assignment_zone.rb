@@ -8,7 +8,7 @@ class AssignmentZone < ActiveRecord::Base
   ####### CLASS METHODS #######
   
   def self.find_by_location(location)
-    self.where("ST_Within(ST_Transform(ST_GeomFromText('POINT(#{location.lng} #{location.lat})', 4326), 2249), shape)")
+    self.where("ST_Intersects(ST_GeomFromText('POINT(#{location.lng} #{location.lat})'), shape)")
   end
   
   def self.citywide

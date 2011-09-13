@@ -43,7 +43,7 @@ module SchoolsHelper
   end
   
   def assignment_zones_json
-    (@assignment_zones.map {|z| z.coordinates_hash}).to_json
+    @assignment_zone.shape.to_json
   end
   
   def walk_zone_json
