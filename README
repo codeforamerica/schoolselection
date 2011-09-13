@@ -15,9 +15,10 @@ SCRIBBLES und SCRABBLES
 require 'rgeo'
 require 'rgeo/shapefile'
 
-parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112')
-# dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels/schools.dbf')
-# old_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
+parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112.shp')
+old_parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/school_parcels.shp')
+# dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
+# georuby_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
 
 parcels.each do |parcel|
 	#parcel.geometry.srid = 2249
@@ -32,6 +33,25 @@ parcels.each do |parcel|
       rails_school.save
     end
   end
+end
+
+require 'rgeo'
+require 'rgeo/shapefile'
+parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/school_parcels')
+dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
+parcels.each do |parcel|
+dbf_school = dbf_schools.find(:first, :bldg_id => parcel.attributes['BUILD_ID'])
+if dbf_school.present?
+puts 'found dbf_school'
+rails_school = School.find_by_bpsid(dbf_school.sch_id)
+if rails_school.present?
+puts 'found rails school'
+rails_school.parcel=nil
+rails_school.save
+rails_school.parcel = parcel.geometry
+rails_school.save
+end
+end
 end
 
 zones = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/assignment_zones/zones_4326')
