@@ -35,8 +35,8 @@ class School < ActiveRecord::Base
   ##### INSTANCE METHODS #####
     
   def geocode_address!
-    boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
-    geo = Geokit::Geocoders::GoogleGeocoder.geocode("#{address}, #{city.try(:name)}", :bias => boston_bounds)
+    # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
+    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA")
     errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
     self.save

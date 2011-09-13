@@ -43,7 +43,7 @@ module SchoolsHelper
   end
   
   def assignment_zones_json
-    @assignment_zone.shape.to_json
+    @assignment_zone.shape_to_json
   end
   
   def walk_zone_json
