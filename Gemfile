@@ -17,6 +17,7 @@ gem "geokit"
 gem 'gmaps4rails'
 gem "high_voltage"
 gem "rgeo"
+gem "rgeo-shapefile"
 gem "activerecord-postgis-adapter"
 gem 'dbf'
 
