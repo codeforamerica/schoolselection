@@ -25,8 +25,4 @@ class AssignmentZone < ActiveRecord::Base
   def coordinates_hash
     self.coordinates.map {|x| {:lat => x[0], :lng => x[1]}}
   end
-  
-  def schools_by_grade_level(grade_level)
-    School.find_all_with_school_level(grade_level).select {|x| self.includes_point?(x.lat.to_f, x.lng.to_f) }
-  end
 end
