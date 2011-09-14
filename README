@@ -12,55 +12,168 @@ http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
 
 SCRIBBLES und SCRABBLES
 
+ogr2ogr -t_srs EPSG:4326 school_parcels_2012/ facility_parcels/BPS_schools.shp
+
 require 'rgeo'
 require 'rgeo/shapefile'
 require 'rgeo/geo_json'
-
-parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112.shp')
-old_parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2011/parcels_4326')
-# dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
-# georuby_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
-
+parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/facility_parcels.shp')
+schools = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/BPS_schools.shp')
+schools_array = []
+schools.each do |s|
+  schools_array << s
+end
 parcels.each do |parcel|
-	dbf_school = dbf_schools.find(:first, :bldg_id => parcel.attributes['BUILD_ID'])
-  if dbf_school.present?
-	  rails_school = School.find_by_bpsid(dbf_school.sch_id)
-	  rails_school ||= School.find_by_name(dbf_school.sch_name)
-    if rails_school.present?
-      rails_school.parcel=nil
-      rails_school.save
-      rails_school.parcel = parcel.geometry
-      rails_school.save
-    end
+  rails_parcel = Parcel.find_or_create_by_build_name_and_address_and_city_id_and_zipcode_and_shape(parcel.attributes['BLDG_NAME'], parcel.attributes['ADDRESS'], City.find_or_create_by_name(parcel.attributes['CITY'].try(:id)), parcel.attributes['ZIPCODE'], parcel.geometry)
+  bps_school = schools_array.find {|x| x.attributes['BLDG_ID'] == parcel.attributes['BUILD_ID']}
+  if bps_school.present?
+    rails_school = School.find_by_bpsid(bps_school.attributes['SCH_ID'])
+    rails_school.update_attribute(:parcel_id, rails_parcel.id) if rails_school.present?
   end
 end
 
-require 'rgeo'
-require 'rgeo/shapefile'
-require 'rgeo/geo_json'
-parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/PublicSchools_SY1112')
-parcels.each do |parcel|
-rails_school = School.find_by_bpsid(parcel.attributes['SCH_ID'])
-if rails_school.present?
-rails_school.parcel = parcel.geometry
-rails_school.save!
-end
-end
-end
+# zones =   RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/assignment_zones/zones_4326')
+# dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
+# georuby_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
 
-zones = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/assignment_zones/zones_4326')
+Missing Parcels:
 
+169 - Comm Acad Sci Health - parcel (56) has no coordinates
+274 - Curley K-8 Upper (6-8) - no matching parcel
+228 - McKay K-8 - no matching parcel
+241 - O'Bryant Math & Sci. - no matching parcel
 
-school = School.find_by_name("O'Bryant School of Math & Science")
-dbf_school = schools.to_a.find {|x| x.sch_id == 2090}
+-----
 
-parcels.each do |parcel|
-if parcel.data['BUILD_ID'] == dbf_school.bldg_id
-if parcel.data.bldg_name == "Madison Park Bldg #1"
-parcel.geometry.srid = 4326
-school.update_attribute(:parcel, parcel.geometry)
-end
-end
+146 - Adams Elementary
+147 - Another Course to College
+162 - BTU School K-8
+148 - Baldwin ELC
+149 - Bates Elementary
+150 - Beethoven Elementary
+151 - Blackstone Elementary
+152 - Boston Adult Tech Acad
+153 - Boston Arts Academy
+154 - Boston Comm Lead Acad
+155 - Boston Day & Evening Academy
+156 - Boston Green Academy
+157 - Boston International HS
+158 - Boston Latin Academy
+159 - Boston Latin School
+160 - Bradley Elementary
+161 - Brighton High
+163 - Burke High
+164 - Carter Center
+165 - Channing Elementary
+166 - Charlestown High
+167 - Chittick Elementary
+168 - Clap Innovation School
+169 - Comm Acad Sci Health
+170 - Community Academy
+171 - Condon Elementary
+172 - Conley Elementary
+173 - Curley K-8 Elem (K1-5)
+274 - Curley K-8 Upper (6-8)
+174 - Dearborn Middle
+175 - Dever Elementary
+176 - Dorchester Academy
+177 - East Boston EEC
+178 - East Boston High
+179 - Edison K-8
+180 - Edwards Middle
+181 - Eliot K-8
+182 - Ellis Elementary
+183 - Ellison/Parks EE Sch
+184 - English High
+185 - Everett Elementary
+186 - Excel High
+187 - Fenway High
+188 - Frederick Middle
+189 - Gardner Elementary
+190 - Greater Egleston High
+191 - Greenwood E. Leadership
+192 - Greenwood, Sarah K-8
+193 - Grew Elementary
+194 - Guild Elementary
+195 - Hale Elementary
+196 - Haley Elementary
+197 - Harbor School
+198 - Harvard/Kent Elementar
+199 - Haynes EEC
+200 - Henderson Elementary
+201 - Hennigan Elementary
+202 - Hernandez K-8
+203 - Higginson/Lewis K-8
+204 - Holland Elementary
+205 - Holmes Elementary
+206 - Horace Mann
+207 - Hurley K-8
+208 - Irving Middle
+209 - Jackson/Mann K-8
+210 - Kennedy Acad of Health Careers
+211 - Kennedy JF Elementary
+212 - Kennedy PJ Elementary
+213 - Kenny Elementary
+214 - Kilmer Lower Baker St (K0-3)
+271 - Kilmer Upper Russett Rd (4-8)
+215 - King K-8
+216 - Lee Academy
+217 - Lee Elementary
+218 - Lyndon K-8
+219 - Lyon 9-12
+220 - Lyon K-8
+221 - Madison Park High
+222 - Manning Elementary
+223 - Marshall Elementary
+224 - Mason Elementary
+225 - Mather Elementary
+226 - Mattahunt Elementary
+227 - McCormack Middle
+228 - McKay K-8
+229 - McKinley Elementary
+230 - McKinley Middle
+231 - McKinley Prep High Sch
+232 - McKinley So. End Acad
+233 - Mendell Elementary
+234 - Middle School Academy
+235 - Mildred Avenue K-8
+236 - Mission Hill K-8
+237 - Mozart Elementary
+238 - Murphy K-8
+239 - New Mission High
+240 - Newcomers Academy
+241 - O'Bryant Math & Sci.
+242 - O'Donnell Elementary
+243 - Ohrenberger School
+244 - Orchard Gardens K-8
+245 - Otis Elementary
+246 - Perkins Elementary
+247 - Perry K-8
+248 - Philbrick Elementary
+249 - Quincy Elementary
+250 - Quincy Upper School
+251 - Rogers Middle
+252 - Roosevelt K-8 (3-8)
+272 - Roosevelt K-8 (K1-2)
+253 - Russell Elementary
+254 - Snowden International
+255 - Sumner Elementary
+256 - Taylor Elementary
+257 - TechBoston Acad Lower (6-9)
+273 - TechBoston Acad Upper (10-12)
+258 - Timilty Middle
+259 - Tobin K-8
+260 - Trotter Elementary
+261 - Tynan Elementary
+263 - UP Academy
+262 - Umana/Alighieri K-8 Academy
+264 - Urban Science Academy
+265 - Warren/Prescott
+266 - West Roxbury Academy
+267 - West Zone ELC
+268 - Winship Elementary
+269 - Winthrop Elementary
+270 - Young Achievers K-8
 
 IMPORT SCHOOLS FROM 2011-2012 CSV
 CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Table.csv") do |row|
@@ -68,14 +181,13 @@ CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Tabl
     city = City.find_or_create_by_name(row[5])
     neighborhood = Neighborhood.find_or_create_by_name(row[7])
     assignment_zone = AssignmentZone.find_or_create_by_name(row[8])
-    grades = row[10].split(/\b*-\b*/)
+    grades = row[13].split(/\b*-\b*/)
     puts grades.inspect
     start_grade = GradeLevel.find_by_number(grades[0])
     end_grade = GradeLevel.find_by_number(grades[1])
     puts [start_grade,end_grade].inspect
     if start_grade.present? && end_grade.present?
-      id_range = (start_grade.id..end_grade.id).to_a
-      grade_levels = GradeLevel.find(id_range)
+      grade_levels = GradeLevel.where("(id >= #{start_grade.id}) AND (id <= #{end_grade.id})").all
       puts grade_levels.inspect
       school = School.find_or_create_by_bpsid(row[1])
       school.grade_levels << grade_levels
