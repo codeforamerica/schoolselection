@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  build_id: 1
+  build_name: MyString
+  address: MyString
+  city_id: 1
+  zipcode: MyString
+
+two:
+  build_id: 1
+  build_name: MyString
+  address: MyString
+  city_id: 1
+  zipcode: MyString

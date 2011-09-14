@@ -1,4 +1,6 @@
 Schoolselection::Application.routes.draw do
+  resources :parcels
+
   resources :neighborhoods
 
   root :to => 'high_voltage/pages#show', :id => 'home'

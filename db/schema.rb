@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110912210648) do
+ActiveRecord::Schema.define(:version => 20110914202146) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(:version => 20110912210648) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "parcels", :force => true do |t|
+    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.string   "build_name"
+    t.string   "address"
+    t.integer  "city_id"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parcels", ["geometry"], :name => "index_parcels_on_shape", :spatial => true
 
   create_table "principals", :force => true do |t|
     t.string   "first_name"
@@ -132,14 +144,13 @@ ActiveRecord::Schema.define(:version => 20110912210648) do
     t.float    "staff_to_student_ratio"
     t.string   "school_level_name"
     t.string   "school_type_name"
-    t.spatial  "parcel",                        :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
     t.string   "short_name"
     t.integer  "neighborhood_id"
+    t.integer  "parcel_id"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
   add_index "schools", ["mail_cluster_id"], :name => "index_schools_on_mail_cluster_id"
-  add_index "schools", ["parcel"], :name => "index_schools_on_parcel", :spatial => true
   add_index "schools", ["principal_id"], :name => "index_schools_on_principal_id"
   add_index "schools", ["school_group_id"], :name => "index_schools_on_school_group_id"
 
