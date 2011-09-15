@@ -5,48 +5,27 @@ class School < ActiveRecord::Base
   has_and_belongs_to_many :grade_levels
   belongs_to :assignment_zone
   belongs_to :city
+  belongs_to :neighborhood
   belongs_to :mail_cluster
+  belongs_to :parcel
   belongs_to :principal
   belongs_to :school_group
   belongs_to :state
   
-  serialize :parcel_coordinates # expects an array of [lat, lng] arrays
-  
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
+  # before_save :geocode_address!
   
   ##### CLASS METHODS #####
   
-  def self.find_all_with_school_level(school_level)
-    if walk_zone = WalkZone.find_by_name(school_level)
-      walk_zone.schools
-    else
-      School.all(:order => :name)
-    end
-  end
-  
-  def self.walk_zone_schools(location, grade_level)
-    self.find_within(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?)', grade_level.id])
-  end
-  
-  def self.assignment_zone_schools(location, grade_level, assignment_zones)
-    if grade_level.name == 'High'
-      [] # all high schools should show up as citywide schools, not assignment zone schools
-    else  
-      assignment_zone_ids = assignment_zones.map {|x| x.id}
-      self.find_beyond(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?) AND assignment_zone_id IN (?)', grade_level.id, assignment_zone_ids])
-    end
-  end
-  
-  def self.citywide_schools(location, grade_level)
-    assignment_zone = AssignmentZone.find_by_name('Citywide')
-    self.find_beyond(grade_level.walk_zone_radius, :origin => location, :order => 'distance', :conditions => ['id IN (select school_id from grade_levels_schools where grade_level_id = ?) AND assignment_zone_id = ?', grade_level.id, assignment_zone.id])
+  def self.find_all_within_radius(address, radius_in_meters)
+    self.joins(:parcel).where("ST_DWithin(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})'), #{radius_in_meters})")
   end
   
   ##### INSTANCE METHODS #####
     
   def geocode_address!
-    boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
-    geo = Geokit::Geocoders::GoogleGeocoder.geocode("#{address}, #{city.try(:name)}", :bias => boston_bounds)
+    # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
+    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA")
     errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
     self.save

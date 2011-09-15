@@ -48,5 +48,7 @@ module Schoolselection
     config.generators do |g|
       g.fixture_replacement :factory_girl
     end
+    
+    require 'active_record/connection_adapters/postgis_adapter/railtie'
   end
 end

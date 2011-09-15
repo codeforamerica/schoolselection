@@ -1,0 +1,25 @@
+= form_for @parcel do |f|
+  -if @parcel.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@parcel.errors.count, "error")} prohibited this parcel from being saved:"
+      %ul
+        - @parcel.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :build_id
+    = f.number_field :build_id
+  .field
+    = f.label :build_name
+    = f.text_field :build_name
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :city_id
+    = f.number_field :city_id
+  .field
+    = f.label :zipcode
+    = f.text_field :zipcode
+  .actions
+    = f.submit 'Save'

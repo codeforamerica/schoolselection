@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,15 +11,20 @@ gem 'rails', '3.1.0.rc5'
 
 gem 'jquery-rails'
 gem 'paperclip'
-gem "compass", ">= 0.11.5"
+gem "compass"
 gem "haml-rails"
 gem "geokit"
-gem 'gmaps4rails'
+gem 'gmaps4rails', '<= 0.11.0'
 gem "high_voltage"
+gem "rgeo"
+gem "rgeo-shapefile"
+gem "rgeo-geojson", :require => 'rgeo/geo_json'
+gem "activerecord-postgis-adapter"
+gem 'dbf'
 
 group :assets do
-  gem 'sass-rails', "~> 3.1.0.rc"
-  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 

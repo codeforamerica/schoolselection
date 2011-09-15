@@ -11,6 +11,7 @@ html.css('table.views-view-grid td a').each do |link|
 	unless page.blank?
   	school = School.find_or_create_by_name(page.at_css('h1.title').try(:inner_text).try(:strip))
     school.update_attributes(:description => page.at_css('school-note').try(:inner_html).try(:strip),
+      :bpsid              => page.at_css('.field-field-report-card a').inner_text.gsub(/\D/, ''),
       :address            => page.at_css('.vcard .street-address').try(:inner_text).try(:strip),
       :city               => City.find_or_create_by_name(page.at_css('.vcard .locality').try(:inner_text).try(:strip)),
       :state              => State.find_or_create_by_abbreviation(page.at_css('.vcard .region').try(:inner_text).try(:strip)),

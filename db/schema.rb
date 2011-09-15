@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830180243) do
+ActiveRecord::Schema.define(:version => 20110914202146) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "coordinates"
+    t.spatial  "shape",      :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
   end
 
   create_table "cities", :force => true do |t|
@@ -56,6 +57,25 @@ ActiveRecord::Schema.define(:version => 20110830180243) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "neighborhoods", :force => true do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parcels", :force => true do |t|
+    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
+    t.string   "build_name"
+    t.string   "address"
+    t.integer  "city_id"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parcels", ["geometry"], :name => "index_parcels_on_shape", :spatial => true
 
   create_table "principals", :force => true do |t|
     t.string   "first_name"
@@ -124,7 +144,9 @@ ActiveRecord::Schema.define(:version => 20110830180243) do
     t.float    "staff_to_student_ratio"
     t.string   "school_level_name"
     t.string   "school_type_name"
-    t.text     "parcel_coordinates"
+    t.string   "short_name"
+    t.integer  "neighborhood_id"
+    t.integer  "parcel_id"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"

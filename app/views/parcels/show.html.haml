@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Build:
+  = @parcel.build_id
+%p
+  %b Build name:
+  = @parcel.build_name
+%p
+  %b Address:
+  = @parcel.address
+%p
+  %b City:
+  = @parcel.city_id
+%p
+  %b Zipcode:
+  = @parcel.zipcode
+
+= link_to 'Edit', edit_parcel_path(@parcel)
+\|
+= link_to 'Back', parcels_path

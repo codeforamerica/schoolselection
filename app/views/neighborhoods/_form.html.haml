@@ -1,0 +1,16 @@
+= form_for @neighborhood do |f|
+  -if @neighborhood.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@neighborhood.errors.count, "error")} prohibited this neighborhood from being saved:"
+      %ul
+        - @neighborhood.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :city_id
+    = f.number_field :city_id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'
