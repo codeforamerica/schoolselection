@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914202146) do
+ActiveRecord::Schema.define(:version => 20110915003817) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(:version => 20110914202146) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "parcels", ["geometry"], :name => "index_parcels_on_shape", :spatial => true
 
   create_table "principals", :force => true do |t|
     t.string   "first_name"
