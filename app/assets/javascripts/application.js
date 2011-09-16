@@ -8,13 +8,11 @@
 //= require jquery_ujs
 //= require_tree .
 
-var temp_f = Gmaps4Rails.openInfoWindow;
-Gmaps4Rails.openInfoWindow = function(infoWindow,marker){
-  google.maps.event.addListener(infoWindow,"domready", function() {
-    $('a[rel*=facebox]').facebox({
+$('a[rel*=facebox]').live("click",function(e){
+  e.preventDefault();
+  $(e.target).facebox({
       loadingImage : 'images/loading.gif',
       closeImage   : 'images/closelabel.png'
-    });
   });
-  return temp_f(infoWindow,marker);
-}
+  $(e.target).trigger('click.facebox');
+});
