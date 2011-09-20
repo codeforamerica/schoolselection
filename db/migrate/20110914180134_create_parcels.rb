@@ -5,7 +5,7 @@ class CreateParcels < ActiveRecord::Migration
     add_column :schools, :parcel_id, :integer
     
     create_table :parcels do |t|
-      t.geometry :shape, :geographic => true
+      t.column :shape, :geometry, :geographic => true
       t.string :build_name
       t.string :address
       t.integer :city_id
