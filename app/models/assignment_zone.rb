@@ -8,7 +8,7 @@ class AssignmentZone < ActiveRecord::Base
   ####### CLASS METHODS #######
   
   def self.find_by_location(location)
-    self.where("ST_Intersects(ST_GeomFromText('POINT(#{location.lng} #{location.lat})'), shape)")
+    self.where("ST_Intersects(ST_GeomFromText('POINT(#{location.lng} #{location.lat})'), geometry)")
   end
   
   def self.citywide
@@ -18,7 +18,7 @@ class AssignmentZone < ActiveRecord::Base
   ####### INSTANCE METHODS #######
   
   def shape_to_json
-    hash = RGeo::GeoJSON.encode(shape)
+    hash = RGeo::GeoJSON.encode(geometry)
     [hash["coordinates"][0][0].map  {|(lng,lat)| {"lat"=>lat,"lng"=>lng}}].to_json
   end
   
