@@ -46,3 +46,4 @@ group :test do
   gem "factory_girl"
   gem 'turn', :require => false
 end
+gem "devise"
