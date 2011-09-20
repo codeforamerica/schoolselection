@@ -741,18 +741,45 @@ body #page #gray {
   margin-top: 30px;
 }
 /* line 72, ../../stylesheets/screen.scss */
-body #page #above-map {
+body #page .full-width {
   display: inline;
   float: left;
   margin-right: 0;
   width: 910px;
   padding-bottom: 5px;
+  clear: both;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #page #above-map {
+* html body #page .full-width {
+  overflow-x: hidden;
+}
+/* line 73, ../../stylesheets/screen.scss */
+body #page #left-column {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 190px;
+  margin-top: 10px;
+  padding-right: 30px;
+  border-right: solid 1px #777777;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #left-column {
   overflow-x: hidden;
 }
 /* line 74, ../../stylesheets/screen.scss */
+body #page #right-column {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 670px;
+  margin-top: 10px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #page #right-column {
+  overflow-x: hidden;
+}
+/* line 76, ../../stylesheets/screen.scss */
 body #page #map_container {
   display: inline;
   float: left;
@@ -764,7 +791,7 @@ body #page #map_container {
 * html body #page #map_container {
   overflow-x: hidden;
 }
-/* line 77, ../../stylesheets/screen.scss */
+/* line 79, ../../stylesheets/screen.scss */
 body #page #map_container #gmaps4rails_map {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -777,13 +804,13 @@ body #page #map_container #gmaps4rails_map {
   height: 534px;
   padding-right: 10px;
 }
-/* line 78, ../../stylesheets/screen.scss */
+/* line 80, ../../stylesheets/screen.scss */
 body #page #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 83, ../../stylesheets/screen.scss */
 body #page #map-list {
   display: inline;
   float: left;
@@ -794,33 +821,33 @@ body #page #map-list {
 * html body #page #map-list {
   overflow-x: hidden;
 }
-/* line 83, ../../stylesheets/screen.scss */
+/* line 85, ../../stylesheets/screen.scss */
 body #page #map-list #options {
   height: 405px;
   margin: 15px 0 15px 0;
   overflow: scroll;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 89, ../../stylesheets/screen.scss */
 body #page #map-list #options ul#markers_list {
   padding-left: 18px;
 }
-/* line 88, ../../stylesheets/screen.scss */
+/* line 90, ../../stylesheets/screen.scss */
 body #page #map-list #options ul#markers_list a {
   font-weight: bold;
 }
-/* line 89, ../../stylesheets/screen.scss */
+/* line 91, ../../stylesheets/screen.scss */
 body #page #map-list #options ul#markers_list a:visited {
   font-weight: bold;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #page #map-list #legend {
   font-size: 10px;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #page #map-list #legend img {
   margin: 5px 5px -5px 0;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 97, ../../stylesheets/screen.scss */
 body #page #below-map {
   display: inline;
   float: left;
@@ -834,13 +861,13 @@ body #page #below-map {
 * html body #page #below-map {
   overflow-x: hidden;
 }
-/* line 97, ../../stylesheets/screen.scss */
+/* line 99, ../../stylesheets/screen.scss */
 body #page #search-form {
   width: 450px;
   margin-top: 10px;
   font-size: 18px;
 }
-/* line 101, ../../stylesheets/screen.scss */
+/* line 103, ../../stylesheets/screen.scss */
 body #page #search-form input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -852,39 +879,33 @@ body #page #search-form input {
   margin-right: 10px;
   border: 1px solid #777777;
 }
-/* line 102, ../../stylesheets/screen.scss */
+/* line 104, ../../stylesheets/screen.scss */
 body #page #search-form .address {
   width: 250px;
 }
-/* line 103, ../../stylesheets/screen.scss */
+/* line 105, ../../stylesheets/screen.scss */
 body #page #search-form .zipcode {
   width: 80px;
 }
-/* line 104, ../../stylesheets/screen.scss */
+/* line 106, ../../stylesheets/screen.scss */
 body #page #search-form select {
   font-size: 15px;
   margin-right: 10px;
 }
-/* line 105, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #page #search-form td {
   padding-bottom: 20px;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 109, ../../stylesheets/screen.scss */
 body #page #page-footer {
   clear: both;
 }
-/* line 108, ../../stylesheets/screen.scss */
-body #page #school-listings {
-  border-top: solid 1px #777777;
-  margin-top: 20px;
-  padding-top: 20px;
-}
-/* line 109, ../../stylesheets/screen.scss */
+/* line 110, ../../stylesheets/screen.scss */
 body #page table.column-headings {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 110, ../../stylesheets/screen.scss */
+/* line 111, ../../stylesheets/screen.scss */
 body #page table.column-headings th {
   background-color: white !important;
   font-size: 13px;
@@ -892,19 +913,19 @@ body #page table.column-headings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 112, ../../stylesheets/screen.scss */
+/* line 113, ../../stylesheets/screen.scss */
 body #page table.listing {
   margin-bottom: 0;
   padding: 0 15px 0 15px;
 }
-/* line 114, ../../stylesheets/screen.scss */
+/* line 115, ../../stylesheets/screen.scss */
 body #page #footnotes {
   border-top: solid 1px #444;
   padding-top: 5px;
   font-style: italic;
   margin: 10px 0 10px 0;
 }
-/* line 119, ../../stylesheets/screen.scss */
+/* line 120, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

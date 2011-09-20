@@ -1,0 +1,17 @@
+.full-width
+  - if @geocoded_address.present?
+    %h3
+      == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
+
+- if @all_schools.present?
+  #left-column
+    %p
+      %strong
+        List View &nbsp;|&nbsp;
+        = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    = link_to image_tag('map-picture.png'), schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    This is where the left column goes.
+  #right-column
+    = render :partial => 'listings', :locals => {:schools => @all_schools, :template => 'citywide'}
+  .full-width
+    &nbsp;

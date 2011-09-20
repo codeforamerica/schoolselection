@@ -69,8 +69,10 @@ body {
     #yellow{ background-color: $yellow; margin-top: 30px; }
     #gray{ background-color: $lightgray; margin-top: 30px; }
     
-    #above-map{ @include column(23, true); padding-bottom: 5px; }
-
+    .full-width{ @include column(23, true); padding-bottom: 5px; clear: both; }
+    #left-column{ @include column(5, true); margin-top: 10px; padding-right: 30px; border-right: solid 1px $bordergray; }
+    #right-column{ @include column(17, true); margin-top: 10px; }
+    
     #map_container {
       @include column(16);
       padding-right: 27px;
@@ -105,7 +107,6 @@ body {
       td{padding-bottom: 20px; }
     }
     #page-footer{ clear: both; }
-    #school-listings{ border-top: solid 1px $bordergray; margin-top: 20px; padding-top: 20px; }
     table.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
       th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
     }

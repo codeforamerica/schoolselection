@@ -17,9 +17,13 @@ Schoolselection::Application.routes.draw do
   resources :principals
 
   resources :schools do
-    get   :compare, on: :collection
-    post  :add, on: :member
-    post  :remove, on: :member
+    collection do 
+      get 'compare'      
+    end
+    member do 
+      post 'add'
+      post 'remove'      
+    end
   end
 
   # The priority is based upon order of creation:

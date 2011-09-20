@@ -50,7 +50,7 @@ class SchoolsController < ApplicationController
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
     respond_to do |format|
-      format.html { redirect_to schools_url(params), notice: "#{@school.name} was added to your favorites" }
+      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
       format.json { render json: @school }
     end
   end
@@ -59,7 +59,7 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     session[:favorites].delete_if {|x| x == @school.id }
     respond_to do |format|
-      format.html { redirect_to schools_url(params), notice: "#{@school.name} was added to your favorites" }
+      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
       format.json { render json: @school }
     end
   end

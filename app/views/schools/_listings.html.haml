@@ -1,28 +1,65 @@
-#school-listings
-  %table.column-headings
-    %thead
+%table.column-headings
+  %thead
+    %tr
+      %th{:width=>'20px'} &nbsp;
+      %th School Name
+      %th{:width=>'60px'} Grades
+      %th{:width=>'100px'} School Type
+      %th{:width=>'60px'} Distance
+      - if schools.first.try(:distance).present?
+        %th{:width=>'60px'}
+          - if template == "walk_zone"
+            Walk Time
+  - @walk_zone_schools.each do |school|
+    %table.listing
       %tr
-        %th School Name
-        %th{:width=>'60px'} Grades
-        %th{:width=>'100px'} School Type
+        %td{:width=>'20px'}= image_tag('green-marker-medium.png')
+        %td
+          %h4= school.name
+        %td{:width=>'60px'}
+          - unless school.grades.blank?
+            = school.grades
+        %td{:width=>'100px'}
+          = school.school_type_name
         - if schools.first.try(:distance).present?
-          %th{:width=>'60px'} Distance
-          %th{:width=>'60px'}
-            - if template == "walk_zone"
-              Walk Time
-    - schools.each do |school|
-      %table.listing
-        %tr
-          %td
-            %h4= school.name
           %td{:width=>'60px'}
-            - unless school.grades.blank?
-              = school.grades
-          %td{:width=>'100px'}
-            = school.school_type_name
-          - if schools.first.try(:distance).present?
-            %td{:width=>'60px'}
-              =raw distance(school.distance)
-            %td{:width=>'60px'}
-              - if template == "walk_zone"
-                =raw walk_time(school.distance)
+            =raw distance(school.distance)
+          %td{:width=>'60px'}
+            - if template == "walk_zone"
+              =raw walk_time(school.distance)
+              
+  - @assignment_zone_schools.each do |school|
+    %table.listing
+      %tr
+        %td{:width=>'20px'}= image_tag('yellow-marker-medium.png')
+        %td
+          %h4= school.name
+        %td{:width=>'60px'}
+          - unless school.grades.blank?
+            = school.grades
+        %td{:width=>'100px'}
+          = school.school_type_name
+        - if schools.first.try(:distance).present?
+          %td{:width=>'60px'}
+            =raw distance(school.distance)
+          %td{:width=>'60px'}
+            - if template == "walk_zone"
+              =raw walk_time(school.distance)
+              
+  - @citywide_schools.each do |school|
+    %table.listing
+      %tr
+        %td{:width=>'20px'}= image_tag('gray-marker-medium.png')
+        %td
+          %h4= school.name
+        %td{:width=>'60px'}
+          - unless school.grades.blank?
+            = school.grades
+        %td{:width=>'100px'}
+          = school.school_type_name
+        - if schools.first.try(:distance).present?
+          %td{:width=>'60px'}
+            =raw distance(school.distance)
+          %td{:width=>'60px'}
+            - if template == "walk_zone"
+              =raw walk_time(school.distance)
