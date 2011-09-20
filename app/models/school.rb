@@ -17,12 +17,16 @@ class School < ActiveRecord::Base
   
   ##### CLASS METHODS #####
   
+  def self.with_distance(address)
+    self.joins(:parcel).select("* , ST_Distance(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})')) as distance")
+  end
+  
   def self.find_all_within_radius(address, radius_in_meters)
     self.joins(:parcel).where("ST_DWithin(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})'), #{radius_in_meters})")
   end
   
   ##### INSTANCE METHODS #####
-    
+      
   def geocode_address!
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA")
