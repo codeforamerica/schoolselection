@@ -10,40 +10,67 @@
   
   %p
     %br/
-    = @school.description
+    =raw @school.description
   
   %p
-    == #{@school.address} #{@school.city.try(:name)}
-    %br/
-    ==#{@school.state.try(:abbreviation)} #{@school.zipcode}
-    %br/
-    %br/
-    %b Phone:&nbsp;
-    = @school.phone
-    %br/
-    %b Fax:&nbsp;
-    = @school.fax
-    %br/
-    %b Website:&nbsp;
-    = link_to @school.website
-  %p
+    - unless @school.address.blank?
+      %br/
+      %b Address:&nbsp;
+      == #{@school.address} #{@school.city.try(:name)}, MA #{@school.zipcode}
+    
+    - unless @school.phone.blank?
+      %br/
+      %b Phone:&nbsp;
+      = @school.phone
+    
+    - unless @school.fax.blank?
+      %br/
+      %b Fax:&nbsp;
+      = @school.fax
+    
+    - unless @school.website.blank?
+      %br/
+      %b Website:&nbsp;
+      = link_to @school.website
+      
     - unless @school.assignment_zone.blank?
+      %br/
+      %b Assignment Zone:&nbsp;
       = @school.assignment_zone.name
-      %br/
+    
     - unless @school.school_type_name.blank?
+      %br/
+      %b School Type:&nbsp;
       = @school.school_type_name
-      %br/
+    
     - unless @school.grades.blank?
+      %br/
+      %b Grades:&nbsp;
       = @school.grades
-      %br/
+    
     - unless @school.hours.blank?
+      %br/
+      %b Hours:&nbsp;
       = @school.hours
-      %br/
+    
     - unless @school.early_dismissal_time.blank?
+      %br/
+      %b Early Dismissal Time:&nbsp;
       = @school.early_dismissal_time
-      %br/
+    
     - unless @school.breakfast.blank?
-      = @school.breakfast
       %br/
+      %b Breakfast:&nbsp;
+      = @school.breakfast
+    
     - unless @school.lunch.blank?
+      %br/
+      %b School Lunch:&nbsp;
       = @school.lunch
+
+  - if @favorites.try(:include?, @school.id)
+    %h3
+      = link_to "Remove From My Favorites", remove_school_path(@school.id, params), method: :post
+  - else
+    %h3
+      = link_to "Add To My Favorites", add_school_path(@school.id, params), method: :post

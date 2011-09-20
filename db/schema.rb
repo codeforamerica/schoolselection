@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915003817) do
+ActiveRecord::Schema.define(:version => 20110920053615) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "shape",      :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
+    t.spatial  "geometry",      :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
   end
 
   create_table "cities", :force => true do |t|

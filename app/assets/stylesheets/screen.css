@@ -826,7 +826,9 @@ body #page #below-map {
   float: left;
   margin-right: 0;
   width: 910px;
-  margin-top: 20px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: solid 1px #777777;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #below-map {

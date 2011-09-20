@@ -13,14 +13,24 @@
       %ul.main-nav
         - if params[:controller] == 'high_voltage/pages'
           %li.border.on 1.&nbsp; Search
-        - else
-          %li.border== 1.&nbsp; #{link_to 'Search', root_url({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
-        - if params[:controller] == 'schools'
-          %li.border.on 2.&nbsp; Discover
-        - else
           %li.border 2.&nbsp; Discover
-        %li.border 3.&nbsp; Compare
-        %li 4.&nbsp; Connect
+          %li.border 3.&nbsp; Compare
+          %li.border 4.&nbsp; Connect
+        - elsif params[:controller] == 'schools' && params[:action] == 'index'
+          %li.border== 1.&nbsp; #{link_to 'Search', root_url}
+          %li.border.on 2.&nbsp; Discover
+          %li.border 3.&nbsp; Compare
+          %li 4.&nbsp; Connect
+        - elsif params[:controller] == 'schools' && params[:action] == 'compare'
+          %li.border== 1.&nbsp; #{link_to 'Search', root_url}
+          %li.border== 2.&nbsp; #{link_to 'Discover', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level])}
+          %li.border.on 3.&nbsp; Compare
+          %li 4.&nbsp; Connect
+        - else
+          %li.border== 1.&nbsp; #{link_to 'Search', root_url}
+          %li.border== 2.&nbsp; #{link_to 'Discover', schools_path}
+          %li.border== 3.&nbsp; #{link_to 'Compare', compare_schools_path}
+          %li 4.&nbsp; Connect
     
     #container
       = yield

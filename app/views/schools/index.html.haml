@@ -1,5 +1,5 @@
-- if params[:view] == 'list'
-  #page
+#page
+  - if params[:view] == 'list'
     - if @geocoded_address.present?
       %h3
         == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
@@ -9,8 +9,7 @@
     - if @all_schools.present?
       = render :partial => 'listings', :locals => {:schools => @all_schools, :template => 'citywide'}
   
-- else
-  #page
+  - else
     - if @grade_level.present?
       #above-map
         %h3
@@ -25,6 +24,22 @@
           <ul id="markers_list"></ul>
         #legend
           =raw map_legend
+      
+      - if @favorites.present?
+        #below-map
+          %table
+            %tr
+              %td{:colspan=>2}
+                %h3 Your Favorites
+            %tr
+              %td
+                %ul.horizontal-list
+                - for school in @favorites
+                  %li== #{school.name}&nbsp;&nbsp;
+              %td{:width=>'150px'}
+                %h3
+                  = link_to "Compare >", compare_schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level])
+        
       
     - else
       %h2 Welcome to the School Discovery App

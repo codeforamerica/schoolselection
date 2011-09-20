@@ -92,7 +92,7 @@ body {
       #legend{ font-size: 10px; img{margin: 5px 5px -5px 0;} }
     }
     
-    #below-map{ @include column(23, true); margin-top: 20px; }
+    #below-map{ @include column(23, true); margin-top: 25px; padding-top: 20px; border-top: solid 1px $bordergray;}
     
     #search-form{
       width: 450px;

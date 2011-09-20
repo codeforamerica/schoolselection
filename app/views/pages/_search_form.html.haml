@@ -3,13 +3,13 @@
     %table.search
       %tr
         %td.right Address:
-        %td= text_field_tag :address, params[:address], :class => 'address'
+        %td= text_field_tag :address, session[:address], :class => 'address'
       %tr
         %td.right Zipcode:
-        %td= text_field_tag :zipcode, params[:zipcode], :class => 'zipcode'
+        %td= text_field_tag :zipcode, session[:zipcode], :class => 'zipcode'
       %tr
         %td.right Grade Level:
-        %td= select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => params[:grade_level])
+        %td= select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => session[:grade_level])
       %tr
         %td &nbsp;
         %td= submit_tag "Search"

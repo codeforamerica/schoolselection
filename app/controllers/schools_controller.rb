@@ -3,11 +3,13 @@ class SchoolsController < ApplicationController
   
   def index
     @grade_levels = GradeLevel.all
-    address = params[:address]
-    zipcode = params[:zipcode]
-    grade_level = params[:grade_level]
+    address, session[:address] = params[:address], params[:address]
+    zipcode, session[:zipcode] = params[:zipcode], params[:zipcode]
+    grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
+    
     @address = "#{address}, #{zipcode}"
-    @geocoded_address = geocode_address(@address) if params[:address].present?
+    @geocoded_address = geocode_address(@address) if address.present?
+    @favorites = School.find(session[:favorites])
     
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
       @grade_level = GradeLevel.find_by_number(grade_level)
@@ -30,10 +32,34 @@ class SchoolsController < ApplicationController
   end
 
   def show
+    @favorites = session[:favorites]
     @school = School.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
+      format.json { render json: @school }
+    end
+  end
+  
+  def compare
+    @favorites = School.find(session[:favorites])
+  end
+  
+  def add
+    @school = School.find(params[:id])
+    session[:favorites] ||= []
+    session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
+    respond_to do |format|
+      format.html { redirect_to schools_url(params), notice: "#{@school.name} was added to your favorites" }
+      format.json { render json: @school }
+    end
+  end
+  
+  def remove
+    @school = School.find(params[:id])
+    session[:favorites].delete_if {|x| x == @school.id }
+    respond_to do |format|
+      format.html { redirect_to schools_url(params), notice: "#{@school.name} was added to your favorites" }
       format.json { render json: @school }
     end
   end
