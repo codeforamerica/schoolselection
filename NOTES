@@ -1,21 +1,6 @@
-The School Discovery App is designed to help parents 1) identify the schools to which their children are eligible to apply and 2) understand the odds of their children getting admitted. To search for schools, parents enter an address and a grade level.  The search engine logic works as follows:
-
-1. if no parameters are entered -> display a blank map and a welcome note (the default page)
-2. if a grade level and no address are entered -> display the default page with an alert message
-3. if a grade level and non-geocodeable address are entered -> display the default page with an alert message
-4. if a grade level and non-Boston address are entered -> display the default page with an alert message
-5. if a grade level and valid address are entered -> display the walk zone and assignment zone schools for that address
-6. if high school and a valid address are entered -> display the walk zone schools and all of the other high schools throughout the city
-
-
-http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
-
-SCRIBBLES und SCRABBLES
-
-heroku addons:add heroku-postgresql  postgis=true
-
 ogr2ogr -t_srs EPSG:4326 school_parcels_2012/ facility_parcels/BPS_schools.shp
 
+ruby
 require 'rgeo'
 require 'rgeo/shapefile'
 require 'rgeo/geo_json'
@@ -61,4 +46,3 @@ CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Tabl
     end
   end
 end
-
