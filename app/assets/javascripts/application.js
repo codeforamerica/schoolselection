@@ -7,3 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$('a[rel*=facebox]').live("click",function(e){
+  e.preventDefault();
+  $(e.target).facebox({
+      loadingImage : 'images/loading.gif',
+      closeImage   : 'images/closelabel.png'
+  });
+  $(e.target).trigger('click.facebox');
+});

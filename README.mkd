@@ -1,0 +1,127 @@
+#School Discovery App
+The School Discovery App is designed to help parents 1) identify the schools to which their children are eligible to apply and 2) understand the odds of their children getting admitted. To search for schools, parents enter an address and a grade level.  The search engine logic works as follows:
+
+1. if no parameters are entered -> display a blank map and a welcome note (the default page)
+2. if a grade level and no address are entered -> display the default page with an alert message
+3. if a grade level and non-geocodeable address are entered -> display the default page with an alert message
+4. if a grade level and non-Boston address are entered -> display the default page with an alert message
+5. if a grade level and valid address are entered -> display the walk zone and assignment zone schools for that address
+6. if high school and a valid address are entered -> display the walk zone schools and all of the other high schools throughout the city
+
+
+[http://schoolselection.herokuapp.com/](http://schoolselection.herokuapp.com/)
+
+## <a name="installation">Installation</a>
+  git clone git@heroku.com:schoolselection.git
+
+
+## SCRIBBLES und SCRABBLES
+
+  ogr2ogr -t_srs EPSG:4326 school_parcels_2012/ facility_parcels/BPS_schools.shp
+
+```ruby
+require 'rgeo'
+require 'rgeo/shapefile'
+require 'rgeo/geo_json'
+parcels = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/facility_parcels.shp')
+schools = RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/school_parcels_2012/BPS_schools.shp')
+schools_array = []
+schools.each do |s|
+  schools_array << s
+end
+parcels.each do |parcel|
+  rails_parcel = Parcel.find_or_create_by_build_name_and_address_and_city_id_and_zipcode_and_shape(parcel.attributes['BLDG_NAME'], parcel.attributes['ADDRESS'], City.find_or_create_by_name(parcel.attributes['CITY'].try(:id)), parcel.attributes['ZIPCODE'], parcel.geometry)
+  bps_school = schools_array.find {|x| x.attributes['BLDG_ID'] == parcel.attributes['BUILD_ID']}
+  if bps_school.present?
+    rails_school = School.find_by_bpsid(bps_school.attributes['SCH_ID'])
+    rails_school.update_attribute(:parcel_id, rails_parcel.id) if rails_school.present?
+  end
+end
+
+# zones =   RGeo::Shapefile::Reader.open('../../Projects/SchoolSelection/Data/assignment_zones/zones_4326')
+# dbf_schools = DBF::Table.new('../../Projects/SchoolSelection/Data/school_parcels_2011/schools.dbf')
+# georuby_parcels = GeoRuby::Shp4r::ShpFile.open('../../Projects/SchoolSelection/Data/school_parcels/school_parcels')
+
+
+IMPORT SCHOOLS FROM 2011-2012 CSV
+CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Table.csv") do |row|
+  if row[0].present?
+    city = City.find_or_create_by_name(row[5])
+    neighborhood = Neighborhood.find_or_create_by_name(row[7])
+    assignment_zone = AssignmentZone.find_or_create_by_name(row[8])
+    grades = row[13].split(/\b*-\b*/)
+    puts grades.inspect
+    start_grade = GradeLevel.find_by_number(grades[0])
+    end_grade = GradeLevel.find_by_number(grades[1])
+    puts [start_grade,end_grade].inspect
+    if start_grade.present? && end_grade.present?
+      grade_levels = GradeLevel.where("(id >= #{start_grade.id}) AND (id <= #{end_grade.id})").all
+      puts grade_levels.inspect
+      school = School.find_or_create_by_bpsid(row[1])
+      school.grade_levels << grade_levels
+      school.save
+    else
+      school = School.find_or_create_by_bpsid(row[1])
+    end
+  end
+end
+```
+
+## <a name="deploying">DEPLOYING TO HEROKU:</a>
+there are a couple of obstacles to hosting this app on heroku.
+
+1) you need to have a postgis-enabled database. The shared database is not postgis-enabled. You need to have a private database, set up with [command]. Then promote it to your database with "heroku pg:promote"
+2) when pushing with "heroku db:push", the taps gem doesn't recognize the postgis type. you need to temporarily change your config/database.yml file to have the adapter read "postgresql", not "postgis", or you can manually specify the path to your database with a postgre:// url
+3) taps doesn't seem to preserve geographic column type. You'll need to go into "heroku pg:psql" and run:
+ALTER TABLE parcels ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
+ALTER TABLE assignment_zones ALTER shape TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(shape);
+
+4) RGeo spatial adapter needs the adapter name set to 'postgis' to load. you accomplish this by setting the heroku DATABASE_URL.
+run "heroku config", and look at DATABASE_URL
+NEW_URL is the existing DATABASE_URL, but with postgres:// replaced with postgis://
+run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current database url
+
+5) run 'heroku restart', to make sure your app loads the database correctly.
+
+## <a name="contributing">Contributing</a>
+In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
+
+Here are some ways *you* can contribute:
+
+* by using alpha, beta, and prerelease versions
+* by reporting bugs
+* by suggesting new features
+* by writing or editing documentation
+* by writing specifications
+* by writing code (**no patch is too small**: fix typos, add comments, clean up inconsistent whitespace)
+* by refactoring code
+* by resolving [issues](https://github.com/codeforamerica/schoolselection/issues)
+* by reviewing patches
+* [financially](https://secure.codeforamerica.org/page/contribute)
+
+## <a name="issues">Submitting an Issue</a>
+We use the [GitHub issue tracker](https://github.com/codeforamerica/schoolselection/issues)
+to track bugs and features. Before submitting a bug report or feature request,
+check to make sure it hasn't already been submitted. You can indicate support
+for an existing issuse by voting it up. When submitting a bug report, please
+include a [Gist](https://gist.github.com/) that includes a stack trace and any
+details that may be necessary to reproduce the bug, including your gem version,
+Ruby version, and operating system. Ideally, a bug report should include a pull
+request with failing specs.
+
+## <a name="pulls">Submitting a Pull Request</a>
+1. Fork the project.
+2. Create a topic branch.
+3. Implement your feature or bug fix.
+4. Add documentation for your feature or bug fix.
+5. Run <tt>bundle exec rake doc:yard</tt>. If your changes are not 100% documented, go back to step 4.
+6. Add specs for your feature or bug fix.
+7. Run <tt>bundle exec rake spec</tt>. If your changes are not 100% covered, go back to step 6.
+8. Commit and push your changes.
+9. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
+
+## <a name="copyright">Copyright</a>
+Copyright (c) 2011 Code for America.
+See [LICENSE](https://github.com/codeforamerica/schoolselection/blob/master/LICENSE.md) for details.
+
+[![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/schoolselection.png)](http://stats.codeforamerica.org/projects/schoolselection)

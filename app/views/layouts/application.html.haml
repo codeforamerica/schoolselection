@@ -6,13 +6,6 @@
     = stylesheet_link_tag 'print.css', :media => 'print'
     = javascript_include_tag 'application'
     = csrf_meta_tag 
-    %script{:type=>"text/javascript"}
-      jQuery(document).ready(function($) {
-      $('a[rel*=facebox]').facebox({
-      loadingImage : 'images/loading.gif',
-      closeImage   : 'images/closelabel.png'
-      })
-      })
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
