@@ -7,13 +7,13 @@
       %th{:width=>'100px'} School Type
       %th{:width=>'60px'} Distance
       %th{:width=>'60px'} Walk Time
-            
-  - @walk_zone_schools.each do |school|
-    = render :partial => 'listings_table', :locals => {:school => school, :color => 'green'}
+  %tbody
+    - @walk_zone_schools.each do |school|
+      = render :partial => 'listing_row', :locals => {:school => school, :color => 'green'}
               
-  - @assignment_zone_schools.each do |school|
-    = render :partial => 'listings_table', :locals => {:school => school, :color => 'yellow'}
+    - @assignment_zone_schools.each do |school|
+      = render :partial => 'listing_row', :locals => {:school => school, :color => 'yellow'}
     
-  - @citywide_schools.each do |school|
-    = render :partial => 'listings_table', :locals => {:school => school, :color => 'gray'}
+    - @citywide_schools.each do |school|
+      = render :partial => 'listing_row', :locals => {:school => school, :color => 'gray'}
     
