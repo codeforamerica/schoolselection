@@ -24,8 +24,7 @@
     
     #container
       = yield
-      - if params[:controller] == 'schools'
-        = link_to 'box', school_path(School.first), :rel => 'facebox'
+
     #footer
       = yield :scripts
       <script type="text/javascript">
