@@ -10,56 +10,13 @@
         %th{:width=>'60px'}
           - if template == "walk_zone"
             Walk Time
+            
   - @walk_zone_schools.each do |school|
-    %table.listing
-      %tr
-        %td{:width=>'20px'}= image_tag('green-marker-medium.png')
-        %td
-          %h4= school.name
-        %td{:width=>'60px'}
-          - unless school.grades.blank?
-            = school.grades
-        %td{:width=>'100px'}
-          = school.school_type_name
-        - if schools.first.try(:distance).present?
-          %td{:width=>'60px'}
-            =raw distance(school.distance)
-          %td{:width=>'60px'}
-            - if template == "walk_zone"
-              =raw walk_time(school.distance)
+    = render :partial => 'listings_table', :locals => {:school => school, :color => 'green'}
               
   - @assignment_zone_schools.each do |school|
-    %table.listing
-      %tr
-        %td{:width=>'20px'}= image_tag('yellow-marker-medium.png')
-        %td
-          %h4= school.name
-        %td{:width=>'60px'}
-          - unless school.grades.blank?
-            = school.grades
-        %td{:width=>'100px'}
-          = school.school_type_name
-        - if schools.first.try(:distance).present?
-          %td{:width=>'60px'}
-            =raw distance(school.distance)
-          %td{:width=>'60px'}
-            - if template == "walk_zone"
-              =raw walk_time(school.distance)
-              
+    = render :partial => 'listings_table', :locals => {:school => school, :color => 'yellow'}
+    
   - @citywide_schools.each do |school|
-    %table.listing
-      %tr
-        %td{:width=>'20px'}= image_tag('gray-marker-medium.png')
-        %td
-          %h4= school.name
-        %td{:width=>'60px'}
-          - unless school.grades.blank?
-            = school.grades
-        %td{:width=>'100px'}
-          = school.school_type_name
-        - if schools.first.try(:distance).present?
-          %td{:width=>'60px'}
-            =raw distance(school.distance)
-          %td{:width=>'60px'}
-            - if template == "walk_zone"
-              =raw walk_time(school.distance)
+    = render :partial => 'listings_table', :locals => {:school => school, :color => 'gray'}
+    

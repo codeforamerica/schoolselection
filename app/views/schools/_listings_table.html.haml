@@ -1,0 +1,16 @@
+%table.listing
+  %tr
+    %td{:width=>'20px'}= image_tag("#{color}-marker-medium.png")
+    %td
+      %h4= school.name
+    %td{:width=>'60px'}
+      - unless school.grades.blank?
+        = school.grades
+    %td{:width=>'100px'}
+      = school.school_type_name
+    - if school.try(:distance).present?
+      %td{:width=>'60px'}
+        =raw distance(school.distance)
+      %td{:width=>'60px'}
+        - if template == "walk_zone"
+          =raw walk_time(school.distance)
