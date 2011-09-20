@@ -12,6 +12,8 @@ http://schoolselection.herokuapp.com/ | git@heroku.com:schoolselection.git
 
 SCRIBBLES und SCRABBLES
 
+heroku addons:add heroku-postgresql  postgis=true
+
 ogr2ogr -t_srs EPSG:4326 school_parcels_2012/ facility_parcels/BPS_schools.shp
 
 require 'rgeo'
