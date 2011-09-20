@@ -10,7 +10,6 @@
       = school.school_type_name
     - if school.try(:distance).present?
       %td{:width=>'60px'}
-        =raw distance(school.distance)
+        == #{distance_in_miles_from_meters(school.distance)} mi.
       %td{:width=>'60px'}
-        - if template == "walk_zone"
-          =raw walk_time(school.distance)
+        == #{walk_time(school.distance)} min.

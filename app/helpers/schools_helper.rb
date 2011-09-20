@@ -4,8 +4,12 @@ module SchoolsHelper
     "#{distance.to_f.round(2)}&nbsp;miles"
   end
   
+  def distance_in_miles_from_meters(distance)
+    (distance.to_f / MILES_TO_METERS).round(2)
+  end
+  
   def walk_time(distance)
-    "#{((distance.to_f / 3) * 60).floor}&nbsp;min"
+    (distance.to_f / WALK_TIME_METERS_PER_MINUTE).floor
   end
   
   def alert_message

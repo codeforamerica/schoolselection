@@ -6,10 +6,7 @@
       %th{:width=>'60px'} Grades
       %th{:width=>'100px'} School Type
       %th{:width=>'60px'} Distance
-      - if schools.first.try(:distance).present?
-        %th{:width=>'60px'}
-          - if template == "walk_zone"
-            Walk Time
+      %th{:width=>'60px'} Walk Time
             
   - @walk_zone_schools.each do |school|
     = render :partial => 'listings_table', :locals => {:school => school, :color => 'green'}
