@@ -823,26 +823,29 @@ body #page #map-list #options ul#markers_list li {
 }
 /* line 82, ../../stylesheets/screen.scss */
 body #page #search-form {
+  width: 400px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-size: 15px;
 }
-/* line 84, ../../stylesheets/screen.scss */
+/* line 87, ../../stylesheets/screen.scss */
 body #page #search-form .address {
   width: 250px;
 }
-/* line 85, ../../stylesheets/screen.scss */
+/* line 88, ../../stylesheets/screen.scss */
 body #page #search-form .zipcode {
   width: 80px;
 }
-/* line 88, ../../stylesheets/screen.scss */
+/* line 91, ../../stylesheets/screen.scss */
 body #page #page-footer {
   clear: both;
 }
-/* line 90, ../../stylesheets/screen.scss */
+/* line 93, ../../stylesheets/screen.scss */
 body #page thead.column-headings {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 91, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #page thead.column-headings th {
   background-color: white !important;
   font-size: 13px;
@@ -850,12 +853,12 @@ body #page thead.column-headings th {
   font-weight: normal;
   padding-bottom: 10px;
 }
-/* line 93, ../../stylesheets/screen.scss */
+/* line 96, ../../stylesheets/screen.scss */
 body #page table.listing {
   margin-bottom: 0;
   padding: 0 15px 0 15px;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 98, ../../stylesheets/screen.scss */
 body #page .listings-header {
   -moz-box-shadow: inset 0 0 5px #333333;
   -webkit-box-shadow: inset 0 0 5px #333333;
@@ -870,7 +873,7 @@ body #page .listings-header {
   padding: 12px 20px 5px 20px;
   margin: 10px 0 30px 0;
 }
-/* line 100, ../../stylesheets/screen.scss */
+/* line 103, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;

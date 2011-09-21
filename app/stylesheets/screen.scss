@@ -80,6 +80,9 @@ body {
     }
         
     #search-form{
+      width: 400px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       font-size: 15px; 
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
