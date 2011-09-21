@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110920053615) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "geometry",      :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
+    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
   end
 
   create_table "cities", :force => true do |t|
