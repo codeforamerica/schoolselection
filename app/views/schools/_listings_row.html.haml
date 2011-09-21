@@ -4,6 +4,8 @@
   %td
     %h4
       = link_to school.name, school_path(school)
+  %td
+    = school.grade_levels.short_string
   %td{:width=>'60px'}
     = school.neighborhood.try(:name)
   %td{:width=>'60px'}
