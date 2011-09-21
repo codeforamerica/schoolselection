@@ -1,15 +1,5 @@
 #page     
-  - if params[:view] == 'list'
-    = render :partial => 'list_view'  
+  - if params[:view] == 'map'
+    = render :partial => 'map_view'  
   - else
-    - if @grade_level.present?
-      = render :partial => 'map_view'
-      
-    - else
-      %h2 Welcome to the School Discovery App
-      %p.large To get started, please enter your home address and your child's upcoming grade level in the search form, below.
-      =raw alert_message
-      = render :partial => 'pages/search_form'
-    
-    <div id="page-footer"></div>
-  
+    = render :partial => 'list_view'  
