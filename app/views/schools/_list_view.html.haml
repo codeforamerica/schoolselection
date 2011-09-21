@@ -1,17 +1,45 @@
-.full-width
-  - if @geocoded_address.present?
-    %h3
-      == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
-
 - if @all_schools.present?
   #left-column
-    %p
-      %strong
-        List View &nbsp;|&nbsp;
-        = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
-    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
-    This is where the left column goes.
+    %strong
+      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button-active'
+      = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button'
+    
+    #small-map
+      = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    
+    %span.large.bold
+      Filters
+    = form_tag('/schools', :method => :get) do
+      School Type:
+      %br/
+      = select_tag :school_type, options_for_select(['Select', 'Charter School', 'Public School'])
+      %br/
+      Grade Level:
+      %br/
+      = select_tag :grade_level, options_for_select(['Select', 'Elementary School', 'Middle School', 'High School'])
+      %br/
+      Facilities:
+      %br/
+      = check_box_tag :facility
+      Gym
+      %br/
+      = check_box_tag :facility
+      Pool
+      %br/
+      = check_box_tag :facility
+      Theater
+      %br/
+      = check_box_tag :facility
+      Courtyard
+      %br/
+      %br/
+      Keywords
+      %br/
+      = text_field_tag :keywords
+      %br/
+      %br/
+      = submit_tag "Update Results"
   #right-column
-    = render :partial => 'listings', :locals => {:schools => @all_schools, :template => 'citywide'}
+    = render :partial => 'listings_table', :locals => {:schools => @all_schools, :template => 'citywide'}
   .full-width
     &nbsp;

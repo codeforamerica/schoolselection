@@ -38,14 +38,14 @@ module SchoolsHelper
   
   def static_gmap_image
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=200x200" + 
+      "size=205x170" + 
       "&maptype=roadmap" +
       "&sensor=false" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|#{@assignment_zone.geometry[0].exterior_ring.points.each_slice(15).map {|ps| "#{ps.last.lat},#{ps.last.lon}"} * "|"}", 
-      :alt => "Map View")
+      :alt => "Map View", :class => 'static-map-image')
   end
   
   ####### MAP JSON #######
@@ -76,6 +76,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>Grades: #{x.grade_levels.try(:first).try(:number)} - #{x.grade_levels.try(:last).try(:number)}</strong><br />#{x.hours}<br /><strong>#{link_to 'More Info >', school_path(x), :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>Grades: #{x.grade_levels.try(:first).try(:number)} - #{x.grade_levels.try(:last).try(:number)}</strong><br />#{x.hours}<br /><strong>#{link_to 'More Info >', school_path(x.id), :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
   end
 end

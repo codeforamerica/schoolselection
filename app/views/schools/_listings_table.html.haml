@@ -1,0 +1,18 @@
+%table.column-headings
+  %thead
+    %tr
+      %th{:width=>'15px'} &nbsp;
+      %th School Name
+      %th{:width=>'60px'} Grades
+      %th{:width=>'60px'} Distance
+      %th{:width=>'60px'} Walk Time
+  %tbody
+    - @walk_zone_schools.each do |school|
+      = render :partial => 'listings_row', :locals => {:school => school, :type => 'walk_zone', :color => 'green'}
+              
+    - @assignment_zone_schools.each do |school|
+      = render :partial => 'listings_row', :locals => {:school => school, :type => 'assignment_zone', :color => 'yellow'}
+    
+    - @citywide_schools.each do |school|
+      = render :partial => 'listings_row', :locals => {:school => school, :type => 'citywide', :color => 'gray'}
+    

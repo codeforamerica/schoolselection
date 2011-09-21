@@ -1,17 +1,9 @@
-#above-map
-  %h3
-    == #{@geocoded_address.full_address.gsub(/, USA/, '')} &nbsp; Grade: #{params[:grade_level]} 
-    %span.small
-      == &nbsp;&nbsp; #{link_to "Search Again", root_url({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level]})}
-      == &nbsp;&nbsp; #{link_to "List View", schools_path({:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :view => 'list'})}
 #large-map-container
   = walk_zone_map
 #map-list
   %h4 Your Eligible Schools
   #options
     <ul id="markers_list"></ul>
-  #legend
-    =raw map_legend
 
 - if @favorites.present?
   #below-map

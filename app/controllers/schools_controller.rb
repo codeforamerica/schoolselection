@@ -9,7 +9,7 @@ class SchoolsController < ApplicationController
     
     @address = "#{address}, #{zipcode}"
     @geocoded_address = geocode_address(@address) if address.present?
-    @favorites = School.find(session[:favorites])
+    @favorites = School.find(session[:favorites]) if session[:favorites].present?
     
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
       @grade_level = GradeLevel.find_by_number(grade_level)

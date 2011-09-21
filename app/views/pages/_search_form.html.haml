@@ -1,5 +1,6 @@
 #search-form.gray-box
   = form_tag('/schools', :method => :get) do
+    = hidden_field_tag 'view', 'list'
     %table.search
       %tr
         %td.right Address:

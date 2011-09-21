@@ -1,0 +1,17 @@
+%tr
+  %td{:width=>'15px'}
+    - if session[:favorites].try(:include?, school.id)
+      = image_tag('star.png')
+    - else
+      = link_to image_tag('star-gray.png'), add_school_path(school), method: :post, remote: true
+  %td
+    %h4
+      = link_to school.name, school_path(school)
+  %td{:width=>'60px'}
+    - unless school.grades.blank?
+      = school.grades
+  %td{:width=>'60px'}
+    == #{distance_in_miles_from_meters(school.distance)} mi.
+  %td{:width=>'60px'}
+    - if type == 'walk_zone'
+      == #{walk_time(school.distance)} min.
