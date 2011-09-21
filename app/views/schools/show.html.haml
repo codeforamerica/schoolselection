@@ -70,7 +70,9 @@
 
   - if @favorites.try(:include?, @school.id)
     %h3
+      == #{image_tag('star-gray.png')}&nbsp;
       = link_to "Remove From My Favorites", remove_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post
   - else
     %h3
+      == #{image_tag('star.png')}&nbsp;
       = link_to "Add To My Favorites", add_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post

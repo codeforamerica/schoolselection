@@ -18,8 +18,8 @@ class SchoolsController < ApplicationController
       @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address)
       @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address) - @walk_zone_schools
       @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address) - @walk_zone_schools
-      
       @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+      
     else
       @assignment_zones = AssignmentZone.all
       @map_center = Geokit::Geocoders::GoogleGeocoder.geocode('Roxbury, Boston, MA')

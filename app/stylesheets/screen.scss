@@ -13,7 +13,7 @@ body {
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
-  font-size: 13px;
+  font-size: 14px;
   font-family: ff-meta-web-pro,verdana;
   background-color: white;
   text-align: left;
@@ -30,8 +30,8 @@ body {
   
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-weight: bold; font-size: 1.8em; color: #333; margin-bottom: 0.1em;}
-  h3{ font-weight: bold; font-size: 1.35em; margin-bottom: 0.5em; color: #333; }
-  h4{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.1em; color: #333; }
+  h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
+  h4{ font-weight: bold; font-size: 1.15em; margin-bottom: 0; color: #333; }
 
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}

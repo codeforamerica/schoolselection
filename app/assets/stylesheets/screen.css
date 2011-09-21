@@ -147,7 +147,7 @@ body {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
   color: #333333;
   font-size: 75%;
-  font-size: 13px;
+  font-size: 14px;
   font-family: ff-meta-web-pro,verdana;
   background-color: white;
   text-align: left;
@@ -563,15 +563,15 @@ body h2 {
 /* line 33, ../../stylesheets/screen.scss */
 body h3 {
   font-weight: bold;
-  font-size: 1.35em;
+  font-size: 1.25em;
   margin-bottom: 0.5em;
   color: #333;
 }
 /* line 34, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
-  font-size: 1.25em;
-  margin-bottom: 0.1em;
+  font-size: 1.15em;
+  margin-bottom: 0;
   color: #333;
 }
 /* line 36, ../../stylesheets/screen.scss */

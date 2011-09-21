@@ -1,9 +1,12 @@
 %tr
+  %td
+    - if session[:favorites].try(:include?, school.id)
+      = image_tag('star.png')
   %td.dot
     = image_tag("#{color}-dot.png")
   %td
     %h4
-      = link_to school.name, school_path(school)
+      = link_to school.name, school_path(school), :rel => 'facebox'
   %td
     = school.grade_levels.short_string
   %td{:width=>'60px'}
