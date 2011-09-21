@@ -1,7 +1,7 @@
 #left-column
   #left-column-nav
-    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'button'
-    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button-active'
+    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'small-button'
+    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'small-button-active'
     
   #map-list
     %h4 Eligible Schools

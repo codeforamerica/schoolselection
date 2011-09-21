@@ -1,22 +1,22 @@
 - if @all_schools.present?
   #left-column
     %strong
-      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'button-active'
-      = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button'
+      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'small-button-active'
+      = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'small-button'
     
     #small-map
       = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
     
     %span.large.bold
-      Filters
+      Filter Search Results
     = form_tag('/schools', :method => :get) do
+      Eligibility Type:
+      %br/
+      = select_tag :school_type, options_for_select(['All', 'Walk Zone', 'Assignment Zone', 'Citywide'])
+      %br/
       School Type:
       %br/
-      = select_tag :school_type, options_for_select(['Select', 'Charter School', 'Public School'])
-      %br/
-      Grade Level:
-      %br/
-      = select_tag :grade_level, options_for_select(['Select', 'Elementary School', 'Middle School', 'High School'])
+      = select_tag :grade_level, options_for_select(['All', 'English Language Center', 'Examination School', 'Special Education', 'High School'])
       %br/
       Facilities:
       %br/

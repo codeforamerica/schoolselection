@@ -1,14 +1,18 @@
 ---
 closelabel.png: closelabel-6beb3c6f4103e714745b1f86a4e88554.png
+gray-dot.png: gray-dot-afc2923a8ed639b62d8186e4fc67d7d2.png
 gray-marker-medium.png: gray-marker-medium-25e04a6dd966d5721c189938ed2dbed2.png
 gray-marker-small.png: gray-marker-small-31b8696cf5495de0b27be0a596a3e5e1.png
 gray-marker.png: gray-marker-3ea523ed86fc8808b481378b83a377c5.png
+green-dot.png: green-dot-5a4ebbc898e00f571f1d07bccd09bd1b.png
 green-marker-medium.png: green-marker-medium-35de8109bb32d3f73910e34347c09012.png
 green-marker-small.png: green-marker-small-61f02c956896d3fb73508240897c6136.png
 green-marker.png: green-marker-e2a8480dc50613bca506dfed863d1834.png
 loading.gif: loading-4c63ee3c0aab394f5d00909cc53f81a5.gif
 map-picture.png: map-picture-891fc9d1749782bf40eeda9e8148e58a.png
+star-gray.png: star-gray-7d8695cf4731b46e2b08b1395bbcd30e.png
 star.png: star-74e02a0a3b095bf21009ce8fc0f05755.png
+yellow-dot.png: yellow-dot-74c961122af52d26db11c400c8ffa9da.png
 yellow-marker-medium.png: yellow-marker-medium-b8b574c443d1f7689dddcf36e0b08046.png
 yellow-marker-small.png: yellow-marker-small-72c99753fae616fe500043c8177076ef.png
 yellow-marker.png: yellow-marker-c7e1ccb3047b1878fd63ecf7f88717dd.png
@@ -23,4 +27,4 @@ gmaps4rails/gmaps4rails.mapquest.js: gmaps4rails/gmaps4rails-02096f33dfa406df74c
 gmaps4rails/gmaps4rails.openlayers.js: gmaps4rails/gmaps4rails-6d042c7d7c886eaf717a3d3978118289.openlayers.js
 marker.png: marker-0151e9a69499b74949d2a704671255aa.png
 application.js: application-5e120f78b8a913a00ee0224063ea7cd0.js
-application.css: application-f957ae61500c42cd74023c65eb2f2cc4.css
+application.css: application-c051a0f847b86be940ade5f4ee1f53ef.css
