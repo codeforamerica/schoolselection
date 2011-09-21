@@ -5,7 +5,7 @@ module SchoolsHelper
   end
   
   def distance_in_miles_from_meters(distance)
-    (distance.to_f / MILES_TO_METERS).round(2)
+    (distance.to_f / METERS_PER_MILE).round(2)
   end
   
   def walk_time(distance)
@@ -63,7 +63,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * MILES_TO_METERS, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json
