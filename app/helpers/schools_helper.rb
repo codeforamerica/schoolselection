@@ -36,6 +36,18 @@ module SchoolsHelper
     "#{image_tag('green-marker-small.png')} Walk Zone School <br />#{image_tag('yellow-marker-small.png')} Assignment Zone School <br />#{image_tag('gray-marker-small.png')} Citywide School"
   end
   
+  def static_gmap_image
+    image_tag("http://maps.google.com/maps/api/staticmap?" + 
+      "size=200x200" + 
+      "&maptype=roadmap" +
+      "&sensor=false" +
+      "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
+      "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
+      "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
+      "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|#{@assignment_zone.geometry[0].exterior_ring.points.each_slice(15).map {|ps| "#{ps.last.lat},#{ps.last.lon}"} * "|"}", 
+      :alt => "Map View")
+  end
+  
   ####### MAP JSON #######
   
   def walk_zone_map
@@ -51,7 +63,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * 1610, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * MILES_TO_METERS, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json

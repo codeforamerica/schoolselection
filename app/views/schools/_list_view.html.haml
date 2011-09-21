@@ -9,7 +9,7 @@
       %strong
         List View &nbsp;|&nbsp;
         = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
-    = link_to image_tag('map-picture.png'), schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
     This is where the left column goes.
   #right-column
     = render :partial => 'listings', :locals => {:schools => @all_schools, :template => 'citywide'}
