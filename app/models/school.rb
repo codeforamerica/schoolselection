@@ -18,7 +18,7 @@ class School < ActiveRecord::Base
   ##### CLASS METHODS #####
   
   def self.with_distance(address)
-    self.joins(:parcel).select("* , ST_Distance(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})')) as distance")
+    self.joins(:parcel).select("ST_Distance(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})')) as distance")
   end
   
   def self.find_all_within_radius(address, radius_in_meters)
