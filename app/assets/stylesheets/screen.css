@@ -614,7 +614,7 @@ body input {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 14px;
   margin-right: 10px;
   border: 1px solid #777777;
 }
@@ -672,12 +672,12 @@ body .right {
 }
 /* line 47, ../../stylesheets/screen.scss */
 body .gray-box {
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -o-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -khtml-border-radius: 7px;
-  border-radius: 7px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
   background-color: #dcdcdc;
   padding: 10px;
   margin-bottom: 30px;
