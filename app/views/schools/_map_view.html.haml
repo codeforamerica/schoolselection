@@ -1,21 +1,12 @@
-#large-map-container
-  = walk_zone_map
-#map-list
-  %h4 Your Eligible Schools
-  #options
-    <ul id="markers_list"></ul>
-
-- if @favorites.present?
-  #below-map
-    %table
-      %tr
-        %td{:colspan=>2}
-          %h3 Your Favorites
-      %tr
-        %td
-          %ul.horizontal-list
-          - for school in @favorites
-            %li== #{school.name}&nbsp;&nbsp;
-        %td{:width=>'150px'}
-          %h3
-            = link_to "Compare >", compare_schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level])
+#left-column
+  #left-column-nav
+    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'button'
+    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button-active'
+    
+  #map-list
+    %h4 Eligible Schools
+    #options
+      <ul id="markers_list"></ul>
+#right-column
+  #map-container
+    = walk_zone_map

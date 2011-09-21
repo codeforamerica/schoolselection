@@ -13,8 +13,8 @@ body {
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
-  font-size: 14px;
-/*  background-image: url(/images/canvas.jpg); */
+  font-size: 13px;
+  font-family: ff-meta-web-pro,verdana;
   background-color: white;
   text-align: left;
   
@@ -23,17 +23,17 @@ body {
   a:active{ color: $blue; text-decoration: underline; }
   a.visited{ color: $blue; text-decoration: none; }
   a.visited:hover{ color: $blue; text-decoration: underline; }
-  a.button{ @include border-radius(6px); color: $blue; padding: 5px 7px 5px 7px; background-color: white; }
-  a.button-active{ @include border-radius(6px); color: white; padding: 5px 7px 5px 7px; background-color: orange; }
+  a.button{ @include border-radius(6px); color: $blue; padding: 5px 8px 3px 8px; background-color: white; }
+  a.button-active{ @include border-radius(6px); color: white; padding: 5px 8px 3px 8px; background-color: orange; }
   
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-weight: bold; font-size: 1.8em; color: #333; margin-bottom: 0.1em;}
   h3{ font-weight: bold; font-size: 1.35em; margin-bottom: 0.5em; color: #333; }
-  h3.red{ font-weight: bold; font-size: 1.35em; margin-bottom: 0; color: #bf1300; }
   h4{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.1em; color: #333; }
 
   input{ @include border-radius(5px); font-size: 15px; margin-right: 10px; border: 1px solid $bordergray;}
   select{ font-size: 15px; margin: 0 10px 0 1px; }
+  input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; }
   
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   .italic{ font-style: italic; }
@@ -43,80 +43,54 @@ body {
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .right{ text-align: right; }
   .gray-box{ @include border-radius(7px); background-color: #dcdcdc; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
-    
-  #navigation{ 
-    @include container; 
-    @include border-radius(10px); 
-    @include linear-gradient(color-stops(#FFF, #AAA));
-    border: 1px solid $bordergray;
-    margin-top: 30px; 
-    ul.main-nav{ @include horizontal-list; }
-    li{ text-align: center; width: 225px; padding-top: 8px; padding-bottom: 8px;}
-    li.border{ border-right: solid 1px #444; @include box-shadow(#333 0 1px 0); }
-    li.on{ background-color: white; color: #333;}
-    a{ color: #333;}
-    a:hover{ color: #333; text-decoration: underline;}
-    font-size: 18px; font-weight: bold; color: #333; 
-  }
   
-  #container{ 
-    @include container; 
-    margin-top: 20px; 
-    margin-bottom: 25px;
-    background-color: white; 
-  }
+  
+  #container{ @include container; margin-top: 20px; margin-bottom: 25px; background-color: white; }
   
   #page{ 
-    .listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
-    #green{ background-color: $green; }
-    #yellow{ background-color: $yellow; margin-top: 30px; }
-    #gray{ background-color: $lightgray; margin-top: 30px; }
-    
     .full-width{ @include column(23, true); padding-bottom: 5px; clear: both; }
-    #left-column{ @include column(5, true); padding: 5px 35px 20px 0; border-right: solid 1px #dcdcdc; 
-      select{ margin-bottom: 10px; }
-    }
-    #right-column{ @include column(18, true); height: 100%; padding: 5px 0 20px 10px; }
     
+    #left-column{ @include column(5, true); padding: 5px 50px 20px 0; 
+      select{ margin-bottom: 10px; }
+      #left-column-nav{ font-weight: bold; margin-bottom: 20px;}
+    }
+    #right-column{ @include column(17, true); height: 100%; padding: 5px 0 20px 0; }
+    .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
     #small-map{ padding: 20px 0 20px 0; 
       .static-map-image{ @include border-radius(7px); }
     }
     #map_container {
-      @include column(16);
-      padding-right: 27px;
-      #gmaps4rails_map { @include border-radius(7px); width: 100%; height: 534px; padding-right: 10px; }
+      #gmaps4rails_map { @include border-radius(7px); width: 100%; height: 550px; padding-right: 10px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     
     #map-list{
       @include column(6, true);
       #options{
-        height: 499px;
+        height: 475px;
         margin: 15px 0 15px 0;
         overflow: scroll;
-        ul#markers_list{ padding-left: 18px;
-          a{ font-weight: bold; }
-          a:visited{ font-weight: bold; }
+        ul#markers_list{ 
+          padding-left: 15px;
+          li{ padding-bottom: 7px; font-weight: bold; }
         }
       }
-      #legend{ font-size: 10px; img{margin: 5px 5px -5px 0;} }
     }
-    
-    #below-map{ @include column(23, true); margin-top: 25px; padding-top: 20px; border-top: solid 1px $bordergray;}
-    
+        
     #search-form{
       font-size: 15px; 
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
     }
+    
     #page-footer{ clear: both; }
-    table.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
+    
+    thead.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
       th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
     }
     table.listing{ margin-bottom: 0; padding: 0 15px 0 15px; }
-    
-    #footnotes{ border-top: solid 1px #444; padding-top: 5px;  font-style: italic; margin: 10px 0 10px 0; }
-  
+    .listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
+      
   }
   
   #footer{ 

@@ -1,7 +1,7 @@
 - if @all_schools.present?
   #left-column
     %strong
-      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button-active'
+      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'button-active'
       = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'button'
     
     #small-map
@@ -33,13 +33,7 @@
       Courtyard
       %br/
       %br/
-      Keywords
-      %br/
-      = text_field_tag :keywords
-      %br/
-      %br/
       = submit_tag "Update Results"
   #right-column
-    = render :partial => 'listings_table', :locals => {:schools => @all_schools, :template => 'citywide'}
-  .full-width
-    &nbsp;
+    = render :partial => 'listings_table', :locals => {:schools => @all_schools}
+        
