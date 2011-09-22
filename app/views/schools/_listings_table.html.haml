@@ -1,5 +1,5 @@
-%table.striped
-  %thead.column-headings
+%table.listings
+  %thead
     %tr
       %th{:width=>'14px'} &nbsp;
       %th School Name
@@ -8,18 +8,14 @@
       %th{:width=>'60px'} Distance
       %th{:width=>'60px'} Walk Time
   %tbody
-    - counter = 0
     - if @walk_zone_schools.present?
       - @walk_zone_schools.each do |school|
-        - counter += 1
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'walk_zone', :color => 'green', :counter => counter}
+        = render :partial => 'listings_row', :locals => {:school => school, :type => 'walk_zone', :color => 'green'}
               
     - if @assignment_zone_schools.present?
       - @assignment_zone_schools.each do |school|
-        - counter += 1
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'assignment_zone', :color => 'yellow', :counter => counter}
+        = render :partial => 'listings_row', :locals => {:school => school, :type => 'assignment_zone', :color => 'yellow'}
     
     - if @citywide_schools.present?
       - @citywide_schools.each do |school|
-        - counter += 1
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'citywide', :color => 'gray', :counter => counter}
+        = render :partial => 'listings_row', :locals => {:school => school, :type => 'citywide', :color => 'gray'}

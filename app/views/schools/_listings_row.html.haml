@@ -1,4 +1,4 @@
-%tr{:class => "#{counter.odd? ? 'odd' : 'even'}"}
+%tr
   %td.dot
     = image_tag("#{color}-dot.png")
   %td
@@ -13,3 +13,5 @@
   %td{:width=>'70px'}
     - if type == 'walk_zone'
       == #{walk_time(school.distance)} min.
+    - else
+      &nbsp;
