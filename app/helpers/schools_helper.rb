@@ -11,17 +11,7 @@ module SchoolsHelper
   def walk_time(distance)
     (distance.to_f / WALK_TIME_METERS_PER_MINUTE).floor
   end
-  
-  def alert_message
-    if @geocoded_address.present? && @geocoded_address.success == true && @grade_level.blank?
-      "<div class='alert'>The address you entered could not be located within the Boston School District. Please try again.</div>"
-    elsif (params[:address].present? || params[:zipcode].present?) && @geocoded_address.success == false
-      "<div class='alert'>We couldn't locate that address &mdash; please try again.</div>"
-    elsif params[:address].blank? && params[:zipcode].blank? && params[:grade_level].present?
-      "<div class='alert'>Please enter an address and zipcode to see your eligible schools.</div>"
-    end
-  end
-  
+    
   def normal_results_title
     if params[:grade_level].blank?
       "<h2>All Schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"

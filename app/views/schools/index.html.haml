@@ -1,5 +1,14 @@
 #page     
-  - if params[:view] == 'map'
+  - if @geocoded_address.present? && @geocoded_address.success == true && @grade_level.blank?
+    <div class='alert'>The address you entered could not be located within the Boston School District. Please try again.</div>
+    = render :partial => 'pages/search_form'
+  - elsif (params[:address].present? || params[:zipcode].present?) && @geocoded_address.success == false
+    <div class='alert'>We couldn't locate that address &mdash; please try again.</div>
+    = render :partial => 'pages/search_form'
+  - elsif params[:address].blank? && params[:zipcode].blank? && params[:grade_level].present?
+    <div class='alert'>Please enter an address and zipcode to see your eligible schools.</div>
+    = render :partial => 'pages/search_form'
+  - elsif params[:view] == 'map'
     = render :partial => 'map_view'  
-  - else
+  - elsif
     = render :partial => 'list_view'  

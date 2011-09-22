@@ -4,7 +4,8 @@
     = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'small-button'
   
   #small-map
-    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    - if @geocoded_address.present?
+      = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
   
   %span.large.bold
     Filter Search Results
@@ -37,5 +38,5 @@
     %br/
     = submit_tag "Update Results"
 #right-column
-  = render :partial => 'listings_table', :locals => {:schools => @all_schools}
+  = render :partial => 'listings_table'
       
