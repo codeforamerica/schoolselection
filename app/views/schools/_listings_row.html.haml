@@ -1,7 +1,4 @@
 %tr
-  %td
-    - if session[:favorites].try(:include?, school.id)
-      = image_tag('star.png')
   %td.dot
     = image_tag("#{color}-dot.png")
   %td
