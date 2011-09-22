@@ -45,6 +45,7 @@ body {
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .right{ text-align: right; }
   .gray-box{ @include border-radius(10px); background-color: #dcdcdc; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
+  .clear-both{ clear: both; }
   
   
   #container{ @include container; margin-top: 20px; margin-bottom: 25px; background-color: white; }
@@ -56,11 +57,12 @@ body {
       select{ margin-bottom: 10px; }
       #left-column-nav{ font-weight: bold; margin-bottom: 20px;}
     }
-    #right-column{ @include column(18, true); height: 100%; padding: 5px 0 20px 0; }
+    #right-column{ @include column(18, true); padding: 5px 0 20px 0; }
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
     #small-map{ padding: 20px 0 20px 0; 
       .static-map-image{ @include border-radius(7px); }
     }
+    
     #map_container {
       #gmaps4rails_map { @include border-radius(7px); width: 700px; height: 550px; padding-right: 10px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
@@ -88,15 +90,16 @@ body {
       .zipcode{ width: 80px; }
     }
     
-    #page-footer{ clear: both; }
-    
-    thead.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px;
-      th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding-bottom: 10px; }
-    }
-    table.listing{ margin-bottom: 0; padding: 0 15px 0 15px; }
-    
-    .listings-header{ @include single-box-shadow(#333333, 0, 0, 5px, false, true); @include border-radius(10px); padding: 12px 20px 5px 20px; margin: 10px 0 30px 0; }
-      
+    table.striped{
+      thead.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px; }
+      th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; }
+      tr.odd{ background-color: #eee;
+        td{ padding: 5px 0 5px 10px; }
+      }
+      tr.even{ background-color: white;
+        td{ background-color: white; padding: 5px 0 5px 10px;}
+      }
+    }      
   }
   
   #footer{ 

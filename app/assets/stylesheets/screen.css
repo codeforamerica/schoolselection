@@ -687,7 +687,11 @@ body .gray-box {
 body .gray-box table {
   margin-bottom: 0;
 }
-/* line 50, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
+body .clear-both {
+  clear: both;
+}
+/* line 51, ../../stylesheets/screen.scss */
 body #container {
   width: 950px;
   margin: 0 auto;
@@ -697,7 +701,7 @@ body #container {
   margin-bottom: 25px;
   background-color: white;
 }
-/* line 51, ../../stylesheets/screen.scss */
+/* line 52, ../../stylesheets/screen.scss */
 body #header {
   display: inline;
   float: left;
@@ -711,7 +715,7 @@ body #header {
 * html body #header {
   overflow-x: hidden;
 }
-/* line 53, ../../stylesheets/screen.scss */
+/* line 54, ../../stylesheets/screen.scss */
 body #page .full-width {
   display: inline;
   float: left;
@@ -724,7 +728,7 @@ body #page .full-width {
 * html body #page .full-width {
   overflow-x: hidden;
 }
-/* line 55, ../../stylesheets/screen.scss */
+/* line 56, ../../stylesheets/screen.scss */
 body #page #left-column {
   display: inline;
   float: left;
@@ -736,38 +740,37 @@ body #page #left-column {
 * html body #page #left-column {
   overflow-x: hidden;
 }
-/* line 56, ../../stylesheets/screen.scss */
+/* line 57, ../../stylesheets/screen.scss */
 body #page #left-column select {
   margin-bottom: 10px;
 }
-/* line 57, ../../stylesheets/screen.scss */
+/* line 58, ../../stylesheets/screen.scss */
 body #page #left-column #left-column-nav {
   font-weight: bold;
   margin-bottom: 20px;
 }
-/* line 59, ../../stylesheets/screen.scss */
+/* line 60, ../../stylesheets/screen.scss */
 body #page #right-column {
   display: inline;
   float: left;
   margin-right: 0;
   width: 710px;
-  height: 100%;
   padding: 5px 0 20px 0;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #page #right-column {
   overflow-x: hidden;
 }
-/* line 60, ../../stylesheets/screen.scss */
+/* line 61, ../../stylesheets/screen.scss */
 body #page .bottom-border {
   padding-bottom: 20px;
   border-bottom: solid 1px #aaa;
 }
-/* line 61, ../../stylesheets/screen.scss */
+/* line 62, ../../stylesheets/screen.scss */
 body #page #small-map {
   padding: 20px 0 20px 0;
 }
-/* line 62, ../../stylesheets/screen.scss */
+/* line 63, ../../stylesheets/screen.scss */
 body #page #small-map .static-map-image {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -776,7 +779,7 @@ body #page #small-map .static-map-image {
   -khtml-border-radius: 7px;
   border-radius: 7px;
 }
-/* line 65, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body #page #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -788,13 +791,13 @@ body #page #map_container #gmaps4rails_map {
   height: 550px;
   padding-right: 10px;
 }
-/* line 66, ../../stylesheets/screen.scss */
+/* line 68, ../../stylesheets/screen.scss */
 body #page #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 69, ../../stylesheets/screen.scss */
+/* line 71, ../../stylesheets/screen.scss */
 body #page #map-list {
   display: inline;
   float: left;
@@ -805,75 +808,68 @@ body #page #map-list {
 * html body #page #map-list {
   overflow-x: hidden;
 }
-/* line 71, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #page #map-list #options {
   height: 475px;
   margin: 15px 0 15px 0;
   overflow: scroll;
 }
-/* line 75, ../../stylesheets/screen.scss */
+/* line 77, ../../stylesheets/screen.scss */
 body #page #map-list #options ul#markers_list {
   padding-left: 15px;
 }
-/* line 77, ../../stylesheets/screen.scss */
+/* line 79, ../../stylesheets/screen.scss */
 body #page #map-list #options ul#markers_list li {
   padding-bottom: 7px;
   font-size: 15px;
   font-weight: bold;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 84, ../../stylesheets/screen.scss */
 body #page #search-form {
   width: 400px;
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 15px;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 89, ../../stylesheets/screen.scss */
 body #page #search-form .address {
   width: 250px;
 }
-/* line 88, ../../stylesheets/screen.scss */
+/* line 90, ../../stylesheets/screen.scss */
 body #page #search-form .zipcode {
   width: 80px;
 }
-/* line 91, ../../stylesheets/screen.scss */
-body #page #page-footer {
-  clear: both;
-}
-/* line 93, ../../stylesheets/screen.scss */
-body #page thead.column-headings {
+/* line 94, ../../stylesheets/screen.scss */
+body #page table.striped thead.column-headings {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 94, ../../stylesheets/screen.scss */
-body #page thead.column-headings th {
+/* line 95, ../../stylesheets/screen.scss */
+body #page table.striped th {
   background-color: white !important;
   font-size: 13px;
   font-style: italic;
   font-weight: normal;
-  padding-bottom: 10px;
+  padding: 5px 0 10px 10px;
 }
 /* line 96, ../../stylesheets/screen.scss */
-body #page table.listing {
-  margin-bottom: 0;
-  padding: 0 15px 0 15px;
+body #page table.striped tr.odd {
+  background-color: #eee;
 }
-/* line 98, ../../stylesheets/screen.scss */
-body #page .listings-header {
-  -moz-box-shadow: inset 0 0 5px #333333;
-  -webkit-box-shadow: inset 0 0 5px #333333;
-  -o-box-shadow: inset 0 0 5px #333333;
-  box-shadow: inset 0 0 5px #333333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-  padding: 12px 20px 5px 20px;
-  margin: 10px 0 30px 0;
+/* line 97, ../../stylesheets/screen.scss */
+body #page table.striped tr.odd td {
+  padding: 5px 0 5px 10px;
 }
-/* line 103, ../../stylesheets/screen.scss */
+/* line 99, ../../stylesheets/screen.scss */
+body #page table.striped tr.even {
+  background-color: white;
+}
+/* line 100, ../../stylesheets/screen.scss */
+body #page table.striped tr.even td {
+  background-color: white;
+  padding: 5px 0 5px 10px;
+}
+/* line 106, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 950px;
   margin: 0 auto;
