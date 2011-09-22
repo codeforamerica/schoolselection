@@ -93,11 +93,11 @@ body {
     table.striped{
       thead.column-headings{ padding: 0 15px 0 15px; margin-bottom: 5px; }
       th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; }
-      tr.odd{ background-color: #eee;
-        td{ padding: 5px 0 5px 10px; }
+      tr.odd{ background-color: white;
+        td{ padding: 7px 0 5px 10px; border-bottom: 1px solid #ccc; }
       }
       tr.even{ background-color: white;
-        td{ background-color: white; padding: 5px 0 5px 10px;}
+        td{ background-color: white; padding: 7px 0 5px 10px; border-bottom: 1px solid #ccc; }
       }
     }      
   }
