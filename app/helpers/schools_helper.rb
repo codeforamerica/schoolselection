@@ -26,6 +26,7 @@ module SchoolsHelper
     "#{image_tag('green-marker-small.png')} Walk Zone School <br />#{image_tag('yellow-marker-small.png')} Assignment Zone School <br />#{image_tag('gray-marker-small.png')} Citywide School"
   end
   
+  include EncodePolyline
   def static_gmap_image
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
       "size=205x170" + 
@@ -34,7 +35,7 @@ module SchoolsHelper
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
-      "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|#{@assignment_zone.geometry[0].exterior_ring.points.each_slice(10).map {|ps| "#{ps.last.lat.round(3)},#{ps.last.lon.round(3)}"} * "|"}", 
+      "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|enc:#{encode_line(simplify_points(@assignment_zone.geometry[0].exterior_ring.points,0.001,0.01))}",
       :alt => "Map View", :class => 'static-map-image')
   end
   
