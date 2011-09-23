@@ -31,10 +31,10 @@ module SchoolsHelper
       "size=205x170" + 
       "&maptype=roadmap" +
       "&sensor=false" +
-      "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
-      "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
-      "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
-      "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|#{@assignment_zone.geometry[0].exterior_ring.points.each_slice(10).map {|ps| "#{ps.last.lat.round(3)},#{ps.last.lon.round(3)}"} * "|"}", 
+      "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat.round(3)},#{x.lng.round(3)}"} * "|" }" +
+      "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat.round(3)},#{x.lng.round(3)}"} * "|" }" +
+      "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat.round(3)},#{x.lng.round(3)}"} * "|" }" +
+      "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|#{@assignment_zone.geometry[0].exterior_ring.points.each_slice(6).map {|ps| "#{ps.last.lat.round(3)},#{ps.last.lon.round(3)}"} * "|"}", 
       :alt => "Map View", :class => 'static-map-image')
   end
   
