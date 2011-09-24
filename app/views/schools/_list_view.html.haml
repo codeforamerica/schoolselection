@@ -21,20 +21,6 @@
     %br/
     = select_tag :school_type, options_for_select(['All', 'English Language Center', 'Examination School', 'Special Education', 'High School'])
     %br/
-    Facilities:
-    %br/
-    = check_box_tag :facility
-    Gym
-    %br/
-    = check_box_tag :facility
-    Pool
-    %br/
-    = check_box_tag :facility
-    Theater
-    %br/
-    = check_box_tag :facility
-    Courtyard
-    %br/
     %br/
     = submit_tag "Update Results"
         
@@ -45,5 +31,6 @@
     = link_to 'Transportation', '#', :class => 'nav sub'
     &nbsp;|&nbsp;
     = link_to 'Admissions', '#', :class => 'nav sub'
-  = render :partial => 'listings_table'
+    
+  = render :partial => 'schools/list_views/listings_table'
       

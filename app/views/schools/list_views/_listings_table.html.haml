@@ -9,12 +9,12 @@
   %tbody
     - if @walk_zone_schools.present?
       - @walk_zone_schools.each do |school|
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'walk_zone', :color => 'green'}
+        = render :partial => 'schools/list_views/overview', :locals => {:school => school, :type => 'walk_zone', :color => 'green'}
               
     - if @assignment_zone_schools.present?
       - @assignment_zone_schools.each do |school|
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'assignment_zone', :color => 'yellow'}
+        = render :partial => 'schools/list_views/overview', :locals => {:school => school, :type => 'assignment_zone', :color => 'yellow'}
     
     - if @citywide_schools.present?
       - @citywide_schools.each do |school|
-        = render :partial => 'listings_row', :locals => {:school => school, :type => 'citywide', :color => 'gray'}
+        = render :partial => 'schools/list_views/overview', :locals => {:school => school, :type => 'citywide', :color => 'gray'}

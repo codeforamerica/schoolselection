@@ -38,7 +38,7 @@ module SchoolsHelper
       "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|enc:#{encode_line(simplify_points(@assignment_zone.geometry[0].exterior_ring.points,0.001,0.01))}", 
       :alt => "Map View", :class => 'static-map-image')
   end
-  
+    
   ####### MAP JSON #######
   
   def walk_zone_map

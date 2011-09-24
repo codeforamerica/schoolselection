@@ -1,0 +1,15 @@
+%tr
+  %td
+    %h4
+      = link_to school.name, school_path(school), :rel => 'facebox'
+  %td
+    = school.grade_levels.short_string
+  %td{:width=>'60px'}
+    = school.neighborhood.try(:name)
+  %td{:width=>'60px'}
+    == #{distance_in_miles_from_meters(school.distance)} mi.
+  %td{:width=>'70px'}
+    - if type == 'walk_zone'
+      == #{walk_time(school.distance)} min.
+    - else
+      &nbsp;
