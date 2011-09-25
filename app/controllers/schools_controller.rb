@@ -24,7 +24,11 @@ class SchoolsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        if request.xhr? && params[:list_view].try(:present?)
+          render :partial => "schools/list_views/#{params[:list_view]}", :locals => { :comment => @comment }, :layout => false
+        end
+      end      
       format.json { render json: @schools }
     end
   end

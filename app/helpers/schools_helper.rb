@@ -5,7 +5,7 @@ module SchoolsHelper
   end
   
   def distance_in_miles_from_meters(distance)
-    (distance.to_f / METERS_PER_MILE).round(2)
+    number_with_precision((distance.to_f / METERS_PER_MILE), :precision => 2)
   end
   
   def walk_time(distance)
@@ -62,7 +62,7 @@ module SchoolsHelper
     array << @walk_zone_schools.map {|x| create_listing_hash(x, 'green')}
     array << @assignment_zone_schools.map {|x| create_listing_hash(x, 'yellow')}
     array << @citywide_schools.map {|x| create_listing_hash(x, 'gray')}    
-    # array << [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/images/crosshair.png', :width => '9', :height => '9', :marker_anchor => [5, 7]}]
+    array << [{:sidebar => @geocoded_address.street_address, :lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :picture => '/assets/icons/home.png', :width => '18', :height => '15', :marker_anchor => [9, 7]}]
     array.flatten.to_json
   end
   

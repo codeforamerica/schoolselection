@@ -1,6 +1,9 @@
+.full-width
+  %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
+
 #left-column
   = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'nav mid active'
-  &nbsp;|&nbsp;
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'nav mid'
   
   #small-map
@@ -30,7 +33,10 @@
     &nbsp;|&nbsp;
     = link_to 'Transportation', '#', :class => 'nav sub'
     &nbsp;|&nbsp;
+    = link_to 'Academics', '#', :class => 'nav sub'
+    &nbsp;|&nbsp;
     = link_to 'Admissions', '#', :class => 'nav sub'
     
-  = render :partial => 'schools/list_views/listings_table'
+  #listings_table
+    = render :partial => 'schools/list_views/overview'
       

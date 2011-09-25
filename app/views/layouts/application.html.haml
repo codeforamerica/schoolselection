@@ -5,12 +5,13 @@
     = stylesheet_link_tag 'facebox.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     = javascript_include_tag 'application'
-    <script type="text/javascript" src="http://use.typekit.com/obq4ohu.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     = csrf_meta_tag 
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
+    #header
+      #inner-header
+        = image_tag('logo.png')
     #container
       = yield
 
