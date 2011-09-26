@@ -16,7 +16,8 @@ body {
   @include establish-baseline;
   @include font-face("GothamBook", font-files("Gotham-Book.otf", opentype));
   @include font-face("GothamMedium", font-files("Gotham-Medium.otf", opentype));
-
+  
+  font-size: $base-font-size;
   font-family: 'Gotham';
   text-align: left;
   
@@ -28,14 +29,14 @@ body {
   
   a.nav{ color: $blue; font-weight: bold; }
   .active{ background-color: white; }
-  .main{ font-size: 1.2em; padding: 5px 8px 3px 8px; }
+  .main{ font-size: 1.2em; padding: 5px 0 3px 0; }
   .mid{ font-size: 1em; padding: 5px 0 3px 0; }
   .sub{ font-size: 1em; padding: 5px 8px 3px 8px; }
   
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.1em;}
   h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
-  h4{ font-weight: bold; font-size: 1.2em; margin-bottom: 0; color: #333; }
+  h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; color: #333; }
 
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
@@ -51,22 +52,23 @@ body {
   .gray-box{ @include border-radius(10px); background-color: #ddd; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
   .clear-both{ clear: both; }
     
-  #header{ margin-bottom: 10px;
+  #header{ margin-bottom: 20px; padding-bottom: 10px; border-bottom: solid 1px #ccc;
     #inner-header{ @include container; padding: 20px 0 20px 0;}
   }
   #container{ @include container; margin-top: 20px; margin-bottom: 25px; font-family: 'Gotham'; }
   #page{ 
     .full-width{ @include column(23, true); padding-bottom: 20px; clear: both; }
-    #left-column{ @include column(5, true); padding: 0 50px 20px 0; 
+    #left-column{ @include column(5, true); padding-bottom: 20px; 
       select{ margin-bottom: 10px; }
       #left-column-nav{ font-weight: bold; margin-bottom: 20px;}
     }
-    #right-column{ @include column(18, true); background-color: white; margin: 0 0 20px 0;
+    #right-column{ @include column(19, true); background-color: white; margin: 0 0 20px 0;
       #table-nav{ width: 100%; margin-bottom: 20px; text-align: right; }
       table.listings{
+        padding-left: 30px;
         thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-        th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; }
-        td{ padding: 7px 0 5px 10px; border-bottom: 1px solid #ccc; }
+        th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
+        td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
       }
     }
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
@@ -75,12 +77,12 @@ body {
     }
     
     #map_container {
-      #gmaps4rails_map { @include border-radius(7px); width: 700px; height: 550px; padding-right: 10px; }
+      padding-left: 20px;
+      #gmaps4rails_map { @include border-radius(7px); width: 728px; height: 550px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     
     #map-list{
-      @include column(6, true);
       #options{
         height: 475px;
         margin: 15px 0 15px 0;

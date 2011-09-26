@@ -1,46 +1,29 @@
 %table.listings
   %thead
     %tr
-      %th School Name
-      %th{:width=>'60px'} Neighborhood
-      %th{:width=>'60px'} Distance
-      %th{:width=>'60px'} Walk Time
+      %th{:width=>'110px'} &nbsp;
+      %th &nbsp;
+      %th{:width=>'60px'} Grades
+      %th{:width=>'60px'} Teachers
+      %th{:width=>'70px'} Students
+      %th{:width=>'90px'} Teacher to Student Ratio
   %tbody
-    - if @walk_zone_schools.present?
-      - @walk_zone_schools.each do |school|
+    - if @all_schools.present?
+      - @all_schools.each do |school|
         %tr
           %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            == #{walk_time(school.distance)} min.
-                            
-    - if @assignment_zone_schools.present?
-      - @assignment_zone_schools.each do |school|
-        %tr
+            = link_to image_tag('school.png')
           %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            &nbsp;
-                  
-    - if @citywide_schools.present?
-      - @citywide_schools.each do |school|
-        %tr
-          %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            &nbsp;
+            %h3= link_to school.name, school_path(school), :rel => 'facebox'
+            %span.italic
+              == #{school.address}, #{school.city.try(:name)}, #{school.state.try(:abbreviation)}
+              %br/
+              = school.phone
+          %td.large{:width=>'60px'}
+            = school.grade_levels.short_string
+          %td.large{:width=>'60px'}
+            =raw school.teachers_count.present? ? school.teachers_count : '&nbsp;'
+          %td.large{:width=>'70px'}
+            =raw school.students_count.present? ? school.students_count : '&nbsp;'
+          %td.large{:width=>'90px'}
+            =raw school.staff_to_student_ratio.present? ? school.staff_to_student_ratio : '&nbsp;'

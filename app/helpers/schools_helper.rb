@@ -29,7 +29,7 @@ module SchoolsHelper
   include EncodePolyline
   def static_gmap_image
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=205x170" + 
+      "size=190x150" + 
       "&maptype=roadmap" +
       "&sensor=false" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +

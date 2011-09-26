@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920053615) do
+ActiveRecord::Schema.define(:version => 20110926194219) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20110920053615) do
     t.integer  "assignment_zone_id"
     t.integer  "mail_cluster_id"
     t.integer  "school_group_id"
-    t.string   "grades"
     t.string   "hours"
     t.string   "early_dismissal_time"
     t.string   "breakfast"
@@ -139,12 +138,13 @@ ActiveRecord::Schema.define(:version => 20110920053615) do
     t.float    "licensed_teachers_percentage"
     t.float    "qualified_teachers_percentage"
     t.float    "qualified_classes_percentage"
-    t.float    "staff_to_student_ratio"
+    t.string   "staff_to_student_ratio"
     t.string   "school_level_name"
     t.string   "school_type_name"
     t.string   "short_name"
     t.integer  "neighborhood_id"
     t.integer  "parcel_id"
+    t.integer  "students_count"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
