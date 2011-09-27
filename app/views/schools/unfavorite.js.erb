@@ -1,4 +1,3 @@
 $(document).trigger('close.facebox');
-$("#visible_school_<%= @school.id %>").hide();
-$("#visible_school_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/table_parts/visible_row', :locals => {:school => @school}) %>");
+$("#visible_school_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/table/rows/visible_row', :locals => {:school => @school, :row_classes => 'hidden'}) %>");
 $("#visible_school_<%= @school.id %>").fadeIn();

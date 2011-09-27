@@ -26,7 +26,10 @@
   %tbody
     - if @visible_schools.present?
       - @visible_schools.each do |school|
-        = render :partial => 'schools/table_parts/visible_row', :locals => {:school => school}
+        - if session[:favorites].try(:include?, school.id)
+          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
+        - else
+          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => ''}
             
 %table#hidden-schools.listings
   %thead
@@ -40,4 +43,4 @@
           == Schools may be removed from the list, above, by clicking the &nbsp;#{image_tag('icons/hide.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
-        = render :partial => 'schools/table_parts/hidden_row', :locals => {:school => hidden_school}
+        = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}
