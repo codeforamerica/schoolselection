@@ -1,0 +1,43 @@
+%table#visible-schools.listings
+  %thead
+    %tr
+      %th{:width=>'110px'} &nbsp;
+      %th &nbsp;
+      %th.tabbable.overview{:width=>'70px'} Grades
+      %th.tabbable.overview{:width=>'70px'} Distance
+      %th.tabbable.overview{:width=>'140px'} Eligibility Type
+      
+      %th.tabbable.transportation.hidden{:width=>'70px'} Distance
+      %th.tabbable.transportation.hidden{:width=>'70px'} Walk Time
+      %th.tabbable.transportation.hidden{:width=>'70px'} Drive Time
+      %th.tabbable.transportation.hidden{:width=>'70px'} MBTA Time
+      
+      %th.tabbable.academics.hidden{:width=>'70px'} Teachers
+      %th.tabbable.academics.hidden{:width=>'70px'} Students
+      %th.tabbable.academics.hidden{:width=>'150px'} Staff to Student Ratio
+      
+      %th.tabbable.admissions.hidden{:width=>'70px'} Available Seats
+      %th.tabbable.admissions.hidden{:width=>'70px'} 1st Choices
+      %th.tabbable.admissions.hidden{:width=>'70px'} 2st Choices
+      %th.tabbable.admissions.hidden{:width=>'70px'} 3rd Choices
+      %th.tabbable.admissions.hidden{:width=>'70px'} Admittance Odds
+      
+      %th{:width=>'16px'} &nbsp;
+  %tbody
+    - if @visible_schools.present?
+      - @visible_schools.each do |school|
+        = render :partial => 'schools/table_parts/visible_row', :locals => {:school => school}
+            
+%table#hidden-schools.listings
+  %thead
+    %th
+      %h2 Minimized Schools
+    %th &nbsp;
+  %tbody
+    - if @hidden_schools.blank?
+      %tr#hidden_schools_note
+        %td.italic
+          To move schools to your minimized list, please click the hide button on the right side of each listing.
+    - else
+      - for hidden_school in @hidden_schools
+        = render :partial => 'schools/table_parts/hidden_row', :locals => {:school => hidden_school}

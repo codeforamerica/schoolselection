@@ -60,7 +60,7 @@
       %b School Lunch:&nbsp;
       = @school.lunch
 
-  - if @favorites.try(:include?, @school.id)
+  - if @favorite_schools.try(:include?, @school.id)
     %h3
       == #{image_tag('heart-icon-off.png', :class => 'heart')}&nbsp;
       = link_to "Remove From My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post

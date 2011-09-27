@@ -74,6 +74,7 @@ body {
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .right{ text-align: right; }
+  .hidden{ display: none;}
   .gray-box{ @include border-radius(10px); background-color: #ddd; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
   .clear-both{ clear: both; }
   .heart{ margin: 0 0 -1px 4px; }
@@ -90,6 +91,7 @@ body {
     }
     #right-column{ @include column(19, true); background-color: white; margin: 0 0 20px 0;
       #table-nav{ width: 100%; margin-bottom: 20px; text-align: right; }
+      #hidden-schools{ margin-top: 20px; }
       table.listings{
         padding-left: 30px;
         thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }

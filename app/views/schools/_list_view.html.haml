@@ -30,14 +30,14 @@
         
 #right-column
   #table-nav
-    = link_to 'Overview', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'overview'), :remote => true, :class => 'nav sub'
+    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
     = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
-    = link_to 'Academics', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'academics'), :remote => true, :class => 'nav sub'
+    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
-    = link_to 'Admissions', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'admissions'), :remote => true, :class => 'nav sub'
+    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :class => 'nav sub'
     
   #listings-table
-    = render :partial => 'schools/list_views/overview'
+    = render :partial => 'schools/table'
       

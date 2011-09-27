@@ -1,0 +1,4 @@
+%tr{:id=>"hidden_school_#{school.id}"}
+  %td= school.name
+  %td{:width=>'16px'}
+    = link_to image_tag('icons/toggle_plus.png'), unhide_school_path(school), :remote => true, :method => :post

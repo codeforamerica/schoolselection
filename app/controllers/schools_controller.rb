@@ -9,7 +9,8 @@ class SchoolsController < ApplicationController
     
     @address = "#{address}, #{zipcode}"
     @geocoded_address = geocode_address(@address) if address.present?
-    @favorites = School.find(session[:favorites]) if session[:favorites].present?
+    session[:favorites].present? ? @favorite_schools = School.find(session[:favorites]) : @favorite_schools = []
+    session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
     
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
       @grade_level = GradeLevel.find_by_number(grade_level)
@@ -19,8 +20,7 @@ class SchoolsController < ApplicationController
       @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
       @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
       @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
-      @favorites = School.find(session[:favorites]) if session[:favorites].present?
-      @hidden = School.find(session[:hidden]) if session[:hidden].present?
+      @visible_schools = (@all_schools - @hidden_schools)
     else
       @assignment_zones = AssignmentZone.all
     end
@@ -32,7 +32,7 @@ class SchoolsController < ApplicationController
   end
 
   def show
-    @favorites = session[:favorites]
+    @favorite_schools = session[:favorites]
     @school = School.find(params[:id])
 
     respond_to do |format|
@@ -41,12 +41,20 @@ class SchoolsController < ApplicationController
     end
   end
   
+  ####### AJAX #######
+  
+  def switch_tab
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def favorite
     @school = School.find(params[:id])
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
     respond_to do |format|
-      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.js
     end
   end
   
@@ -54,24 +62,25 @@ class SchoolsController < ApplicationController
     @school = School.find(params[:id])
     session[:favorites].delete_if {|x| x == @school.id }
     respond_to do |format|
-      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.js
     end
   end
   
   def hide
     @school = School.find(params[:id])
-    session[:favorites] ||= []
-    session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
+    session[:hidden] ||= []
+    session[:hidden] << @school.id unless session[:hidden].include?(@school.id)
     respond_to do |format|
-      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.js
     end
   end
   
   def unhide
     @school = School.find(params[:id])
+    session[:hidden] ||= []
     session[:hidden].delete_if {|x| x == @school.id }
     respond_to do |format|
-      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.js
     end
   end
 end
