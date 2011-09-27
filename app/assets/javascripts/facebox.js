@@ -82,15 +82,15 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0.55,
+      opacity      : 0.2,
       overlay      : true,
-      loadingImage : '/images/loading.gif',
-      closeImage   : '/images/closelabel.png',
+      loadingImage : '/facebox/loading.gif',
+      closeImage   : '/facebox/closelabel.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
-        <div class="content" style="padding: 30px;"> \
+        <div class="content"> \
         </div> \
         <a href="#" class="close"></a> \
       </div> \
