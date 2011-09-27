@@ -25,7 +25,7 @@ end
 
 
 IMPORT SCHOOLS FROM 2011-2012 CSV
-CSV.foreach("../../Projects/SchoolSelection/Data/Schools/SchoolData_2011-12-Table.csv") do |row|
+CSV.foreach("../../Projects/SchoolSelection/Data/CSV/2009-2010-teacher-data.csv") do |row|
   if row[0].present?
     city = City.find_or_create_by_name(row[5])
     neighborhood = Neighborhood.find_or_create_by_name(row[7])

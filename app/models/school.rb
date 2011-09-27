@@ -3,6 +3,7 @@ class School < ActiveRecord::Base
   acts_as_mappable  :default_units => :miles, :lat_column_name => :lat, :lng_column_name => :lng
   
   has_and_belongs_to_many :grade_levels
+  has_many :grade_level_hours
   belongs_to :assignment_zone
   belongs_to :city
   belongs_to :neighborhood
@@ -26,7 +27,7 @@ class School < ActiveRecord::Base
   end
   
   ##### INSTANCE METHODS #####
-      
+  
   def geocode_address!
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA")

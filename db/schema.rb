@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926194219) do
+ActiveRecord::Schema.define(:version => 20110927010125) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(:version => 20110926194219) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "grade_level_hours", :force => true do |t|
+    t.integer  "grade_level_id"
+    t.integer  "school_id"
+    t.string   "grade_level_number"
+    t.string   "hours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "grade_level_hours", ["grade_level_id"], :name => "index_grade_level_hours_on_grade_level_id"
+  add_index "grade_level_hours", ["school_id"], :name => "index_grade_level_hours_on_school_id"
 
   create_table "grade_levels", :force => true do |t|
     t.string   "number"

@@ -1,5 +1,6 @@
 class GradeLevel < ActiveRecord::Base
   has_and_belongs_to_many :schools
+  has_many :grade_level_hours
 
   def walk_zone_radius_in_meters
     self.walk_zone_radius * METERS_PER_MILE
