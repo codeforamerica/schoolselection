@@ -1,0 +1,1 @@
+$("#visible_school_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/table_parts/visible_row', :locals => {:school => @school}) %>");

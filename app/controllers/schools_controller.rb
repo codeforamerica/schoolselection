@@ -50,7 +50,18 @@ class SchoolsController < ApplicationController
   end
   
   def favorite
-    @school = School.find(params[:id])
+    session[:favorites].present? ? @favorite_schools = School.find(session[:favorites]) : @favorite_schools = []
+    session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
+    @geocoded_address = geocode_address(session[:address])
+    @grade_level = GradeLevel.find_by_number(session[:grade_level])
+    @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
+    
+    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @visible_schools = (@all_schools - @hidden_schools)
+    @school = @all_schools.find {|x| x.id == params[:id].to_i}
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
     respond_to do |format|
@@ -59,7 +70,18 @@ class SchoolsController < ApplicationController
   end
   
   def unfavorite
-    @school = School.find(params[:id])
+    session[:favorites].present? ? @favorite_schools = School.find(session[:favorites]) : @favorite_schools = []
+    session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
+    @geocoded_address = geocode_address(session[:address])
+    @grade_level = GradeLevel.find_by_number(session[:grade_level])
+    @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
+    
+    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @visible_schools = (@all_schools - @hidden_schools)
+    @school = @all_schools.find {|x| x.id == params[:id].to_i}
     session[:favorites].delete_if {|x| x == @school.id }
     respond_to do |format|
       format.js

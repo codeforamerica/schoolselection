@@ -3,7 +3,7 @@
     %tr
       %th{:width=>'110px'} &nbsp;
       %th &nbsp;
-      %th.tabbable.overview{:width=>'70px'} Grades
+      %th.tabbable.overview{:width=>'50px'} Grades
       %th.tabbable.overview{:width=>'70px'} Distance
       %th.tabbable.overview{:width=>'140px'} Eligibility Type
       
@@ -16,13 +16,13 @@
       %th.tabbable.academics.hidden{:width=>'70px'} Students
       %th.tabbable.academics.hidden{:width=>'150px'} Staff to Student Ratio
       
-      %th.tabbable.admissions.hidden{:width=>'70px'} Available Seats
+      %th.tabbable.admissions.hidden{:width=>'70px'} Open Seats
       %th.tabbable.admissions.hidden{:width=>'70px'} 1st Choices
       %th.tabbable.admissions.hidden{:width=>'70px'} 2st Choices
-      %th.tabbable.admissions.hidden{:width=>'70px'} 3rd Choices
+      %th.tabbable.admissions.hidden{:width=>'75px'} 3rd Choices
       %th.tabbable.admissions.hidden{:width=>'70px'} Admittance Odds
       
-      %th{:width=>'16px'} &nbsp;
+      %th{:width=>'22px'} &nbsp;
   %tbody
     - if @visible_schools.present?
       - @visible_schools.each do |school|
@@ -37,7 +37,7 @@
     - if @hidden_schools.blank?
       %tr#hidden_schools_note
         %td.italic
-          To move schools to your minimized list, please click the hide button on the right side of each listing.
+          == Schools may be removed from the list, above, by clicking the &nbsp;#{image_tag('icons/hide.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
         = render :partial => 'schools/table_parts/hidden_row', :locals => {:school => hidden_school}
