@@ -2,16 +2,17 @@
   %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
 
 #left-column
-  = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'nav mid active'
+  = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'nav mid active'
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'nav mid'
+  = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map'), :class => 'nav mid'
   
   #small-map
     - if @geocoded_address.present?
       = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
   
-  %span.large.bold
-    Filter Search Results
+  %p.large.bold
+    Filter Results
+  %br/
   = form_tag('/schools', :method => :get) do
     = hidden_field_tag :address, params[:address]
     = hidden_field_tag :zipcode, params[:zipcode]
@@ -29,14 +30,14 @@
         
 #right-column
   #table-nav
-    = link_to 'Overview', '#', :class => 'nav sub active'
+    = link_to 'Overview', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'overview'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
-    = link_to 'Transportation', '#', :class => 'nav sub'
+    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
-    = link_to 'Academics', '#', :class => 'nav sub'
+    = link_to 'Academics', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'academics'), :remote => true, :class => 'nav sub'
     &nbsp;|&nbsp;
-    = link_to 'Admissions', '#', :class => 'nav sub'
+    = link_to 'Admissions', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :tab => 'admissions'), :remote => true, :class => 'nav sub'
     
-  #listings_table
+  #listings-table
     = render :partial => 'schools/list_views/overview'
       

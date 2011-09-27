@@ -26,12 +26,8 @@ class SchoolsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html do
-        if request.xhr? && params[:list_view].try(:present?)
-          render :partial => "schools/list_views/#{params[:list_view]}", :locals => { :comment => @comment }, :layout => false
-        end
-      end      
-      format.json { render json: @schools }
+      format.html
+      format.js 
     end
   end
 
@@ -45,17 +41,12 @@ class SchoolsController < ApplicationController
     end
   end
   
-  def compare
-    @favorites = School.find(session[:favorites])
-  end
-  
   def favorite
     @school = School.find(params[:id])
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
     respond_to do |format|
       format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
-      format.json { render json: @school }
     end
   end
   
@@ -64,7 +55,6 @@ class SchoolsController < ApplicationController
     session[:favorites].delete_if {|x| x == @school.id }
     respond_to do |format|
       format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
-      format.json { render json: @school }
     end
   end
   
@@ -74,7 +64,6 @@ class SchoolsController < ApplicationController
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
     respond_to do |format|
       format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
-      format.json { render json: @school }
     end
   end
   
@@ -83,7 +72,6 @@ class SchoolsController < ApplicationController
     session[:hidden].delete_if {|x| x == @school.id }
     respond_to do |format|
       format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
-      format.json { render json: @school }
     end
   end
 end

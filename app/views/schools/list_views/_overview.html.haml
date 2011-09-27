@@ -3,10 +3,9 @@
     %tr
       %th{:width=>'110px'} &nbsp;
       %th &nbsp;
-      %th{:width=>'60px'} Grades
+      %th{:width=>'70px'} Grades
       %th{:width=>'70px'} Distance
       %th{:width=>'140px'} Eligibility Type
-      %th{:width=>'24px'} &nbsp;
   %tbody
     - if @all_schools.present?
       - @all_schools.each do |school|
@@ -39,8 +38,3 @@
                 Sibling School
                 %br/
               Citywide
-          %td{:width=>'24px'}
-            - if session[:favorites] && session[:favorites].include?(school.id)
-              = image_tag('heart-icon.png', :class => 'heart')
-            - else
-              &nbsp;

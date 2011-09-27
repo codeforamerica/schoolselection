@@ -11,6 +11,10 @@ module SchoolsHelper
   def walk_time(distance)
     (distance.to_f / WALK_TIME_METERS_PER_MINUTE).floor
   end
+
+  def drive_time(distance)
+    (distance.to_f / DRIVE_TIME_METERS_PER_MINUTE).floor
+  end
     
   def normal_results_title
     if params[:grade_level].blank?

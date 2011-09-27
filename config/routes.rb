@@ -1,30 +1,16 @@
 Schoolselection::Application.routes.draw do
-  resources :parcels
-
-  resources :neighborhoods
-
   root :to => 'high_voltage/pages#show', :id => 'home'
-  resources :mail_clusters
-
-  resources :states
-
-  resources :cities
-
-  resources :school_groups
-
-  resources :assignment_zones
-
-  resources :principals
 
   resources :schools do
     collection do 
-      get 'compare'      
+      get   'compare'      
+      get   'switch_tab'  
     end
     member do 
-      post 'favorite'
-      post 'unfavorite'
-      post 'hide'      
-      post 'unhide'      
+      post  'favorite'
+      post  'unfavorite'
+      post  'hide'      
+      post  'unhide'
     end
   end
 

@@ -1,62 +1,32 @@
 %table.listings
   %thead
     %tr
-      %th School Name
-      %th{:width=>'50px'} Grades
-      %th{:width=>'60px'} Neighborhood
-      %th{:width=>'60px'} Distance
-      %th{:width=>'60px'} Walk Time
+      %th{:width=>'110px'} &nbsp;
+      %th &nbsp;
+      %th{:width=>'70px'} Distance
+      %th{:width=>'70px'} Walk Time
+      %th{:width=>'70px'} Drive Time
+      %th{:width=>'70px'} MBTA Time
   %tbody
-    - if @walk_zone_schools.present?
-      - @walk_zone_schools.each do |school|
+    - if @all_schools.present?
+      - @all_schools.each do |school|
         %tr
           %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
+            = link_to image_tag('school.png')
           %td
-            = school.grade_levels.short_string
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            - if type == 'walk_zone'
-              == #{walk_time(school.distance)} min.
+            %h3= link_to school.name, school_path(school), :rel => 'facebox'
+            %span.italic
+              == #{school.address}, #{school.city.try(:name)}, #{school.state.try(:abbreviation)}
+              %br/
+              = school.phone
+          %td.large{:width=>'70px'}
+            =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
+          %td.large{:width=>'70px'}
+            - if @walk_zone_schools.include?(school)
+              =raw school.distance.present? ? "#{walk_time(school.distance)} min." : '&nbsp;'
             - else
               &nbsp;
-                            
-    - if @assignment_zone_schools.present?
-      - @assignment_zone_schools.each do |school|
-        %tr
-          %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
-          %td
-            = school.grade_levels.short_string
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            - if type == 'walk_zone'
-              == #{walk_time(school.distance)} min.
-            - else
-              &nbsp;
-                  
-    - if @citywide_schools.present?
-      - @citywide_schools.each do |school|
-        %tr
-          %td
-            %h4
-              = link_to school.name, school_path(school), :rel => 'facebox'
-          %td
-            = school.grade_levels.short_string
-          %td{:width=>'60px'}
-            = school.neighborhood.try(:name)
-          %td{:width=>'60px'}
-            == #{distance_in_miles_from_meters(school.distance)} mi.
-          %td{:width=>'70px'}
-            - if type == 'walk_zone'
-              == #{walk_time(school.distance)} min.
-            - else
-              &nbsp;
+          %td.large{:width=>'70px'}
+            =raw school.distance.present? ? "#{drive_time(school.distance)} min." : '&nbsp;'
+          %td.large{:width=>'70px'}
+            &nbsp;
