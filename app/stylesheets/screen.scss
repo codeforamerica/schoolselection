@@ -96,7 +96,7 @@ body {
     
     #map_container {
       padding-left: 20px;
-      #gmaps4rails_map { @include border-radius(7px); width: 728px; height: 550px; }
+      #gmaps4rails_map { @include border-radius(7px); width: 100%; height: 550px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     
