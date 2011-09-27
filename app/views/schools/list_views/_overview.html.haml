@@ -4,7 +4,7 @@
       %th{:width=>'110px'} &nbsp;
       %th &nbsp;
       %th{:width=>'60px'} Grades
-      %th{:width=>'180px'} School Hours
+      %th{:width=>'160px'} Eligibility Type
       %th{:width=>'70px'} Distance
   %tbody
     - if @all_schools.present?
@@ -23,7 +23,22 @@
               = school.phone
           %td.large{:width=>'60px'}
             = school.grade_levels.short_string
-          %td.large{:width=>'180px'}
-            =raw school.hours.present? ? truncate(school.hours, :length => 23) : '&nbsp;'
+          %td.large{:width=>'160px'}
+            - if @walk_zone_schools.try(:include?, school)
+              - if params[:sibling_school] == school.id.to_s 
+                Sibling School +
+                %br/
+              Walk Zone
+            - if @assignment_zone_schools.try(:include?, school)
+              - if params[:sibling_school] == school.id.to_s 
+                Sibling School +
+                %br/
+              Assignment Zone
+            - elsif @citywide_schools.try(:include?, school)
+              - if params[:sibling_school] == school.id.to_s 
+                Sibling School +
+                %br/
+              Citywide
+            
           %td.large{:width=>'60px'}
             =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'

@@ -70,6 +70,7 @@ body {
   .italic{ font-style: italic; }
   .bold{ font-weight: bold; }
   .nobold{ font-weight: normal; }
+  .large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .right{ text-align: right; }
