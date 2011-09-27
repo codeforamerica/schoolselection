@@ -4,8 +4,9 @@
       %th{:width=>'110px'} &nbsp;
       %th &nbsp;
       %th{:width=>'60px'} Grades
-      %th{:width=>'160px'} Eligibility Type
       %th{:width=>'70px'} Distance
+      %th{:width=>'140px'} Eligibility Type
+      %th{:width=>'24px'} &nbsp;
   %tbody
     - if @all_schools.present?
       - @all_schools.each do |school|
@@ -13,32 +14,33 @@
           %td
             = link_to image_tag('school.png')
           %td
-            %h3
-              = link_to school.name, school_path(school), :rel => 'facebox'
-              - if session[:favorites] && session[:favorites].include?(school.id)
-                = image_tag('heart-icon.png', :class => 'heart')
+            %h3= link_to school.name, school_path(school), :rel => 'facebox'
             %span.italic
               == #{school.address}, #{school.city.try(:name)}, #{school.state.try(:abbreviation)}
               %br/
               = school.phone
           %td.large{:width=>'60px'}
             = school.grade_levels.short_string
-          %td.large{:width=>'160px'}
+          %td.large{:width=>'60px'}
+            =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
+          %td.large{:width=>'140px'}
             - if @walk_zone_schools.try(:include?, school)
               - if params[:sibling_school] == school.id.to_s 
-                Sibling School +
+                Sibling School
                 %br/
               Walk Zone
             - if @assignment_zone_schools.try(:include?, school)
               - if params[:sibling_school] == school.id.to_s 
-                Sibling School +
+                Sibling School
                 %br/
               Assignment Zone
             - elsif @citywide_schools.try(:include?, school)
               - if params[:sibling_school] == school.id.to_s 
-                Sibling School +
+                Sibling School
                 %br/
               Citywide
-            
-          %td.large{:width=>'60px'}
-            =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
+          %td{:width=>'24px'}
+            - if session[:favorites] && session[:favorites].include?(school.id)
+              = image_tag('heart-icon.png', :class => 'heart')
+            - else
+              &nbsp;
