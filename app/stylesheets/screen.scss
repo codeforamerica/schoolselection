@@ -74,7 +74,7 @@ body {
   }
   #container{ @include container; margin-top: 20px; margin-bottom: 25px; font-family: 'Gotham'; }
   #page{ 
-    .full-width{ @include column(23, true); padding-bottom: 20px; clear: both; }
+    .full-width{ @include column(24, true); padding-bottom: 20px; clear: both; }
     #left-column{ @include column(5, true); padding-bottom: 20px; 
       select{ margin-bottom: 10px; }
       #left-column-nav{ font-weight: bold; margin-bottom: 20px;}
@@ -83,7 +83,6 @@ body {
       #table-nav{ width: 100%; margin-bottom: 20px; text-align: right; }
       #hidden-schools{ margin-top: 20px; }
       table.listings{
-        padding-left: 30px;
         thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
         th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
         td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
