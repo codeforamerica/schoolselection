@@ -1,4 +1,4 @@
-.full-width
+#header
   %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
 
 #left-column
@@ -12,13 +12,10 @@
         
 #right-column
   #table-nav
-    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :class => 'nav sub'
-    &nbsp;|&nbsp;
-    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :class => 'nav sub'
-    &nbsp;|&nbsp;
-    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :class => 'nav sub'
-    &nbsp;|&nbsp;
-    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :class => 'nav sub'
+    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'nav sub active'
+    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'nav sub'
+    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'nav sub'
+    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'nav sub'
     
   #listings-table
     = render :partial => 'schools/table/table'
