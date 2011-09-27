@@ -1,8 +1,8 @@
-%td.tabbable.overview.large{:width=>'50px'}
+%td.tabbable.overview.large
   = school.grade_levels.short_string
-%td.tabbable.overview.large{:width=>'60px'}
+%td.tabbable.overview.large
   =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
-%td.tabbable.overview.large{:width=>'140px'}
+%td.tabbable.overview.large
   - if @walk_zone_schools.try(:include?, school)
     - if params[:sibling_school] == school.id.to_s 
       Sibling School

@@ -2,6 +2,7 @@
   %thead
     %tr
       %th{:width=>'110px'} &nbsp;
+      %th{:width=>'270px'} &nbsp;
       %th &nbsp;
       %th.tabbable.overview{:width=>'50px'} Grades
       %th.tabbable.overview{:width=>'70px'} Distance
@@ -10,17 +11,16 @@
       %th.tabbable.transportation.hidden{:width=>'70px'} Distance
       %th.tabbable.transportation.hidden{:width=>'70px'} Walk Time
       %th.tabbable.transportation.hidden{:width=>'70px'} Drive Time
-      %th.tabbable.transportation.hidden{:width=>'70px'} MBTA Time
       
-      %th.tabbable.academics.hidden{:width=>'70px'} Teachers
+      %th.tabbable.academics.hidden{:width=>'65px'} Teachers
       %th.tabbable.academics.hidden{:width=>'70px'} Students
-      %th.tabbable.academics.hidden{:width=>'150px'} Staff to Student Ratio
+      %th.tabbable.academics.hidden{:width=>'150px'} Staff-Student Ratio
       
       %th.tabbable.admissions.hidden{:width=>'70px'} Open Seats
       %th.tabbable.admissions.hidden{:width=>'70px'} 1st Choices
       %th.tabbable.admissions.hidden{:width=>'70px'} 2st Choices
       %th.tabbable.admissions.hidden{:width=>'75px'} 3rd Choices
-      %th.tabbable.admissions.hidden{:width=>'70px'} Admittance Odds
+      %th.tabbable.admissions.hidden{:width=>'70px'} Odds
       
       %th{:width=>'22px'} &nbsp;
   %tbody
@@ -40,7 +40,7 @@
     - if @hidden_schools.blank?
       %tr#hidden_schools_note
         %td.italic
-          == Schools may be removed from the list, above, by clicking the &nbsp;#{image_tag('icons/hide.png')}&nbsp; button on the right side of each listing.
+          == Schools may be removed from the list, above, by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
         = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}

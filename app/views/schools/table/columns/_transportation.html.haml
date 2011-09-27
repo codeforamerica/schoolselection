@@ -1,11 +1,9 @@
-%td.tabbable.transportation.hidden.large{:width=>'70px'}
+%td.tabbable.transportation.hidden.large
   =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
-%td.tabbable.transportation.hidden.large{:width=>'70px'}
+%td.tabbable.transportation.hidden.large
   - if @walk_zone_schools.include?(school)
     =raw school.distance.present? ? "#{walk_time(school.distance)} min." : '&nbsp;'
   - else
     &nbsp;
-%td.tabbable.transportation.hidden.large{:width=>'70px'}
+%td.tabbable.transportation.hidden.large
   =raw school.distance.present? ? "#{drive_time(school.distance)} min." : '&nbsp;'
-%td.tabbable.transportation.hidden.large{:width=>'70px'}
-  &nbsp;
