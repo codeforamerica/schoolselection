@@ -33,29 +33,18 @@ body {
   .mid{ font-size: 1em; padding: 5px 0 3px 0; }
   .sub{ font-size: 1em; padding: 5px 8px 3px 8px; }
   
-  a.favorited {
+  a.hide {
   display: block;
   text-indent: -5000px;
   width: 16px;
   height: 16px;
-  background-image: url(heart.png);
-  background-repeat: no-repeat;
-  }
-  a.unfavorited {
-  display: block;
-  text-indent: -5000px;
-  width: 16px;
-  height: 16px;
-  background-image: url(heart.png);
+  background-image: url(icons/hide.png);
   background-repeat: no-repeat;
   }
   
-  a.favorited{background-position: 0 0;}
-  a.favorited:active {background-position: 0 0;}
-  a.favorited:hover {background-position: 0 -16px;}
-  a.unfavorited{background-position: 0 -16px;}
-  a.unfavorited:active {background-position: 0 -16px;}
-  a.unfavorited:hover {background-position: 0 0;}
+  a.hide{background-position: 0 0;}
+  a.hide:active {background-position: 0 0;}
+  a.hide:hover {background-position: 0 -16px;}
   
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.1em;}

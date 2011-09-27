@@ -19,8 +19,8 @@
 
     = render :partial => 'schools/table_parts/admissions', :locals => {:school => school}
   
-    %td.hide-button{:width=>'16px'}
-      = link_to image_tag('icons/hide.png'), hide_school_path(school), :remote => true, :method => :post
+    %td.hide-button
+      = link_to image_tag('icons/hide.png'), hide_school_path(school), :remote => true, :method => :post, :class => 'hide'
 - else
   %tr{:id=>"visible_school_#{school.id}"}
     %td
@@ -42,5 +42,5 @@
 
     = render :partial => 'schools/table_parts/admissions', :locals => {:school => school}
   
-    %td.hide-button{:width=>'16px'}
-      = link_to image_tag('icons/hide.png'), hide_school_path(school), :remote => true, :method => :post
+    %td.hide-button
+      = link_to image_tag('icons/hide.png'), hide_school_path(school), :remote => true, :method => :post, :class => 'hide'
