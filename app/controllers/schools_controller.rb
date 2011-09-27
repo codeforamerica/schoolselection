@@ -19,6 +19,8 @@ class SchoolsController < ApplicationController
       @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
       @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
       @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+      @favorites = School.find(session[:favorites]) if session[:favorites].present?
+      @hidden = School.find(session[:hidden]) if session[:hidden].present?
     else
       @assignment_zones = AssignmentZone.all
     end
@@ -47,7 +49,7 @@ class SchoolsController < ApplicationController
     @favorites = School.find(session[:favorites])
   end
   
-  def add
+  def favorite
     @school = School.find(params[:id])
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
@@ -57,9 +59,28 @@ class SchoolsController < ApplicationController
     end
   end
   
-  def remove
+  def unfavorite
     @school = School.find(params[:id])
     session[:favorites].delete_if {|x| x == @school.id }
+    respond_to do |format|
+      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.json { render json: @school }
+    end
+  end
+  
+  def hide
+    @school = School.find(params[:id])
+    session[:favorites] ||= []
+    session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
+    respond_to do |format|
+      format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
+      format.json { render json: @school }
+    end
+  end
+  
+  def unhide
+    @school = School.find(params[:id])
+    session[:hidden].delete_if {|x| x == @school.id }
     respond_to do |format|
       format.html { redirect_to schools_url(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level]), notice: "#{@school.name} was added to your favorites" }
       format.json { render json: @school }

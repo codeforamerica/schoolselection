@@ -33,6 +33,30 @@ body {
   .mid{ font-size: 1em; padding: 5px 0 3px 0; }
   .sub{ font-size: 1em; padding: 5px 8px 3px 8px; }
   
+  a.favorited {
+  display: block;
+  text-indent: -5000px;
+  width: 16px;
+  height: 16px;
+  background-image: url(heart.png);
+  background-repeat: no-repeat;
+  }
+  a.unfavorited {
+  display: block;
+  text-indent: -5000px;
+  width: 16px;
+  height: 16px;
+  background-image: url(heart.png);
+  background-repeat: no-repeat;
+  }
+  
+  a.favorited{background-position: 0 0;}
+  a.favorited:active {background-position: 0 0;}
+  a.favorited:hover {background-position: 0 -16px;}
+  a.unfavorited{background-position: 0 -16px;}
+  a.unfavorited:active {background-position: 0 -16px;}
+  a.unfavorited:hover {background-position: 0 0;}
+  
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
   h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.1em;}
   h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
@@ -51,6 +75,7 @@ body {
   .right{ text-align: right; }
   .gray-box{ @include border-radius(10px); background-color: #ddd; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
   .clear-both{ clear: both; }
+  .heart{ margin: 0 0 -1px 4px; }
     
   #header{ margin-bottom: 20px; padding-bottom: 10px; border-bottom: solid 1px #ccc;
     #inner-header{ @include container; padding: 20px 0 20px 0;}
@@ -67,8 +92,9 @@ body {
       table.listings{
         padding-left: 30px;
         thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-        th{ background-color: white !important; font-size: 13px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
+        th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
         td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
+        td.hide-button{vertical-align: top;}
       }
     }
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }

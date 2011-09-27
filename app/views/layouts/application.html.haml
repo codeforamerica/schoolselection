@@ -10,14 +10,8 @@
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
     #container
-      #header
-        %ul.horizontal-list
-          %li= link_to "Search", root_url, :class => 'nav main'
-          %li &nbsp;&nbsp;>&nbsp;&nbsp;
-          %li= link_to "Eligible Schools", schools_path, :class => 'nav main'
-
       = yield
-
+      = debug session
     #footer
       = yield :scripts
       <script type="text/javascript">

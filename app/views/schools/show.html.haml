@@ -35,10 +35,10 @@
       %b School Type:&nbsp;
       = @school.school_type_name
     
-    - unless @school.grades.blank?
+    - unless @school.grade_levels.short_string.blank?
       %br/
       %b Grades:&nbsp;
-      = @school.grades
+      = @school.grade_levels.short_string
     
     - unless @school.hours.blank?
       %br/
@@ -62,9 +62,9 @@
 
   - if @favorites.try(:include?, @school.id)
     %h3
-      == #{image_tag('star-gray.png')}&nbsp;
-      = link_to "Remove From My Favorites", remove_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post
+      == #{image_tag('heart-icon-off.png', :class => 'heart')}&nbsp;
+      = link_to "Remove From My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post
   - else
     %h3
-      == #{image_tag('star.png')}&nbsp;
-      = link_to "Add To My Favorites", add_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post
+      == #{image_tag('heart-icon.png', :class => 'heart')}&nbsp;
+      = link_to "Add To My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), method: :post

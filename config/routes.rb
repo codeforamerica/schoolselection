@@ -21,8 +21,10 @@ Schoolselection::Application.routes.draw do
       get 'compare'      
     end
     member do 
-      post 'add'
-      post 'remove'      
+      post 'favorite'
+      post 'unfavorite'
+      post 'hide'      
+      post 'unhide'      
     end
   end
 
