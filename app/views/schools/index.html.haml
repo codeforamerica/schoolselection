@@ -1,4 +1,4 @@
-#page     
+#screen     
   - if @geocoded_address.present? && @geocoded_address.success == true && @grade_level.blank?
     <div class='alert'>The address you entered could not be located within the Boston School District. Please try again.</div>
     = render :partial => 'pages/search_form'

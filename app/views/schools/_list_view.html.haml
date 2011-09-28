@@ -1,22 +1,25 @@
 #header
-  %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
+  &nbsp;
 
 #left-column
-  = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'nav mid active'
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map'), :class => 'nav mid'
-  
-  #small-map
-    - if @geocoded_address.present?
-      = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+  #left-column-nav
+    %span.sidebar-nav.active
+      List View
+    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map'), :class => 'sidebar-nav'
+  #inner-left-column
+    #small-map
+      - if @geocoded_address.present?
+        = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
         
 #right-column
   #table-nav
-    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'nav sub active'
-    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'nav sub'
-    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'nav sub'
-    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'nav sub'
+    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
+    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
+    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
+    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
     
-  #listings-table
+  #page
+    %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
     = render :partial => 'schools/table/table'
       
