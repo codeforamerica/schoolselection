@@ -45,10 +45,10 @@ body {
   a.hide:active {background-position: 0 0;}
   a.hide:hover {background-position: 0 -16px;}
   
-  h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
-  h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.3em;}
-  h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
-  h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; color: #333; }
+  h1{ font-weight: bold; font-size: 2.7em; margin: 33px 0 0 0; }
+  h2{ font-family: 'Gotham'; font-size: 1.5em; margin-bottom: 0.3em;}
+  h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; }
+  h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; }
 
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}

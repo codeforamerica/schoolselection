@@ -558,14 +558,12 @@ body a.hide:hover {
 body h1 {
   font-weight: bold;
   font-size: 2.7em;
-  color: #333;
   margin: 33px 0 0 0;
 }
 /* line 49, ../../stylesheets/screen.scss */
 body h2 {
   font-family: 'Gotham';
   font-size: 1.5em;
-  color: #333;
   margin-bottom: 0.3em;
 }
 /* line 50, ../../stylesheets/screen.scss */
@@ -573,14 +571,12 @@ body h3 {
   font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 0.5em;
-  color: #333;
 }
 /* line 51, ../../stylesheets/screen.scss */
 body h4 {
   font-weight: bold;
   font-size: 1.3em;
   margin-bottom: 0;
-  color: #333;
 }
 /* line 53, ../../stylesheets/screen.scss */
 body ul.horizontal-list {

@@ -17,10 +17,10 @@
       %th.tabbable.academics.hidden{:width=>'140px'} Staff-Student Ratio
       
       %th.tabbable.admissions.hidden{:width=>'70px'} Open Seats
-      %th.tabbable.admissions.hidden{:width=>'70px'} 1st Choices
-      %th.tabbable.admissions.hidden{:width=>'70px'} 2st Choices
+      %th.tabbable.admissions.hidden{:width=>'75px'} 1st Choices
+      %th.tabbable.admissions.hidden{:width=>'75px'} 2st Choices
       %th.tabbable.admissions.hidden{:width=>'75px'} 3rd Choices
-      %th.tabbable.admissions.hidden{:width=>'70px'} Odds
+      %th.tabbable.admissions.hidden{:width=>'60px'} Odds
       
       %th{:width=>'22px'} &nbsp;
   %tbody
@@ -40,7 +40,7 @@
     - if @hidden_schools.blank?
       %tr#hidden_schools_note
         %td.italic
-          == Schools may be removed from the results list by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
+          == Schools may be hidden from your results by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
         = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}
