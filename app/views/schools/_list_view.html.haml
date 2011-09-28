@@ -11,6 +11,14 @@
     #small-map
       - if @geocoded_address.present?
         = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map')
+    %h3 Filter Results
+    %br/
+    %p Filter
+    %p Filter
+    %p Filter
+    %p Filter
+    %p Filter
+    %p Update Results
         
 #right-column
   #table-nav
