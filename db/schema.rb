@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927010125) do
+ActiveRecord::Schema.define(:version => 20110928203400) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -96,6 +96,21 @@ ActiveRecord::Schema.define(:version => 20110927010125) do
     t.datetime "updated_at"
   end
 
+  create_table "school_grade_admissions", :force => true do |t|
+    t.integer  "school_id"
+    t.integer  "grade_level_id"
+    t.integer  "open_seats"
+    t.integer  "first_choice"
+    t.integer  "second_choice"
+    t.integer  "third_choice"
+    t.integer  "fourth_higher_choice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "school_grade_admissions", ["grade_level_id"], :name => "index_school_grade_admissions_on_grade_level_id"
+  add_index "school_grade_admissions", ["school_id"], :name => "index_school_grade_admissions_on_school_id"
+
   create_table "school_groups", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -157,6 +172,10 @@ ActiveRecord::Schema.define(:version => 20110927010125) do
     t.integer  "neighborhood_id"
     t.integer  "parcel_id"
     t.integer  "students_count"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
