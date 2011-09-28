@@ -34,13 +34,13 @@
 %table#hidden-schools.listings
   %thead
     %th
-      %h2 Minimized Schools
+      %h2 Hidden Schools
     %th &nbsp;
   %tbody
     - if @hidden_schools.blank?
       %tr#hidden_schools_note
         %td.italic
-          == Schools may be removed from the list, above, by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
+          == Schools may be removed from the results list by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
         = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}
