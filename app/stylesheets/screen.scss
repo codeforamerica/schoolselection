@@ -31,7 +31,7 @@ body {
   .active{ background-color: white; }
   .main{ font-size: 1.2em; padding: 5px 0 3px 0; }
   .mid{ font-size: 1em; padding: 5px 0 3px 0; }
-  .sub{ font-size: 1.1em; padding: 10px 14px; }
+  .sub{ font-size: 1.1em; padding: 13px 15px; }
   
   a.hide {
   display: block;
@@ -47,7 +47,7 @@ body {
   a.hide:hover {background-position: 0 -16px;}
   
   h1{ font-weight: bold; font-size: 2.7em; color: #333; margin: 33px 0 0 0; }
-  h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.1em;}
+  h2{ font-family: 'Gotham'; font-size: 1.5em; color: #333; margin-bottom: 0.3em;}
   h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; color: #333; }
   h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; color: #333; }
 
@@ -67,27 +67,44 @@ body {
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .gray-box{ @include border-radius(10px); background-color: #ddd; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
   .heart{ margin: 0 0 -1px 4px; }
-  .favorited{ background-color: #ffffcc; }
+  .favorited{ background-color: $lightyellow; }
     
-  #header{ margin-top: 20px; padding-bottom: 15px;
+  #header{ margin-top: 20px;
     #inner-header{ @include container; padding: 20px 0 20px 0;}
   }
   #container{ @include container; font-family: 'Gotham'; }
-  #page{ 
+  #screen{ 
     .full-width{ @include column(24, true); padding-bottom: 20px; clear: both; }
-    #left-column{ @include column(5, true); padding-bottom: 20px;
-      select{ margin-bottom: 10px; }
-      #left-column-nav{ font-weight: bold; margin-bottom: 20px;}
-    }
-    #right-column{ @include column(19, true); background-color: white; margin: 0 0 20px 0;
-      #table-nav{ width: 100%; text-align: right; background-color: $cream; padding-bottom: 7px; }
-      #hidden-schools{ margin-top: 20px; }
-      table.listings{
+    #left-column{ 
+      @include column(5, true); 
+      margin-top: 55px; 
+      margin-left: 5px;
+      #left-column-nav{ text-align: right; margin-right: 30px; font-weight: bold; margin-bottom: 15px;}
+      #inner-left-column{
+        @include box-shadow; 
+        @include border-radius(10px 0 0 10px);
+        background-color: #cccbbe; 
         padding: 20px;
-        thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-        th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
-        td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
-        td.hide-button{vertical-align: top;}
+        select{ margin-bottom: 10px; }
+      }
+    }
+    #right-column{ 
+      @include column(19, true);
+      margin: 0 0 20px 0;
+      #hidden-schools{ margin-top: 20px; }
+
+      #table-nav{ width: 100%; text-align: right; padding-bottom: 7px; }      
+      #page{ 
+        @include box-shadow; 
+        background-color: white;
+        padding: 25px;
+        table.listings{
+          thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
+          th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
+          td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
+          td.hide-button{vertical-align: top;}
+        }
+        
       }
     }
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
@@ -95,15 +112,14 @@ body {
       .static-map-image{ @include border-radius(7px); }
     }
     
-    #map_container {
-      padding-left: 20px;
+    #map_container{
+      padding-top: 7px;
       #gmaps4rails_map { @include border-radius(7px); width: 100%; height: 550px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
-    
     #map-list{
       #options{
-        height: 475px;
+        height: 450px;
         margin: 15px 0 15px 0;
         overflow: scroll;
         ul#markers_list{ 

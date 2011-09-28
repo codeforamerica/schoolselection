@@ -1,3 +1,4 @@
 $("#visible_school_<%= @school.id %>").fadeOut();
+$("#visible_school_<%= @school.id %>").removeClass('favorited');
 $("#hidden_schools_note").hide();
 $("#hidden-schools").append("<%= escape_javascript(render :partial => 'schools/table/rows/hidden_row', :locals => {:school => @school}) %>");

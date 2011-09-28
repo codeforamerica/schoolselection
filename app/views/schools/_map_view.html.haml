@@ -1,16 +1,21 @@
-.full-width
-  %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
+#header
+  &nbsp;
 
 #left-column
   #left-column-nav
     = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'nav mid'
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'nav mid active'
-  #map-list
-    %h4 Eligible Schools
-    #options
-      <ul id="markers_list"></ul>
+  #inner-left-column
+    #map-list
+      %h4 Eligible Schools
+      #options
+        <ul id="markers_list"></ul>
       
 #right-column
-  #map-container
-    = walk_zone_map
+  #table-nav
+    &nbsp;
+  #page
+    #map-container
+      %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
+      = walk_zone_map
