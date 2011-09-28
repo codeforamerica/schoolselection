@@ -1,70 +1,69 @@
-#page
-  %h2= @school.name
-  
-  %p
-    =raw @school.description
-  
-  %p
-    - unless @school.address.blank?
-      %br/
-      %b Address:&nbsp;
-      == #{@school.address} #{@school.city.try(:name)}, MA #{@school.zipcode}
-    
-    - unless @school.phone.blank?
-      %br/
-      %b Phone:&nbsp;
-      = @school.phone
-    
-    - unless @school.fax.blank?
-      %br/
-      %b Fax:&nbsp;
-      = @school.fax
-    
-    - unless @school.website.blank?
-      %br/
-      %b Website:&nbsp;
-      = link_to @school.website
-      
-    - unless @school.assignment_zone.blank?
-      %br/
-      %b Assignment Zone:&nbsp;
-      = @school.assignment_zone.name
-    
-    - unless @school.school_type_name.blank?
-      %br/
-      %b School Type:&nbsp;
-      = @school.school_type_name
-    
-    - unless @school.grade_levels.short_string.blank?
-      %br/
-      %b Grades:&nbsp;
-      = @school.grade_levels.short_string
-    
-    - unless @school.hours.blank?
-      %br/
-      %b Hours:&nbsp;
-      = @school.hours
-    
-    - unless @school.early_dismissal_time.blank?
-      %br/
-      %b Early Dismissal Time:&nbsp;
-      = @school.early_dismissal_time
-    
-    - unless @school.breakfast.blank?
-      %br/
-      %b Breakfast:&nbsp;
-      = @school.breakfast
-    
-    - unless @school.lunch.blank?
-      %br/
-      %b School Lunch:&nbsp;
-      = @school.lunch
+%h2= @school.name
 
-  - if @favorite_schools.try(:include?, @school.id)
-    %h3
-      == #{image_tag('star-gray.png')}&nbsp;
-      = link_to "Remove From My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-  - else
-    %h3
-      == #{image_tag('star.png')}&nbsp;
-      = link_to "Add To My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+%p
+  =raw @school.description
+
+%p
+  - unless @school.address.blank?
+    %br/
+    %b Address:&nbsp;
+    == #{@school.address} #{@school.city.try(:name)}, MA #{@school.zipcode}
+  
+  - unless @school.phone.blank?
+    %br/
+    %b Phone:&nbsp;
+    = @school.phone
+  
+  - unless @school.fax.blank?
+    %br/
+    %b Fax:&nbsp;
+    = @school.fax
+  
+  - unless @school.website.blank?
+    %br/
+    %b Website:&nbsp;
+    = link_to @school.website
+    
+  - unless @school.assignment_zone.blank?
+    %br/
+    %b Assignment Zone:&nbsp;
+    = @school.assignment_zone.name
+  
+  - unless @school.school_type_name.blank?
+    %br/
+    %b School Type:&nbsp;
+    = @school.school_type_name
+  
+  - unless @school.grade_levels.short_string.blank?
+    %br/
+    %b Grades:&nbsp;
+    = @school.grade_levels.short_string
+  
+  - unless @school.hours.blank?
+    %br/
+    %b Hours:&nbsp;
+    = @school.hours
+  
+  - unless @school.early_dismissal_time.blank?
+    %br/
+    %b Early Dismissal Time:&nbsp;
+    = @school.early_dismissal_time
+  
+  - unless @school.breakfast.blank?
+    %br/
+    %b Breakfast:&nbsp;
+    = @school.breakfast
+  
+  - unless @school.lunch.blank?
+    %br/
+    %b School Lunch:&nbsp;
+    = @school.lunch
+
+- if @favorite_schools.try(:include?, @school.id)
+  %h3
+    == #{image_tag('star-gray.png')}&nbsp;
+    = link_to "Remove From My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+- else
+  %h3
+    == #{image_tag('star.png')}&nbsp;
+    = link_to "Add To My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post

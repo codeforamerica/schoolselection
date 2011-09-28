@@ -527,11 +527,12 @@ body a.table-nav {
   color: #3d81cc;
   font-weight: bold;
   font-size: 1.1em;
-  padding: 13px 15px;
+  padding: 13px 15px 10px 15px;
 }
 /* line 33, ../../stylesheets/screen.scss */
 body a.table-nav.active {
   background-color: white;
+  border-bottom: solid 3px white;
 }
 /* line 35, ../../stylesheets/screen.scss */
 body a.hide {
@@ -694,21 +695,9 @@ body .heart {
 }
 /* line 68, ../../stylesheets/screen.scss */
 body .favorited {
-  background-color: #ffffcc;
-}
-/* line 70, ../../stylesheets/screen.scss */
-body #header {
-  margin-top: 20px;
+  background-color: #fff5ba;
 }
 /* line 71, ../../stylesheets/screen.scss */
-body #header #inner-header {
-  width: 1128px;
-  margin: 0 auto;
-  overflow: hidden;
-  *zoom: 1;
-  padding: 20px 0 20px 0;
-}
-/* line 73, ../../stylesheets/screen.scss */
 body #container {
   width: 1128px;
   margin: 0 auto;
@@ -716,7 +705,25 @@ body #container {
   *zoom: 1;
   font-family: 'Gotham';
 }
-/* line 75, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
+body #header {
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  padding: 10px 0 15px 0;
+  margin-bottom: 40px;
+  background-color: #cccbbe;
+}
+/* line 77, ../../stylesheets/screen.scss */
+body #header #inner-header {
+  width: 1128px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  padding-left: 30px;
+}
+/* line 80, ../../stylesheets/screen.scss */
 body #screen .full-width {
   display: inline;
   float: left;
@@ -729,27 +736,27 @@ body #screen .full-width {
 * html body #screen .full-width {
   overflow-x: hidden;
 }
-/* line 76, ../../stylesheets/screen.scss */
+/* line 81, ../../stylesheets/screen.scss */
 body #screen #left-column {
   display: inline;
   float: left;
   margin-right: 0;
   width: 227.083px;
-  margin-top: 55px;
+  margin-top: 70px;
   margin-left: 5px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html body #screen #left-column {
   overflow-x: hidden;
 }
-/* line 80, ../../stylesheets/screen.scss */
+/* line 85, ../../stylesheets/screen.scss */
 body #screen #left-column #left-column-nav {
   text-align: right;
   margin-right: 30px;
   font-weight: bold;
   margin-bottom: 15px;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 86, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -764,11 +771,11 @@ body #screen #left-column #inner-left-column {
   background-color: #cccbbe;
   padding: 20px;
 }
-/* line 86, ../../stylesheets/screen.scss */
+/* line 91, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column select {
   margin-bottom: 10px;
 }
-/* line 89, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #screen #right-column {
   display: inline;
   float: left;
@@ -780,17 +787,14 @@ body #screen #right-column {
 * html body #screen #right-column {
   overflow-x: hidden;
 }
-/* line 92, ../../stylesheets/screen.scss */
-body #screen #right-column #hidden-schools {
-  margin-top: 20px;
-}
-/* line 94, ../../stylesheets/screen.scss */
+/* line 97, ../../stylesheets/screen.scss */
 body #screen #right-column #table-nav {
   width: 100%;
   text-align: right;
-  padding-bottom: 7px;
+  padding: 10px 0 10px 0;
+  margin-top: 5px;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 98, ../../stylesheets/screen.scss */
 body #screen #right-column #page {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -799,12 +803,12 @@ body #screen #right-column #page {
   background-color: white;
   padding: 25px;
 }
-/* line 100, ../../stylesheets/screen.scss */
+/* line 103, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings thead {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 101, ../../stylesheets/screen.scss */
+/* line 104, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings th {
   background-color: white !important;
   font-size: 12px;
@@ -813,25 +817,29 @@ body #screen #right-column #page table.listings th {
   padding: 5px 0 10px 10px;
   border-bottom: solid 1px #ccc;
 }
-/* line 102, ../../stylesheets/screen.scss */
+/* line 105, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td {
   padding: 10px 0 10px 10px;
   border-bottom: 1px solid #ccc;
 }
-/* line 103, ../../stylesheets/screen.scss */
+/* line 106, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td.hide-button {
   vertical-align: top;
 }
 /* line 108, ../../stylesheets/screen.scss */
+body #screen #right-column #page #hidden-schools {
+  margin-top: 20px;
+}
+/* line 111, ../../stylesheets/screen.scss */
 body #screen .bottom-border {
   padding-bottom: 20px;
   border-bottom: solid 1px #aaa;
 }
-/* line 109, ../../stylesheets/screen.scss */
+/* line 112, ../../stylesheets/screen.scss */
 body #screen #small-map {
   padding: 20px 0 20px 0;
 }
-/* line 110, ../../stylesheets/screen.scss */
+/* line 113, ../../stylesheets/screen.scss */
 body #screen #small-map .static-map-image {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -839,12 +847,13 @@ body #screen #small-map .static-map-image {
   -ms-border-radius: 7px;
   -khtml-border-radius: 7px;
   border-radius: 7px;
+  border: solid 1px #777777;
 }
-/* line 113, ../../stylesheets/screen.scss */
+/* line 116, ../../stylesheets/screen.scss */
 body #screen #map_container {
   padding-top: 7px;
 }
-/* line 115, ../../stylesheets/screen.scss */
+/* line 118, ../../stylesheets/screen.scss */
 body #screen #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -852,31 +861,32 @@ body #screen #map_container #gmaps4rails_map {
   -ms-border-radius: 7px;
   -khtml-border-radius: 7px;
   border-radius: 7px;
+  border: solid 1px #777777;
   width: 100%;
   height: 550px;
 }
-/* line 116, ../../stylesheets/screen.scss */
+/* line 119, ../../stylesheets/screen.scss */
 body #screen #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 119, ../../stylesheets/screen.scss */
+/* line 122, ../../stylesheets/screen.scss */
 body #screen #map-list #options {
   height: 450px;
   margin: 15px 0 15px 0;
   overflow: scroll;
 }
-/* line 123, ../../stylesheets/screen.scss */
+/* line 126, ../../stylesheets/screen.scss */
 body #screen #map-list #options ul#markers_list {
   padding-left: 15px;
 }
-/* line 125, ../../stylesheets/screen.scss */
+/* line 128, ../../stylesheets/screen.scss */
 body #screen #map-list #options ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 130, ../../stylesheets/screen.scss */
+/* line 133, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -897,19 +907,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 137, ../../stylesheets/screen.scss */
+/* line 140, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 138, ../../stylesheets/screen.scss */
+/* line 141, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 139, ../../stylesheets/screen.scss */
+/* line 142, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 144, ../../stylesheets/screen.scss */
+/* line 147, ../../stylesheets/screen.scss */
+body #footer {
+  background-color: #cccbbe;
+}
+/* line 149, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1128px;
   margin: 0 auto;

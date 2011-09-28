@@ -29,8 +29,8 @@ body {
   
   a.sidebar-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
   .sidebar-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
-  a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px; }
-  a.table-nav.active{ background-color: white; }
+  a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 10px 15px; }
+  a.table-nav.active{ background-color: white; border-bottom: solid 3px white;}
   
   a.hide {
   display: block;
@@ -67,15 +67,20 @@ body {
   .heart{ margin: 0 0 -1px 4px; }
   .favorited{ background-color: $lightyellow; }
     
-  #header{ margin-top: 20px;
-    #inner-header{ @include container; padding: 20px 0 20px 0;}
-  }
+  
   #container{ @include container; font-family: 'Gotham'; }
+  #header{ 
+    @include box-shadow; 
+    padding: 10px 0 15px 0; 
+    margin-bottom: 40px; 
+    background-color: $darkcream;
+    #inner-header{ @include container; padding-left: 30px;}
+  }
   #screen{ 
     .full-width{ @include column(24, true); padding-bottom: 20px; clear: both; }
     #left-column{ 
       @include column(5, true); 
-      margin-top: 55px; 
+      margin-top: 70px; 
       margin-left: 5px;
       #left-column-nav{ text-align: right; margin-right: 30px; font-weight: bold; margin-bottom: 15px;}
       #inner-left-column{
@@ -89,9 +94,7 @@ body {
     #right-column{ 
       @include column(19, true);
       margin: 0 0 20px 0;
-      #hidden-schools{ margin-top: 20px; }
-
-      #table-nav{ width: 100%; text-align: right; padding-bottom: 7px; }      
+      #table-nav{ width: 100%; text-align: right; padding: 10px 0 10px 0; margin-top: 5px; }      
       #page{ 
         @include box-shadow; 
         background-color: white;
@@ -102,17 +105,17 @@ body {
           td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
           td.hide-button{vertical-align: top;}
         }
-        
+      #hidden-schools{ margin-top: 20px; }  
       }
     }
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
     #small-map{ padding: 20px 0 20px 0; 
-      .static-map-image{ @include border-radius(7px); }
+      .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; }
     }
     
     #map_container{
       padding-top: 7px;
-      #gmaps4rails_map { @include border-radius(7px); width: 100%; height: 550px; }
+      #gmaps4rails_map { @include border-radius(7px); border: solid 1px $bordergray; width: 100%; height: 550px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     #map-list{
@@ -140,7 +143,9 @@ body {
     }    
   }
   
+  
   #footer{ 
+    background-color: $darkcream;
     #inner-footer{
       @include container;
       color: white; 

@@ -1,26 +1,25 @@
-#screen
-  %h2 Welcome to the School Discovery App
-  %p.large To get started, please enter your home address and your child's upcoming grade level in the search form, below.
-  
-  #search-form
-    - session[:address].blank? ? session[:address] = '26 Court Street' : session[:address]
-    - session[:zipcode].blank? ? session[:zipcode] = '02109' : session[:zipcode]
-    - session[:grade_level].blank? ? session[:grade_level] = '7' : session[:grade_level]
-    = form_tag('/schools', :method => :get) do
-      = hidden_field_tag 'view', 'list'
-      %table.search
-        %tr
-          %td.right Address:
-          %td= text_field_tag :address, session[:address], :class => 'address'
-        %tr
-          %td.right Zipcode:
-          %td= text_field_tag :zipcode, session[:zipcode], :class => 'zipcode'
-        %tr
-          %td.right Grade Level:
-          %td= select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => session[:grade_level])
-        %tr
-          %td.right Sibling School:
-          %td= select_tag :sibling_school, options_from_collection_for_select(School.all(:order => 'name'), :id, :name, :selected => session[:sibling_school]), :include_blank => true
-        %tr
-          %td &nbsp;
-          %td= submit_tag "Search"
+%h2 Welcome to the School Discovery App
+%p.large To get started, please enter your home address and your child's upcoming grade level in the search form, below.
+
+#search-form
+  - session[:address].blank? ? session[:address] = '26 Court Street' : session[:address]
+  - session[:zipcode].blank? ? session[:zipcode] = '02109' : session[:zipcode]
+  - session[:grade_level].blank? ? session[:grade_level] = '7' : session[:grade_level]
+  = form_tag('/schools', :method => :get) do
+    = hidden_field_tag 'view', 'list'
+    %table.search
+      %tr
+        %td.right Address:
+        %td= text_field_tag :address, session[:address], :class => 'address'
+      %tr
+        %td.right Zipcode:
+        %td= text_field_tag :zipcode, session[:zipcode], :class => 'zipcode'
+      %tr
+        %td.right Grade Level:
+        %td= select_tag :grade_level, options_from_collection_for_select(GradeLevel.all, :number, :number, :selected => session[:grade_level])
+      %tr
+        %td.right Sibling School:
+        %td= select_tag :sibling_school, options_from_collection_for_select(School.all(:order => 'name'), :id, :name, :selected => session[:sibling_school]), :include_blank => true
+      %tr
+        %td &nbsp;
+        %td= submit_tag "Search"
