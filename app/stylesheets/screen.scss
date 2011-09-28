@@ -27,11 +27,10 @@ body {
   a.visited{ color: $blue; text-decoration: none; }
   a.visited:hover{ color: $blue; text-decoration: underline; }
   
-  a.nav{ color: $blue; font-weight: bold; }
-  .active{ background-color: white; }
-  .main{ font-size: 1.2em; padding: 5px 0 3px 0; }
-  .mid{ font-size: 1em; padding: 5px 0 3px 0; }
-  .sub{ font-size: 1.1em; padding: 13px 15px; }
+  a.sidebar-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
+  .sidebar-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
+  a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px; }
+  a.table-nav.active{ background-color: white; }
   
   a.hide {
   display: block;

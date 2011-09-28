@@ -3,9 +3,10 @@
 
 #left-column
   #left-column-nav
-    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'nav mid'
+    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'sidebar-nav'
     &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'map'), :class => 'nav mid active'
+    %span.sidebar-nav.active
+      Map View
   #inner-left-column
     #map-list
       %h4 Eligible Schools
