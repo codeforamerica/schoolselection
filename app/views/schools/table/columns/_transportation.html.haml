@@ -1,7 +1,7 @@
 %td.tabbable.transportation.hidden.large
   =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} mi." : '&nbsp;'
 %td.tabbable.transportation.hidden.large
-  - if @walk_zone_schools.include?(school)
+  - if school.eligibility =~ /Walk Zone/
     =raw school.distance.present? ? "#{walk_time(school.distance)} min." : '&nbsp;'
   - else
     &nbsp;
