@@ -28,6 +28,6 @@
     = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
     
   #page
-    %h2== Results for: &nbsp;#{@geocoded_address.street_address} #{@geocoded_address.city}, #{@geocoded_address.state}
+    %h2== Results for: &nbsp;#{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state}
     = render :partial => 'schools/table/table'
       
