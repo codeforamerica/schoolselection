@@ -64,7 +64,6 @@ body {
   .large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
-  .gray-box{ @include border-radius(10px); background-color: #ddd; padding: 10px; margin-bottom: 30px; color: white; table{ margin-bottom: 0; }}
   .heart{ margin: 0 0 -1px 4px; }
   .favorited{ background-color: $lightyellow; }
     
@@ -82,7 +81,7 @@ body {
       #inner-left-column{
         @include box-shadow; 
         @include border-radius(10px 0 0 10px);
-        background-color: #cccbbe; 
+        background-color: $darkcream; 
         padding: 20px;
         select{ margin-bottom: 10px; }
       }
@@ -129,12 +128,15 @@ body {
     }
         
     #search-form{
-      width: 450px;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      @include column(10);
+      @include border-radius(10px);
+      margin-top: 30px;
+      padding: 30px 30px 0 30px;
       font-size: 15px; 
+      background-color: $darkcream;
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
+      table.search{ width: 450px !important; }
     }    
   }
   
