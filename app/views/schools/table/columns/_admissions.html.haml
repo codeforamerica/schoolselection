@@ -1,10 +1,7 @@
+- grade_level_admissions = school.grade_level_admissions.find_by_grade_level_id(@grade_level.id)
 %td.tabbable.admissions.hidden.large
-  &nbsp;
+  =raw grade_level_admissions.try(:open_seats) ? grade_level_admissions.open_seats : '&nbsp;'
 %td.tabbable.admissions.hidden.large
-  &nbsp;
+  =raw grade_level_admissions.try(:total_choices) ? grade_level_admissions.total_choices : '&nbsp;'
 %td.tabbable.admissions.hidden.large
-  &nbsp;
-%td.tabbable.admissions.hidden.large
-  &nbsp;
-%td.tabbable.admissions.hidden.large
-  &nbsp;
+  =raw admissions_odds(grade_level_admissions.try(:open_seats), grade_level_admissions.try(:first_choice))

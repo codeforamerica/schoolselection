@@ -90,14 +90,14 @@ class SchoolsController < ApplicationController
     @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
     @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
     @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @visible_schools = (@all_schools - @hidden_schools)
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
         s.eligibility = type
         s.eligibility_index = index
       end
     end
-    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
-    @visible_schools = (@all_schools - @hidden_schools)
     if params[:sibling_school] && (sib_school = @all_schools.find {|s| s.id == params[:sibling_school].to_i})
       #raise "in here"
       sib_school.eligibility = "Sibling School / "+sib_school.eligibility

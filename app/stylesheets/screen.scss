@@ -30,7 +30,8 @@ body {
   a.sidebar-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
   .sidebar-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
   a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 10px 15px; }
-  a.table-nav.active{ background-color: white; border-bottom: solid 3px white;}
+  a.table-nav.active{ color: #333; background-color: white; border-bottom: solid 3px white; }
+  a.table-nav.active:hover{ text-decoration: none; }
   
   a.hide {
   display: block;
@@ -46,7 +47,7 @@ body {
   a.hide:hover {background-position: 0 -16px;}
   
   h1{ font-weight: bold; font-size: 2.7em; margin: 33px 0 0 0; }
-  h2{ font-size: 1.5em; margin-bottom: 0.3em;}
+  h2{ font-size: 1.5em; margin-bottom: 0.6em;}
   h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; }
   h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; }
 
@@ -57,6 +58,7 @@ body {
   
   .clear-both{ clear: both; }
   .right{ text-align: right; }
+  .center{ text-align: center; }
   .hidden{ display: none;}
   .italic{ font-style: italic; }
   .bold{ font-weight: bold; }
@@ -103,7 +105,7 @@ body {
     #right-column{ 
       @include column(19, true);
       margin: 0 0 20px 0;
-      #table-nav{ width: 100%; text-align: right; padding: 10px 0 10px 0; margin-top: 5px; }      
+      #table-nav{ width: 100%; text-align: right; padding: 8px 0 10px 0; margin-top: 5px; }      
       #page{ 
         @include box-shadow; 
         background-color: white;
@@ -124,7 +126,7 @@ body {
     
     #map_container{
       padding-top: 7px;
-      #gmaps4rails_map { @include border-radius(7px); border: solid 1px $bordergray; width: 100%; height: 550px; }
+      #gmaps4rails_map { border: solid 1px $bordergray; width: 100%; height: 550px; }
       .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
     }
     #map-list{

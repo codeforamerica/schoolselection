@@ -15,6 +15,16 @@ module SchoolsHelper
   def drive_time(distance)
     (distance.to_f / DRIVE_TIME_METERS_PER_MINUTE).floor
   end
+  
+  def admissions_odds(open_seats, first_choices)
+    if open_seats.blank? || first_choices.blank?
+      '&nbsp'
+    elsif (open_seats.to_f / first_choices.to_f) >= 1
+      '100%'
+    else
+      "#{number_to_percentage((open_seats.to_f / first_choices.to_f) * 100, :precision => 0)}"
+    end
+  end
     
   def normal_results_title
     if params[:grade_level].blank?

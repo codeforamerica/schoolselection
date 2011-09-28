@@ -15,5 +15,8 @@
     &nbsp;
   #page
     #map-container
-      %h2== Results for: &nbsp;#{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state}
+      %h2
+        %span.small.nobold
+          Results for:&nbsp;
+        == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
       = walk_zone_map

@@ -4,6 +4,7 @@ class School < ActiveRecord::Base
   
   has_and_belongs_to_many :grade_levels
   has_many :grade_level_hours
+  has_many :grade_level_admissions, :class_name => "SchoolGradeAdmission", :foreign_key => "school_id"
   belongs_to :assignment_zone
   belongs_to :city
   belongs_to :neighborhood
