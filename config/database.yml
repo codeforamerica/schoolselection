@@ -4,6 +4,7 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
+  # adapter: postgres
   adapter: postgis
   database: schoolselection
   encoding: utf8
