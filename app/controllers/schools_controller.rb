@@ -60,7 +60,7 @@ class SchoolsController < ApplicationController
   
   def hide
     @school = School.find(params[:id])
-    session[:favorites].delete_if {|x| x == @school.id }
+    session[:favorites].delete_if {|x| x == @school.id } if session[:favorites].present?
     session[:hidden] ||= []
     session[:hidden] << @school.id unless session[:hidden].include?(@school.id)
     respond_to do |format|
