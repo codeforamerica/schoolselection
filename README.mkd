@@ -19,10 +19,10 @@ The School Discovery App is designed to help parents 1) identify the schools to 
 there are a couple of obstacles to hosting this app on heroku.
 
 1) you need to have a postgis-enabled database. The shared database is not postgis-enabled. You need to have a private database, set up with "heroku addons:add heroku-postgresql postgis=true". Then promote it to your database with "heroku pg:promote"
-2) when pushing with "heroku db:push", the taps gem doesn't recognize the postgis type. you need to temporarily change your config/database.yml file to have the adapter read "postgresql", not "postgis", or you can manually specify the path to your database with a postgres:// url
+2) when pushing with "heroku db:push", the taps gem doesn't recognize the postgis type. you need to temporarily change your config/database.yml file to have the adapter read "postgres" (not "postgis"). You also need to change heroku's DATABASE_URL to postgres using "heroku config:add DATABASE_URL=postgres://..."
 3) taps doesn't seem to preserve geographic column type. You'll need to go into "heroku pg:psql" and run:
 ALTER TABLE parcels ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
-ALTER TABLE assignment_zones ALTER shape TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(shape);
+ALTER TABLE assignment_zones ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
 
 4) RGeo spatial adapter needs the adapter name set to 'postgis' to load. you accomplish this by setting the heroku DATABASE_URL.
 run "heroku config", and look at DATABASE_URL
