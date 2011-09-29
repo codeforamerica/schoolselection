@@ -14,6 +14,6 @@ class GradeLevel < ActiveRecord::Base
 
   def self.short_string #not sure if this should go in here or not
     as_i = self.all.map(&:order_index).sort
-    self.all.slice_before {|x| !as_i.include?(x.order_index-1)}.map {|arr| "#{arr.first.number}-#{arr.last.number}"}*", "
+    self.all.sort_by(&:order_index).slice_before {|x| !as_i.include?(x.order_index-1)}.map {|arr| "#{arr.first.number}-#{arr.last.number}"}*", "
   end
 end
