@@ -18,18 +18,18 @@ The School Discovery App is designed to help parents 1) identify the schools to 
 ## <a name="deploying">DEPLOYING TO HEROKU:</a>
 there are a couple of obstacles to hosting this app on heroku.
 
-1) you need to have a postgis-enabled database. The shared database is not postgis-enabled. You need to have a private database, set up with "heroku addons:add heroku-postgresql postgis=true". Then promote it to your database with "heroku pg:promote"
-2) when pushing with "heroku db:push", the taps gem doesn't recognize the postgis type. you need to temporarily change your config/database.yml file to have the adapter read "postgres" (not "postgis"). You also need to change heroku's DATABASE_URL to postgres using "heroku config:add DATABASE_URL=postgres://..."
+1) You need to have a postgis-enabled database, which means that you need to have a private Heroku database, set up with "heroku addons:add heroku-postgresql postgis=true". Then promote it to your database with "heroku pg:promote"
+2) When pushing with "heroku db:push", the taps gem doesn't recognize the postgis type. You need to temporarily change your config/database.yml file to have the adapter read "postgres" (not "postgis"). You also need to change heroku's DATABASE_URL to postgres using "heroku config:add DATABASE_URL=postgres://..."
 3) taps doesn't seem to preserve geographic column type. You'll need to go into "heroku pg:psql" and run:
-ALTER TABLE parcels ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
-ALTER TABLE assignment_zones ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
+> ALTER TABLE parcels ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
+> ALTER TABLE assignment_zones ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
 
-4) RGeo spatial adapter needs the adapter name set to 'postgis' to load. you accomplish this by setting the heroku DATABASE_URL.
+4. RGeo spatial adapter needs the adapter name set to 'postgis' to load. you accomplish this by setting the heroku DATABASE_URL.
 run "heroku config", and look at DATABASE_URL
 NEW_URL is the existing DATABASE_URL, but with postgres:// replaced with postgis://
 run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current database url
 
-5) run 'heroku restart', to make sure your app loads the database correctly.
+5. Run 'heroku restart', to make sure your app loads the database correctly.
 
 ## <a name="contributing">Contributing</a>
 In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
