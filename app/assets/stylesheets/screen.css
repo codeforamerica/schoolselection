@@ -849,10 +849,11 @@ body #screen #right-column #page table.listings thead {
 }
 /* line 115, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings th {
-  background-color: white !important;
+  cursor: pointer;
   font-size: 12px;
   font-style: italic;
   font-weight: normal;
+  background-color: white !important;
   padding: 5px 0 10px 10px;
   border-bottom: solid 1px #ccc;
 }

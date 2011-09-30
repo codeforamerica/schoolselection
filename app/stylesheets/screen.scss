@@ -112,7 +112,7 @@ body {
         padding: 25px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-          th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
+          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
           td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
           td.hide-button{vertical-align: top;}
         }
