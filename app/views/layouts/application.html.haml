@@ -27,6 +27,10 @@
                 
     #container
       #screen
+        - if params[:notice].present?
+          %p.notice= notice
+        - if params[:alert].present?
+          %p.alert= alert
         = yield
       
     = yield :scripts
