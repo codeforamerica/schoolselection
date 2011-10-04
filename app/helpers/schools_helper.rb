@@ -20,9 +20,13 @@ module SchoolsHelper
     if open_seats.blank? || first_choices.blank?
       '&nbsp'
     elsif (open_seats.to_f / first_choices.to_f) >= 1
-      '100%'
-    else
-      "#{number_to_percentage((open_seats.to_f / first_choices.to_f) * 100, :precision => 0)}"
+      'High'
+    elsif (open_seats.to_f / first_choices.to_f) > 0.66
+      'High'
+    elsif (open_seats.to_f / first_choices.to_f) > 0.33
+      'Medium'
+    elsif (open_seats.to_f / first_choices.to_f) > 0
+      'Low'
     end
   end
     

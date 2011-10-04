@@ -64,6 +64,7 @@ body {
   .bold{ font-weight: bold; }
   .nobold{ font-weight: normal; }
   .large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
+  .larger{ font-size: 1.4em; font-weight: normal;}
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .heart{ margin: 0 0 -1px 4px; }
@@ -88,7 +89,7 @@ body {
     }
   }
   #screen{ 
-    .full-width{ @include column(24, true); padding-bottom: 20px; clear: both; }
+    .full-width{ @include column(24, true); padding: 20px; clear: both; }
     #left-column{ 
       @include column(5, true); 
       margin-top: 70px; 
