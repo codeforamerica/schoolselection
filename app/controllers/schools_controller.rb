@@ -3,9 +3,9 @@ class SchoolsController < ApplicationController
   
   def index
     @grade_levels = GradeLevel.all
-    address, session[:address] = params[:address], params[:address]
-    zipcode, session[:zipcode] = params[:zipcode], params[:zipcode]
-    grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
+    session[:address].try(:present?) ? address = session[:address] : (address, session[:address] = params[:address], params[:address])
+    session[:zipcode].try(:present?) ? zipcode = session[:zipcode] : (zipcode, session[:zipcode] = params[:zipcode], params[:zipcode])
+    session[:grade_level].try(:present?) ? grade_level = session[:grade_level] : (grade_level, session[:grade_level] = params[:grade_level], params[:grade_level])
     @address = "#{address}, #{zipcode}"
     @geocoded_address = geocode_address(@address) if address.present?    
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
