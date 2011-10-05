@@ -1,4 +1,9 @@
 Schoolselection::Application.routes.draw do
+  
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
+  devise_for :users
+
   root :to => 'high_voltage/pages#show', :id => 'home'
 
   resources :schools do

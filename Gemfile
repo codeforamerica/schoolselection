@@ -22,6 +22,7 @@ gem "rgeo-shapefile"
 gem "rgeo-geojson", :require => 'rgeo/geo_json'
 gem "activerecord-postgis-adapter"
 gem 'dbf'
+gem 'rails_admin', :git => 'git@github.com:joelmahoney/rails_admin.git'
 
 group :assets do
   gem 'sass-rails'
