@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:joelmahoney/rails_admin.git
+  revision: 9fb8461c7e2189729d06cf15a8bc2d44ec6abfe6
+  specs:
+    rails_admin (0.0.1)
+      builder (~> 3.0.0)
+      haml (>= 3.1.0, < 3.3.0)
+      rails (~> 3.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -125,7 +134,6 @@ GEM
       railties (= 3.1.0)
     rails3-generators (0.17.4)
       railties (>= 3.0.0)
-    rails_admin (0.0.0)
     railties (3.1.0)
       actionpack (= 3.1.0)
       activesupport (= 3.1.0)
@@ -211,7 +219,7 @@ DEPENDENCIES
   pg
   rails (= 3.1.0)
   rails3-generators
-  rails_admin
+  rails_admin!
   rgeo
   rgeo-geojson
   rgeo-shapefile
