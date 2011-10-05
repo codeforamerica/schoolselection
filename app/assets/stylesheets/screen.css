@@ -640,47 +640,52 @@ body input[type='submit'] {
   color: white !important;
   border: solid 1px gray;
   padding: 5px 7px 5px 7px;
+  margin: 10px 10px 10px 0;
 }
-/* line 59, ../../stylesheets/screen.scss */
+/* line 58, ../../stylesheets/screen.scss */
+body form div {
+  margin: 10px 10px 10px 0;
+}
+/* line 60, ../../stylesheets/screen.scss */
 body .clear-both {
   clear: both;
 }
-/* line 60, ../../stylesheets/screen.scss */
+/* line 61, ../../stylesheets/screen.scss */
 body .right {
   text-align: right;
 }
-/* line 61, ../../stylesheets/screen.scss */
+/* line 62, ../../stylesheets/screen.scss */
 body .center {
   text-align: center;
 }
-/* line 62, ../../stylesheets/screen.scss */
+/* line 63, ../../stylesheets/screen.scss */
 body .hidden {
   display: none;
 }
-/* line 63, ../../stylesheets/screen.scss */
+/* line 64, ../../stylesheets/screen.scss */
 body .italic {
   font-style: italic;
 }
-/* line 64, ../../stylesheets/screen.scss */
+/* line 65, ../../stylesheets/screen.scss */
 body .bold {
   font-weight: bold;
 }
-/* line 65, ../../stylesheets/screen.scss */
+/* line 66, ../../stylesheets/screen.scss */
 body .nobold {
   font-weight: normal;
 }
-/* line 66, ../../stylesheets/screen.scss */
+/* line 67, ../../stylesheets/screen.scss */
 body .large {
   font-size: 1.2em;
   line-height: 1.75em;
   margin-bottom: 0;
 }
-/* line 67, ../../stylesheets/screen.scss */
+/* line 68, ../../stylesheets/screen.scss */
 body .larger {
   font-size: 1.4em;
   font-weight: normal;
 }
-/* line 68, ../../stylesheets/screen.scss */
+/* line 69, ../../stylesheets/screen.scss */
 body .alert {
   color: #bf1300;
   font-size: 1.2em;
@@ -689,7 +694,7 @@ body .alert {
   background-color: none;
   border: none;
 }
-/* line 69, ../../stylesheets/screen.scss */
+/* line 70, ../../stylesheets/screen.scss */
 body .notice {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -704,22 +709,22 @@ body .notice {
   border-color: #85d475;
   color: white;
 }
-/* line 70, ../../stylesheets/screen.scss */
+/* line 71, ../../stylesheets/screen.scss */
 body .heart {
   margin: 0 0 -1px 4px;
 }
-/* line 71, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
 body .favorited {
   background-color: #fff5ba;
 }
-/* line 74, ../../stylesheets/screen.scss */
+/* line 75, ../../stylesheets/screen.scss */
 body #container {
   width: 1152px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 75, ../../stylesheets/screen.scss */
+/* line 76, ../../stylesheets/screen.scss */
 body #header {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -729,14 +734,14 @@ body #header {
   margin-bottom: 30px;
   background-color: #cccbbe;
 }
-/* line 80, ../../stylesheets/screen.scss */
+/* line 81, ../../stylesheets/screen.scss */
 body #header #header-container {
   width: 1152px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 83, ../../stylesheets/screen.scss */
 body #header #header-container #inner-header-left {
   display: inline;
   float: left;
@@ -747,11 +752,11 @@ body #header #header-container #inner-header-left {
 * html body #header #header-container #inner-header-left {
   overflow-x: hidden;
 }
-/* line 83, ../../stylesheets/screen.scss */
+/* line 84, ../../stylesheets/screen.scss */
 body #header #header-container #inner-header-left #logo {
   padding-left: 15px;
 }
-/* line 85, ../../stylesheets/screen.scss */
+/* line 86, ../../stylesheets/screen.scss */
 body #header #header-container #inner-header-right {
   display: inline;
   float: left;
@@ -762,12 +767,12 @@ body #header #header-container #inner-header-right {
 * html body #header #header-container #inner-header-right {
   overflow-x: hidden;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 88, ../../stylesheets/screen.scss */
 body #header #header-container #inner-header-right #main-nav {
   padding: 30px 0 0 30px;
   font-size: 1.3em;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 93, ../../stylesheets/screen.scss */
 body #screen .full-width {
   display: inline;
   float: left;
@@ -780,7 +785,7 @@ body #screen .full-width {
 * html body #screen .full-width {
   overflow-x: hidden;
 }
-/* line 93, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #screen #left-column {
   display: inline;
   float: left;
@@ -793,14 +798,14 @@ body #screen #left-column {
 * html body #screen #left-column {
   overflow-x: hidden;
 }
-/* line 97, ../../stylesheets/screen.scss */
+/* line 98, ../../stylesheets/screen.scss */
 body #screen #left-column #left-column-nav {
   text-align: right;
   margin-right: 30px;
   font-weight: bold;
   margin-bottom: 15px;
 }
-/* line 98, ../../stylesheets/screen.scss */
+/* line 99, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -815,11 +820,11 @@ body #screen #left-column #inner-left-column {
   background-color: #cccbbe;
   padding: 20px;
 }
-/* line 103, ../../stylesheets/screen.scss */
+/* line 104, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column select {
   margin-bottom: 10px;
 }
-/* line 106, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #screen #right-column {
   display: inline;
   float: left;
@@ -831,14 +836,14 @@ body #screen #right-column {
 * html body #screen #right-column {
   overflow-x: hidden;
 }
-/* line 109, ../../stylesheets/screen.scss */
+/* line 110, ../../stylesheets/screen.scss */
 body #screen #right-column #table-nav {
   width: 100%;
   text-align: right;
   padding: 8px 0 10px 0;
   margin-top: 5px;
 }
-/* line 110, ../../stylesheets/screen.scss */
+/* line 111, ../../stylesheets/screen.scss */
 body #screen #right-column #page {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -847,12 +852,12 @@ body #screen #right-column #page {
   background-color: white;
   padding: 25px;
 }
-/* line 115, ../../stylesheets/screen.scss */
+/* line 116, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings thead {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 116, ../../stylesheets/screen.scss */
+/* line 117, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings th {
   cursor: pointer;
   font-size: 12px;
@@ -862,29 +867,29 @@ body #screen #right-column #page table.listings th {
   padding: 5px 0 10px 10px;
   border-bottom: solid 1px #ccc;
 }
-/* line 117, ../../stylesheets/screen.scss */
+/* line 118, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td {
   padding: 10px 0 10px 10px;
   border-bottom: 1px solid #ccc;
 }
-/* line 118, ../../stylesheets/screen.scss */
+/* line 119, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td.hide-button {
   vertical-align: top;
 }
-/* line 120, ../../stylesheets/screen.scss */
+/* line 121, ../../stylesheets/screen.scss */
 body #screen #right-column #page #hidden-schools {
   margin-top: 20px;
 }
-/* line 123, ../../stylesheets/screen.scss */
+/* line 124, ../../stylesheets/screen.scss */
 body #screen .bottom-border {
   padding-bottom: 20px;
   border-bottom: solid 1px #aaa;
 }
-/* line 124, ../../stylesheets/screen.scss */
+/* line 125, ../../stylesheets/screen.scss */
 body #screen #small-map {
   padding: 20px 0 20px 0;
 }
-/* line 125, ../../stylesheets/screen.scss */
+/* line 126, ../../stylesheets/screen.scss */
 body #screen #small-map .static-map-image {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -894,38 +899,38 @@ body #screen #small-map .static-map-image {
   border-radius: 7px;
   border: solid 1px #777777;
 }
-/* line 128, ../../stylesheets/screen.scss */
+/* line 129, ../../stylesheets/screen.scss */
 body #screen #map_container {
   padding-top: 7px;
 }
-/* line 130, ../../stylesheets/screen.scss */
+/* line 131, ../../stylesheets/screen.scss */
 body #screen #map_container #gmaps4rails_map {
   border: solid 1px #777777;
   width: 100%;
   height: 550px;
 }
-/* line 131, ../../stylesheets/screen.scss */
+/* line 132, ../../stylesheets/screen.scss */
 body #screen #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 134, ../../stylesheets/screen.scss */
+/* line 135, ../../stylesheets/screen.scss */
 body #screen #map-list #options {
   height: 450px;
   margin: 15px 0 15px 0;
   overflow: scroll;
 }
-/* line 138, ../../stylesheets/screen.scss */
+/* line 139, ../../stylesheets/screen.scss */
 body #screen #map-list #options ul#markers_list {
   padding-left: 15px;
 }
-/* line 140, ../../stylesheets/screen.scss */
+/* line 141, ../../stylesheets/screen.scss */
 body #screen #map-list #options ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 145, ../../stylesheets/screen.scss */
+/* line 146, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -946,23 +951,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 152, ../../stylesheets/screen.scss */
+/* line 153, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 153, ../../stylesheets/screen.scss */
+/* line 154, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 154, ../../stylesheets/screen.scss */
+/* line 155, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 159, ../../stylesheets/screen.scss */
+/* line 160, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 161, ../../stylesheets/screen.scss */
+/* line 162, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

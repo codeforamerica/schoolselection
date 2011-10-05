@@ -54,7 +54,8 @@ body {
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
   select{ font-size: 13px; margin: 0 10px 0 1px; }
-  input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; }
+  input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; margin: 10px 10px 10px 0; }
+  form div { margin: 10px 10px 10px 0; }
   
   .clear-both{ clear: both; }
   .right{ text-align: right; }

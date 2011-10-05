@@ -30,4 +30,22 @@
         Results for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
     = render :partial => 'schools/table/table'
+    
+%script
+  $(document).ready(function() {
+  var yOffset = $("#left-column").offset().top;
+  $(window).scroll(function() {
+  if ($(window).scrollTop() > yOffset) {
+  $("#left-column").css({
+  'top': 0,
+  'position': 'fixed'
+  });
+  } else {
+  $("#left-column").css({
+  'top': yOffset + 'px',
+  'position': 'absolute'
+  });
+  }
+  });
+  });
       
