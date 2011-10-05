@@ -108,12 +108,13 @@ body {
     #right-column{ 
       position: absolute;
       width: 910px;
-      margin: 0 0 20px 235px;
+      margin-left: 235px;
       #table-nav{ width: 100%; text-align: right; padding: 8px 0 10px 0; margin-top: 5px; }      
       #page{ 
         @include box-shadow; 
         background-color: white;
         padding: 25px;
+        margin-bottom: 40px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
           th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
