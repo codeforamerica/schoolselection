@@ -529,7 +529,7 @@ body a.table-nav {
   color: #3d81cc;
   font-weight: bold;
   font-size: 1.1em;
-  padding: 13px 15px 10px 15px;
+  padding: 13px 15px 15px 15px;
 }
 /* line 33, ../../stylesheets/screen.scss */
 body a.table-nav.active {
