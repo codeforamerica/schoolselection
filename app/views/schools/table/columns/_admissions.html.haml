@@ -2,6 +2,8 @@
 %td.tabbable.admissions.hidden.larger
   =raw grade_level_admissions.try(:open_seats) ? grade_level_admissions.open_seats : '&nbsp;'
 %td.tabbable.admissions.hidden.larger
-  =raw grade_level_admissions.try(:total_choices) ? grade_level_admissions.total_choices : '&nbsp;'
-%td.tabbable.admissions.hidden.large
-  =raw admissions_odds(grade_level_admissions.try(:open_seats), grade_level_admissions.try(:first_choice))
+  =raw grade_level_admissions.try(:first_choice) ? grade_level_admissions.first_choice : '&nbsp;'
+%td.tabbable.admissions.hidden.larger
+  =raw grade_level_admissions.try(:second_choice) ? grade_level_admissions.second_choice : '&nbsp;'
+%td.tabbable.admissions.hidden.larger
+  =raw grade_level_admissions.try(:third_choice) ? grade_level_admissions.third_choice : '&nbsp;'
