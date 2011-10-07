@@ -3,10 +3,9 @@
     %tr
       %th{:width=>'110px'} &nbsp;
       %th.sorttable{:width=>'300px'} School Name
-      %th &nbsp;
-      %th.tabbable.overview.sorttable Grades
+      %th.tabbable.overview{:width=>'150px'} Eligibility Type
       %th.tabbable.overview.sorttable_numeric Distance
-      %th.tabbable.overview Eligibility Type
+      %th.tabbable.overview.sorttable Hours
       
       %th.tabbable.transportation.hidden.sorttable_numeric Distance
       %th.tabbable.transportation.hidden.sorttable_numeric Walk Time
@@ -37,13 +36,13 @@
 %table#hidden-schools.listings
   %thead
     %th
-      %h2.bold Your Hidden Schools
+      %h2.bold Your Minimized Schools
     %th &nbsp;
   %tbody
     - if @hidden_schools.blank?
       %tr#hidden_schools_note
         %td.italic
-          == Schools may be hidden from your results by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
+          == Schools may be hidden from your main search results by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
     - else
       - for hidden_school in @hidden_schools
         = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}

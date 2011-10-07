@@ -1,6 +1,6 @@
-%td.tabbable.overview.larger
-  = school.grade_levels.short_string
-%td.tabbable.overview.larger
-  =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
-  = school.eligibility
+  =raw school.eligibility.try(:present?) ? school.eligibility : '&nbsp;'
+%td.tabbable.overview.large
+  =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
+%td.tabbable.overview
+  =raw school.hours_by_grade_level(params[:grade_level]).try(:hours).try(:present?) ? school.hours_by_grade_level(params[:grade_level]).hours : '&nbsp;'

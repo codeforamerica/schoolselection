@@ -30,6 +30,10 @@ class School < ActiveRecord::Base
   
   ##### INSTANCE METHODS #####
   
+  def hours_by_grade_level(number)
+    self.grade_level_hours.find_by_grade_level_number(number)
+  end
+
   def geocode_address!
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA, #{zipcode}")

@@ -864,7 +864,7 @@ body #screen #right-column #page table.listings th {
 }
 /* line 121, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td {
-  padding: 10px 0 10px 10px;
+  padding: 10px;
   border-bottom: 1px solid #ccc;
 }
 /* line 122, ../../stylesheets/screen.scss */

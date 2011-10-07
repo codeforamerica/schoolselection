@@ -10,8 +10,6 @@
         = link_to image_tag('star-gray.png'), favorite_school_path(school), :remote => true, :method => :post
     %span.italic
       == #{school.address}, #{school.city.try(:name)}, #{school.city.try(:state).try(:abbreviation)}
-  %td.spacer
-    &nbsp;
 
   = render :partial => 'schools/table/columns/overview', :locals => {:school => school}
 
