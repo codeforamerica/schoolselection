@@ -11,4 +11,11 @@ class Vertex < ActiveRecord::Base
 
   def walk_zone(distance)
   end
+
+  def lat
+    self.the_geom.lat
+  end
+  def lng
+    self.the_geom.lon
+  end
 end
