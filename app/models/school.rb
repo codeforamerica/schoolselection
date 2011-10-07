@@ -13,6 +13,7 @@ class School < ActiveRecord::Base
   belongs_to :principal
   belongs_to :school_group
   belongs_to :state
+  belongs_to :vertex
   
   attr_accessor :eligibility, :eligibility_index
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
