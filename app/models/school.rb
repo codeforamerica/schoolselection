@@ -28,6 +28,10 @@ class School < ActiveRecord::Base
   def self.find_all_within_radius(address, radius_in_meters)
     self.joins(:parcel).where("ST_DWithin(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})'), #{radius_in_meters})")
   end
+
+  def self.within_walkshed(walkshed_text)
+    self.joins(:parcel).where("ST_Intersects(parcels.geometry,geometry('#{walkshed_text}'))")
+  end
   
   ##### INSTANCE METHODS #####
   
