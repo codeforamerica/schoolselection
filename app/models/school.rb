@@ -20,6 +20,9 @@ class School < ActiveRecord::Base
   # before_save :geocode_address!
   
   ##### CLASS METHODS #####
+  def self.with_distance(a)
+    with_walk_distance(a)
+  end
   
   def self.with_walk_distance(starting_vertex)
     select("*").select("(select sum(shortest_path.cost) from shortest_path('SELECT gid as id, source, target, length, length as cost from ways where class_id >= 104', #{starting_vertex.id.to_i},schools.vertex_id,false,false)) as distance")

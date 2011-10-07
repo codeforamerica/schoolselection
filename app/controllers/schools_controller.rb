@@ -8,6 +8,7 @@ class SchoolsController < ApplicationController
     grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
     @address = "#{address}, #{zipcode}"
     @geocoded_address = geocode_address(@address) if address.present?    
+    @vertex = Vertex.nearest_to(@geocoded_address).first
     if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
       shared_instance_variables
     else
@@ -86,10 +87,11 @@ class SchoolsController < ApplicationController
     session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
+    @walkshed = walkshed_for_point(@vertex,@grade_level.walk_zone_radius_in_meters / 1000.0)
     
-    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
-    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
-    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @walk_zone_schools = @grade_level.schools.within_walkshed(@walkshed).with_walk_distance(@vertex).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@vertex).order('distance ASC') - @walk_zone_schools
+    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@vertex).order('distance ASC') - @walk_zone_schools
     @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
     @visible_schools = (@all_schools - @hidden_schools)
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|

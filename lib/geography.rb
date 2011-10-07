@@ -3,7 +3,6 @@ module Geography
   def geocode_address(address)
     boston = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA')
     address = Geokit::Geocoders::GoogleGeocoder.geocode(address, :bias => boston.suggested_bounds)
-    Vertex.nearest_to(address).first
     # Geokit::Geocoders::MultiGeocoder.geocode(address)
   end
 
