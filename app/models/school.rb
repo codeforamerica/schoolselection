@@ -25,7 +25,7 @@ class School < ActiveRecord::Base
   end
   
   def self.with_walk_distance(starting_vertex)
-    select("*").select("(select sum(shortest_path.cost) from shortest_path('SELECT gid as id, source, target, length, length as cost from ways where class_id >= 104', #{starting_vertex.id.to_i},schools.vertex_id,false,false)) as distance")
+    select("(select sum(shortest_path.cost) from shortest_path('SELECT gid as id, source, target, length, length as cost from ways where class_id >= 104', #{starting_vertex.id.to_i},schools.vertex_id,false,false)) as distance")
   end
   
   def self.find_all_within_radius(address, radius_in_meters)
