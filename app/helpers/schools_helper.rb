@@ -60,7 +60,7 @@ module SchoolsHelper
   ####### MAP JSON #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "circles" => {"data" => walk_zone_json }, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def default_map
