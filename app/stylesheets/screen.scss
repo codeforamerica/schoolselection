@@ -51,6 +51,7 @@ body {
   h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; }
 
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
+  ul.no-bullets{ @include no-bullets; }
   input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
   select{ font-size: 13px; margin: 0 10px 0 1px; }
   input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; margin: 10px 10px 10px 0; }
@@ -71,40 +72,15 @@ body {
   .favorited{ background-color: $yellow; }
     
   #container{ @include container; }
-  #header{ 
-    padding: 20px 0 0 0;
-    margin-bottom: -30px;
-    #header-container{ 
-      @include container; 
-      #inner-header-left{ @include column(5, true); 
-        #logo{ padding-left: 15px; }
-      }
-      #inner-header-right{ 
-        @include column(19, true); 
-        #main-nav{ padding: 30px 0 0 27px; font-size: 1.3em; }
-      }
-    }
-  }
   #screen{
+    margin-top: 30px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
+
     #left-column{ 
       position: absolute;
-      @include column(4, true);
-      margin-top: 40px;
-      top: 166px;
-      margin-left: 958px;
-      #inner-left-column{
-        @include box-shadow; 
-        @include border-radius(0 10px 10px 0);
-        background-color: $yellow; 
-        padding: 20px 10px 20px 25px;
-        select{ margin-bottom: 10px; }
-      }
-    }
-    #right-column{ 
-      position: absolute;
       @include column(20, true);
-      #table-nav{ width: 100%; text-align: right; padding: 8px 0 10px 0; margin-top: 5px; }      
+      #logo{ padding: 0 0 17px 25px; }
+      #table-nav{ float: right; clear: bottom; margin-top: 43px; }      
       #page{ 
         @include box-shadow; 
         @include border-radius(10px);
@@ -120,6 +96,22 @@ body {
       #hidden-schools{ margin-top: 20px; }  
       }
     }
+    
+    #right-column{ 
+      position: absolute;
+      width: 200px;
+      margin-top: 40px;
+      top: 180px;
+      margin-left: 958px;
+      #inner-right-column{
+        @include box-shadow; 
+        @include border-radius(0 10px 10px 0);
+        background-color: $yellow; 
+        padding: 20px 20px 20px 25px;
+        select{ margin-bottom: 10px; }
+      }
+    }
+    
     .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #bbb; }
     #small-map{ padding: 5px 0 30px 0; 
       .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; }

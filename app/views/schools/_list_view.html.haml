@@ -1,14 +1,16 @@
-#left-column
-  #inner-left-column
+#right-column
+  #inner-right-column
     %h2 My Picks
     = render :partial => 'favorites'
         
-#right-column
+#left-column
   #table-nav
     = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
     = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
     = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
     = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
+  #logo
+    = image_tag('logo-gray.png')
     
   #page
     %h1.bold
@@ -19,15 +21,15 @@
     
 %script
   $(document).ready(function() {
-  var yOffset = $("#left-column").offset().top - 40;
+  var yOffset = $("#right-column").offset().top - 40;
   $(window).scroll(function() {
   if ($(window).scrollTop() > yOffset) {
-  $("#left-column").css({
+  $("#right-column").css({
   'top': 0,
   'position': 'fixed'
   });
   } else {
-  $("#left-column").css({
+  $("#right-column").css({
   'top': yOffset + 'px',
   'position': 'absolute'
   });

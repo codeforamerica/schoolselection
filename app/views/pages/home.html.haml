@@ -1,1 +1,6 @@
+- if params[:notice].present?
+  %p.notice= notice
+- if params[:alert].present?
+  %p.alert= alert
+  
 = render :partial => 'pages/search_form'

@@ -9,18 +9,8 @@
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
-    #header
-      #header-container
-        #inner-header-left
-          #logo
-            = image_tag('logo-gray.png')
-                
     #container
       #screen
-        - if params[:notice].present?
-          %p.notice= notice
-        - if params[:alert].present?
-          %p.alert= alert
         = yield
       
     = yield :scripts
