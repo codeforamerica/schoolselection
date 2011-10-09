@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005002057) do
+ActiveRecord::Schema.define(:version => 20111009040321) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -150,7 +150,6 @@ ActiveRecord::Schema.define(:version => 20111005002057) do
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "features"
     t.string   "address"
     t.integer  "city_id"
     t.integer  "state_id"
@@ -189,6 +188,8 @@ ActiveRecord::Schema.define(:version => 20111005002057) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "features"
+    t.string   "orgcode"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
