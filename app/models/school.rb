@@ -2,16 +2,14 @@ class School < ActiveRecord::Base
   # acts_as_gmappable :lat => "lat", :lng => "lng"
   acts_as_mappable  :default_units => :miles, :lat_column_name => :lat, :lng_column_name => :lng
   
-  has_and_belongs_to_many :grade_levels, :uniq => true
-  has_many :grade_level_hours
-  has_many :grade_level_admissions, :class_name => "SchoolGradeAdmission", :foreign_key => "school_id"
+  has_many :school_grades
+  has_many :grade_levels, :through => :school_grades
+  # has_and_belongs_to_many :grade_levels, :uniq => true
   belongs_to :assignment_zone
   belongs_to :city
   belongs_to :neighborhood
-  belongs_to :mail_cluster
   belongs_to :parcel
   belongs_to :principal
-  belongs_to :school_group
   belongs_to :state
   
   attr_accessor :eligibility, :eligibility_index
@@ -30,8 +28,8 @@ class School < ActiveRecord::Base
   
   ##### INSTANCE METHODS #####
   
-  def hours_by_grade_level(number)
-    self.grade_level_hours.find_by_grade_level_number(number)
+  def grade(number)
+    self.school_grades.find_by_grade_number(number)
   end
 
   def geocode_address!

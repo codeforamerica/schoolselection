@@ -3,17 +3,25 @@
 one:
   school_id: 1
   grade_level_id: 1
+  grade_number: MyString
+  hours: MyString
   open_seats: 1
   first_choice: 1
   second_choice: 1
   third_choice: 1
   fourth_higher_choice: 1
+  mcas_reading: 1
+  mcas_math: 1
 
 two:
   school_id: 1
   grade_level_id: 1
+  grade_number: MyString
+  hours: MyString
   open_seats: 1
   first_choice: 1
   second_choice: 1
   third_choice: 1
   fourth_higher_choice: 1
+  mcas_reading: 1
+  mcas_math: 1
