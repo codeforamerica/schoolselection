@@ -2,8 +2,8 @@
   %thead
     %tr
       %th{:width=>'110px'} &nbsp;
-      %th.sorttable{:width=>'300px'} School Name
-      %th.tabbable.overview{:width=>'150px'} Eligibility Type
+      %th.sorttable{:width=>'280px'} School Name
+      %th.tabbable.overview{:width=>'165px'} Eligibility Type
       %th.tabbable.overview.sorttable_numeric Distance
       %th.tabbable.overview.sorttable Hours
       
@@ -23,26 +23,12 @@
       %th.tabbable.admissions.hidden 1st Choices (2010)
       %th.tabbable.admissions.hidden 2nd Choices (2010)
       %th.tabbable.admissions.hidden 3rd Choices (2010)
-      
-      %th{:width=>'22px'} &nbsp;
   %tbody
     - if @visible_schools.present?
       - @visible_schools.each do |school|
-        - if session[:favorites].try(:include?, school.id)
-          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
+        - if school.eligibility =~ /Walk Zone/
+          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'green-highlight'}
+        - elsif school.eligibility =~ /Assignment Zone/
+          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'yellow-highlight'}
         - else
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => ''}
-            
-%table#hidden-schools.listings
-  %thead
-    %th
-      %h2.bold Your Minimized Schools
-    %th &nbsp;
-  %tbody
-    - if @hidden_schools.blank?
-      %tr#hidden_schools_note
-        %td.italic
-          == Schools may be hidden from your main search results by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
-    - else
-      - for hidden_school in @hidden_schools
-        = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}

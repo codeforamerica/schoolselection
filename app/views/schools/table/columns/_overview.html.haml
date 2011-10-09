@@ -1,5 +1,5 @@
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
-  =raw school.eligibility.try(:present?) ? school.eligibility : '&nbsp;'
+  =raw school.eligibility.try(:present?) ? eligibility_with_marker(school.eligibility) : '&nbsp;'
 %td.tabbable.overview.large
   =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview

@@ -1,13 +1,9 @@
 %tr{:id=>"visible_school_#{school.id}", :class => "#{row_classes}"}
   %td
-    = image_tag('school.png')
+    = link_to image_tag('school.png'), school_path(school), :rel => 'facebox'
   %td
     %h3
       = link_to school.name, school_path(school), :rel => 'facebox'
-      - if session[:favorites].try(:include?, school.id)
-        = link_to image_tag('star.png'), unfavorite_school_path(school), :remote => true, :method => :post      
-      - else
-        = link_to image_tag('star-gray.png'), favorite_school_path(school), :remote => true, :method => :post
     %span.italic
       == #{school.address}, #{school.city.try(:name)}, #{school.city.try(:state).try(:abbreviation)}
 
@@ -18,6 +14,3 @@
   = render :partial => 'schools/table/columns/academics', :locals => {:school => school}
 
   = render :partial => 'schools/table/columns/admissions', :locals => {:school => school}
-
-  %td.hide-button
-    = link_to image_tag('icons/hide.png'), hide_school_path(school), :remote => true, :method => :post, :class => 'hide'
