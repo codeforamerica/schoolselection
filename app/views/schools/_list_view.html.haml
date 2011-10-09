@@ -8,7 +8,7 @@
     = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
     = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
     = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
-    - if @all_schools.map {|x| x.grade(params[:grade_level]).open_seats }.present?
+    - if @all_schools.map {|x| x.grade(params[:grade_level]).open_seats }.try(:compact).try(:present?)
       = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
   #logo
     = image_tag('logo-gray.png')
