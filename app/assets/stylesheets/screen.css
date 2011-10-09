@@ -856,12 +856,12 @@ body #screen #right-column #page table.listings th {
   font-weight: normal;
   background-color: white !important;
   padding: 5px 0 10px 10px;
-  border-bottom: solid 1px #bbb;
+  border-bottom: dashed 1px #bbb;
 }
 /* line 117, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings td {
   padding: 10px;
-  border-bottom: 1px solid #bbb;
+  border-bottom: dashed 1px #bbb;
 }
 /* line 118, ../../stylesheets/screen.scss */
 body #screen #right-column #page table.listings .transportation-icon {
