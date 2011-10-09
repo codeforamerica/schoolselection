@@ -3,11 +3,12 @@
     %tr
       %th{:width=>'100px'} &nbsp;
       %th.sorttable{:width=>'280px'} School Name
-      %th.tabbable.overview{:width=>'150px'} Eligibility
-      %th.tabbable.overview.sorttable_numeric Distance<span id="sorttable_sortfwdind">&nbsp;▾</span>
+      %th.tabbable.overview{:width=>'160px'} Eligibility Type<span id="sorttable_sortfwdind">&nbsp;▾</span>
+      %th.tabbable.overview.sorttable Transit&nbsp;Type
+      %th.tabbable.overview.sorttable_numeric Distance
       %th.tabbable.overview.sorttable Hours
       
-      %th.tabbable.transportation.hidden.sorttable_numeric Type
+      %th.tabbable.transportation.hidden.sorttable_numeric Transit&nbsp;Type
       %th.tabbable.transportation.hidden.sorttable_numeric Distance
       %th.tabbable.transportation.hidden.sorttable_numeric Walk Time
       %th.tabbable.transportation.hidden.sorttable_numeric Drive Time
@@ -21,8 +22,8 @@
       %th.tabbable.admissions.hidden 2nd Choices (2010)
       %th.tabbable.admissions.hidden 3rd Choices (2010)
   %tbody
-    - if @visible_schools.present?
-      - @visible_schools.each do |school|
+    - if @all_schools.present?
+      - @all_schools.each do |school|
         - if session[:favorites].try(:include?, school.id)
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
         - else

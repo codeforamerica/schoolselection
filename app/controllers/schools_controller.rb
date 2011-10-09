@@ -72,7 +72,6 @@ class SchoolsController < ApplicationController
   
   def shared_instance_variables
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
-    session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
     
@@ -80,7 +79,6 @@ class SchoolsController < ApplicationController
     @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
     @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
     @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
-    @visible_schools = (@all_schools - @hidden_schools)
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
         s.eligibility = type

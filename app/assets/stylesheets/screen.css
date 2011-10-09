@@ -150,7 +150,7 @@ body {
   font-size: 13px;
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
-  background-color: #edebdd;
+  background-color: #e7e8f0;
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -719,7 +719,7 @@ body .heart {
 }
 /* line 72, ../../stylesheets/screen.scss */
 body .favorited {
-  background-color: #f3f79c;
+  background-color: #f3f7a1;
 }
 /* line 74, ../../stylesheets/screen.scss */
 body #container {
@@ -831,7 +831,7 @@ body #screen #right-column #inner-right-column {
   -ms-border-radius: 0 10px 10px 0;
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
-  background-color: #f3f79c;
+  background-color: #f3f7a1;
   padding: 20px 20px 20px 30px;
 }
 /* line 111, ../../stylesheets/screen.scss */

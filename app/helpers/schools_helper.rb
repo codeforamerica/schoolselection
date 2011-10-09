@@ -20,7 +20,7 @@ module SchoolsHelper
     if school.eligibility =~ /Walk Zone/
       "Walk&nbsp;Zone"
     elsif school.eligibility =~ /Assignment Zone/
-      school.assignment_zone.try(:name).try(:present?) ? "#{school.assignment_zone.name}&nbsp;Zone" : "Assignment&nbsp;Zone"
+      "Assignment&nbsp;Zone"
     elsif school.eligibility =~ /Citywide/
       "Citywide"
     end      

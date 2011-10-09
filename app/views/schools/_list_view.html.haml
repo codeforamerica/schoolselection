@@ -8,15 +8,16 @@
     = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
     = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
     = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
-    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
+    - if @all_schools.map {|x| x.grade(params[:grade_level]).open_seats }.present?
+      = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
   #logo
     = image_tag('logo-gray.png')
     
   #page
     %h1.bold
-      == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
       %span.small.nobold.italic
-        &nbsp;Eligible Schools:&nbsp;
+        == Eligible Schools for:&nbsp;
+      == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
   
     = render :partial => 'schools/table/table'
     
