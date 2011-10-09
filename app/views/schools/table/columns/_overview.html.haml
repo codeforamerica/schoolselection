@@ -8,4 +8,4 @@
 %td.tabbable.overview.large
   =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview
-  =raw school.hours_by_grade_level(params[:grade_level]).try(:hours).try(:present?) ? school.hours_by_grade_level(params[:grade_level]).hours : '&nbsp;'
+  =raw school.grade(session[:grade_level]).try(:hours).try(:present?) ? school.grade(session[:grade_level]).try(:hours) : '&nbsp;'

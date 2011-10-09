@@ -23,9 +23,7 @@
   %tbody
     - if @visible_schools.present?
       - @visible_schools.each do |school|
-        - if school.eligibility =~ /Walk Zone/
-          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'green-highlight'}
-        - elsif school.eligibility =~ /Assignment Zone/
-          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'yellow-highlight'}
+        - if session[:favorites].try(:include?, school.id)
+          = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
         - else
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => ''}

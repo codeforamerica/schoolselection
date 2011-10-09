@@ -5,7 +5,7 @@
     %h3
       = link_to school.name, school_path(school), :rel => 'facebox'
     %span.italic
-      == #{school.address}, #{school.city.try(:name)}, #{school.city.try(:state).try(:abbreviation)}
+      == #{school.address}, #{school.city.try(:name)}
 
   = render :partial => 'schools/table/columns/overview', :locals => {:school => school}
 

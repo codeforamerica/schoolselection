@@ -39,10 +39,10 @@
     %b Grades:&nbsp;
     = @school.grade_levels.short_string
   
-  - unless @school.hours.blank?
+  - unless @school.grade(session[:grade_level]).try(:hours).try(:blank?)
     %br/
     %b Hours:&nbsp;
-    = @school.hours
+    = @school.grade(session[:grade_level]).hours
   
   - unless @school.early_dismissal_time.blank?
     %br/

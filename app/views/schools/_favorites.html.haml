@@ -1,0 +1,4 @@
+#favorites
+  %ol#favorite-list
+    - for school in School.find(session[:favorites])
+      %li= school.name

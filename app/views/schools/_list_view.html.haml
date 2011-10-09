@@ -1,21 +1,7 @@
 #left-column
-  #left-column-nav
-    %span.sidebar-nav.active
-      List View
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    = link_to "Map View", schools_path(address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level], :sibling_school => session[:sibling_school], view: 'map'), :class => 'sidebar-nav'
   #inner-left-column
-    #small-map
-      - if @geocoded_address.present?
-        = link_to static_gmap_image, schools_path(address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level], view: 'map')
-    %h3 Filter Results
-    %br/
-    %p Filter
-    %p Filter
-    %p Filter
-    %p Filter
-    %p Filter
-    %p Update Results
+    %h2 My Favorites
+    = render :partial => 'favorites'
         
 #right-column
   #table-nav
@@ -25,7 +11,7 @@
     = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
     
   #page
-    %h2.bold
+    %h1.bold
       %span.small.nobold
         Results for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
@@ -33,7 +19,7 @@
     
 %script
   $(document).ready(function() {
-  var yOffset = $("#left-column").offset().top;
+  var yOffset = $("#left-column").offset().top - 40;
   $(window).scroll(function() {
   if ($(window).scrollTop() > yOffset) {
   $("#left-column").css({
