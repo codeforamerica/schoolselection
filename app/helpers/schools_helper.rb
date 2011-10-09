@@ -18,11 +18,11 @@ module SchoolsHelper
   
   def eligibility_with_marker(eligibility)
     if eligibility =~ /Walk Zone/
-      "#{image_tag('green-marker-small.png')} Walk Zone"
+      "Walk Zone"
     elsif eligibility =~ /Assignment Zone/
-      "#{image_tag('yellow-marker-small.png')} Assignment Zone"
+      "Assignment Zone"
     elsif eligibility =~ /Citywide/
-      "#{image_tag('gray-marker-small.png')} Citywide"
+      "Citywide"
     end      
   end
   

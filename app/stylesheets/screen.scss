@@ -71,6 +71,7 @@ body {
   .green-highlight{ background-color: #dbf8c2;}
   .yellow-highlight{ background-color: #fff9cc; }
   .favorited{ background-color: #fffad4; }
+  .transportation-icon{ margin: 0 7px -10px 0; }
     
   
   #container{ @include container; }
@@ -86,7 +87,7 @@ body {
       }
       #inner-header-right{ 
         @include column(19, true); 
-        #main-nav{ padding: 30px 0 0 30px; font-size: 1.3em; }
+        #main-nav{ padding: 30px 0 0 27px; font-size: 1.3em; }
       }
     }
   }
