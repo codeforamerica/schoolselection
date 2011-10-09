@@ -16,12 +16,12 @@ module SchoolsHelper
     (distance.to_f / DRIVE_TIME_METERS_PER_MINUTE).floor
   end
   
-  def eligibility_with_marker(eligibility)
-    if eligibility =~ /Walk Zone/
-      "Walk Zone"
-    elsif eligibility =~ /Assignment Zone/
-      "Assignment Zone"
-    elsif eligibility =~ /Citywide/
+  def eligibility_title(school)
+    if school.eligibility =~ /Walk Zone/
+      "Walk&nbsp;Zone"
+    elsif school.eligibility =~ /Assignment Zone/
+      school.assignment_zone.try(:name).try(:present?) ? "#{school.assignment_zone.name}&nbsp;Zone" : "Assignment&nbsp;Zone"
+    elsif school.eligibility =~ /Citywide/
       "Citywide"
     end      
   end
@@ -95,6 +95,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>Grades: #{x.grade_levels.try(:first).try(:number)} - #{x.grade_levels.try(:last).try(:number)}</strong><br />#{x.hours}<br /><strong>#{link_to 'More Info >', x, :rel => 'facebox'}</strong>", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<h3>#{x.name}</h3><strong>Grades: #{x.grade_levels.try(:first).try(:number)} - #{x.grade_levels.try(:last).try(:number)}</strong><br />#{x.hours}<br /><strong>#{link_to 'More Info >', x, :rel => 'facebox'}</strong>"}
   end
 end

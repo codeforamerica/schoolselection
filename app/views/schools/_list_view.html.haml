@@ -17,6 +17,7 @@
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
       %span.small.nobold.italic
         &nbsp;Eligible Schools:&nbsp;
+  
     = render :partial => 'schools/table/table'
     
 %script

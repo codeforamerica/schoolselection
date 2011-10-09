@@ -1,10 +1,10 @@
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
   - if @grade_level.name == "High"
     =raw school.eligibility =~ /Walk Zone/ ? image_tag('walking.png', :class=> 'transportation-icon') : image_tag('city-bus.png', :class=> 'transportation-icon')
-    =raw school.eligibility.try(:present?) ? eligibility_with_marker(school.eligibility) : '&nbsp;'
+    =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
   - else
     =raw school.eligibility =~ /Walk Zone/ ? image_tag('walking.png', :class=> 'transportation-icon') : image_tag('school-bus.png', :class=> 'transportation-icon')
-    =raw school.eligibility.try(:present?) ? eligibility_with_marker(school.eligibility) : '&nbsp;'
+    =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
 %td.tabbable.overview.large
   =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview
