@@ -55,6 +55,7 @@ class SchoolsController < ApplicationController
     @school = @all_schools.find {|x| x.id == params[:id].to_i}
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
+    @favorite_schools << @school
     respond_to do |format|
       format.js
     end
@@ -65,6 +66,7 @@ class SchoolsController < ApplicationController
     shared_instance_variables
     @school = @all_schools.find {|x| x.id == params[:id].to_i}
     session[:favorites].delete_if {|x| x == @school.id }
+    @favorite_schools.delete(@school)
     respond_to do |format|
       format.js
     end
@@ -94,7 +96,7 @@ class SchoolsController < ApplicationController
   private
   
   def shared_instance_variables
-    session[:favorites].present? ? @favorite_schools = School.find(session[:favorites]) : @favorite_schools = []
+    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     session[:hidden].present? ? @hidden_schools = School.find(session[:hidden]) : @hidden_schools = []
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
