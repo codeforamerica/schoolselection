@@ -1,6 +1,6 @@
 #left-column
   #inner-left-column
-    %h2 My Favorites
+    %h2 My Picks
     = render :partial => 'favorites'
         
 #right-column
@@ -12,9 +12,9 @@
     
   #page
     %h1.bold
-      %span.small.nobold
-        Results for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
+      %span.small.nobold.italic
+        &nbsp;Eligible Schools:&nbsp;
     = render :partial => 'schools/table/table'
     
 %script

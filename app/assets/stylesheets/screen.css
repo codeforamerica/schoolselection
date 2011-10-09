@@ -709,7 +709,7 @@ body .heart {
 }
 /* line 71, ../../stylesheets/screen.scss */
 body .favorited {
-  background-color: #f6faa2;
+  background-color: #f5fa95;
 }
 /* line 73, ../../stylesheets/screen.scss */
 body #container {
@@ -777,10 +777,17 @@ body #screen .full-width {
 /* line 90, ../../stylesheets/screen.scss */
 body #screen #left-column {
   position: absolute;
-  width: 190px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 183.667px;
   margin-top: 40px;
   top: 166px;
-  margin-left: 910px;
+  margin-left: 958px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #left-column {
+  overflow-x: hidden;
 }
 /* line 96, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column {
@@ -794,8 +801,8 @@ body #screen #left-column #inner-left-column {
   -ms-border-radius: 0 10px 10px 0;
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
-  background-color: #f6faa2;
-  padding: 20px 20px 20px 25px;
+  background-color: #f5fa95;
+  padding: 20px 10px 20px 25px;
 }
 /* line 101, ../../stylesheets/screen.scss */
 body #screen #left-column #inner-left-column select {
@@ -804,7 +811,14 @@ body #screen #left-column #inner-left-column select {
 /* line 104, ../../stylesheets/screen.scss */
 body #screen #right-column {
   position: absolute;
-  width: 910px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 958.333px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #right-column {
+  overflow-x: hidden;
 }
 /* line 107, ../../stylesheets/screen.scss */
 body #screen #right-column #table-nav {

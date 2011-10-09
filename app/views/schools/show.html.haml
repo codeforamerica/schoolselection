@@ -62,8 +62,8 @@
 - if @favorite_schools.try(:include?, @school.id)
   %h3
     == #{image_tag('star-gray.png')}&nbsp;
-    = link_to "Remove From My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+    = link_to "Remove From My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
 - else
   %h3
     == #{image_tag('star.png')}&nbsp;
-    = link_to "Add To My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+    = link_to "Add To My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
