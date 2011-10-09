@@ -68,27 +68,6 @@ class SchoolsController < ApplicationController
     end
   end
   
-  def hide
-    @school = School.find(params[:id])
-    session[:favorites].delete_if {|x| x == @school.id } if session[:favorites].present?
-    session[:hidden] ||= []
-    session[:hidden] << @school.id unless session[:hidden].include?(@school.id)
-    respond_to do |format|
-      format.js
-    end
-  end
-  
-  def unhide
-    @geocoded_address = geocode_address(session[:address])
-    shared_instance_variables
-    @school = @all_schools.find {|x| x.id == params[:id].to_i}
-    session[:hidden] ||= []
-    session[:hidden].delete_if {|x| x == @school.id }
-    respond_to do |format|
-      format.js
-    end
-  end
-  
   private
   
   def shared_instance_variables

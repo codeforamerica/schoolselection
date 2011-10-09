@@ -14,8 +14,6 @@ Schoolselection::Application.routes.draw do
     member do 
       post  'favorite'
       post  'unfavorite'
-      post  'hide'      
-      post  'unhide'
     end
   end
 
