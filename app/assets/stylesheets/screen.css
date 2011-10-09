@@ -709,7 +709,7 @@ body .heart {
 }
 /* line 71, ../../stylesheets/screen.scss */
 body .favorited {
-  background-color: #f5fa95;
+  background-color: #f3f79c;
 }
 /* line 73, ../../stylesheets/screen.scss */
 body #container {
@@ -801,7 +801,7 @@ body #screen #left-column #inner-left-column {
   -ms-border-radius: 0 10px 10px 0;
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
-  background-color: #f5fa95;
+  background-color: #f3f79c;
   padding: 20px 10px 20px 25px;
 }
 /* line 101, ../../stylesheets/screen.scss */
@@ -874,7 +874,7 @@ body #screen #right-column #page #hidden-schools {
 /* line 123, ../../stylesheets/screen.scss */
 body #screen .bottom-border {
   padding-bottom: 20px;
-  border-bottom: solid 1px #aaa;
+  border-bottom: solid 1px #bbb;
 }
 /* line 124, ../../stylesheets/screen.scss */
 body #screen #small-map {
