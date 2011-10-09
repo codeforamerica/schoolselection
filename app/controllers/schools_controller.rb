@@ -50,23 +50,19 @@ class SchoolsController < ApplicationController
   end
   
   def favorite
-    @geocoded_address = geocode_address(session[:address])
-    shared_instance_variables
-    @school = @all_schools.find {|x| x.id == params[:id].to_i}
+    @school = School.find(params[:id])
     session[:favorites] ||= []
     session[:favorites] << @school.id unless session[:favorites].include?(@school.id)
-    @favorite_schools << @school
+    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     respond_to do |format|
       format.js
     end
   end
   
   def unfavorite
-    @geocoded_address = geocode_address(session[:address])
-    shared_instance_variables
-    @school = @all_schools.find {|x| x.id == params[:id].to_i}
+    @school = School.find(params[:id])
     session[:favorites].delete_if {|x| x == @school.id }
-    @favorite_schools.delete(@school)
+    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     respond_to do |format|
       format.js
     end

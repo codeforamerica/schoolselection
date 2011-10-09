@@ -1,5 +1,3 @@
 $(document).trigger('close.facebox');
 $('#favorites').replaceWith("<%= escape_javascript(render :partial => 'schools/favorites') %>");
-$("#visible_school_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/table/rows/visible_row', :locals => {:school => @school, :row_classes => 'hidden'}) %>");
-$("#visible_school_<%= @school.id %>").fadeIn();
-$("#visible_school_<%= @school.id %>").effect("highlight", {}, 3000);
+$("#visible_school_<%= @school.id %>").removeClass('favorited');
