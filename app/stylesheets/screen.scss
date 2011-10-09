@@ -26,8 +26,8 @@ body {
 
   a.main-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
   .main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }  
-  a.sidebar-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
-  .sidebar-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
+  a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
+  .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
   a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
   a.table-nav.active{ color: #333; background-color: white; border-bottom: solid 3px white; }
   a.table-nav.active:hover{ text-decoration: none; }
@@ -47,8 +47,8 @@ body {
   
   h1{ font-size: 1.6em; margin-bottom: 0.8em; }
   h2{ font-size: 1.5em; margin-bottom: 0.6em;}
-  h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; }
-  h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; }
+  h3{ font-size: 1.25em; margin-bottom: 0.5em; }
+  h4{ font-size: 1.3em; margin-bottom: 0; }
 
   ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
   ul.no-bullets{ @include no-bullets; }
@@ -73,7 +73,7 @@ body {
     
   #container{ @include container; }
   #screen{
-    margin-top: 30px; 
+    margin-top: 20px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
 
     #left-column{ 
@@ -85,7 +85,7 @@ body {
         @include box-shadow; 
         @include border-radius(10px);
         background-color: white;
-        padding: 35px 25px;
+        padding: 25px;
         margin-bottom: 40px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
@@ -97,40 +97,44 @@ body {
       }
     }
     
-    #right-column{ 
+    #sidebar{
       position: absolute;
       width: 200px;
+      top: 130px;
       margin-top: 40px;
-      top: 180px;
       margin-left: 958px;
-      #inner-right-column{
+      #sidebar-nav{ text-align: left; margin-left: 25px; font-weight: bold; margin-bottom: 15px;}
+      #views{
+        @include box-shadow; 
+        @include border-radius(0 10px 10px 0);
+        background-color: #ccc; 
+        padding: 25px;
+        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; }
+      }
+      #mypicks{
+        margin-top: 30px;
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $yellow; 
-        padding: 20px 20px 20px 30px;
-        select{ margin-bottom: 10px; }
+        padding: 25px;
       }
     }
     
-    .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #bbb; }
-    #small-map{ padding: 5px 0 30px 0; 
-      .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; }
-    }
-    
-    #map_container{
-      padding-top: 7px;
-      #gmaps4rails_map { border: solid 1px $bordergray; width: 100%; height: 550px; }
-      .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
-    }
-    #map-list{
-      #options{
-        height: 450px;
+    #map{
+      #map-list{ 
+        @include column(5);
+        height: 476px;
         margin: 15px 0 15px 0;
         overflow: scroll;
         ul#markers_list{ 
           padding-left: 15px;
           li{ padding-bottom: 7px; font-weight: bold; }
         }
+      } 
+      #map_container{
+        @include column(14, true);
+        #gmaps4rails_map { border: solid 1px $bordergray; width: 640px; height: 490px; }
+        .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
       }
     }
         

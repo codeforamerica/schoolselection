@@ -510,13 +510,11 @@ body .main-nav.active {
 body a.sidebar-nav {
   color: #0066cc;
   font-weight: bold;
-  font-size: 1.1em;
   padding: 5px 0 3px 0;
 }
 /* line 30, ../../stylesheets/screen.scss */
 body .sidebar-nav.active {
   font-weight: bold;
-  font-size: 1.1em;
   padding: 5px 0 3px 0;
 }
 /* line 31, ../../stylesheets/screen.scss */
@@ -569,13 +567,11 @@ body h2 {
 }
 /* line 50, ../../stylesheets/screen.scss */
 body h3 {
-  font-weight: bold;
   font-size: 1.25em;
   margin-bottom: 0.5em;
 }
 /* line 51, ../../stylesheets/screen.scss */
 body h4 {
-  font-weight: bold;
   font-size: 1.3em;
   margin-bottom: 0;
 }
@@ -730,7 +726,7 @@ body #container {
 }
 /* line 75, ../../stylesheets/screen.scss */
 body #screen {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 /* line 77, ../../stylesheets/screen.scss */
 body #screen .full-width {
@@ -780,7 +776,7 @@ body #screen #left-column #page {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   background-color: white;
-  padding: 35px 25px;
+  padding: 25px;
   margin-bottom: 40px;
 }
 /* line 91, ../../stylesheets/screen.scss */
@@ -812,15 +808,48 @@ body #screen #left-column #page #hidden-schools {
   margin-top: 20px;
 }
 /* line 100, ../../stylesheets/screen.scss */
-body #screen #right-column {
+body #screen #sidebar {
   position: absolute;
   width: 200px;
+  top: 130px;
   margin-top: 40px;
-  top: 180px;
   margin-left: 958px;
 }
 /* line 106, ../../stylesheets/screen.scss */
-body #screen #right-column #inner-right-column {
+body #screen #sidebar #sidebar-nav {
+  text-align: left;
+  margin-left: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+/* line 107, ../../stylesheets/screen.scss */
+body #screen #sidebar #views {
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  -moz-border-radius: 0 10px 10px 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  -o-border-radius: 0 10px 10px 0;
+  -ms-border-radius: 0 10px 10px 0;
+  -khtml-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+  background-color: #ccc;
+  padding: 25px;
+}
+/* line 112, ../../stylesheets/screen.scss */
+body #screen #sidebar #views .static-map-image {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  border: solid 1px #777777;
+}
+/* line 114, ../../stylesheets/screen.scss */
+body #screen #sidebar #mypicks {
+  margin-top: 30px;
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
@@ -832,63 +861,55 @@ body #screen #right-column #inner-right-column {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #f3f7a1;
-  padding: 20px 20px 20px 30px;
+  padding: 25px;
 }
-/* line 111, ../../stylesheets/screen.scss */
-body #screen #right-column #inner-right-column select {
-  margin-bottom: 10px;
+/* line 124, ../../stylesheets/screen.scss */
+body #screen #map #map-list {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 232.083px;
+  height: 476px;
+  margin: 15px 0 15px 0;
+  overflow: scroll;
 }
-/* line 115, ../../stylesheets/screen.scss */
-body #screen .bottom-border {
-  padding-bottom: 20px;
-  border-bottom: solid 1px #bbb;
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #map #map-list {
+  overflow-x: hidden;
 }
-/* line 116, ../../stylesheets/screen.scss */
-body #screen #small-map {
-  padding: 5px 0 30px 0;
+/* line 129, ../../stylesheets/screen.scss */
+body #screen #map #map-list ul#markers_list {
+  padding-left: 15px;
 }
-/* line 117, ../../stylesheets/screen.scss */
-body #screen #small-map .static-map-image {
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -o-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -khtml-border-radius: 7px;
-  border-radius: 7px;
+/* line 131, ../../stylesheets/screen.scss */
+body #screen #map #map-list ul#markers_list li {
+  padding-bottom: 7px;
+  font-weight: bold;
+}
+/* line 134, ../../stylesheets/screen.scss */
+body #screen #map #map_container {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 667.833px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #map #map_container {
+  overflow-x: hidden;
+}
+/* line 136, ../../stylesheets/screen.scss */
+body #screen #map #map_container #gmaps4rails_map {
   border: solid 1px #777777;
+  width: 640px;
+  height: 490px;
 }
-/* line 120, ../../stylesheets/screen.scss */
-body #screen #map_container {
-  padding-top: 7px;
-}
-/* line 122, ../../stylesheets/screen.scss */
-body #screen #map_container #gmaps4rails_map {
-  border: solid 1px #777777;
-  width: 100%;
-  height: 550px;
-}
-/* line 123, ../../stylesheets/screen.scss */
-body #screen #map_container .balloon {
+/* line 137, ../../stylesheets/screen.scss */
+body #screen #map #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 126, ../../stylesheets/screen.scss */
-body #screen #map-list #options {
-  height: 450px;
-  margin: 15px 0 15px 0;
-  overflow: scroll;
-}
-/* line 130, ../../stylesheets/screen.scss */
-body #screen #map-list #options ul#markers_list {
-  padding-left: 15px;
-}
-/* line 132, ../../stylesheets/screen.scss */
-body #screen #map-list #options ul#markers_list li {
-  padding-bottom: 7px;
-  font-weight: bold;
-}
-/* line 137, ../../stylesheets/screen.scss */
+/* line 141, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -909,23 +930,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 144, ../../stylesheets/screen.scss */
+/* line 148, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 145, ../../stylesheets/screen.scss */
+/* line 149, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 146, ../../stylesheets/screen.scss */
+/* line 150, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 151, ../../stylesheets/screen.scss */
+/* line 155, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 153, ../../stylesheets/screen.scss */
+/* line 157, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

@@ -1,22 +1,26 @@
-#right-column
-  #left-column-nav
-    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'sidebar-nav'
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+#sidebar
+  #sidebar-nav
     %span.sidebar-nav.active
+      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'sidebar-nav'
+      &nbsp;&nbsp;|&nbsp;&nbsp;
       Map View
-  #inner-left-column
-    #map-list
-      %h4 Eligible Schools
-      #options
-        <ul id="markers_list"></ul>
+  #views
+    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map')
+  #mypicks
+    %h2 My Picks
+    = render :partial => 'favorites'
       
 #left-column
-  #table-nav
-    &nbsp;
   #page
-    #map-container
-      %h1.bold
-        %span.small.nobold
-          Results for:&nbsp;
-        == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
-      = walk_zone_map
+    %h1.bold
+      %span.small.nobold.italic
+        Eligible Schools for:&nbsp;
+      == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
+    #map
+      #map-container
+        = walk_zone_map
+      #map-list
+        #options
+          <ul id="markers_list"></ul>
+    .clear-both
+      &nbsp;

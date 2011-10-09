@@ -1,5 +1,12 @@
-#right-column
-  #inner-right-column
+#sidebar
+  #sidebar-nav
+    %span.sidebar-nav.active
+      List View
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map'), :class => 'sidebar-nav'
+  #views
+    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map')
+  #mypicks
     %h2 My Picks
     = render :partial => 'favorites'
         
@@ -19,19 +26,19 @@
         == Eligible Schools for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
   
-    = render :partial => 'schools/table/table'
+    = render :partial => 'schools/table/table'    
     
 %script
   $(document).ready(function() {
-  var yOffset = $("#right-column").offset().top - 40;
+  var yOffset = $("#sidebar").offset().top - 40;
   $(window).scroll(function() {
   if ($(window).scrollTop() > yOffset) {
-  $("#right-column").css({
+  $("#sidebar").css({
   'top': 0,
   'position': 'fixed'
   });
   } else {
-  $("#right-column").css({
+  $("#sidebar").css({
   'top': yOffset + 'px',
   'position': 'absolute'
   });
