@@ -832,7 +832,7 @@ body #screen #right-column #inner-right-column {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #f3f79c;
-  padding: 20px 20px 20px 25px;
+  padding: 20px 20px 20px 30px;
 }
 /* line 111, ../../stylesheets/screen.scss */
 body #screen #right-column #inner-right-column select {

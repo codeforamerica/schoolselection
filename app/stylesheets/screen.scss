@@ -107,7 +107,7 @@ body {
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $yellow; 
-        padding: 20px 20px 20px 25px;
+        padding: 20px 20px 20px 30px;
         select{ margin-bottom: 10px; }
       }
     }
