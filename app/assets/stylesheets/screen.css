@@ -151,15 +151,15 @@ body {
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
   height: 100%;
-  background-color: #e8ecf2;
+  background-color: #edf1f7;
   background-repeat: no-repeat;
   background-position: right top;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dfe7f2), color-stop(100%, #e8ecf2));
-  background-image: -webkit-linear-gradient(top, #dfe7f2, #e8ecf2);
-  background-image: -moz-linear-gradient(top, #dfe7f2, #e8ecf2);
-  background-image: -o-linear-gradient(top, #dfe7f2, #e8ecf2);
-  background-image: -ms-linear-gradient(top, #dfe7f2, #e8ecf2);
-  background-image: linear-gradient(top, #dfe7f2, #e8ecf2);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6edf7), color-stop(100%, #edf1f7));
+  background-image: -webkit-linear-gradient(top, #e6edf7, #edf1f7);
+  background-image: -moz-linear-gradient(top, #e6edf7, #edf1f7);
+  background-image: -o-linear-gradient(top, #e6edf7, #edf1f7);
+  background-image: -ms-linear-gradient(top, #e6edf7, #edf1f7);
+  background-image: linear-gradient(top, #e6edf7, #edf1f7);
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1, body h2, body h3, body h4, body h5, body h6 {
@@ -539,6 +539,12 @@ body a.table-nav {
   -khtml-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
   background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
   color: #0066cc;
   font-weight: bold;
   font-size: 1.1em;
@@ -562,7 +568,12 @@ body a.table-nav.active {
   border-radius: 10px 10px 0 0;
   color: #333;
   background-color: white;
-  border-bottom: solid 3px white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #ffffff);
 }
 /* line 39, ../../stylesheets/screen.scss */
 body a.table-nav.active:hover {
@@ -750,6 +761,12 @@ body .heart {
 /* line 78, ../../stylesheets/screen.scss */
 body .favorited {
   background-color: #fdf7b6;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fffbcc), color-stop(100%, #f7f2ac));
+  background-image: -webkit-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -moz-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -o-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -ms-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: linear-gradient(top, #fffbcc, #f7f2ac);
 }
 /* line 80, ../../stylesheets/screen.scss */
 body #container {
@@ -875,10 +892,16 @@ body #screen #sidebar #nav {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #dddddd;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
   padding: 17px 15px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 118, ../../stylesheets/screen.scss */
+/* line 119, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav .static-map-image {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -888,7 +911,7 @@ body #screen #sidebar #nav .static-map-image {
   border-radius: 10px;
   border: solid 1px #777777;
 }
-/* line 120, ../../stylesheets/screen.scss */
+/* line 121, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -901,13 +924,19 @@ body #screen #sidebar #mypicks {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #fdf7b6;
-  padding: 25px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fffbcc), color-stop(100%, #f7f2ac));
+  background-image: -webkit-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -moz-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -o-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -ms-linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: linear-gradient(top, #fffbcc, #f7f2ac);
+  padding: 20px 20px 20px 25px;
 }
-/* line 125, ../../stylesheets/screen.scss */
+/* line 127, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks li {
   margin-bottom: 5px;
 }
-/* line 130, ../../stylesheets/screen.scss */
+/* line 132, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -921,16 +950,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 135, ../../stylesheets/screen.scss */
+/* line 137, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 137, ../../stylesheets/screen.scss */
+/* line 139, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 140, ../../stylesheets/screen.scss */
+/* line 142, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -941,19 +970,19 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 142, ../../stylesheets/screen.scss */
+/* line 144, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   border: solid 1px #777777;
   width: 640px;
   height: 490px;
 }
-/* line 143, ../../stylesheets/screen.scss */
+/* line 145, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #777777;
   height: 300px;
   width: 300px;
 }
-/* line 147, ../../stylesheets/screen.scss */
+/* line 149, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -974,23 +1003,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 154, ../../stylesheets/screen.scss */
+/* line 156, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 155, ../../stylesheets/screen.scss */
+/* line 157, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 156, ../../stylesheets/screen.scss */
+/* line 158, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 161, ../../stylesheets/screen.scss */
+/* line 163, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 163, ../../stylesheets/screen.scss */
+/* line 165, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

@@ -21,7 +21,7 @@ body {
   background-color: $background;
   background-repeat: no-repeat;
   background-position: right top;
-  @include linear-gradient(color-stops(#dfe7f2, #e8ecf2));
+  @include linear-gradient(color-stops(#e6edf7, #edf1f7));
   
   a{ color: $blue; text-decoration: none; }
   a:hover{ color: $blue; text-decoration: underline; }
@@ -33,9 +33,9 @@ body {
   a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
   .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
   
-  a.table-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $lightgray; color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
+  a.table-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $lightgray; @include linear-gradient(color-stops(#eeeeee, $lightgray)); color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
   a.table-nav:hover{ text-decoration: underline; }
-  a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; border-bottom: solid 3px white; }
+  a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; @include linear-gradient(color-stops(white, white)); }
   a.table-nav.active:hover{ text-decoration: none; }
   
   a.hide {
@@ -75,7 +75,7 @@ body {
   .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
   .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
   .heart{ margin: 0 0 -1px 4px; }
-  .favorited{ background-color: $yellow; }
+  .favorited{ background-color: $yellow; @include linear-gradient(color-stops(#fffbcc, #f7f2ac)); }
     
   #container{ @include container; }
   #header{ margin: 15px 0 0 25px; }
@@ -113,6 +113,7 @@ body {
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $lightgray; 
+        @include linear-gradient(color-stops(#eeeeee, $lightgray));
         padding: 17px 15px 15px 25px;
         margin-bottom: 30px;
         .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; }
@@ -121,7 +122,8 @@ body {
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $yellow; 
-        padding: 25px;
+        @include linear-gradient(color-stops(#fffbcc, #f7f2ac));
+        padding: 20px 20px 20px 25px;
         li{ margin-bottom: 5px; }
       }
     }
