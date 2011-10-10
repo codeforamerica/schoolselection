@@ -1,5 +1,5 @@
 #favorites
-  - if session[:favorites].try(:blank?)
+  - unless session[:favorites].try(:present?)
     To create a customized list of your top schools, click to the school name and then the "Add to My Picks" button.
   - else
     %ol#favorite-list
