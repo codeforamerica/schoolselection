@@ -1,12 +1,14 @@
+@import "blueprint";
+@import "blueprint/reset";
+@import "blueprint/scaffolding";
 @import "compass";
 @import "compass/css3";
 @import "compass/layout";
 @import "compass/typography";
 @import "partials/base";
+@import "partials/buttons";
 @import "partials/errors";
-@import "blueprint";
-@import "blueprint/reset";
-@import "blueprint/scaffolding";
+@import "partials/general";
 
 body {
   @include blueprint-typography(true);
@@ -20,49 +22,11 @@ body {
   height: 100%;
   background-image: url(/images/canvas.jpg);
   background-attachment:fixed;
-    
-  a{ color: $blue; text-decoration: none; }
-  a:hover{ color: $blue; text-decoration: underline; }
-  a:active{ color: $blue; text-decoration: underline; }
-  a:visited{ color: $blue; text-decoration: none; }
-
-  a.main-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
-  .main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }  
-  a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
-  .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
   
-  a.table-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $lightgray; @include linear-gradient(color-stops($lightergray, $lightgray)); color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
-  a.table-nav:hover{ text-decoration: underline; }
-  a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; @include linear-gradient(color-stops(white, white)); }
-  a.table-nav.active:hover{ text-decoration: none; }
-  a.button{ background-color: $blue; @include linear-gradient(color-stops($lightblue, $blue)); @include border-radius(10px); border: solid 1px #999; color: white; padding: 7px 9px 7px 9px; font-size: 13px;}
-  a.button:hover{ @include linear-gradient(color-stops($blue, $lightblue)); text-decoration: none; color: $yellow; }
-  
-  h1{ font-size: 1.6em; margin-bottom: 0.8em; }
+  h1{ font-size: 1em; margin-bottom: 0.8em; }
   h2{ font-size: 1.5em; margin-bottom: 0.6em;}
   h3{ font-size: 1.25em; margin-bottom: 0.5em; }
   h4{ font-size: 1.3em; margin-bottom: 0; }
-
-  ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
-  ul.no-bullets{ @include no-bullets; }
-  input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
-  select{ font-size: 13px; margin: 0 10px 0 1px; }
-  input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; margin: 10px 10px 10px 0; }
-  form div { margin: 10px 10px 10px 0; }
-  
-  .clear-both{ clear: both; }
-  .right{ text-align: right; }
-  .center{ text-align: center; }
-  .hidden{ display: none;}
-  .italic{ font-style: italic; }
-  .bold{ font-weight: bold; }
-  .nobold{ font-weight: normal; }
-  .large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
-  .larger{ font-size: 1.4em; font-weight: normal;}
-  .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
-  .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
-  .heart{ margin: 0 0 -1px 4px; }
-  .favorited{ background-color: $lightyellow; }
     
   #container{ @include container; }
   #header{ margin: 15px 0 0 25px; }
@@ -82,8 +46,8 @@ body {
         margin-bottom: 30px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px #bbb; }
-          td{ padding: 10px; border-bottom: dashed 1px #bbb; }
+          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px $bordergray; }
+          td{ padding: 10px; border-bottom: dashed 1px $bordergray; }
           .transportation-icon{ margin: 0 7px -10px 0; }
         }
       }
@@ -99,11 +63,11 @@ body {
       #nav{
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
-        background-color: $lightgray; 
-        @include linear-gradient(color-stops($lightergray, $lightgray));
+        background-color: $gray; 
+        @include linear-gradient(color-stops($lightgray, $gray));
         padding: 17px 20px 15px 25px;
         margin-bottom: 30px;
-        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; margin: 10px 0 10px 0;}
+        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; margin: 0 0 10px 0;}
       }
       #mypicks{
         @include box-shadow; 
@@ -139,7 +103,7 @@ body {
       margin-top: 30px;
       padding: 30px 30px 0 30px;
       font-size: 15px; 
-      background-color: $lightgray;
+      background-color: $gray;
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
       table.search{ width: 450px !important; }
