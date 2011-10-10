@@ -91,7 +91,7 @@ body {
         @include box-shadow; 
         @include border-radius(10px);
         background-color: white;
-        padding: 25px;
+        padding: 30px 25px;
         margin-bottom: 30px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
@@ -100,7 +100,6 @@ body {
           .transportation-icon{ margin: 0 7px -10px 0; }
         }
       }
-      .yellow-background{ background-color: $yellow !important; }
       #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
     }
     
@@ -114,7 +113,7 @@ body {
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $lightgray; 
-        @include linear-gradient(color-stops(#eeeeee, $lightgray));
+        @include linear-gradient(color-stops(#e9e9e9, $lightgray));
         padding: 17px 20px 15px 25px;
         margin-bottom: 30px;
         .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; margin: 10px 0 10px 0;}

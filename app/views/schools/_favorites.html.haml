@@ -5,5 +5,7 @@
   - else
     %ol#favorite-list
       - for school in @favorite_schools
-        %li= school.name
+        %li
+          = school.name
+          = link_to image_tag('icons/bullet_delete.png'), unfavorite_school_path(school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
     = link_to "Compre >", compare_schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
