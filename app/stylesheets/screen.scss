@@ -36,18 +36,6 @@ body {
   a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; @include linear-gradient(color-stops(white, white)); }
   a.table-nav.active:hover{ text-decoration: none; }
   
-  a.hide {
-  display: block;
-  text-indent: -5000px;
-  width: 16px;
-  height: 16px;
-  background-image: url(icons/hide.png);
-  background-repeat: no-repeat;
-  }
-  
-  a.hide{background-position: 0 0;}
-  a.hide:active {background-position: 0 0;}
-  a.hide:hover {background-position: 0 -16px;}
   
   h1{ font-size: 1.6em; margin-bottom: 0.8em; }
   h2{ font-size: 1.5em; margin-bottom: 0.6em;}
