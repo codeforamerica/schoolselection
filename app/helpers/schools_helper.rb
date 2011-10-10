@@ -57,7 +57,7 @@ module SchoolsHelper
   include EncodePolyline
   def static_gmap_image
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=145x125" + 
+      "size=150x125" + 
       '&zoom=10' +
       "&maptype=roadmap" +
       "&sensor=false" +

@@ -114,15 +114,15 @@ body {
         @include border-radius(0 10px 10px 0);
         background-color: $lightgray; 
         @include linear-gradient(color-stops(#eeeeee, $lightgray));
-        padding: 17px 15px 15px 25px;
+        padding: 17px 20px 15px 25px;
         margin-bottom: 30px;
-        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; }
+        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; margin: 10px 0 5px 0;}
       }
       #mypicks{
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $yellow; 
-        @include linear-gradient(color-stops(#fffbcc, #f7f2ac));
+        @include linear-gradient(color-stops(#fdf8c3, #f7f2ac));
         padding: 20px 20px 20px 25px;
         li{ margin-bottom: 5px; }
       }

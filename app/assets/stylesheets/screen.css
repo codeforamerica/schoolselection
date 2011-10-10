@@ -892,7 +892,7 @@ body #screen #sidebar #nav {
   background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
   background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
   background-image: linear-gradient(top, #eeeeee, #dddddd);
-  padding: 17px 15px 15px 25px;
+  padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
 /* line 119, ../../stylesheets/screen.scss */
@@ -904,6 +904,7 @@ body #screen #sidebar #nav .static-map-image {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   border: solid 1px #777777;
+  margin: 10px 0 5px 0;
 }
 /* line 121, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
@@ -918,12 +919,12 @@ body #screen #sidebar #mypicks {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #fdf7b6;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fffbcc), color-stop(100%, #f7f2ac));
-  background-image: -webkit-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -moz-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -o-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -ms-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: linear-gradient(top, #fffbcc, #f7f2ac);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fdf8c3), color-stop(100%, #f7f2ac));
+  background-image: -webkit-linear-gradient(top, #fdf8c3, #f7f2ac);
+  background-image: -moz-linear-gradient(top, #fdf8c3, #f7f2ac);
+  background-image: -o-linear-gradient(top, #fdf8c3, #f7f2ac);
+  background-image: -ms-linear-gradient(top, #fdf8c3, #f7f2ac);
+  background-image: linear-gradient(top, #fdf8c3, #f7f2ac);
   padding: 20px 20px 20px 25px;
 }
 /* line 127, ../../stylesheets/screen.scss */
