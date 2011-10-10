@@ -973,11 +973,7 @@ body #screen #left-column #page table.listings td {
   padding: 10px;
   border-bottom: dashed 1px #bbbbbb;
 }
-/* line 52, ../../stylesheets/screen.scss */
-body #screen #left-column #page table.listings .transportation-icon {
-  margin: 0 7px -10px 0;
-}
-/* line 55, ../../stylesheets/screen.scss */
+/* line 54, ../../stylesheets/screen.scss */
 body #screen #left-column #page-footer {
   display: inline;
   float: left;
@@ -990,7 +986,7 @@ body #screen #left-column #page-footer {
 * html body #screen #left-column #page-footer {
   overflow-x: hidden;
 }
-/* line 58, ../../stylesheets/screen.scss */
+/* line 57, ../../stylesheets/screen.scss */
 body #screen #sidebar {
   position: absolute;
   top: 129px;
@@ -998,7 +994,7 @@ body #screen #sidebar {
   margin-top: 40px;
   margin-left: 958px;
 }
-/* line 64, ../../stylesheets/screen.scss */
+/* line 63, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1020,7 +1016,7 @@ body #screen #sidebar #nav {
   padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 72, ../../stylesheets/screen.scss */
+/* line 71, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1041,7 +1037,7 @@ body #screen #sidebar #mypicks {
   background-image: linear-gradient(top, #fff5ba, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 81, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -1055,16 +1051,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 86, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 89, ../../stylesheets/screen.scss */
+/* line 88, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 91, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -1075,19 +1071,19 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 94, ../../stylesheets/screen.scss */
+/* line 93, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   border: solid 1px #bbbbbb;
   width: 640px;
   height: 490px;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #bbbbbb;
   height: 300px;
   width: 300px;
 }
-/* line 99, ../../stylesheets/screen.scss */
+/* line 98, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -1108,23 +1104,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 106, ../../stylesheets/screen.scss */
+/* line 105, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 106, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 113, ../../stylesheets/screen.scss */
+/* line 112, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 115, ../../stylesheets/screen.scss */
+/* line 114, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

@@ -49,7 +49,6 @@ body {
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
           th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px $bordergray; }
           td{ padding: 10px; border-bottom: dashed 1px $bordergray; }
-          .transportation-icon{ margin: 0 7px -10px 0; }
         }
       }
       #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
