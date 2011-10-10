@@ -761,12 +761,6 @@ body .heart {
 /* line 78, ../../stylesheets/screen.scss */
 body .favorited {
   background-color: #fdf7b6;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fffbcc), color-stop(100%, #f7f2ac));
-  background-image: -webkit-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -moz-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -o-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: -ms-linear-gradient(top, #fffbcc, #f7f2ac);
-  background-image: linear-gradient(top, #fffbcc, #f7f2ac);
 }
 /* line 80, ../../stylesheets/screen.scss */
 body #container {
