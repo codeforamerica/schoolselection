@@ -21,7 +21,7 @@ body {
   background-color: $background;
   background-repeat: no-repeat;
   background-position: right top;
-  @include linear-gradient(color-stops(#dfeaf2, #ebeff2));
+  @include linear-gradient(color-stops(#dfe7f2, #e8ecf2));
   
   a{ color: $blue; text-decoration: none; }
   a:hover{ color: $blue; text-decoration: underline; }
