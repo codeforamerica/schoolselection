@@ -6,3 +6,4 @@
     %ol#favorite-list
       - for school in @favorite_schools
         %li= school.name
+    = link_to "Compre >", compare_schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])

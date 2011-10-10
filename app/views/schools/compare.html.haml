@@ -1,0 +1,13 @@
+#left-column    
+  #page.yellow-background
+    %h1.bold
+      My Picks
+    %ol.large
+      - for school in @favorite_schools
+        %li= school.name
+    
+    %br/
+    = link_to "< Back to List View", schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
+        
+  #page-footer
+    = image_tag('cfa_logo.png')

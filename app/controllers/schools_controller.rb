@@ -47,6 +47,10 @@ class SchoolsController < ApplicationController
     end
   end
   
+  def compare
+    @favorite_schools = session[:favorites].map {|x| School.find(x)}
+  end
+  
   ####### AJAX #######
   
   def switch_tab
