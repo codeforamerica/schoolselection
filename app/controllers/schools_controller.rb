@@ -22,6 +22,7 @@ class SchoolsController < ApplicationController
   def show
     shared_variables
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
+    @geocoded_address = geocode_address("#{session[:address]}, #{session[:zipcode]}")
     @school = @grade_level.schools.where(:id => params[:id]).with_distance(@geocoded_address).first
 
     respond_to do |format|
@@ -66,7 +67,6 @@ class SchoolsController < ApplicationController
   def shared_variables
     @grade_levels = GradeLevel.all
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
-    @geocoded_address = geocode_address("#{session[:address]}, #{session[:zipcode]}")
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
 
     @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
