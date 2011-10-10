@@ -1,6 +1,6 @@
 %td.tabbable.overview.larger
   = school.grade_levels.short_string
 %td.tabbable.overview.larger
-  =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
+  =raw school.driving_distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
   = school.eligibility

@@ -1,12 +1,12 @@
 %td.tabbable.transportation.hidden.larger
   =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.transportation.hidden.larger
-  - if school.eligibility =~ /Walk Zone/
-    =raw school.distance.present? ? "#{walk_time(school.distance)} <span class='small'>min</span>" : '&nbsp;'
+  - if school.walking_distance.present?
+    =raw "#{walk_time(school.walking_distance)} <span class='small'>min</span>"
   - else
     &nbsp;
 %td.tabbable.transportation.hidden.larger
-  =raw school.distance.present? ? "#{drive_time(school.distance)} <span class='small'>min</span>" : '&nbsp;'
+  =raw school.driving_distance.present? ? "#{drive_time(school.driving_distance)} <span class='small'>min</span>" : '&nbsp;'
 %td.tabbable.transportation.hidden.large
   - if @grade_level.name == "High"
     MBTA time
