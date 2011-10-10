@@ -4,7 +4,7 @@ Schoolselection::Application.routes.draw do
 
   devise_for :users
 
-  root :to => 'schools#index'
+  root :to => 'high_voltage/pages#show', :id => 'home'
 
   resources :schools do
     collection do 
