@@ -16,6 +16,16 @@ module SchoolsHelper
     (distance.to_f / DRIVE_TIME_METERS_PER_MINUTE).floor
   end
   
+  def eligibility_title(school)
+    if school.eligibility =~ /Walk Zone/
+      "Walk&nbsp;Zone"
+    elsif school.eligibility =~ /Assignment Zone/
+      "Assignment&nbsp;Zone"
+    elsif school.eligibility =~ /Citywide/
+      "Citywide"
+    end      
+  end
+  
   def admissions_odds(open_seats, first_choices)
     if open_seats.blank? || first_choices.blank?
       '&nbsp'
@@ -47,7 +57,8 @@ module SchoolsHelper
   include EncodePolyline
   def static_gmap_image
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=180x150" + 
+      "size=150x125" + 
+      '&zoom=10' +
       "&maptype=roadmap" +
       "&sensor=false" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
@@ -60,7 +71,7 @@ module SchoolsHelper
   ####### MAP JSON #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "circles" => {"data" => walk_zone_json }, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def default_map
@@ -72,7 +83,7 @@ module SchoolsHelper
   end
   
   def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.4, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json

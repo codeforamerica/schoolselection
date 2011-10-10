@@ -1,22 +1,22 @@
-#left-column
-  #left-column-nav
-    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], view: 'list'), :class => 'sidebar-nav'
-    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    %span.sidebar-nav.active
-      Map View
-  #inner-left-column
-    #map-list
-      %h4 Eligible Schools
-      #options
-        <ul id="markers_list"></ul>
+#sidebar
+  #nav.larger
+    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :class => 'sidebar-nav')
+  #mypicks
+    = render :partial => 'favorites'
       
-#right-column
-  #table-nav
-    &nbsp;
+#left-column
   #page
-    #map-container
-      %h2
-        %span.small.nobold
-          Results for:&nbsp;
-        == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
-      = walk_zone_map
+    %h1.bold
+      %span.small.nobold.italic
+        Eligible Schools for:&nbsp;
+      == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
+    #map
+      #map-container
+        = walk_zone_map
+      #map-list
+        #options
+          <ul id="markers_list"></ul>
+    .clear-both
+      &nbsp;
+  #page-footer
+    = image_tag('cfa_logo.png')

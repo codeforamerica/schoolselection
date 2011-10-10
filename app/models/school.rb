@@ -2,16 +2,14 @@ class School < ActiveRecord::Base
   # acts_as_gmappable :lat => "lat", :lng => "lng"
   acts_as_mappable  :default_units => :miles, :lat_column_name => :lat, :lng_column_name => :lng
   
-  has_and_belongs_to_many :grade_levels, :uniq => true
-  has_many :grade_level_hours
-  has_many :grade_level_admissions, :class_name => "SchoolGradeAdmission", :foreign_key => "school_id"
+  has_many :grades, :class_name => "SchoolGrade", :foreign_key => "school_id"
+  has_many :grade_levels, :through => :grades
+  # has_and_belongs_to_many :grade_levels, :uniq => true
   belongs_to :assignment_zone
   belongs_to :city
   belongs_to :neighborhood
-  belongs_to :mail_cluster
   belongs_to :parcel
   belongs_to :principal
-  belongs_to :school_group
   belongs_to :state
   
   attr_accessor :eligibility, :eligibility_index
@@ -30,6 +28,10 @@ class School < ActiveRecord::Base
   
   ##### INSTANCE METHODS #####
   
+  def grade(number)
+    self.grades.find_by_grade_number(number)
+  end
+
   def geocode_address!
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA, #{zipcode}")

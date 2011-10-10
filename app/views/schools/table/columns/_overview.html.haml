@@ -1,6 +1,14 @@
-%td.tabbable.overview.larger
-  = school.grade_levels.short_string
-%td.tabbable.overview.larger
-  =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
-  = school.eligibility
+  - if @grade_level.name == "High"
+    =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
+  - else
+    =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
+%td.tabbable.overview.large
+  - if @grade_level.name == "High"
+    =raw school.eligibility =~ /Walk Zone/ ? image_tag('walking.png') : image_tag('city-bus.png')
+  - else
+    =raw school.eligibility =~ /Walk Zone/ ? image_tag('walking.png') : image_tag('school-bus.png')
+%td.tabbable.overview.large
+  =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
+%td.tabbable.overview
+  =raw school.grade(session[:grade_level]).try(:hours).try(:present?) ? school.grade(session[:grade_level]).try(:hours) : '&nbsp;'
