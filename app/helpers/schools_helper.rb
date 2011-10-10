@@ -61,19 +61,44 @@ module SchoolsHelper
   ####### MAP JSON #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "circles" => {"data" => walk_zone_json }, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps(
+      "markers" =>  {"data" => markers_json, "options" => {"list_container" => "markers_list"}},
+      "map_options" => { "provider" => "googlemaps", "auto_adjust" => true },
+      "polygons" => {
+        "data" => [assignment_zone_info,walk_zone_info].to_json,
+      }
+    )
   end
   
   def default_map
     gmaps("polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @map_center.lat, "center_longitude" => @map_center.lng, "zoom" => 11 })
   end
   
-  def assignment_zones_json
-    @assignment_zone.shape_to_json
+  #gmaps for rails wants an array with [config_info,*data]
+  def assignment_zone_info
+    style = {
+      "fillColor" => "#ffff00",
+      "fillOpacity" => 0.4,
+      "strokeColor" => "#000000",
+      "strokeWeight" => 1.5,
+      'strokeOpacity' => 0.6
+    }
+    info = @assignment_zone.shape_hash
+    info[0] = style.merge(info[0])
+    info
   end
-  
-  def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.5, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
+
+  def walk_zone_info
+    style = {
+      :fillColor => '#61d60e',
+      :fillOpacity => 0.5,
+      :strokeColor => '#000000',
+      :strokeOpacity => 0.6,
+      :strokeWeight => 1.5
+    }
+    info = @walkshed_polygon.exterior_ring.points.map {|x| {:lat=>x.lat, :lng=>x.lon}}
+    info[0] = style.merge(info[0])
+    info
   end
   
   def markers_json

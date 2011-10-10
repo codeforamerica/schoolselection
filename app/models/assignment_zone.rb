@@ -17,12 +17,8 @@ class AssignmentZone < ActiveRecord::Base
   
   ####### INSTANCE METHODS #######
   
-  def shape_to_json
+  def shape_hash
     hash = RGeo::GeoJSON.encode(geometry)
-    [hash["coordinates"][0][0].map  {|(lng,lat)| {"lat"=>lat,"lng"=>lng}}].to_json
-  end
-  
-  def coordinates_hash
-    self.coordinates.map {|x| {:lat => x[0], :lng => x[1]}}
+    hash["coordinates"][0][0].map  {|(lng,lat)| {"lat"=>lat,"lng"=>lng}}
   end
 end
