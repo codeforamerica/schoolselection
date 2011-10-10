@@ -15,17 +15,17 @@ class School < ActiveRecord::Base
   belongs_to :state
   belongs_to :vertex
   
-  attr_accessor :eligibility, :eligibility_index, :driving_distance
+  attr_accessor :eligibility, :eligibility_index, :driving_distance, :walking_distance
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
   # before_save :geocode_address!
   
   ##### CLASS METHODS #####
   def self.with_distance(a)
-    with_walk_distance(a)
+    with_walking_distance(a)
   end
   
-  def self.with_walk_distance(starting_vertex)
-    select("(select sum(shortest_path.cost) from shortest_path('SELECT gid as id, source, target, length, length as cost from ways where class_id >= 104', #{starting_vertex.id.to_i},schools.vertex_id,false,false)) as distance")
+  def self.with_walking_distance(starting_vertex)
+    select("(select sum(shortest_path.cost) from shortest_path('SELECT gid as id, source, target, length, length as cost from ways where class_id >= 104', #{starting_vertex.id.to_i},schools.vertex_id,false,false)) as walking_distance")
   end
   
   def self.find_all_within_radius(address, radius_in_meters)
@@ -37,6 +37,9 @@ class School < ActiveRecord::Base
   end
   
   ##### INSTANCE METHODS #####
+  def distance
+    self.walking_distance || self.driving_distance
+  end
   
   def geocode_address!
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
