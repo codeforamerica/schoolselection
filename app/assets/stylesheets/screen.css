@@ -151,15 +151,15 @@ body {
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
   height: 100%;
-  background-color: #edf1f7;
+  background-color: #e8ecf2;
   background-repeat: no-repeat;
   background-position: right top;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e6edf7), color-stop(100%, #edf1f7));
-  background-image: -webkit-linear-gradient(top, #e6edf7, #edf1f7);
-  background-image: -moz-linear-gradient(top, #e6edf7, #edf1f7);
-  background-image: -o-linear-gradient(top, #e6edf7, #edf1f7);
-  background-image: -ms-linear-gradient(top, #e6edf7, #edf1f7);
-  background-image: linear-gradient(top, #e6edf7, #edf1f7);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e8eef7), color-stop(100%, #e8ecf2));
+  background-image: -webkit-linear-gradient(top, #e8eef7, #e8ecf2);
+  background-image: -moz-linear-gradient(top, #e8eef7, #e8ecf2);
+  background-image: -o-linear-gradient(top, #e8eef7, #e8ecf2);
+  background-image: -ms-linear-gradient(top, #e8eef7, #e8ecf2);
+  background-image: linear-gradient(top, #e8eef7, #e8ecf2);
 }
 /* line 51, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
 body h1, body h2, body h3, body h4, body h5, body h6 {
