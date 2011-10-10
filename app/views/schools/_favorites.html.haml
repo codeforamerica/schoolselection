@@ -1,10 +1,8 @@
 #favorites
+  %h2 My Picks
   - unless session[:favorites].try(:present?)
-    %h2 My Picks
-    To create a customized list of your top schools, click to the school name and then the "Add to My Picks" button.
+    To create a customized list of your top choices, click the "Add to My Picks" button.
   - else
-    %h2 
-      = link_to 'My Picks', compare_schools_path
     %ol#favorite-list
       - for school in @favorite_schools
         %li= school.name

@@ -904,7 +904,7 @@ body #screen #sidebar #nav .static-map-image {
   -khtml-border-radius: 10px;
   border-radius: 10px;
   border: solid 1px #777777;
-  margin: 10px 0 5px 0;
+  margin: 10px 0 10px 0;
 }
 /* line 121, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {

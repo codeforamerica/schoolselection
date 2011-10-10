@@ -1,7 +1,9 @@
 #sidebar
-  #nav.larger
-    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
+  #nav
+    %span.larger
+      Map View
     = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
+    
     
   #mypicks
     = render :partial => 'favorites'
