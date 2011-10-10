@@ -11,11 +11,11 @@ module Geography
     result[0]["the_geom"]
   end
 
-  #returns a hash of vertex_id=>driving_distance
+  #returns a hash of vertex_id=>driving_distance. driving_distance in meters.
   def driving_distances_for_point(vertex,max_distance=25.0)
     result = ActiveRecord::Base.connection.execute("select vertex_id, cost from driving_distance('SELECT gid as id, source, target, length as cost from ways',#{vertex.id.to_i},#{max_distance.to_f}, false,false) where vertex_id in (select vertex_id from schools);")
     Hash[result.map do |h|
-      [h["vertex_id"].to_i, h["cost"].to_f]
+      [h["vertex_id"].to_i, h["cost"].to_f * 1000]
     end]
   end
 end
