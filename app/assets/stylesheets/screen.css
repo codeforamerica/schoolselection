@@ -575,25 +575,31 @@ body a.table-nav.active:hover {
 /* line 38, ../../stylesheets/screen.scss */
 body a.button {
   background-color: #008cd9;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0094e5), color-stop(100%, #008cd9));
-  background-image: -webkit-linear-gradient(top, #0094e5, #008cd9);
-  background-image: -moz-linear-gradient(top, #0094e5, #008cd9);
-  background-image: -o-linear-gradient(top, #0094e5, #008cd9);
-  background-image: -ms-linear-gradient(top, #0094e5, #008cd9);
-  background-image: linear-gradient(top, #0094e5, #008cd9);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0098eb), color-stop(100%, #008cd9));
+  background-image: -webkit-linear-gradient(top, #0098eb, #008cd9);
+  background-image: -moz-linear-gradient(top, #0098eb, #008cd9);
+  background-image: -o-linear-gradient(top, #0098eb, #008cd9);
+  background-image: -ms-linear-gradient(top, #0098eb, #008cd9);
+  background-image: linear-gradient(top, #0098eb, #008cd9);
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  border: solid 1px #777777;
+  border: solid 1px #999;
   color: white;
-  padding: 7px;
+  padding: 7px 9px 7px 9px;
   font-size: 13px;
 }
 /* line 39, ../../stylesheets/screen.scss */
 body a.button:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #008cd9), color-stop(100%, #0098eb));
+  background-image: -webkit-linear-gradient(top, #008cd9, #0098eb);
+  background-image: -moz-linear-gradient(top, #008cd9, #0098eb);
+  background-image: -o-linear-gradient(top, #008cd9, #0098eb);
+  background-image: -ms-linear-gradient(top, #008cd9, #0098eb);
+  background-image: linear-gradient(top, #008cd9, #0098eb);
   text-decoration: none;
   color: #faf4a5;
 }
@@ -922,7 +928,7 @@ body #screen #sidebar #mypicks {
   background-image: -o-linear-gradient(top, #fff5ba, #faf4a5);
   background-image: -ms-linear-gradient(top, #fff5ba, #faf4a5);
   background-image: linear-gradient(top, #fff5ba, #faf4a5);
-  padding: 20px 20px 20px 25px;
+  padding: 20px 20px 25px 25px;
 }
 /* line 114, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks li {
