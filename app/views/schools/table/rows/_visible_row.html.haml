@@ -3,7 +3,7 @@
     = link_to image_tag('school-small.png'), school_path(school), :rel => 'facebox'
   %td
     %h3.bold
-      = link_to school.name, school_path(school), :rel => 'facebox'
+      = school.name
     %span.italic
       == #{school.address}, #{school.city.try(:name)}
 
@@ -14,3 +14,6 @@
   = render :partial => 'schools/table/columns/academics', :locals => {:school => school}
 
   = render :partial => 'schools/table/columns/admissions', :locals => {:school => school}
+  
+  %td
+    = link_to "View", school_path(school), :rel => 'facebox', :class => 'button'

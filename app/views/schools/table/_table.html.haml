@@ -2,7 +2,7 @@
   %thead
     %tr
       %th{:width=>'100px'} &nbsp;
-      %th.sorttable{:width=>'280px'} School Name
+      %th.sorttable{:width=>'270px'} School Name
       %th.tabbable.overview{:width=>'160px'} Eligibility<span id="sorttable_sortfwdind">&nbsp;▾</span>
       %th.tabbable.overview.sorttable Transit
       %th.tabbable.overview.sorttable_numeric Distance
@@ -21,6 +21,9 @@
       %th.tabbable.admissions.hidden 1st Choices (2010)
       %th.tabbable.admissions.hidden 2nd Choices (2010)
       %th.tabbable.admissions.hidden 3rd Choices (2010)
+      
+      %th{:width=>'50px'} &nbsp;
+      
   %tbody
     - if @all_schools.present?
       - @all_schools.each do |school|
