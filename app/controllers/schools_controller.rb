@@ -88,6 +88,7 @@ class SchoolsController < ApplicationController
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
     @walkshed = walkshed_for_point(@vertex,@grade_level.walk_zone_radius_in_meters / 1000.0)
+    @walkshed_polygon = ::RGeo::WKRep::WKBParser.new(RGeo::Geographic.spherical_factory).parse_hex(@walkshed)
     
     @walk_zone_schools = @grade_level.schools.within_walkshed(@walkshed).with_walking_distance(@vertex)
     ids = @walk_zone_schools.map(&:id)
