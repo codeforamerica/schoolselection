@@ -91,9 +91,14 @@ class SchoolsController < ApplicationController
     
     @walk_zone_schools = @grade_level.schools.within_walkshed(@walkshed).with_walk_distance(@vertex).order('distance ASC')
     ids = @walk_zone_schools.map(&:id)
-    @assignment_zone_schools = @grade_level.schools.where("id not in (?)",ids).where(:assignment_zone_id => @assignment_zone).with_distance(@vertex).order('distance ASC')
-    @citywide_schools = @grade_level.schools.where("id not in (?)",ids).where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@vertex).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where("id not in (?)",ids).where(:assignment_zone_id => @assignment_zone)
+    @citywide_schools = @grade_level.schools.where("id not in (?)",ids).where(:assignment_zone_id => AssignmentZone.citywide)
     @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+
+    distances = driving_distances_for_point(@vertex)
+    @all_schools.each {|s| s.driving_distance = distances[s.vertex_id]}
+    @all_schools.sort_by! {|x| x.driving_distance || 1000}
+    
     @visible_schools = (@all_schools - @hidden_schools)
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
