@@ -18,8 +18,9 @@ body {
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
   height: 100%;
-  background-color: $background;
-  
+  background-image: url(/images/canvas.jpg);
+  background-attachment:fixed;
+    
   a{ color: $blue; text-decoration: none; }
   a:hover{ color: $blue; text-decoration: underline; }
   a:active{ color: $blue; text-decoration: underline; }
