@@ -4,60 +4,50 @@
   =raw @school.description
 
 %p
-  - unless @school.address.blank?
+  - if @school.address.try(:present?)
     %br/
     %b Address:&nbsp;
     == #{@school.address} #{@school.city.try(:name)}, MA #{@school.zipcode}
   
-  - unless @school.phone.blank?
+  - if @school.phone.try(:present?)
     %br/
     %b Phone:&nbsp;
     = @school.phone
   
-  - unless @school.fax.blank?
+  - if @school.fax.try(:present?)
     %br/
     %b Fax:&nbsp;
     = @school.fax
   
-  - unless @school.website.blank?
+  - if @school.website.try(:present?)
     %br/
     %b Website:&nbsp;
     = link_to @school.website
     
-  - unless @school.assignment_zone.blank?
+  - if @school.assignment_zone.try(:present?)
     %br/
     %b Assignment Zone:&nbsp;
     = @school.assignment_zone.name
   
-  - unless @school.school_type_name.blank?
+  - if @school.school_type_name.try(:present?)
     %br/
     %b School Type:&nbsp;
     = @school.school_type_name
   
-  - unless @school.grade_levels.short_string.blank?
+  - if @school.grade_levels.try(:short_string).try(:present?)
     %br/
     %b Grades:&nbsp;
     = @school.grade_levels.short_string
   
-  - unless @school.grade(session[:grade_level]).try(:hours).try(:blank?)
+  - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
     %br/
     %b Hours:&nbsp;
     = @school.grade(session[:grade_level]).hours
   
-  - unless @school.early_dismissal_time.blank?
+  - if @school.early_dismissal_time.try(:present?)
     %br/
     %b Early Dismissal Time:&nbsp;
     = @school.early_dismissal_time
-  
-  - unless @school.breakfast.blank?
-    %br/
-    %b Breakfast:&nbsp;
-    = @school.breakfast
-  
-  - unless @school.lunch.blank?
-    %br/
-    %b School Lunch:&nbsp;
-    = @school.lunch
 
 - if @favorite_schools.try(:include?, @school.id)
   %h3
