@@ -19,14 +19,15 @@ body {
   font-size: $base-font-size;
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
+  line-height: 150% !important;
   height: 100%;
   background-image: url(/images/canvas.jpg);
   background-attachment:fixed;
   
-  h1{ font-size: 1em; margin-bottom: 0.8em; }
-  h2{ font-size: 1.5em; margin-bottom: 0.6em;}
-  h3{ font-size: 1.25em; margin-bottom: 0.5em; }
-  h4{ font-size: 1.3em; margin-bottom: 0; }
+  h1{ font-size: 2em; margin-bottom: 0.7em; }
+  h2{ font-size: 1.6em; margin-bottom: 0.6em;}
+  h3{ font-size: 1.4em; margin-bottom: 0.6em; }
+  h4{ font-size: 1.25em; margin-bottom: 0.4em; }
     
   #container{ @include container; }
   #header{ margin: 15px 0 0 25px; }
@@ -67,7 +68,6 @@ body {
         @include linear-gradient(color-stops($lightgray, $gray));
         padding: 17px 20px 15px 25px;
         margin-bottom: 30px;
-        .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; margin: 0 0 10px 0;}
       }
       #mypicks{
         @include box-shadow; 
@@ -75,7 +75,6 @@ body {
         background-color: $yellow; 
         @include linear-gradient(color-stops($lightyellow, $yellow));
         padding: 20px 20px 25px 25px;
-        li{ margin-bottom: 5px; }
       }
     }
     

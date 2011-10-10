@@ -4,7 +4,8 @@ a:active{ color: $blue; text-decoration: underline; }
 a:visited{ color: $blue; text-decoration: none; }
 
 a.main-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
-.main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }  
+.main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
+
 a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
 .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
 
@@ -16,6 +17,7 @@ a.table-nav.active:hover{ text-decoration: none; }
 a.blue-button{ background-color: $blue; @include linear-gradient(color-stops($lightblue, $blue)); @include border-radius(10px); border: solid 1px #999; color: white; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.blue-button:hover{ color: white; text-decoration: none; }
 a.blue-button:visited{ color: white; }
+a.blue-button:active{ color: white; }
 
 a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($mediumgray, $darkgray)); @include border-radius(10px); border: solid 1px $darkergray; color: white; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.gray-button:hover{ color: white; text-decoration: none; }

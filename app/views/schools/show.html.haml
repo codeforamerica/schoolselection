@@ -1,59 +1,77 @@
-%h2.bold= @school.name
+%h1.bold= @school.name
 
-%p
-  =raw @school.description
+%table
+  %tr
+    %td.align-top{:width=>'340'}
+      %p
+        = static_school_map(330, 400)
 
-%p
-  - if @school.address.try(:present?)
-    %br/
-    %b Address:&nbsp;
-    == #{@school.address} #{@school.city.try(:name)}, MA #{@school.zipcode}
-  
-  - if @school.phone.try(:present?)
-    %br/
-    %b Phone:&nbsp;
-    = @school.phone
-  
-  - if @school.fax.try(:present?)
-    %br/
-    %b Fax:&nbsp;
-    = @school.fax
-  
-  - if @school.website.try(:present?)
-    %br/
-    %b Website:&nbsp;
-    = link_to @school.website
     
-  - if @school.assignment_zone.try(:present?)
-    %br/
-    %b Assignment Zone:&nbsp;
-    = @school.assignment_zone.name
-  
-  - if @school.school_type_name.try(:present?)
-    %br/
-    %b School Type:&nbsp;
-    = @school.school_type_name
-  
-  - if @school.grade_levels.try(:short_string).try(:present?)
-    %br/
-    %b Grades:&nbsp;
-    = @school.grade_levels.short_string
-  
-  - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
-    %br/
-    %b Hours:&nbsp;
-    = @school.grade(session[:grade_level]).hours
-  
-  - if @school.early_dismissal_time.try(:present?)
-    %br/
-    %b Early Dismissal Time:&nbsp;
-    = @school.early_dismissal_time
+    %td.align-top
+      %h3.gray-background.adjust Transportation
+      %table.small-bottom-margin
+        %thead
+          %tr
+            %th Transit
+            %th Distance
+            - if @school.eligibility =~ /Walk Zone/
+              %th Walk Time
+            %th Drive Time
+        %tbody
+          %tr
+            %td.large
+              - if @grade_level.name == "High"
+                =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('city-bus.png', :class=> 'transportation-icon')}&nbsp;MBTA"
+              - else
+                =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus"
+            %td.large
+              =raw @school.distance.present? ? "#{distance_in_miles_from_meters(@school.distance)} <span class='small'>mi</span>" : '&nbsp;'
+            - if @school.eligibility =~ /Walk Zone/
+              %td.large
+                =raw @school.distance.present? ? "#{walk_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
+              - else
+                &nbsp;
+            %td.large
+              =raw @school.distance.present? ? "#{drive_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
+
+      %h3.gray-background Academics
+      %table.small-bottom-margin
+        %thead
+          %tr
+            %th Teachers
+            %th Students
+            %th Staff : Student Ratio
+        %tr
+          %td.large
+            =raw @school.teachers_count.present? ? @school.teachers_count : '&nbsp;'
+          %td.large
+            =raw @school.students_count.present? ? @school.students_count : '&nbsp;'
+          %td.large
+            =raw @school.staff_to_student_ratio.present? ? @school.staff_to_student_ratio : '&nbsp;'
+      
+      - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
+        %h3.gray-background Admissions
+        %table.no-bottom-margin
+          %thead
+            %tr
+              %th Open Seats (2010)
+              %th 1st Choices (2010)
+              %th 2nd Choices (2010)
+              %th 3rd Choices (2010)
+          %tr
+            - grade = @school.grade(session[:grade_level])
+            %td.large
+              =raw grade.try(:open_seats) ? grade.open_seats : '&nbsp;'
+            %td.large
+              =raw grade.try(:first_choice) ? grade.first_choice : '&nbsp;'
+            %td.large
+              =raw grade.try(:second_choice) ? grade.second_choice : '&nbsp;'
+            %td.large
+              =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
 
 - if @favorite_schools.try(:include?, @school.id)
   %h3
-    == #{image_tag('star-gray.png')}&nbsp;
-    = link_to "Remove from My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+    = link_to "Remove from My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'gray-button'
 - else
   %h3
-    == #{image_tag('star.png')}&nbsp;
-    = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+    = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'blue-button'

@@ -1,8 +1,8 @@
 #sidebar
   #nav
-    %h2
+    %h3
       Map View
-    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
+    = link_to static_schools_map(150, 125), schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
 
   #mypicks
     = render :partial => 'favorites'
@@ -15,7 +15,7 @@
     = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
 #left-column    
   #page
-    %h1.bold
+    %h2.bold
       %span.small.nobold.italic
         == Eligible Schools for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
