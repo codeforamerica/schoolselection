@@ -1,25 +1,17 @@
 #sidebar
-  #sidebar-nav
-    %span.sidebar-nav.active
-      List View
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map'), :class => 'sidebar-nav'
-  #views
-    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map')
+  #nav.larger
+    = link_to "Map View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
   #mypicks
     %h2 My Picks
     = render :partial => 'favorites'
-        
-#left-column
-  #table-nav
-    = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
-    = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
-    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
-    - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).try(:present?)
-      = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
-  #logo
-    = image_tag('logo-gray.png')
     
+#table-nav
+  = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
+  = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
+  = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
+  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).try(:present?)
+    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
+#left-column    
   #page
     %h1.bold
       %span.small.nobold.italic
@@ -27,7 +19,8 @@
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
   
     = render :partial => 'schools/table/table'    
-    
+  #page-footer
+    = image_tag('cfa_logo.png')
 %script
   $(document).ready(function() {
   var yOffset = $("#sidebar").offset().top - 40;

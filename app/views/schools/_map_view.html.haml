@@ -1,11 +1,6 @@
 #sidebar
-  #sidebar-nav
-    %span.sidebar-nav.active
-      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'sidebar-nav'
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      Map View
-  #views
-    = link_to static_gmap_image, schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map')
+  #nav.larger
+    = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :class => 'sidebar-nav')
   #mypicks
     %h2 My Picks
     = render :partial => 'favorites'
@@ -24,3 +19,5 @@
           <ul id="markers_list"></ul>
     .clear-both
       &nbsp;
+  #page-footer
+    = image_tag('cfa_logo.png')

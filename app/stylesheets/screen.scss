@@ -17,7 +17,11 @@ body {
   font-size: $base-font-size;
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
+  height: 100%;
   background-color: $background;
+  background-repeat: no-repeat;
+  background-position: right top;
+  @include linear-gradient(color-stops(#dfeaf2, #ebeff2));
   
   a{ color: $blue; text-decoration: none; }
   a:hover{ color: $blue; text-decoration: underline; }
@@ -28,8 +32,10 @@ body {
   .main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }  
   a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
   .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
-  a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
-  a.table-nav.active{ color: #333; background-color: white; border-bottom: solid 3px white; }
+  
+  a.table-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $lightgray; color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
+  a.table-nav:hover{ text-decoration: underline; }
+  a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; border-bottom: solid 3px white; }
   a.table-nav.active:hover{ text-decoration: none; }
   
   a.hide {
@@ -72,51 +78,51 @@ body {
   .favorited{ background-color: $yellow; }
     
   #container{ @include container; }
+  #header{ margin: 15px 0 0 25px; }
   #screen{
     margin-top: 20px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
-
+    #table-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
     #left-column{ 
       position: absolute;
       @include column(20, true);
       #logo{ padding: 0 0 17px 25px; }
-      #table-nav{ float: right; clear: bottom; margin: 43px 20px 0 0; }      
       #page{ 
         @include box-shadow; 
         @include border-radius(10px);
         background-color: white;
         padding: 25px;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
           th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px #bbb; }
           td{ padding: 10px; border-bottom: dashed 1px #bbb; }
           .transportation-icon{ margin: 0 7px -10px 0; }
         }
-      #hidden-schools{ margin-top: 20px; }  
       }
+      #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
     }
     
     #sidebar{
       position: absolute;
+      top: 129px;
       width: 200px;
-      top: 130px;
       margin-top: 40px;
       margin-left: 958px;
-      #sidebar-nav{ text-align: left; margin-left: 25px; font-weight: bold; margin-bottom: 15px;}
-      #views{
+      #nav{
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
-        background-color: #ccc; 
-        padding: 25px;
+        background-color: $lightgray; 
+        padding: 17px 15px 15px 25px;
+        margin-bottom: 30px;
         .static-map-image{ @include border-radius(10px); border: solid 1px $bordergray; }
       }
       #mypicks{
-        margin-top: 30px;
         @include box-shadow; 
         @include border-radius(0 10px 10px 0);
         background-color: $yellow; 
         padding: 25px;
+        li{ margin-bottom: 5px; }
       }
     }
     
