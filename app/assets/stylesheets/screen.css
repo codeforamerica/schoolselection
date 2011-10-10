@@ -478,27 +478,27 @@ body html > body {
 }
 /* line 24, ../../stylesheets/screen.scss */
 body a {
-  color: #0066cc;
+  color: #008cd9;
   text-decoration: none;
 }
 /* line 25, ../../stylesheets/screen.scss */
 body a:hover {
-  color: #0066cc;
+  color: #008cd9;
   text-decoration: underline;
 }
 /* line 26, ../../stylesheets/screen.scss */
 body a:active {
-  color: #0066cc;
+  color: #008cd9;
   text-decoration: underline;
 }
 /* line 27, ../../stylesheets/screen.scss */
 body a:visited {
-  color: #0066cc;
+  color: #008cd9;
   text-decoration: none;
 }
 /* line 29, ../../stylesheets/screen.scss */
 body a.main-nav {
-  color: #0066cc;
+  color: #008cd9;
   font-weight: bold;
   padding: 5px 0 3px 0;
 }
@@ -510,7 +510,7 @@ body .main-nav.active {
 }
 /* line 31, ../../stylesheets/screen.scss */
 body a.sidebar-nav {
-  color: #0066cc;
+  color: #008cd9;
   font-weight: bold;
   padding: 5px 0 3px 0;
 }
@@ -538,7 +538,7 @@ body a.table-nav {
   background-image: -o-linear-gradient(top, #eeeff0, #e3e4e5);
   background-image: -ms-linear-gradient(top, #eeeff0, #e3e4e5);
   background-image: linear-gradient(top, #eeeff0, #e3e4e5);
-  color: #0066cc;
+  color: #008cd9;
   font-weight: bold;
   font-size: 1.1em;
   padding: 13px 15px 15px 15px;
