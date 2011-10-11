@@ -68,13 +68,13 @@ module SchoolsHelper
       :alt => "Map View", :class => 'static-map-image')
   end
   
-  def static_school_map(width, height)
+  def static_school_map(width, height, color)
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
       "size=#{width}x#{height}" + 
       '&zoom=14' +
       "&maptype=roadmap" +
       "&sensor=false" +
-      "&markers=size:mid|color:0xff3100|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }",      
+      "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }",      
       :alt => "Map View", :class => 'static-map-image')
   end
   

@@ -1,14 +1,18 @@
-%h1.bold= @school.name
-
 - if @school.eligibility =~ /Walk Zone/
   %div.bold.large.center.green-background
     This school is in your Walk Zone and qualifies for priority selection status
 
+%h1.bold= @school.name
 %table
   %tr
-    %td.align-top{:width=>'300'}
+    %td.align-top{:width=>'290'}
       %p
-        = static_school_map(290, 230)
+        - if @school.eligibility =~ /Walk Zone/
+          = static_school_map(280, 220, '53e200')
+        - elsif @school.eligibility =~ /Assignment Zone/
+          = static_school_map(280, 220, 'fcef08')
+        - else
+          = static_school_map(280, 220, 'c8c8c8')
 
       - if @school.hours.present?
         %p
@@ -99,7 +103,7 @@
               =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
               
 
-%div
+%div.right
   - if session[:favorites].try(:include?, @school.id)
     %h3.bold
       = image_tag('icons/delete.png')
