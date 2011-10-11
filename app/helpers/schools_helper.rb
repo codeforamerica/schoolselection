@@ -16,6 +16,16 @@ module SchoolsHelper
     (distance.to_f / DRIVE_TIME_METERS_PER_MINUTE).floor
   end
   
+  def eligibility_title(school)
+    if school.eligibility =~ /Walk Zone/
+      "Walk&nbsp;Zone"
+    elsif school.eligibility =~ /Assignment Zone/
+      "Assignment&nbsp;Zone"
+    elsif school.eligibility =~ /Citywide/
+      "Citywide"
+    end      
+  end
+  
   def admissions_odds(open_seats, first_choices)
     if open_seats.blank? || first_choices.blank?
       '&nbsp'
@@ -45,9 +55,10 @@ module SchoolsHelper
   end
   
   include EncodePolyline
-  def static_gmap_image
+  def static_schools_map(width, height)
     image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=180x150" + 
+      "size=#{width}x#{height}" + 
+      '&zoom=10' +
       "&maptype=roadmap" +
       "&sensor=false" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
@@ -57,8 +68,24 @@ module SchoolsHelper
       "&path=fillcolor:0xfcef08|color:0x0000ff|weight:1|enc:#{encode_line(simplify_points(@assignment_zone.geometry[0].exterior_ring.points,0.001,0.01))}",
       :alt => "Map View", :class => 'static-map-image')
   end
-    
-  ####### MAP JSON #######
+  
+  def static_school_map(width, height)
+    image_tag("http://maps.google.com/maps/api/staticmap?" + 
+      "size=#{width}x#{height}" + 
+      '&zoom=14' +
+      "&maptype=roadmap" +
+      "&sensor=false" +
+      "&markers=size:mid|color:0xff3100|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }",      
+      :alt => "Map View", :class => 'static-map-image')
+  end
+  
+  ####### SINGLE SCHOOL MAP #######
+  
+  def school_map
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "circles" => {"data" => walk_zone_json }, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+  end
+  
+  ####### ALL SCHOOLS MAP #######
   
   def walk_zone_map
     gmaps(
@@ -70,15 +97,11 @@ module SchoolsHelper
     )
   end
   
-  def default_map
-    gmaps("polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.4, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.5 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => false, "center_latitude" => @map_center.lat, "center_longitude" => @map_center.lng, "zoom" => 11 })
-  end
-  
   #gmaps for rails wants an array with [config_info,*data]
   def assignment_zone_info
     style = {
       "fillColor" => "#ffff00",
-      "fillOpacity" => 0.4,
+      "fillOpacity" => 0.3,
       "strokeColor" => "#000000",
       "strokeWeight" => 1.5,
       'strokeOpacity' => 0.6
@@ -91,7 +114,7 @@ module SchoolsHelper
   def walk_zone_info
     style = {
       :fillColor => '#61d60e',
-      :fillOpacity => 0.5,
+      :fillOpacity => 0.4,
       :strokeColor => '#000000',
       :strokeOpacity => 0.6,
       :strokeWeight => 1.5

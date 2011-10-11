@@ -1,10 +1,10 @@
-%h2 Welcome to the School Discovery App
+%h1.bold Welcome to the School Discovery App
 %p.large To get started, please enter your home address and your child's upcoming grade level in the search form, below.
 
 #search-form
   - session[:address].blank? ? session[:address] = '26 Court Street' : session[:address]
   - session[:zipcode].blank? ? session[:zipcode] = '02109' : session[:zipcode]
-  - session[:grade_level].blank? ? session[:grade_level] = '7' : session[:grade_level]
+  - session[:grade_level].blank? ? session[:grade_level] = 'K1' : session[:grade_level]
   = form_tag('/schools', :method => :get) do
     = hidden_field_tag 'view', 'list'
     %table.search

@@ -9,28 +9,10 @@
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
-    #header
-      #header-container
-        - if Rails.env == 'development'
-          #inner-header-left
-            #logo
-              = image_tag('logo-gray.png')
-          #inner-header-right
-            #main-nav
-              - if @geocoded_address.present?
-                %ul.horizontal-list
-                  %li= link_to 'Search', root_url, :class => 'main-nav'
-                  %li &nbsp;&nbsp;|&nbsp;&nbsp;
-                  %li= link_to 'Eligible Schools', schools_url, :class => 'main-nav'
-                  %li &nbsp;&nbsp;|&nbsp;&nbsp;
-                  %li= link_to 'Your Favorites', compare_schools_url, :class => 'main-nav'
-                
     #container
+      #header
+        = link_to image_tag('logo-blue.png'), root_url
       #screen
-        - if params[:notice].present?
-          %p.notice= notice
-        - if params[:alert].present?
-          %p.alert= alert
         = yield
       
     = yield :scripts

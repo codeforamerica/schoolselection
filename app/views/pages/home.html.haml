@@ -1,1 +1,12 @@
-= render :partial => 'pages/search_form'
+#left-column    
+  #page
+    - if params[:notice].present?
+      %p.notice= notice
+    - if params[:alert].present?
+      %p.alert= alert
+  
+    = render :partial => 'pages/search_form'
+    .clear-both
+      &nbsp;
+  #page-footer
+    = image_tag('cfa_logo.png')

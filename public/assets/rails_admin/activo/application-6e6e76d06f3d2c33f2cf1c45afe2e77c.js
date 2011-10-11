@@ -1,0 +1,1 @@
+(function(a){a(document).ready(function(){a(".tipsy").each(function(){a(this).get(0).title!=""&&a(this).tipsy()})})})(jQuery)

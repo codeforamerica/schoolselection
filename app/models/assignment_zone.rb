@@ -1,8 +1,6 @@
 class AssignmentZone < ActiveRecord::Base
   has_many :schools
   
-  serialize :coordinates # expects an array of [lat, lng] arrays
-  
   # before_save :recalculate_included_schools so if they change the zones the schools will be reindexed TODO
   
   ####### CLASS METHODS #######

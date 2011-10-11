@@ -1,12 +1,14 @@
+@import "blueprint";
+@import "blueprint/reset";
+@import "blueprint/scaffolding";
 @import "compass";
 @import "compass/css3";
 @import "compass/layout";
 @import "compass/typography";
 @import "partials/base";
+@import "partials/buttons";
 @import "partials/errors";
-@import "blueprint";
-@import "blueprint/reset";
-@import "blueprint/scaffolding";
+@import "partials/general";
 
 body {
   @include blueprint-typography(true);
@@ -17,129 +19,79 @@ body {
   font-size: $base-font-size;
   font-family: 'Gotham', 'Helvetica', 'Verdana';
   text-align: left;
-  background-color: $cream;
+  line-height: 150% !important;
+  height: 100%;
+  background-image: url(/images/canvas.png);
+  background-attachment:fixed;
   
-  a{ color: $blue; text-decoration: none; }
-  a:hover{ color: $blue; text-decoration: underline; }
-  a:active{ color: $blue; text-decoration: underline; }
-  a.visited{ color: $blue; text-decoration: none; }
-  a.visited:hover{ color: $blue; text-decoration: underline; }
-
-  a.main-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
-  .main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }  
-  a.sidebar-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
-  .sidebar-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
-  a.table-nav{ color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 10px 15px; }
-  a.table-nav.active{ color: #333; background-color: white; border-bottom: solid 3px white; }
-  a.table-nav.active:hover{ text-decoration: none; }
-  
-  a.hide {
-  display: block;
-  text-indent: -5000px;
-  width: 16px;
-  height: 16px;
-  background-image: url(icons/hide.png);
-  background-repeat: no-repeat;
-  }
-  
-  a.hide{background-position: 0 0;}
-  a.hide:active {background-position: 0 0;}
-  a.hide:hover {background-position: 0 -16px;}
-  
-  h1{ font-weight: bold; font-size: 2.7em; margin: 33px 0 0 0; }
-  h2{ font-size: 1.5em; margin-bottom: 0.6em;}
-  h3{ font-weight: bold; font-size: 1.25em; margin-bottom: 0.5em; }
-  h4{ font-weight: bold; font-size: 1.3em; margin-bottom: 0; }
-
-  ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
-  input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
-  select{ font-size: 13px; margin: 0 10px 0 1px; }
-  input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; margin: 10px 10px 10px 0; }
-  form div { margin: 10px 10px 10px 0; }
-  
-  .clear-both{ clear: both; }
-  .right{ text-align: right; }
-  .center{ text-align: center; }
-  .hidden{ display: none;}
-  .italic{ font-style: italic; }
-  .bold{ font-weight: bold; }
-  .nobold{ font-weight: normal; }
-  .large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
-  .larger{ font-size: 1.4em; font-weight: normal;}
-  .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
-  .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
-  .heart{ margin: 0 0 -1px 4px; }
-  .favorited{ background-color: $lightyellow; }
+  h1{ font-size: 2em; margin-bottom: 0.7em; }
+  h2{ font-size: 1.6em; margin-bottom: 0.6em;}
+  h3{ font-size: 1.4em; margin-bottom: 0.6em; }
+  h4{ font-size: 1.25em; margin-bottom: 0.4em; }
     
-  
   #container{ @include container; }
-  #header{ 
-    @include box-shadow; 
-    padding: 10px 0 15px 0; 
-    margin-bottom: 30px; 
-    background-color: $darkcream;
-    #header-container{ 
-      @include container; 
-      #inner-header-left{ @include column(5, true); 
-        #logo{ padding-left: 15px; }
-      }
-      #inner-header-right{ 
-        @include column(19, true); 
-        #main-nav{ padding: 30px 0 0 30px; font-size: 1.3em; }
-      }
-    }
-  }
-  #screen{ 
+  #header{ margin: 15px 0 0 25px; }
+  #screen{
+    margin-top: 20px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
+    #table-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
     #left-column{ 
-      @include column(5, true); 
-      margin-top: 70px; 
-      margin-left: 5px;
-      #left-column-nav{ text-align: right; margin-right: 30px; font-weight: bold; margin-bottom: 15px;}
-      #inner-left-column{
-        @include box-shadow; 
-        @include border-radius(10px 0 0 10px);
-        background-color: $darkcream; 
-        padding: 20px;
-        select{ margin-bottom: 10px; }
-      }
-    }
-    #right-column{ 
-      @include column(19, true);
-      margin: 0 0 20px 0;
-      #table-nav{ width: 100%; text-align: right; padding: 8px 0 10px 0; margin-top: 5px; }      
+      position: absolute;
+      @include column(20, true);
+      #logo{ padding: 0 0 17px 25px; }
       #page{ 
         @include box-shadow; 
+        @include border-radius(10px);
         background-color: white;
-        padding: 25px;
+        padding: 30px 25px;
+        margin-bottom: 30px;
         table.listings{
           thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: solid 1px #ccc; }
-          td{ padding: 10px 0 10px 10px; border-bottom: 1px solid #ccc; }
-          td.hide-button{vertical-align: top;}
+          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px $bordergray; }
+          td{ padding: 10px; border-bottom: dashed 1px $bordergray; }
         }
-      #hidden-schools{ margin-top: 20px; }  
       }
-    }
-    .bottom-border{ padding-bottom: 20px; border-bottom: solid 1px #aaa; }
-    #small-map{ padding: 20px 0 20px 0; 
-      .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; }
+      #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
     }
     
-    #map_container{
-      padding-top: 7px;
-      #gmaps4rails_map { border: solid 1px $bordergray; width: 100%; height: 550px; }
-      .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
+    #sidebar{
+      position: absolute;
+      top: 129px;
+      width: 200px;
+      margin-top: 40px;
+      margin-left: 958px;
+      #nav{
+        @include box-shadow; 
+        @include border-radius(0 10px 10px 0);
+        background-color: $gray; 
+        @include linear-gradient(color-stops($lightgray, $gray));
+        padding: 17px 20px 15px 25px;
+        margin-bottom: 30px;
+      }
+      #mypicks{
+        @include box-shadow; 
+        @include border-radius(0 10px 10px 0);
+        background-color: $yellow; 
+        @include linear-gradient(color-stops($lightyellow, $yellow));
+        padding: 20px 20px 25px 25px;
+      }
     }
-    #map-list{
-      #options{
-        height: 450px;
+    
+    #map{
+      #map-list{ 
+        @include column(5);
+        height: 476px;
         margin: 15px 0 15px 0;
         overflow: scroll;
         ul#markers_list{ 
           padding-left: 15px;
           li{ padding-bottom: 7px; font-weight: bold; }
         }
+      } 
+      #map_container{
+        @include column(14, true);
+        #gmaps4rails_map { border: solid 1px $bordergray; width: 640px; height: 490px; }
+        .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
       }
     }
         
@@ -149,7 +101,7 @@ body {
       margin-top: 30px;
       padding: 30px 30px 0 30px;
       font-size: 15px; 
-      background-color: $darkcream;
+      background-color: $gray;
       .address{ width: 250px; }
       .zipcode{ width: 80px; }
       table.search{ width: 450px !important; }

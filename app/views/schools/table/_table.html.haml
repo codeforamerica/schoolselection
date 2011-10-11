@@ -1,48 +1,33 @@
 %table#visible-schools.listings.sortable
   %thead
     %tr
-      %th{:width=>'110px'} &nbsp;
-      %th.sorttable{:width=>'300px'} School Name
-      %th &nbsp;
-      %th.tabbable.overview.sorttable Grades
+      %th{:width=>'100px'} &nbsp;
+      %th.sorttable{:width=>'270px'} School Name
+      %th.tabbable.overview{:width=>'160px'} Eligibility<span id="sorttable_sortfwdind">&nbsp;▾</span>
+      %th.tabbable.overview.sorttable Transit
       %th.tabbable.overview.sorttable_numeric Distance
-      %th.tabbable.overview Eligibility Type
+      %th.tabbable.overview.sorttable Hours
       
+      %th.tabbable.transportation.hidden.sorttable_numeric Transit
       %th.tabbable.transportation.hidden.sorttable_numeric Distance
       %th.tabbable.transportation.hidden.sorttable_numeric Walk Time
       %th.tabbable.transportation.hidden.sorttable_numeric Drive Time
-      - if @grade_level.name == "High"
-        %th.tabbable.transportation.hidden.sorttable_numeric MBTA Time
-      - else
-        %th.tabbable.transportation.hidden.sorttable_numeric School Bus
       
       %th.tabbable.academics.hidden Teachers
       %th.tabbable.academics.hidden Students
       %th.tabbable.academics.hidden Staff : Student Ratio
       
       %th.tabbable.admissions.hidden Open Seats (2010)
-      %th.tabbable.admissions.hidden Total Applicants (2010)
-      %th.tabbable.admissions.hidden 1st Choice Odds (2010)
+      %th.tabbable.admissions.hidden 1st Choices (2010)
+      %th.tabbable.admissions.hidden 2nd Choices (2010)
+      %th.tabbable.admissions.hidden 3rd Choices (2010)
       
-      %th{:width=>'22px'} &nbsp;
+      %th{:width=>'50px'} &nbsp;
+      
   %tbody
-    - if @visible_schools.present?
-      - @visible_schools.each do |school|
+    - if @all_schools.present?
+      - @all_schools.each do |school|
         - if session[:favorites].try(:include?, school.id)
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
         - else
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => ''}
-            
-%table#hidden-schools.listings
-  %thead
-    %th
-      %h2.bold Your Hidden Schools
-    %th &nbsp;
-  %tbody
-    - if @hidden_schools.blank?
-      %tr#hidden_schools_note
-        %td.italic
-          == Schools may be hidden from your results by clicking the &nbsp;#{image_tag('icons/hide-gray.png')}&nbsp; button on the right side of each listing.
-    - else
-      - for hidden_school in @hidden_schools
-        = render :partial => 'schools/table/rows/hidden_row', :locals => {:school => hidden_school}

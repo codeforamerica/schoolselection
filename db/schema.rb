@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007021850) do
+ActiveRecord::Schema.define(:version => 20111009051309) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -44,18 +44,6 @@ ActiveRecord::Schema.define(:version => 20111007021850) do
     t.datetime "updated_at"
   end
 
-  create_table "grade_level_hours", :force => true do |t|
-    t.integer  "grade_level_id"
-    t.integer  "school_id"
-    t.string   "grade_level_number"
-    t.string   "hours"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "grade_level_hours", ["grade_level_id"], :name => "index_grade_level_hours_on_grade_level_id"
-  add_index "grade_level_hours", ["school_id"], :name => "index_grade_level_hours_on_school_id"
-
   create_table "grade_levels", :force => true do |t|
     t.string   "number"
     t.float    "walk_zone_radius"
@@ -67,12 +55,6 @@ ActiveRecord::Schema.define(:version => 20111007021850) do
   create_table "grade_levels_schools", :id => false, :force => true do |t|
     t.integer  "grade_level_id"
     t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mail_clusters", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -136,26 +118,24 @@ ActiveRecord::Schema.define(:version => 20111007021850) do
     t.string  "name",        :limit => 200
   end
 
-  create_table "school_grade_admissions", :force => true do |t|
+  create_table "school_grades", :force => true do |t|
     t.integer  "school_id"
     t.integer  "grade_level_id"
+    t.string   "grade_number"
+    t.string   "hours"
     t.integer  "open_seats"
     t.integer  "first_choice"
     t.integer  "second_choice"
     t.integer  "third_choice"
     t.integer  "fourth_higher_choice"
+    t.integer  "mcas_reading"
+    t.integer  "mcas_math"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "school_grade_admissions", ["grade_level_id"], :name => "index_school_grade_admissions_on_grade_level_id"
-  add_index "school_grade_admissions", ["school_id"], :name => "index_school_grade_admissions_on_school_id"
-
-  create_table "school_groups", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "school_grades", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
+  add_index "school_grades", ["school_id"], :name => "index_school_grades_on_school_id"
 
   create_table "school_levels", :force => true do |t|
     t.string   "name"
@@ -217,6 +197,7 @@ ActiveRecord::Schema.define(:version => 20111007021850) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "vertex_id"
+    t.string   "orgcode"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
