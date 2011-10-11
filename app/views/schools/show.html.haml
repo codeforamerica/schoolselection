@@ -5,7 +5,7 @@
 %h1.bold= @school.name
 %table
   %tr
-    %td.align-top{:width=>'290'}
+    %td.align-top.medium{:width=>'290'}
       %p
         - if @school.eligibility =~ /Walk Zone/
           = static_school_map(280, 220, '53e200')
