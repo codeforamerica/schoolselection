@@ -38,6 +38,16 @@
       - if @school.website.present?
         %br/
         = link_to "School Website", @school.website
+
+      .favorites-button
+        - if session[:favorites].try(:include?, @school.id)
+          %h3.bold
+            = image_tag('icons/delete.png')
+            = link_to "Remove from My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+        - else
+          %h3.bold
+            = image_tag('star.png')
+            = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
     
     %td.align-top
       %h3.gray-background Transportation
@@ -47,8 +57,8 @@
             %th Transportation Eligibility
             %th Distance
             - if @school.eligibility =~ /Walk Zone/
-              %th Walk Time
-            %th Drive Time
+              %th Walk Time*
+            %th Drive Time*
         %tbody
           %tr
             %td.large
@@ -70,9 +80,9 @@
       %table.small-bottom-margin
         %thead
           %tr
-            %th Teachers*
-            %th Students*
-            %th Staff : Student Ratio*
+            %th Teachers†
+            %th Students†
+            %th Staff : Student Ratio†
         %tr
           %td.large
             =raw @school.teachers_count.present? ? @school.teachers_count : '&nbsp;'
@@ -84,14 +94,14 @@
       - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
         %h3.gray-background 
           Admissions
-        %table.no-bottom-margin
+        %table.small-bottom-margin
           %thead
             %tr
-              %th Open Seats*
-              %th 1st Choices*
-              %th 2nd Choices*
-              %th 3rd Choices*
-              %th Demand*
+              %th Open Seats†
+              %th 1st Choices†
+              %th 2nd Choices†
+              %th 3rd Choices†
+              %th Demand†
           %tr
             - grade = @school.grade(session[:grade_level])
             %td.large
@@ -104,18 +114,9 @@
               =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
             %td.large
               =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)}%" : '&nbsp;'
-
-.favorites-button
-  - if session[:favorites].try(:include?, @school.id)
-    %h3.bold
-      = image_tag('icons/delete.png')
-      = link_to "Remove from My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-  - else
-    %h3.bold
-      = image_tag('star.png')
-      = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-                  
-                  
-%div.italic.small
-  † Walk and drive times are estimates, only.
-  * Historical data are from the previous school year, unless otherwise noted.
+      %table.no-bottom-margin
+        %tr
+          %td.italic.small
+            * Walk and drive times are estimates, only.
+            %br/
+            † Historical data are from the previous school year, unless otherwise noted.
