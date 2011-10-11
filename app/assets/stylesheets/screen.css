@@ -368,7 +368,7 @@ table.small-bottom-margin {
 /* line 3, ../../stylesheets/partials/_general.scss */
 h3.gray-background {
   background-color: #e3e4e5;
-  padding: 5px;
+  padding: 6px 5px;
   margin-bottom: .3em;
 }
 
