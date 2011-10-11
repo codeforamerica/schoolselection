@@ -368,7 +368,7 @@ table.small-bottom-margin {
 /* line 3, ../../stylesheets/partials/_general.scss */
 h3.gray-background {
   background-color: #e3e4e5;
-  padding: 6px 5px;
+  padding: 6px 5px 5px 9px;
   margin-bottom: .3em;
 }
 
@@ -571,9 +571,26 @@ form div {
 /* line 29, ../../stylesheets/partials/_general.scss */
 .green-background {
   background-color: #a5e188;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
 }
 
 /* line 30, ../../stylesheets/partials/_general.scss */
+.yellow-background {
+  background-color: #faf4a5;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/* line 31, ../../stylesheets/partials/_general.scss */
 .lightbox-button {
   margin-top: 30px;
 }
