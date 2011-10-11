@@ -19,6 +19,11 @@ a.blue-button:hover{ color: white; text-decoration: none; }
 a.blue-button:visited{ color: white; }
 a.blue-button:active{ color: white; }
 
+a.yellow-button{ background-color: $yellow; @include linear-gradient(color-stops($lightyellow, $yellow)); @include border-radius(10px); border: solid 1px #999; color: #222; padding: 7px 9px 7px 9px; font-size: 13px;}
+a.yellow-button:hover{ color: white; text-decoration: none; }
+a.yellow-button:visited{ color: white; }
+a.yellow-button:active{ color: white; }
+
 a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($mediumgray, $darkgray)); @include border-radius(10px); border: solid 1px $darkergray; color: white; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.gray-button:hover{ color: white; text-decoration: none; }
 a.gray-button:visited{ color: white; }

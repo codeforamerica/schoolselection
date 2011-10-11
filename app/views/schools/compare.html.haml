@@ -7,7 +7,8 @@
         %li= school.name
     
     %br/
-    = link_to "< Back to List View", schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
+    %h3.bold
+      = link_to "< Back to List View", schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
         
   #page-footer
     = image_tag('cfa_logo.png')

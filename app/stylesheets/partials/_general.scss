@@ -1,5 +1,5 @@
 table.no-bottom-margin{ margin-bottom: 0;}
-table.no-bottom-margin{ margin-bottom: 5px;}
+table.small-bottom-margin{ margin-bottom: 5px;}
 h3.gray-background{ background-color: $gray; padding: 5px; margin-bottom: .3em; }
 h3.adjust{ margin-bottom: -8px; }
 th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal !important; }
@@ -26,4 +26,5 @@ form div { margin: 10px 10px 10px 0; }
 .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; margin: 0 0 20px 0;}
 .align-top{ vertical-align: top;}
 .transportation-icon{ margin: 0 7px -10px 0 !important; }
-
+.green-background{ background-color: $green; }
+.lightbox-button{ margin-top: 30px; }

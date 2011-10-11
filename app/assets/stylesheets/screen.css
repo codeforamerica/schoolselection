@@ -203,6 +203,43 @@ a.blue-button:active {
 }
 
 /* line 22, ../../stylesheets/partials/_buttons.scss */
+a.yellow-button {
+  background-color: #faf4a5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fdf8b9), color-stop(100%, #faf4a5));
+  background-image: -webkit-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -moz-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -o-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -ms-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: linear-gradient(top, #fdf8b9, #faf4a5);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  border: solid 1px #999;
+  color: #222;
+  padding: 7px 9px 7px 9px;
+  font-size: 13px;
+}
+
+/* line 23, ../../stylesheets/partials/_buttons.scss */
+a.yellow-button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 24, ../../stylesheets/partials/_buttons.scss */
+a.yellow-button:visited {
+  color: white;
+}
+
+/* line 25, ../../stylesheets/partials/_buttons.scss */
+a.yellow-button:active {
+  color: white;
+}
+
+/* line 27, ../../stylesheets/partials/_buttons.scss */
 a.gray-button {
   background-color: #008cd9;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #a5a6a6), color-stop(100%, #8b8c8c));
@@ -223,13 +260,13 @@ a.gray-button {
   font-size: 13px;
 }
 
-/* line 23, ../../stylesheets/partials/_buttons.scss */
+/* line 28, ../../stylesheets/partials/_buttons.scss */
 a.gray-button:hover {
   color: white;
   text-decoration: none;
 }
 
-/* line 24, ../../stylesheets/partials/_buttons.scss */
+/* line 29, ../../stylesheets/partials/_buttons.scss */
 a.gray-button:visited {
   color: white;
 }
@@ -324,7 +361,7 @@ table.no-bottom-margin {
 }
 
 /* line 2, ../../stylesheets/partials/_general.scss */
-table.no-bottom-margin {
+table.small-bottom-margin {
   margin-bottom: 5px;
 }
 
@@ -506,7 +543,7 @@ form div {
 
 /* line 25, ../../stylesheets/partials/_general.scss */
 .favorited {
-  background-color: #fff5ba;
+  background-color: #fdf8b9;
 }
 
 /* line 26, ../../stylesheets/partials/_general.scss */
@@ -529,6 +566,16 @@ form div {
 /* line 28, ../../stylesheets/partials/_general.scss */
 .transportation-icon {
   margin: 0 7px -10px 0 !important;
+}
+
+/* line 29, ../../stylesheets/partials/_general.scss */
+.green-background {
+  background-color: #a5e188;
+}
+
+/* line 30, ../../stylesheets/partials/_general.scss */
+.lightbox-button {
+  margin-top: 30px;
 }
 
 /* line 13, ../../stylesheets/screen.scss */
@@ -884,7 +931,7 @@ body h3 {
 }
 /* line 30, ../../stylesheets/screen.scss */
 body h4 {
-  font-size: 1.25em;
+  font-size: 1.3em;
   margin-bottom: 0.4em;
 }
 /* line 32, ../../stylesheets/screen.scss */
@@ -1029,12 +1076,12 @@ body #screen #sidebar #mypicks {
   -khtml-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
   background-color: #faf4a5;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fff5ba), color-stop(100%, #faf4a5));
-  background-image: -webkit-linear-gradient(top, #fff5ba, #faf4a5);
-  background-image: -moz-linear-gradient(top, #fff5ba, #faf4a5);
-  background-image: -o-linear-gradient(top, #fff5ba, #faf4a5);
-  background-image: -ms-linear-gradient(top, #fff5ba, #faf4a5);
-  background-image: linear-gradient(top, #fff5ba, #faf4a5);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fdf8b9), color-stop(100%, #faf4a5));
+  background-image: -webkit-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -moz-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -o-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: -ms-linear-gradient(top, #fdf8b9, #faf4a5);
+  background-image: linear-gradient(top, #fdf8b9, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
 /* line 81, ../../stylesheets/screen.scss */
