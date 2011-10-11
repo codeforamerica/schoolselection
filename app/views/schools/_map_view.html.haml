@@ -18,6 +18,16 @@
         #options
           <ul id="markers_list"></ul>
     .clear-both
-      &nbsp;
+      %ul.horizontal-list
+        %li
+          = image_tag('green-marker-medium.png')
+          Walk Zone School &nbsp;
+        %li
+          = image_tag('yellow-marker-medium.png')
+          Assignment Zone School &nbsp;
+        %li
+          = image_tag('gray-marker-medium.png')
+          Citywide School
+      
   #page-footer
     = image_tag('cfa_logo.png')
