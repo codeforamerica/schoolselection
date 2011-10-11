@@ -14,7 +14,7 @@ class SchoolGrade < ActiveRecord::Base
   end
   
   def demand
-    if total_choices.present?
+    if total_choices.present? && open_seats.present?
       (total_choices.to_f / open_seats) * 100
     end
   end

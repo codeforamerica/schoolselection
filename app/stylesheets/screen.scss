@@ -90,7 +90,7 @@ body {
       } 
       #map_container{
         @include column(14, true);
-        #gmaps4rails_map { border: solid 1px $bordergray; width: 640px; height: 490px; }
+        #gmaps4rails_map { @include border-radius(7px); border: solid 1px $bordergray; width: 640px; height: 490px; }
         .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
       }
     }

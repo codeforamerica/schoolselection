@@ -602,6 +602,11 @@ form div {
   margin-top: 30px;
 }
 
+/* line 33, ../../stylesheets/partials/_general.scss */
+.favorites-button {
+  margin: 20px 0 10px 0;
+}
+
 /* line 13, ../../stylesheets/screen.scss */
 body {
   line-height: 1.5;
@@ -1144,6 +1149,12 @@ body #screen #map #map_container {
 }
 /* line 93, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
   border: solid 1px #bbbbbb;
   width: 640px;
   height: 490px;

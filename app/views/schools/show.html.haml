@@ -3,16 +3,16 @@
     This school is in your Walk Zone and qualifies for priority selection status
 
 %h1.bold= @school.name
-%table
+%table.no-bottom-margin
   %tr
     %td.align-top.medium{:width=>'290'}
       %p
         - if @school.eligibility =~ /Walk Zone/
-          = link_to static_school_map(280, 220, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          = link_to static_school_map(280, 210, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
         - elsif @school.eligibility =~ /Assignment Zone/
-          = link_to static_school_map(280, 220, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          = link_to static_school_map(280, 210, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
         - else
-          = link_to static_school_map(280, 220, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          = link_to static_school_map(280, 210, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
 
       - if @school.hours.present?
         %p
@@ -70,9 +70,9 @@
       %table.small-bottom-margin
         %thead
           %tr
-            %th Teachers
-            %th Students
-            %th Staff : Student Ratio
+            %th Teachers*
+            %th Students*
+            %th Staff : Student Ratio*
         %tr
           %td.large
             =raw @school.teachers_count.present? ? @school.teachers_count : '&nbsp;'
@@ -83,14 +83,15 @@
       
       - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
         %h3.gray-background 
-          Admissions (2010 data)
+          Admissions
         %table.no-bottom-margin
           %thead
             %tr
-              %th Open Seats
-              %th 1st Choices
-              %th 2nd Choices
-              %th 3rd Choices
+              %th Open Seats*
+              %th 1st Choices*
+              %th 2nd Choices*
+              %th 3rd Choices*
+              %th Demand*
           %tr
             - grade = @school.grade(session[:grade_level])
             %td.large
@@ -101,9 +102,10 @@
               =raw grade.try(:second_choice) ? grade.second_choice : '&nbsp;'
             %td.large
               =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
-              
+            %td.large
+              =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)}%" : '&nbsp;'
 
-%div.right
+.favorites-button
   - if session[:favorites].try(:include?, @school.id)
     %h3.bold
       = image_tag('icons/delete.png')
@@ -112,3 +114,8 @@
     %h3.bold
       = image_tag('star.png')
       = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+                  
+                  
+%div.italic.small
+  † Walk and drive times are estimates, only.
+  * Historical data are from the previous school year, unless otherwise noted.
