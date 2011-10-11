@@ -8,11 +8,11 @@
     %td.align-top.medium{:width=>'290'}
       %p
         - if @school.eligibility =~ /Walk Zone/
-          = static_school_map(280, 220, '53e200')
+          = link_to static_school_map(280, 220, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
         - elsif @school.eligibility =~ /Assignment Zone/
-          = static_school_map(280, 220, 'fcef08')
+          = link_to static_school_map(280, 220, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
         - else
-          = static_school_map(280, 220, 'c8c8c8')
+          = link_to static_school_map(280, 220, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
 
       - if @school.hours.present?
         %p

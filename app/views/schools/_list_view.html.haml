@@ -1,6 +1,6 @@
 #sidebar
   #nav
-    %h3
+    %h3.bold
       Map View
     = link_to static_schools_map(150, 125), schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'map', :class => 'sidebar-nav')
 
