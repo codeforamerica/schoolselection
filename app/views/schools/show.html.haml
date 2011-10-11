@@ -14,16 +14,8 @@
         - else
           = link_to static_school_map(280, 210, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
 
-      - if @school.hours.present?
-        %p
-          %strong
-            Hours:&nbsp;
-          = @school.hours
-
       - if @school.address.present?
-        = @school.address 
-        %br/
-        == #{@school.city.try(:name)} MA, #{@school.zipcode}
+        == #{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}
         %br/
       - if @school.phone.present?
         %strong
@@ -38,16 +30,23 @@
       - if @school.website.present?
         %br/
         = link_to "School Website", @school.website
+        %br/
+        
+      - if @school.hours.present?
+        %br/
+        %strong
+          Hours:&nbsp;
+        = @school.hours
 
       .favorites-button
         - if session[:favorites].try(:include?, @school.id)
           %h3.bold
             = image_tag('icons/delete.png')
-            = link_to "Remove from My Picks", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+            = link_to "Remove from My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
         - else
           %h3.bold
             = image_tag('star.png')
-            = link_to "Add to My Picks", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+            = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
     
     %td.align-top
       %h3.gray-background Transportation
