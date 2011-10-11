@@ -1,6 +1,6 @@
 table.no-bottom-margin{ margin-bottom: 0;}
 table.small-bottom-margin{ margin-bottom: 5px;}
-h3.gray-background{ background-color: $gray; padding: 5px; margin-bottom: .3em; }
+h3.gray-background{ background-color: $gray; padding: 6px 5px; margin-bottom: .3em; }
 h3.adjust{ margin-bottom: -8px; }
 th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal !important; }
 ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
