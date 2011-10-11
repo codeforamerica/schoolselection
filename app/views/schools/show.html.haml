@@ -78,14 +78,15 @@
             =raw @school.staff_to_student_ratio.present? ? @school.staff_to_student_ratio : '&nbsp;'
       
       - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
-        %h3.gray-background Admissions
+        %h3.gray-background 
+          Admissions (2010 data)
         %table.no-bottom-margin
           %thead
             %tr
-              %th Open Seats (2010)
-              %th 1st Choices (2010)
-              %th 2nd Choices (2010)
-              %th 3rd Choices (2010)
+              %th Open Seats
+              %th 1st Choices
+              %th 2nd Choices
+              %th 3rd Choices
           %tr
             - grade = @school.grade(session[:grade_level])
             %td.large
