@@ -37,20 +37,9 @@
         %strong
           Hours:&nbsp;
         = @school.hours
-
-      .favorites-button
-        - if session[:favorites].try(:include?, @school.id)
-          %h3.bold
-            = image_tag('icons/delete.png')
-            = link_to "Remove from My Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-        - else
-          %h3.bold
-            = image_tag('star.png')
-            = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
     
     %td.align-top
-      %h3.gray-background Transportation
-      %table.small-bottom-margin
+      %table.small-bottom-margin.gray-background
         %thead
           %tr
             %th Transportation Eligibility
@@ -75,7 +64,6 @@
             %td.large
               =raw @school.distance.present? ? "#{drive_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
 
-      %h3.gray-background Academics
       %table.small-bottom-margin
         %thead
           %tr
@@ -91,9 +79,7 @@
             =raw @school.staff_to_student_ratio.present? ? @school.staff_to_student_ratio : '&nbsp;'
       
       - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
-        %h3.gray-background 
-          Admissions
-        %table.small-bottom-margin
+        %table.small-bottom-margin.gray-background
           %thead
             %tr
               %th Open Seats†
@@ -113,9 +99,13 @@
               =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
             %td.large
               =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)}%" : '&nbsp;'
-      %table.no-bottom-margin
-        %tr
-          %td.italic.small
-            * Walk and drive times are estimates, only.
-            %br/
-            † Historical data are from the previous school year, unless otherwise noted.
+              
+      .favorites-button.right
+        - if session[:favorites].try(:include?, @school.id)
+          %h3.bold
+            = image_tag('icons/delete.png')
+            = link_to "Remove from Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+        - else
+          %h3.bold
+            = image_tag('star.png')
+            = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post

@@ -3,7 +3,7 @@
     = image_tag('school-small.png')
   %td
     %h4.bold
-      = school.name
+      = link_to school.name, school_path(school), :rel => 'facebox'
     %span.italic
       == #{school.address}, #{school.city.try(:name)}
 
