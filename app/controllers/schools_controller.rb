@@ -32,6 +32,7 @@ class SchoolsController < ApplicationController
   
   def compare
     @favorite_schools = session[:favorites].map {|x| School.find(x)}
+    shared_variables
   end
   
   ####### AJAX #######
@@ -69,7 +70,7 @@ class SchoolsController < ApplicationController
     @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
 
-    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, (@grade_level.walk_zone_radius_in_meters - 100)).with_distance(@geocoded_address).order('distance ASC')
+    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
     @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
     @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|

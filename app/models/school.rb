@@ -16,6 +16,9 @@ class School < ActiveRecord::Base
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
   # before_save :geocode_address!
   
+  
+  has_attached_file :image, :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}
+  
   ##### CLASS METHODS #####
   
   def self.with_distance(address)
