@@ -2,7 +2,7 @@ class School < ActiveRecord::Base
   # acts_as_gmappable :lat => "lat", :lng => "lng"
   acts_as_mappable  :default_units => :miles, :lat_column_name => :lat, :lng_column_name => :lng
   
-  has_many :grades, :class_name => "SchoolGrade", :foreign_key => "school_id"
+  has_many :grades, :class_name => "SchoolGrade", :foreign_key => "school_id", :dependent => :destroy
   has_many :grade_levels, :through => :grades
   # has_and_belongs_to_many :grade_levels, :uniq => true
   belongs_to :assignment_zone
@@ -17,7 +17,7 @@ class School < ActiveRecord::Base
   # before_save :geocode_address!
   
   
-  has_attached_file :image, :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}
+  has_attached_file :image, :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}, :path => "#{Rails.root}/public/system/images/:id/:style.:extension"
   
   ##### CLASS METHODS #####
   
