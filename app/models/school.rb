@@ -17,7 +17,18 @@ class School < ActiveRecord::Base
   # before_save :geocode_address!
   
   
-  has_attached_file :image, :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}, :path => "#{Rails.root}/public/system/images/:id/:style.:extension"
+  if Rails.env == 'development'
+    has_attached_file :image, :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}, :path => "#{Rails.root}/public/system/images/:id/:style.:extension"
+  elsif Rails.env == 'production'
+    has_attached_file :image, 
+                      :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}, 
+                      :storage => :s3,
+                      :bucket => 'discoverbps/schools/',
+                      :s3_credentials => {
+                        :access_key_id => ENV['S3_KEY'],
+                        :secret_access_key => ENV['S3_SECRET']
+                      }
+  end
   
   ##### CLASS METHODS #####
   
