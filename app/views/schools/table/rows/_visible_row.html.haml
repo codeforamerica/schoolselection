@@ -1,7 +1,7 @@
 %tr{:id=>"visible_school_#{school.id}", :class => "#{row_classes}"}
-  %td
-    = image_tag('school-small.png')
-  %td
+  %td.small-image-column
+    = image_tag(school.image(:thumb), :class => 'rounded-corners')
+  %td.title-column
     %h4.bold
       = link_to school.name, school_path(school), :rel => 'facebox'
     %span.italic

@@ -1,0 +1,20 @@
+- counter = 0
+- for school in favorite_schools
+  - counter += 1
+  %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background'}
+    %td.favorite-number-column.bold.right
+      = counter            
+    %td.medium-image-column
+      = image_tag(school.image.url(:medium), :class => 'rounded-corners')          
+    %td.title-column
+      %h3.bold= school.name
+      %span.italic
+        == #{school.address}, #{school.city.try(:name)}
+    %td &nbsp;
+    %td &nbsp;
+    %td &nbsp;
+    %td &nbsp;
+    %td.eligibility-column.large{:sorttable_customkey=>school.eligibility_index}
+      =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
+    %td
+      = link_to "Schedule a Visit", school_path(school), :rel => 'facebox', :class => 'blue-button'

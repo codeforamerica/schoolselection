@@ -1,14 +1,14 @@
-#left-column    
+#left-column 
   #page
     %h1.bold
       My Favorites
-    %ol.large
-      - for school in @favorite_schools
-        %li= school.name
+    
+    %table#favorite-schools.listings
+      = render :partial => 'schools/favorite_schools', :locals => {favorite_schools => @favorite_schools}
     
     %br/
     %h3.bold
       = link_to "< Back to List View", schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
         
-  #page-footer
-    = image_tag('cfa_logo.png')
+  = render :partial => 'layouts/page_footer'
+  

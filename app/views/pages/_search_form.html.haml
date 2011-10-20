@@ -3,7 +3,7 @@
 
 #search-form
   - session[:address].blank? ? session[:address] = '26 Court Street' : session[:address]
-  - session[:zipcode].blank? ? session[:zipcode] = '02109' : session[:zipcode]
+  - session[:zipcode].blank? ? session[:zipcode] = '02108' : session[:zipcode]
   - session[:grade_level].blank? ? session[:grade_level] = 'K1' : session[:grade_level]
   = form_tag('/schools', :method => :get) do
     = hidden_field_tag 'view', 'list'

@@ -20,9 +20,10 @@
         == Eligible Schools for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
   
-    = render :partial => 'schools/table/table'    
-  #page-footer
-    = image_tag('cfa_logo.png')
+    = render :partial => 'schools/table/table'
+
+  = render :partial => 'layouts/page_footer'
+
 %script
   $(document).ready(function() {
   var yOffset = $("#sidebar").offset().top - 40;
