@@ -3,8 +3,10 @@
     This school is in your Walk Zone and qualifies for priority selection status
 
 %h1.bold= @school.name
-=raw @school.description
-
+- if @school.description.present?
+  =raw @school.description
+  %hr
+  
 %table.no-bottom-margin
   %tr
     %td.align-top.medium{:width=>'290'}
