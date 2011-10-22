@@ -622,30 +622,40 @@ form div {
 }
 
 /* line 39, ../../stylesheets/partials/_general.scss */
-.favorite-number-column {
+.favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
 /* line 40, ../../stylesheets/partials/_general.scss */
-.small-image-column {
+.small_image_column {
   width: 95px;
 }
 
 /* line 41, ../../stylesheets/partials/_general.scss */
-.medium-image-column {
+.medium_image_column {
   width: 120px;
 }
 
 /* line 42, ../../stylesheets/partials/_general.scss */
-.title-column {
-  width: 270px;
+.title_column {
+  width: 250px;
 }
 
 /* line 43, ../../stylesheets/partials/_general.scss */
-.eligibility-column {
+.eligibility_column {
   width: 160px;
+}
+
+/* line 44, ../../stylesheets/partials/_general.scss */
+.view_button_column {
+  width: 57px;
+}
+
+/* line 45, ../../stylesheets/partials/_general.scss */
+.favorite_button_column {
+  width: 90px;
 }
 
 /* line 13, ../../stylesheets/screen.scss */

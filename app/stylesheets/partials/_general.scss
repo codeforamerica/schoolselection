@@ -36,8 +36,10 @@ form div { margin: 10px 10px 10px 0; }
 .favorites-button{ margin-top: 30px; }
 .rounded-corners{ @include border-radius(7px); }
 
-.favorite-number-column{ font-size: 2em; text-align: center; width: 30px; }
-.small-image-column{ width: 95px;}
-.medium-image-column{ width: 120px;}
-.title-column{ width: 270px;}
-.eligibility-column{ width: 160px;}
+.favorite_number_column{ font-size: 2em; text-align: center; width: 30px; }
+.small_image_column{ width: 95px;}
+.medium_image_column{ width: 120px;}
+.title_column{ width: 250px;}
+.eligibility_column{ width: 160px;}
+.view_button_column{ width: 57px;}
+.favorite_button_column{ width: 90px;}
