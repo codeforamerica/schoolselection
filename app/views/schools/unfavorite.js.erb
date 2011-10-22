@@ -1,4 +1,4 @@
-$("#favorite-schools").replaceWith("<%= escape_javascript(render :partial => 'schools/favorites_schools') %>");
 $(document).trigger('close.facebox');
-$('#favorites').replaceWith("<%= escape_javascript(render :partial => 'schools/favorites') %>");
+$("#favorite_button_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/favorite_button', :locals => {:school => @school}) %>");
 $("#visible_school_<%= @school.id %>").removeClass('favorited');
+$('#favorites_sidebar').replaceWith("<%= escape_javascript(render :partial => 'schools/favorites') %>");

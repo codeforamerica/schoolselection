@@ -1,0 +1,5 @@
+%div{:id => "favorite_button_#{school.id}"}
+  - if session[:favorites].try(:include?, school.id)
+    = link_to "Unfavorite", unfavorite_school_path(school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'gray-button'
+  - else
+    = link_to "Favorite", favorite_school_path(school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'yellow-button'

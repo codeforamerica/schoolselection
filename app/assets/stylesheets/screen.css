@@ -182,6 +182,7 @@ a.blue-button {
   border-radius: 10px;
   border: solid 1px #999;
   color: white;
+  font-weight: bold;
   padding: 7px 9px 7px 9px;
   font-size: 13px;
 }
@@ -205,6 +206,7 @@ a.blue-button:active {
 /* line 22, ../../stylesheets/partials/_buttons.scss */
 a.yellow-button {
   background-color: #faf4a5;
+  font-weight: bold;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fdf8b9), color-stop(100%, #faf4a5));
   background-image: -webkit-linear-gradient(top, #fdf8b9, #faf4a5);
   background-image: -moz-linear-gradient(top, #fdf8b9, #faf4a5);
@@ -217,7 +219,7 @@ a.yellow-button {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
-  border: solid 1px #999;
+  border: solid 1px #bbb;
   color: #222;
   padding: 7px 9px 7px 9px;
   font-size: 13px;
@@ -225,8 +227,8 @@ a.yellow-button {
 
 /* line 23, ../../stylesheets/partials/_buttons.scss */
 a.yellow-button:hover {
-  color: white;
-  text-decoration: none;
+  color: #222;
+  text-decoration: underline;
 }
 
 /* line 24, ../../stylesheets/partials/_buttons.scss */
@@ -256,6 +258,7 @@ a.gray-button {
   border-radius: 10px;
   border: solid 1px #727373;
   color: white;
+  font-weight: bold;
   padding: 7px 9px 7px 9px;
   font-size: 13px;
 }
@@ -609,23 +612,38 @@ form div {
 }
 
 /* line 37, ../../stylesheets/partials/_general.scss */
+.rounded-corners {
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -khtml-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/* line 39, ../../stylesheets/partials/_general.scss */
 .favorite-number-column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 38, ../../stylesheets/partials/_general.scss */
-.icon-column {
-  width: 100px;
+/* line 40, ../../stylesheets/partials/_general.scss */
+.small-image-column {
+  width: 95px;
 }
 
-/* line 39, ../../stylesheets/partials/_general.scss */
+/* line 41, ../../stylesheets/partials/_general.scss */
+.medium-image-column {
+  width: 120px;
+}
+
+/* line 42, ../../stylesheets/partials/_general.scss */
 .title-column {
   width: 270px;
 }
 
-/* line 40, ../../stylesheets/partials/_general.scss */
+/* line 43, ../../stylesheets/partials/_general.scss */
 .eligibility-column {
   width: 160px;
 }
