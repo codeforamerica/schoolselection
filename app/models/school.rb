@@ -24,7 +24,7 @@ class School < ActiveRecord::Base
                       :styles => {:original => "850x600", :large => "850x565#", :medium => "120x90>", :small => "95x71#", :thumb => "85x63", :icon => "50x50#"}, 
                       :storage => :s3,
                       :bucket => 'discoverbps',
-                      :path => "schools/images/:id/:style/:filename",
+                      :path => "schools/:id/:style/:filename",
                       :s3_credentials => {
                         :access_key_id => ENV['S3_KEY'],
                         :secret_access_key => ENV['S3_SECRET']
