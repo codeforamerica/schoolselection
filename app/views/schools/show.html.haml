@@ -1,6 +1,9 @@
 - if @school.eligibility =~ /Walk Zone/
   %div.bold.large.center.green-background
     This school is in your Walk Zone and qualifies for priority selection status
+- if @school.special_admissions?
+  %div.bold.large.center.gray-background
+    This school requires special admissions
 
 %h1.bold= @school.name
 - if @school.description.present?
