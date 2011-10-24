@@ -1,7 +1,7 @@
 #favorites_sidebar
   %h3.bold My Favorites
   - unless session[:favorites].try(:present?)
-    To create a customized list of your top schools, click the yellow "Favorite" button.
+    To create a customized list of your top schools, click the star button beside each listing.
   - else
     %ol#favorite-list
       - for school in @favorite_schools

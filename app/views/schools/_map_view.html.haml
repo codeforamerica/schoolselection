@@ -11,6 +11,10 @@
       %span.small.nobold.italic
         Eligible Schools for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
+    
+    .notes.rounded-corners
+      = image_tag('icons/lightbulb.png')
+      == &nbsp;Below is a map of your eligible schools. The yellow shape is the #{@assignment_zone.name} Assignment Zone; the green circle represents your walk zone. Click the flags on the map or the school name at right to learn more.  Click the 'List View' button to return to the previous page.    
     #map
       #map-container
         = walk_zone_map
