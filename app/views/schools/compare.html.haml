@@ -3,6 +3,10 @@
     %h1.bold
       My Favorites
     
+    .notes.rounded-corners
+      = image_tag('icons/lightbulb.png')
+      == &nbsp;Boston Public Schools requires that parents submit up to five schools as part of the school selection process. You can create a customized list of your schools by dragging-and-dropping the handle icon on the left side of each listing. To learn more about your favorite schools, we encourage you to schedule an in-person visit.
+    
     %table#favorite-schools.listings
       = render :partial => 'schools/favorite_schools', :locals => {:favorite_schools => @favorite_schools}
     
