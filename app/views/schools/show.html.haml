@@ -39,11 +39,11 @@
         = link_to "School Website", @school.website
         %br/
         
-      - if @school.hours.present?
+      - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
         %br/
         %strong
           Hours:&nbsp;
-        = @school.hours
+        =  @school.grade(session[:grade_level]).hours
     
     %td.align-top
       %table.small-bottom-margin.gray-background

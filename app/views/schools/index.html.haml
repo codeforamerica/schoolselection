@@ -6,7 +6,7 @@
   = render :partial => 'pages/search_form'
 - elsif params[:address].blank? && params[:zipcode].blank? && params[:grade_level].present?
   <div class='alert'>Please enter an address and zipcode to see your eligible schools.</div>
-  = render :partial => 'pages/search_form'     
+  = render :partial => 'pages/search_form'
 - elsif params[:view] == 'map'
   = render :partial => 'map_view'  
 - elsif

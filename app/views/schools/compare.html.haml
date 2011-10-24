@@ -1,3 +1,8 @@
+#sidebar
+  #nav
+    %h3.bold
+      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :class => 'sidebar-nav')
+
 #left-column 
   #page
     %h1.bold
@@ -9,10 +14,6 @@
     
     %table#favorite-schools.listings
       = render :partial => 'schools/favorite_schools', :locals => {:favorite_schools => @favorite_schools}
-    
-    %br/
-    %h3.bold
-      = link_to "< Back to List View", schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level])
         
   = render :partial => 'layouts/page_footer'
   
