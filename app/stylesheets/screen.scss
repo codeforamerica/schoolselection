@@ -98,7 +98,8 @@ body {
     #search-form{
       @include column(10);
       @include border-radius(10px);
-      margin-top: 30px;
+      clear: both;
+      margin-bottom: 30px;
       padding: 30px 30px 0 30px;
       font-size: 15px; 
       background-color: $gray;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009051309) do
+ActiveRecord::Schema.define(:version => 20111023204753) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -101,10 +101,23 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.integer  "second_choice"
     t.integer  "third_choice"
     t.integer  "fourth_higher_choice"
-    t.integer  "mcas_reading"
-    t.integer  "mcas_math"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mcas_ela_total"
+    t.float    "mcas_ela_advanced"
+    t.float    "mcas_ela_proficient"
+    t.float    "mcas_ela_needsimprovement"
+    t.float    "mcas_ela_failing"
+    t.integer  "mcas_math_total"
+    t.float    "mcas_math_advanced"
+    t.float    "mcas_math_proficient"
+    t.float    "mcas_math_needsimprovement"
+    t.float    "mcas_math_failing"
+    t.integer  "mcas_science_total"
+    t.float    "mcas_science_advanced"
+    t.float    "mcas_science_proficient"
+    t.float    "mcas_science_needsimprovement"
+    t.float    "mcas_science_failing"
   end
 
   add_index "school_grades", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
@@ -170,6 +183,8 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.datetime "image_updated_at"
     t.text     "features"
     t.string   "orgcode"
+    t.integer  "vertex_id"
+    t.boolean  "featured",                      :default => false
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"

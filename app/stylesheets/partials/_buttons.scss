@@ -24,6 +24,6 @@ a.yellow-button:hover{ color: #222; text-decoration: underline; }
 a.yellow-button:visited{ color: white; }
 a.yellow-button:active{ color: white; }
 
-a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($mediumgray, $darkgray)); @include border-radius(10px); border: solid 1px $darkergray; color: white; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px;}
+a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($gray, $mediumgray)); @include border-radius(10px); border: solid 1px $darkergray; color: white; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.gray-button:hover{ color: white; text-decoration: none; }
 a.gray-button:visited{ color: white; }

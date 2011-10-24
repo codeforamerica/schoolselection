@@ -1,4 +1,5 @@
 - grade = school.grade(session[:grade_level])
+
 %td.tabbable.admissions.hidden.larger
   =raw grade.try(:open_seats) ? grade.open_seats : '&nbsp;'
 %td.tabbable.admissions.hidden.larger

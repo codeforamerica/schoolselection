@@ -21,7 +21,7 @@ form div { margin: 10px 10px 10px 0; }
 .bold{ font-weight: bold; }
 .nobold{ font-weight: normal; }
 .medium{ font-size: 1.1em; line-height: 1.5em; margin-bottom: 0; }
-.large{ font-size: 1.2em; line-height: 1.75em; margin-bottom: 0; }
+.large{ font-size: 1.2em; line-height: 1.75em !important; margin-bottom: 0; }
 .larger{ font-size: 1.4em; }
 .alert{ color: #bf1300; font-size: 1.2em; font-weight: normal; margin-bottom: 1em; background-color: none; border: none; }
 .notice{ @include border-radius(10px); font-size: 1.1em; font-weight: normal; margin-bottom: 1em; background-color: $medgreen; border-color: $medgreen; color: white; }
@@ -34,12 +34,14 @@ form div { margin: 10px 10px 10px 0; }
 .yellow-background{ background-color: $yellow !important; @include border-radius(7px); }
 .lightbox-button{ margin-top: 30px; }
 .favorites-button{ margin-top: 30px; }
+.notes{ padding: 10px; margin-bottom: 20px; background-color: $lighterblue;}
 .rounded-corners{ @include border-radius(7px); }
+.star-icon{ margin-bottom: -3px;}
 
 .favorite_number_column{ font-size: 2em; text-align: center; width: 30px; }
 .small_image_column{ width: 95px;}
 .medium_image_column{ width: 120px;}
 .title_column{ width: 250px;}
 .eligibility_column{ width: 160px;}
-.view_button_column{ width: 57px;}
-.favorite_button_column{ width: 90px;}
+.view_button_column{ width: 55px;}
+.favorite_button_column{ width: 30px;}

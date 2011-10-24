@@ -68,19 +68,37 @@
             %td.large
               =raw @school.distance.present? ? "#{drive_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
 
-      %table.small-bottom-margin
-        %thead
+      
+      - grade = @school.grade(session[:grade_level])
+      - if grade.mcas_ela_total.present?
+        %table.small-bottom-margin
+          %thead
+            %tr
+              %th MCAS&nbsp;Test
+              %th Advanced
+              %th Proficient
+              %th Needs Improvement
+              %th Warning/Failing
           %tr
-            %th Teachers†
-            %th Students†
-            %th Staff : Student Ratio†
-        %tr
-          %td.large
-            =raw @school.teachers_count.present? ? @school.teachers_count : '&nbsp;'
-          %td.large
-            =raw @school.students_count.present? ? @school.students_count : '&nbsp;'
-          %td.large
-            =raw @school.staff_to_student_ratio.present? ? @school.staff_to_student_ratio : '&nbsp;'
+            %td.large English
+            %td.large
+              =raw grade.mcas_ela_advanced.present? ? number_to_percentage((grade.mcas_ela_advanced * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_ela_proficient.present? ? number_to_percentage((grade.mcas_ela_proficient * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_ela_needsimprovement.present? ? number_to_percentage((grade.mcas_ela_needsimprovement * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_ela_failing.present? ? number_to_percentage((grade.mcas_ela_failing * 100), :precision => 0) : '&nbsp;'
+          %tr
+            %td.large Math
+            %td.large
+              =raw grade.mcas_math_advanced.present? ? number_to_percentage((grade.mcas_math_advanced * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_math_proficient.present? ? number_to_percentage((grade.mcas_math_proficient * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_math_needsimprovement.present? ? number_to_percentage((grade.mcas_math_needsimprovement * 100), :precision => 0) : '&nbsp;'
+            %td.large
+              =raw grade.mcas_math_failing.present? ? number_to_percentage((grade.mcas_math_failing * 100), :precision => 0) : '&nbsp;'
       
       - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
         %table.small-bottom-margin.gray-background
