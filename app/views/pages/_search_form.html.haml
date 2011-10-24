@@ -1,5 +1,10 @@
-%h1.bold Welcome to the School Discovery App
-%p.large The goal of the School Discovery App is to help parents understand which schools their child is eligible for, and to narrow these options down to a 5 choice list. To get started, please enter your home address and your child's upcoming grade level in the search form, below.
+%h2.bold Welcome to the BPS School Discovery Tool
+
+.notes.rounded-corners
+  = image_tag('icons/information.png')
+  %span.bold
+    DiscoverBPS 
+  allows parents and students to find eligible schools and create a customized list of favorites. To get started, please enter your home address and the student’s upcoming grade level in the search form, below, and then click “Search.”
 
 #search-form
   - session[:address].blank? ? session[:address] = '26 Court Street' : session[:address]
@@ -23,3 +28,6 @@
       %tr
         %td &nbsp;
         %td= submit_tag "Search"
+        
+%div.clear-both.italic
+  == *Please note that this tool cannot be used to register a student; it is intended only to support your efforts to learn about your options. Visit #{link_to 'www.bostonpublicschools/register', 'http://www.bostonpublicschools/register'} for more on school registration.
