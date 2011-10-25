@@ -108,6 +108,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<ul class='horizontal-list'><li>#{image_tag('school-icon.png')}</li><li><h3 class='bold'>#{x.name}</h3>#{x.address}<br />#{x.city.try(:name)} MA, #{x.zipcode}<br /><strong>#{link_to 'View More', x, :rel => 'facebox'}</strong></li></ul>", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<ul class='horizontal-list'><li>#{image_tag(x.image(:icon))}</li><li><h3 class='bold'>#{x.name}</h3>#{x.address}<br />#{x.city.try(:name)} MA, #{x.zipcode}<br /><strong>#{link_to 'View More', x, :rel => 'facebox'}</strong></li></ul>", :sidebar => "#{x.name}"}
   end
 end
