@@ -9,4 +9,4 @@
 %td.tabbable.admissions.hidden.larger
   =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
 %td.tabbable.admissions.hidden.larger
-  =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)}%" : '&nbsp;'
+  =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
