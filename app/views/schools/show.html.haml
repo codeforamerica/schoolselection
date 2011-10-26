@@ -7,8 +7,7 @@
 
 %h1.bold= @school.name
 - if @school.description.present?
-  =raw @school.description
-  %hr
+  %p= simple_format(@school.description)
   
 %table.no-bottom-margin
   %tr
@@ -111,7 +110,7 @@
               %th 1st Choices†
               %th 2nd Choices†
               %th 3rd Choices†
-              %th Demand†
+              %th Applicants per Open Seat†
           %tr
             - grade = @school.grade(session[:grade_level])
             %td.large
@@ -123,7 +122,7 @@
             %td.large
               =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
             %td.large
-              =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)}%" : '&nbsp;'
+              =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
               
       .favorites-button.right
         - if session[:favorites].try(:include?, @school.id)
