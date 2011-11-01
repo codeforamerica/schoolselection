@@ -12,7 +12,7 @@
         Eligible Schools for:&nbsp;
       == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
       %span.smaller.nobold
-        == &nbsp;#{link_to 'Search Again', root_url}
+        == &nbsp;#{link_to 'Search Again', page_path('home')}
     
     .notes.rounded-corners
       = image_tag('icons/lightbulb.png')
