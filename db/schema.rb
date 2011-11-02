@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024065856) do
+ActiveRecord::Schema.define(:version => 20111102022158) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(:version => 20111024065856) do
     t.text     "features"
     t.string   "orgcode"
     t.integer  "vertex_id"
-    t.boolean  "featured",                      :default => false
+    t.boolean  "hidden_gem",                    :default => false
     t.boolean  "special_admissions",            :default => false
   end
 
