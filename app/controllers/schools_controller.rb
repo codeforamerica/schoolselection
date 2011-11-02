@@ -79,7 +79,8 @@ class SchoolsController < ApplicationController
         s.eligibility_index = index
       end
     end
-    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    combined_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @all_schools = (combined_schools.find_all {|x| x.featured == true} + combined_schools.find_all {|x| x.featured == false})
     if params[:sibling_school] && (sib_school = @all_schools.find {|s| s.id == params[:sibling_school].to_i})
       #raise "in here"
       sib_school.eligibility = "Sibling School / "+sib_school.eligibility
