@@ -1,8 +1,3 @@
-#sidebar
-  #nav
-    %h3.bold
-      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :class => 'sidebar-nav')
-
 #left-column 
   #page
     %h1.bold
@@ -10,10 +5,25 @@
     
     .notes.rounded-corners
       = image_tag('icons/lightbulb.png')
-      == &nbsp;Boston Public Schools requires that parents submit up to five schools as part of the school selection process. You can create a customized list of your schools by dragging-and-dropping the handle icon on the left side of each listing. To learn more about your favorite schools, we encourage you to schedule an in-person visit.
+      == &nbsp;As part of the school selection process, parents may submit an ordered list of up to five schools.  Below are your favorites. You can sort the list by dragging-and-dropping the handle icon on the left side of each listing. Before submitting your choices, we encourage you to contact each school and schedule an in-person visit.
     
-    %table#favorite-schools.listings
-      = render :partial => 'schools/favorite_schools', :locals => {:favorite_schools => @favorite_schools}
+    %ul#favorites-list.no-bullets
+      - counter = 0
+      - @favorite_schools.each do |school|
+        = content_tag_for :li, school do
+          - counter += 1
+          = render :partial => 'schools/favorite_schools', :locals => {:school => school, :counter => counter}
+    
+    %br/
+    %h3.bold Online Pre-Registration
+    %p
+      %span.bold
+        BPSExpress 
+      enables parents and guardians to complete some of the school registration process before visiting a Family Resource Center. This pre-registration application is only for families registering a child not currently enrolled in the Boston Public Schools. If your child already attends BPS, he or she will receive a registration form at school.
+    %p= link_to "Pre-Register for Schools", 'https://externalweb.mybps.org/ExternalWeb/login.aspx?tabindex=0&tabid=30', :class => 'blue-button'
+    = link_to '< Return to List View', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'bold'
+    
         
   = render :partial => 'layouts/page_footer'
+  
   
