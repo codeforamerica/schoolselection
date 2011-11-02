@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102174452) do
+ActiveRecord::Schema.define(:version => 20111102205659) do
+
+  create_table "address_ranges", :force => true do |t|
+    t.integer "geocode_id"
+    t.integer "num_start"
+    t.integer "num_end"
+    t.boolean "is_even"
+    t.string  "street"
+    t.string  "zipcode"
+  end
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -35,6 +44,17 @@ ActiveRecord::Schema.define(:version => 20111102174452) do
     t.float    "lng"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "geocode_grade_walkzone_schools", :force => true do |t|
+    t.boolean "transportation_eligible"
+    t.integer "geocode_id"
+    t.integer "grade_level_id"
+    t.integer "school_id"
+  end
+
+  create_table "geocodes", :force => true do |t|
+    t.integer "assignment_zone_id"
   end
 
   create_table "grade_levels", :force => true do |t|
@@ -83,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20111102174452) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month",      :limit => 2
+    t.integer  "month"
     t.integer  "year",       :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
