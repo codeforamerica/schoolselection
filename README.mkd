@@ -73,3 +73,39 @@ Copyright (c) 2011 Code for America.
 See [LICENSE](https://github.com/codeforamerica/schoolselection/blob/master/LICENSE.md) for details.
 
 [![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/schoolselection.png)](http://stats.codeforamerica.org/projects/schoolselection)
+
+SPACIALDB NOTES
+[step 0 not necessarily applicable]
+[0.1 heroku db:pull*]
+[0.2 psql -d <databasename>, \d <table name>, confirm that geometry columns are now text.]
+[0.3 update column types locally - see below]
+1. become beta user.
+2. heroku addons:add spacialdb:test 
+3. heroku pg:info, heroku config
+4. heroku config:add DATABASE_URL=postgres://(contents of SPATIALDB_URL)
+[why can't I pg:promote the spatial db? it's not on pg:info. why?]
+5. heroku db:push
+[this takes a long time. a long time. especially on spatial_ref_s. it failed once.]
+6. heroku pg:psql - can't. it's not a matching database.
+7. reread the email, and install spacialdb gem
+8. we don't need to create an account
+9. look at heroku:config to get username/password [dan:randomstring]
+10. except that username/password don't work.
+11. give up and connect directly with:
+"psql -d heroku_dan_4fb9 -h beta.spacialdb.com -p 9999 -U dan --password", using given password.
+it works.
+12.1 use \d <tablename> to verify geometry is text
+12.2 update columns per 0.3
+12.3 \d <tablename> to verify geometry is geometry
+13.1 'heroku run console', Parcel.first.geometry.class, to confirm need for postgis.
+13.1.2 get frustrated as internet goes in and out.
+13.2 update DATABASE_URL to use postgis:// (this resets app)
+13.3 13.1, but this time it works.
+14. visit site. test. see odd saved form fields . . . .
+
+*requires setting config/database.yml back to postgres, and DATABASE_URL to postgress://
+
+0.3a ALTER TABLE parcels ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
+0.3b ALTER TABLE assignment_zones ALTER geometry TYPE Geography('MULTIPOLYGON',-1) USING ST_GeogFromText(geometry);
+
+postgres://dan:83d37cb80a@beta.spacialdb.com:9999/heroku_dan_4fb9
