@@ -16,7 +16,7 @@
     
     .notes.rounded-corners
       = image_tag('icons/lightbulb.png')
-      == &nbsp;Below is a map of your eligible schools. The yellow shape represents the #{@assignment_zone.name} Assignment Zone; the green circle represents your walk zone. Click the flags on the map or the school name at right to learn more.  Click the 'List View' button to return to the previous page.    
+      == &nbsp;Below is a map of your eligible schools. The yellow shape represents the #{@assignment_zone.name} Assignment Zone; the green circle represents your walk zone; and the flags are the schools. Click the flags on the map or the school name at right to learn more.  Click the 'List View' button to return to the previous page.    
     #map
       #map-container
         = walk_zone_map
