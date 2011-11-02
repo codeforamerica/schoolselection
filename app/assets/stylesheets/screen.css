@@ -638,39 +638,44 @@ form div {
   margin-bottom: -3px;
 }
 
-/* line 42, ../../stylesheets/partials/_general.scss */
+/* line 41, ../../stylesheets/partials/_general.scss */
+.hidden_gem {
+  position: absolute;
+}
+
+/* line 43, ../../stylesheets/partials/_general.scss */
 .favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 43, ../../stylesheets/partials/_general.scss */
+/* line 44, ../../stylesheets/partials/_general.scss */
 .small_image_column {
   width: 95px;
 }
 
-/* line 44, ../../stylesheets/partials/_general.scss */
+/* line 45, ../../stylesheets/partials/_general.scss */
 .medium_image_column {
   width: 120px;
 }
 
-/* line 45, ../../stylesheets/partials/_general.scss */
+/* line 46, ../../stylesheets/partials/_general.scss */
 .title_column {
   width: 250px;
 }
 
-/* line 46, ../../stylesheets/partials/_general.scss */
+/* line 47, ../../stylesheets/partials/_general.scss */
 .eligibility_column {
   width: 160px;
 }
 
-/* line 47, ../../stylesheets/partials/_general.scss */
+/* line 48, ../../stylesheets/partials/_general.scss */
 .view_button_column {
   width: 55px;
 }
 
-/* line 48, ../../stylesheets/partials/_general.scss */
+/* line 49, ../../stylesheets/partials/_general.scss */
 .favorite_button_column {
   width: 30px;
 }
