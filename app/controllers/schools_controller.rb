@@ -79,7 +79,7 @@ class SchoolsController < ApplicationController
         s.eligibility_index = index
       end
     end
-    @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.featured == true}
+    @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.hidden_gem == true}
     @walk_zone_schools = walk_zone_schools - @hidden_gems
     @assignment_zone_schools = assignment_zone_schools - @hidden_gems
     @citywide_schools = citywide_schools - @hidden_gems

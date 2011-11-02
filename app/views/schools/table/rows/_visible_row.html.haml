@@ -1,6 +1,6 @@
 %tr{:id=>"visible_school_#{school.id}", :class => "#{row_classes}"}
   %td.small_image_column
-    - if school.featured?
+    - if school.hidden_gem?
       %span{:class=>'hidden_gem'}
         = image_tag('hidden-gem.png')
     = image_tag(school.image(:thumb), :class => 'rounded-corners')
