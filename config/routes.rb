@@ -9,7 +9,8 @@ Schoolselection::Application.routes.draw do
   resources :schools do
     collection do 
       get   'compare'      
-      get   'switch_tab'  
+      get   'switch_tab'
+      post  'sort'
     end
     member do 
       post  'favorite'
