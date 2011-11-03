@@ -5,16 +5,13 @@
 #left-column
   #page
     - if @school.eligibility =~ /Walk Zone/
-      %div.bold.large.center.green-background
+      #flash.bold.large.center.green-background
         This school is in your Walk Zone and qualifies for priority selection status
     - if @school.special_admissions?
-      %div.bold.large.center
+      #flash.bold.large.center
         This school requires special admissions
 
     %h1.bold= @school.name
-    - if @school.description.present?
-      %span.medium
-        = simple_format(@school.description)
   
     %table.no-bottom-margin
       %tr
@@ -45,6 +42,20 @@
             %span.external_link
               = image_tag('icons/external-link.png')
             %br/
+          - if @school.email.present?
+            = mail_to @school.email, @school.email
+            %br/
+          - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
+            %br/
+            %span.bold
+              Hours:
+            = @school.grade(session[:grade_level]).try(:hours)
+            %br/
+          - if @school.surround_care_hours.present?
+            %br/
+            %span.bold
+              Surround Care:
+            = @school.surround_care_hours
             
           .favorites-button.bold
             - if session[:favorites].try(:include?, @school.id)
@@ -57,24 +68,9 @@
                 = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
         
         %td.align-top
-          %table
-            .gray-background
-              %h4 Overview
-            %thead
-              %tr
-                %th Eligibility
-                %th 2011 Hours
-                %th Surround Care
-            %tr
-              %td.large
-                =raw @school.eligibility.try(:present?) ? eligibility_title(@school) : '&nbsp;'
-                - if params[:sibling_school] == @school.id.to_s && School.find(params[:sibling_school].try(:to_i)).present?
-                  Sibling School
-              %td.large
-                =raw @school.grade(session[:grade_level]).try(:hours).try(:present?) ? @school.grade(session[:grade_level]).try(:hours) : '&nbsp;'
-              %td.large
-                =raw @school.surround_care_hours.try(:present?) ? @school.surround_care_hours : '&nbsp;'
-
+          - if @school.description.present?
+            %span.medium
+              = simple_format(@school.description)
           %table
             .gray-background
               %h4 Transportation
@@ -107,10 +103,10 @@
           - if grade.mcas_ela_total.present?
             %table
               .gray-background
-                %h4 Academics
+                %h4 MCAS Scores
               %thead
                 %tr
-                  %th MCAS&nbsp;Test
+                  %th 
                   %th Advanced
                   %th Proficient
                   %th Needs Improvement
