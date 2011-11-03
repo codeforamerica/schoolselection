@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102174452) do
+ActiveRecord::Schema.define(:version => 20111103225854) do
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20111102174452) do
     t.boolean  "hidden_gem",                    :default => false
     t.boolean  "special_admissions",            :default => false
     t.text     "surround_care_hours"
+    t.string   "email"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
