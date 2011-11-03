@@ -11,6 +11,7 @@ class School < ActiveRecord::Base
   belongs_to :parcel
   belongs_to :principal
   belongs_to :state
+  has_many :geocode_grade_walkzone_schools
   
   attr_accessor :eligibility, :eligibility_index
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
@@ -32,6 +33,15 @@ class School < ActiveRecord::Base
   end
   
   ##### CLASS METHODS #####
+  
+  class << self
+    def walkzone_by_geocode_and_grade(geocode,grade_level)
+      self.joins(:geocode_grade_walkzone_schools)
+        .where(:geocode_grade_walkzone_schools => {:geocode_id => geocode, :grade_level_id => grade_level})
+        .select("geocode_grade_walkzone_schools.transportation_eligible as transportation_eligible")
+        .select("*")
+    end
+  end
   
   def self.with_distance(address)
     self.joins(:parcel).select("ST_Distance(parcels.geometry, ST_GeomFromText('POINT(#{address.lng} #{address.lat})')) as distance")
