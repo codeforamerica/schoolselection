@@ -68,9 +68,14 @@ class SchoolsController < ApplicationController
     @grade_levels = GradeLevel.all
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
     @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
-    @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
 
-    walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
+    m, num, street = session[:address].match(/(\d+)\s+(.*)/).to_a
+    address_range = AddressRange.find_by_address(num.to_i,street,session[:zipcode])
+    #todo: make sure the address range is actually found, first
+    @geocode = address_range.first.geocode
+    @assignment_zone = @geocode.assignment_zone
+
+    walk_zone_schools = School.walkzone_by_geocode_and_grade(@geocode,@grade_level).with_distance(@geocoded_address).order('distance ASC')
     assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
     citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
     [ [walk_zone_schools,"Walk Zone",1], [assignment_zone_schools,"Assignment Zone",2], [citywide_schools,"Citywide",3] ].each do |schools,type,index|
