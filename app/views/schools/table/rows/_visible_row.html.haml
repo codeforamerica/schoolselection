@@ -19,6 +19,6 @@
   = render :partial => 'schools/table/columns/admissions', :locals => {:school => school}
   
   %td.view_button_column
-    = link_to "View", school_path(school), :rel => 'facebox', :class => 'blue-button'
+    = link_to "View", school_path(school), :class => 'blue-button'
   %td.favorite_button
     = render :partial => 'schools/favorite_button', :locals => {:school => school}
