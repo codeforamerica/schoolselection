@@ -1,135 +1,161 @@
-- if @school.eligibility =~ /Walk Zone/
-  %div.bold.large.center.green-background
-    This school is in your Walk Zone and qualifies for priority selection status
-- if @school.special_admissions?
-  %div.bold.large.center.gray-background
-    This school requires special admissions
-
-%h1.bold= @school.name
-- if @school.description.present?
-  %p= simple_format(@school.description)
-  
-%table.no-bottom-margin
-  %tr
-    %td.align-top.medium{:width=>'290'}
-      %p
-        - if @school.eligibility =~ /Walk Zone/
-          = link_to static_school_map(280, 210, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
-        - elsif @school.eligibility =~ /Assignment Zone/
-          = link_to static_school_map(280, 210, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
-        - else
-          = link_to static_school_map(280, 210, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
-
-      - if @school.address.present?
-        == #{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}
-        %br/
-      - if @school.phone.present?
-        %strong
-          Phone:&nbsp;
-        = @school.phone
-        %br/
-      - if @school.fax.present?
-        %strong
-          Fax:&nbsp;
-        = @school.fax
-        %br/
-      - if @school.website.present?
-        %br/
-        = link_to "School Website", @school.website
-        %br/
-        
-      - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
-        %br/
-        %strong
-          Hours:&nbsp;
-        =  @school.grade(session[:grade_level]).hours
+#sidebar
+  #mypicks
+    = render :partial => 'favorites'
     
-    %td.align-top
-      %table.small-bottom-margin.gray-background
-        %thead
-          %tr
-            %th Transportation Eligibility
-            %th Distance
-            - if @school.eligibility =~ /Walk Zone/
-              %th Walk Time*
-            %th Drive Time*
-        %tbody
-          %tr
-            %td.large
-              - if @grade_level.name == "High"
-                =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('city-bus.png', :class=> 'transportation-icon')}&nbsp;MBTA"
-              - else
-                =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus"
-            %td.large
-              =raw @school.distance.present? ? "#{distance_in_miles_from_meters(@school.distance)} <span class='small'>mi</span>" : '&nbsp;'
-            - if @school.eligibility =~ /Walk Zone/
+#left-column
+  #page
+    - if @school.eligibility =~ /Walk Zone/
+      %div.bold.large.center.green-background
+        This school is in your Walk Zone and qualifies for priority selection status
+    - if @school.special_admissions?
+      %div.bold.large.center
+        This school requires special admissions
+
+    %h1.bold= @school.name
+    - if @school.description.present?
+      %span.medium
+        = simple_format(@school.description)
+  
+    %table.no-bottom-margin
+      %tr
+        %td.align-top.medium{:width=>'290'}
+          - if @school.eligibility =~ /Walk Zone/
+            = link_to static_school_map(280, 210, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          - elsif @school.eligibility =~ /Assignment Zone/
+            = link_to static_school_map(280, 210, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          - else
+            = link_to static_school_map(280, 210, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+
+          - if @school.address.present?
+            == #{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}
+            %br/
+          - if @school.phone.present?
+            %strong
+              Phone:&nbsp;
+            = @school.phone
+            %br/
+          - if @school.fax.present?
+            %strong
+              Fax:&nbsp;
+            = @school.fax
+            %br/
+          - if @school.website.present?
+            %br/
+            = link_to "School Website", @school.website
+            %span.external_link
+              = image_tag('icons/external-link.png')
+            %br/
+            
+          .favorites-button
+            - if session[:favorites].try(:include?, @school.id)
+              %h3.bold
+                = image_tag('icons/delete.png')
+                = link_to "Remove from Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+            - else
+              %h3.bold
+                = image_tag('star.png')
+                = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+        
+        %td.align-top
+          %table
+            .gray-background
+              %h4 Overview
+            %thead
+              %tr
+                %th Eligibility
+                %th 2011 Hours
+                %th Surround Care
+            %tr
               %td.large
-                =raw @school.distance.present? ? "#{walk_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
-              - else
-                &nbsp;
-            %td.large
-              =raw @school.distance.present? ? "#{drive_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
+                =raw @school.eligibility.try(:present?) ? eligibility_title(@school) : '&nbsp;'
+                - if params[:sibling_school] == @school.id.to_s && School.find(params[:sibling_school].try(:to_i)).present?
+                  Sibling School
+              %td.large
+                =raw @school.grade(session[:grade_level]).try(:hours).try(:present?) ? @school.grade(session[:grade_level]).try(:hours) : '&nbsp;'
+              %td.large
+                =raw @school.surround_care_hours.try(:present?) ? @school.surround_care_hours : '&nbsp;'
+
+          %table
+            .gray-background
+              %h4 Transportation
+            %thead
+              %tr
+                %th Transportation Eligibility
+                %th Distance
+                - if @school.eligibility =~ /Walk Zone/
+                  %th Walk Time*
+                %th Drive Time*
+            %tbody
+              %tr
+                %td.large
+                  - if @grade_level.name == "High"
+                    =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png')}&nbsp;Walking" : "#{image_tag('city-bus.png')}&nbsp;MBTA"
+                  - else
+                    =raw @school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus"
+                %td.large
+                  =raw @school.distance.present? ? "#{distance_in_miles_from_meters(@school.distance)} <span class='small'>mi</span>" : '&nbsp;'
+                - if @school.eligibility =~ /Walk Zone/
+                  %td.large
+                    =raw @school.distance.present? ? "#{walk_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
+                  - else
+                    &nbsp;
+                %td.large
+                  =raw @school.distance.present? ? "#{drive_time(@school.distance)} <span class='small'>min</span>" : '&nbsp;'
 
       
-      - grade = @school.grade(session[:grade_level])
-      - if grade.mcas_ela_total.present?
-        %table.small-bottom-margin
-          %thead
-            %tr
-              %th MCAS&nbsp;Test
-              %th Advanced
-              %th Proficient
-              %th Needs Improvement
-              %th Warning/Failing
-          %tr
-            %td.large English
-            %td.large
-              =raw grade.mcas_ela_advanced.present? ? number_to_percentage((grade.mcas_ela_advanced * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_ela_proficient.present? ? number_to_percentage((grade.mcas_ela_proficient * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_ela_needsimprovement.present? ? number_to_percentage((grade.mcas_ela_needsimprovement * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_ela_failing.present? ? number_to_percentage((grade.mcas_ela_failing * 100), :precision => 0) : '&nbsp;'
-          %tr
-            %td.large Math
-            %td.large
-              =raw grade.mcas_math_advanced.present? ? number_to_percentage((grade.mcas_math_advanced * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_math_proficient.present? ? number_to_percentage((grade.mcas_math_proficient * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_math_needsimprovement.present? ? number_to_percentage((grade.mcas_math_needsimprovement * 100), :precision => 0) : '&nbsp;'
-            %td.large
-              =raw grade.mcas_math_failing.present? ? number_to_percentage((grade.mcas_math_failing * 100), :precision => 0) : '&nbsp;'
+          - grade = @school.grade(session[:grade_level])
+          - if grade.mcas_ela_total.present?
+            %table
+              .gray-background
+                %h4 Academics
+              %thead
+                %tr
+                  %th MCAS&nbsp;Test
+                  %th Advanced
+                  %th Proficient
+                  %th Needs Improvement
+                  %th Warning/Failing
+              %tr
+                %td.large English
+                %td.large
+                  =raw grade.mcas_ela_advanced.present? ? number_to_percentage((grade.mcas_ela_advanced * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_ela_proficient.present? ? number_to_percentage((grade.mcas_ela_proficient * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_ela_needsimprovement.present? ? number_to_percentage((grade.mcas_ela_needsimprovement * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_ela_failing.present? ? number_to_percentage((grade.mcas_ela_failing * 100), :precision => 0) : '&nbsp;'
+              %tr
+                %td.large Math
+                %td.large
+                  =raw grade.mcas_math_advanced.present? ? number_to_percentage((grade.mcas_math_advanced * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_math_proficient.present? ? number_to_percentage((grade.mcas_math_proficient * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_math_needsimprovement.present? ? number_to_percentage((grade.mcas_math_needsimprovement * 100), :precision => 0) : '&nbsp;'
+                %td.large
+                  =raw grade.mcas_math_failing.present? ? number_to_percentage((grade.mcas_math_failing * 100), :precision => 0) : '&nbsp;'
       
-      - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
-        %table.small-bottom-margin.gray-background
-          %thead
-            %tr
-              %th Open Seats†
-              %th 1st Choices†
-              %th 2nd Choices†
-              %th 3rd Choices†
-              %th Applicants per Open Seat†
-          %tr
-            - grade = @school.grade(session[:grade_level])
-            %td.large
-              =raw grade.try(:open_seats) ? grade.open_seats : '&nbsp;'
-            %td.large
-              =raw grade.try(:first_choice) ? grade.first_choice : '&nbsp;'
-            %td.large
-              =raw grade.try(:second_choice) ? grade.second_choice : '&nbsp;'
-            %td.large
-              =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
-            %td.large
-              =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
-              
-      .favorites-button.right
-        - if session[:favorites].try(:include?, @school.id)
-          %h3.bold
-            = image_tag('icons/delete.png')
-            = link_to "Remove from Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-        - else
-          %h3.bold
-            = image_tag('star.png')
-            = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+          - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
+            %table
+              .gray-background
+                %h4 Admissions
+              %thead
+                %tr
+                  %th Open Seats†
+                  %th 1st Choices†
+                  %th 2nd Choices†
+                  %th 3rd Choices†
+                  %th Applicants per Open Seat†
+              %tr
+                - grade = @school.grade(session[:grade_level])
+                %td.large
+                  =raw grade.try(:open_seats) ? grade.open_seats : '&nbsp;'
+                %td.large
+                  =raw grade.try(:first_choice) ? grade.first_choice : '&nbsp;'
+                %td.large
+                  =raw grade.try(:second_choice) ? grade.second_choice : '&nbsp;'
+                %td.large
+                  =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
+                %td.large
+                  =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'

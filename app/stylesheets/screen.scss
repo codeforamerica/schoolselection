@@ -35,23 +35,26 @@ body {
     margin-top: 20px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
     #table-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
+    #logo{ padding: 0 0 17px 25px; }
+    #page{ 
+      @include box-shadow; 
+      @include border-radius(10px);
+      background-color: white;
+      padding: 30px 25px;
+      margin-bottom: 30px;
+      table.listings{
+        thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
+        th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px $bordergray; }
+        td{ padding: 10px; border-bottom: dashed 1px $bordergray; }
+      }
+    }
+    #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
+    #center-column{
+      @include column(20, true);
+    }
     #left-column{ 
       position: absolute;
       @include column(20, true);
-      #logo{ padding: 0 0 17px 25px; }
-      #page{ 
-        @include box-shadow; 
-        @include border-radius(10px);
-        background-color: white;
-        padding: 30px 25px;
-        margin-bottom: 30px;
-        table.listings{
-          thead{ padding: 0 15px 0 15px; margin-bottom: 5px; }
-          th{ cursor: pointer; font-size: 12px; font-style: italic; font-weight: normal; background-color: white !important; padding: 5px 0 10px 10px; border-bottom: dashed 1px $bordergray; }
-          td{ padding: 10px; border-bottom: dashed 1px $bordergray; }
-        }
-      }
-      #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
     }
     
     #sidebar{

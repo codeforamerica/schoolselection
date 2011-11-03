@@ -585,6 +585,12 @@ form div {
 }
 
 /* line 34, ../../stylesheets/partials/_general.scss */
+.gray-background {
+  background-color: #e3e4e5;
+  padding: 1px 5px 0 5px;
+}
+
+/* line 35, ../../stylesheets/partials/_general.scss */
 .green-background {
   background-color: #a5e188;
   -moz-border-radius: 7px;
@@ -595,7 +601,7 @@ form div {
   border-radius: 7px;
 }
 
-/* line 35, ../../stylesheets/partials/_general.scss */
+/* line 36, ../../stylesheets/partials/_general.scss */
 .yellow-background {
   background-color: #faf4a5 !important;
   -moz-border-radius: 7px;
@@ -606,24 +612,24 @@ form div {
   border-radius: 7px;
 }
 
-/* line 36, ../../stylesheets/partials/_general.scss */
+/* line 37, ../../stylesheets/partials/_general.scss */
 .lightbox-button {
   margin-top: 30px;
 }
 
-/* line 37, ../../stylesheets/partials/_general.scss */
+/* line 38, ../../stylesheets/partials/_general.scss */
 .favorites-button {
   margin-top: 30px;
 }
 
-/* line 38, ../../stylesheets/partials/_general.scss */
+/* line 39, ../../stylesheets/partials/_general.scss */
 .notes {
   padding: 10px;
   margin-bottom: 20px;
   background-color: #dcebf2;
 }
 
-/* line 39, ../../stylesheets/partials/_general.scss */
+/* line 40, ../../stylesheets/partials/_general.scss */
 .rounded-corners {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -633,49 +639,54 @@ form div {
   border-radius: 7px;
 }
 
-/* line 40, ../../stylesheets/partials/_general.scss */
+/* line 41, ../../stylesheets/partials/_general.scss */
 .star-icon {
   margin-bottom: -3px;
 }
 
-/* line 41, ../../stylesheets/partials/_general.scss */
+/* line 42, ../../stylesheets/partials/_general.scss */
 .hidden_gem {
   position: absolute;
 }
 
 /* line 43, ../../stylesheets/partials/_general.scss */
+.external_link {
+  margin-left: 3px;
+}
+
+/* line 45, ../../stylesheets/partials/_general.scss */
 .favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 44, ../../stylesheets/partials/_general.scss */
+/* line 46, ../../stylesheets/partials/_general.scss */
 .small_image_column {
   width: 95px;
 }
 
-/* line 45, ../../stylesheets/partials/_general.scss */
+/* line 47, ../../stylesheets/partials/_general.scss */
 .medium_image_column {
   width: 120px;
 }
 
-/* line 46, ../../stylesheets/partials/_general.scss */
+/* line 48, ../../stylesheets/partials/_general.scss */
 .title_column {
   width: 240px;
 }
 
-/* line 47, ../../stylesheets/partials/_general.scss */
+/* line 49, ../../stylesheets/partials/_general.scss */
 .eligibility_column {
   width: 160px;
 }
 
-/* line 48, ../../stylesheets/partials/_general.scss */
+/* line 50, ../../stylesheets/partials/_general.scss */
 .view_button_column {
   width: 55px;
 }
 
-/* line 49, ../../stylesheets/partials/_general.scss */
+/* line 51, ../../stylesheets/partials/_general.scss */
 .favorite_button_column {
   width: 30px;
 }
@@ -1071,23 +1082,11 @@ body #screen #table-nav {
   margin: -31px 220px 10px 0;
 }
 /* line 38, ../../stylesheets/screen.scss */
-body #screen #left-column {
-  position: absolute;
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 958.333px;
-}
-/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #screen #left-column {
-  overflow-x: hidden;
-}
-/* line 41, ../../stylesheets/screen.scss */
-body #screen #left-column #logo {
+body #screen #logo {
   padding: 0 0 17px 25px;
 }
-/* line 42, ../../stylesheets/screen.scss */
-body #screen #left-column #page {
+/* line 39, ../../stylesheets/screen.scss */
+body #screen #page {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
   -o-box-shadow: 0px 0px 5px #333333;
@@ -1102,13 +1101,13 @@ body #screen #left-column #page {
   padding: 30px 25px;
   margin-bottom: 30px;
 }
-/* line 49, ../../stylesheets/screen.scss */
-body #screen #left-column #page table.listings thead {
+/* line 46, ../../stylesheets/screen.scss */
+body #screen #page table.listings thead {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 50, ../../stylesheets/screen.scss */
-body #screen #left-column #page table.listings th {
+/* line 47, ../../stylesheets/screen.scss */
+body #screen #page table.listings th {
   cursor: pointer;
   font-size: 12px;
   font-style: italic;
@@ -1117,13 +1116,13 @@ body #screen #left-column #page table.listings th {
   padding: 5px 0 10px 10px;
   border-bottom: dashed 1px #bbbbbb;
 }
-/* line 51, ../../stylesheets/screen.scss */
-body #screen #left-column #page table.listings td {
+/* line 48, ../../stylesheets/screen.scss */
+body #screen #page table.listings td {
   padding: 10px;
   border-bottom: dashed 1px #bbbbbb;
 }
-/* line 54, ../../stylesheets/screen.scss */
-body #screen #left-column #page-footer {
+/* line 51, ../../stylesheets/screen.scss */
+body #screen #page-footer {
   display: inline;
   float: left;
   margin-right: 0;
@@ -1132,10 +1131,33 @@ body #screen #left-column #page-footer {
   margin-bottom: 40px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
-* html body #screen #left-column #page-footer {
+* html body #screen #page-footer {
   overflow-x: hidden;
 }
-/* line 57, ../../stylesheets/screen.scss */
+/* line 52, ../../stylesheets/screen.scss */
+body #screen #center-column {
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 958.333px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #center-column {
+  overflow-x: hidden;
+}
+/* line 55, ../../stylesheets/screen.scss */
+body #screen #left-column {
+  position: absolute;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 958.333px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #left-column {
+  overflow-x: hidden;
+}
+/* line 60, ../../stylesheets/screen.scss */
 body #screen #sidebar {
   position: absolute;
   top: 129px;
@@ -1143,7 +1165,7 @@ body #screen #sidebar {
   margin-top: 40px;
   margin-left: 958px;
 }
-/* line 63, ../../stylesheets/screen.scss */
+/* line 66, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1165,7 +1187,7 @@ body #screen #sidebar #nav {
   padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 71, ../../stylesheets/screen.scss */
+/* line 74, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1186,7 +1208,7 @@ body #screen #sidebar #mypicks {
   background-image: linear-gradient(top, #fdf8b9, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 84, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -1200,16 +1222,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 86, ../../stylesheets/screen.scss */
+/* line 89, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 88, ../../stylesheets/screen.scss */
+/* line 91, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 91, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -1220,7 +1242,7 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 93, ../../stylesheets/screen.scss */
+/* line 96, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -1232,13 +1254,13 @@ body #screen #map #map_container #gmaps4rails_map {
   width: 640px;
   height: 490px;
 }
-/* line 94, ../../stylesheets/screen.scss */
+/* line 97, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #bbbbbb;
   height: 300px;
   width: 300px;
 }
-/* line 98, ../../stylesheets/screen.scss */
+/* line 101, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -1260,23 +1282,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 106, ../../stylesheets/screen.scss */
+/* line 109, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 110, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 111, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 113, ../../stylesheets/screen.scss */
+/* line 116, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 115, ../../stylesheets/screen.scss */
+/* line 118, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;
