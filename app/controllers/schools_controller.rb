@@ -22,7 +22,7 @@ class SchoolsController < ApplicationController
   def show
     shared_variables
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
-    @school = @all_schools.find {|x| x.id == params[:id].to_i }
+    @school = @all_schools.find {|x| x.permalink == params[:id] }
 
     respond_to do |format|
       format.html # show.html.erb

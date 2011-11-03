@@ -15,6 +15,7 @@ class School < ActiveRecord::Base
   attr_accessor :eligibility, :eligibility_index
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
   # before_save :geocode_address!
+  before_save :create_permalink
   
   
   if Rails.env == 'development'
@@ -58,5 +59,22 @@ class School < ActiveRecord::Base
   def gmaps4rails_address
     #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
     "#{self.address}, #{self.city.try(:name)}, #{self.try(:state)}" 
+  end
+  
+  private
+  
+  def create_permalink
+    string = self.name
+    separator = "-"
+    max_size = 127
+    ignore_words = ['a', 'an', 'the', 'la']
+    permalink = string.gsub("'", separator)
+    permalink.downcase!
+    ignore_words.each do |word|
+      permalink.gsub!(/^#{word} /, '')
+    end
+    permalink.gsub!(/[^a-z0-9]+/, separator)
+    permalink = permalink.to(max_size)
+    self.permalink = permalink.gsub(/^\\#{separator}+|\\#{separator}+$/, '')
   end
 end
