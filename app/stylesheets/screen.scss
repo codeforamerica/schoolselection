@@ -49,9 +49,6 @@ body {
       }
     }
     #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
-    #center-column{
-      @include column(20, true);
-    }
     #left-column{ 
       position: absolute;
       @include column(20, true);
