@@ -1,10 +1,12 @@
 class SchoolPdf < Prawn::Document
   def initialize(school, grade_level, view, session)
-    super(top_margin: 50)
+    super(top_margin: 35)
     @school = school
     @grade_level = grade_level
     @view = view
     @session = session
+    
+    image "#{Rails.root}/public/images/logo-blue-small.png"
     notices
     title
     description
@@ -14,6 +16,7 @@ class SchoolPdf < Prawn::Document
   end
   
   def notices
+    move_down 30
     if @school.id.to_s == @session[:sibling_school]
       text "This school qualifies for Sibling Priority"
       move_down 10
