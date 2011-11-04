@@ -5,6 +5,7 @@ class SchoolsController < ApplicationController
     address, session[:address] = params[:address], params[:address]
     zipcode, session[:zipcode] = params[:zipcode], params[:zipcode]
     grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
+    session[:sibling_school] = params[:sibling_school]
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     address.present? ? @geocoded_address = geocode_address("#{address}, #{zipcode}") : @geocoded_address = geocode_address('26 Court Street, Boston, MA 02109')
     

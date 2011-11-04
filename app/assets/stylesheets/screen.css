@@ -1064,10 +1064,29 @@ body #header {
   margin: 10px 0 0 25px;
 }
 /* line 34, ../../stylesheets/screen.scss */
+body #breadcrumbs {
+  float: right;
+  margin-right: 200px;
+  padding: 10px;
+  -moz-box-shadow: 0px 0px 5px #333333;
+  -webkit-box-shadow: 0px 0px 5px #333333;
+  -o-box-shadow: 0px 0px 5px #333333;
+  box-shadow: 0px 0px 5px #333333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+/* line 35, ../../stylesheets/screen.scss */
 body #screen {
   margin-top: 20px;
 }
-/* line 36, ../../stylesheets/screen.scss */
+/* line 37, ../../stylesheets/screen.scss */
 body #screen .full-width {
   display: inline;
   float: left;
@@ -1080,17 +1099,17 @@ body #screen .full-width {
 * html body #screen .full-width {
   overflow-x: hidden;
 }
-/* line 37, ../../stylesheets/screen.scss */
+/* line 38, ../../stylesheets/screen.scss */
 body #screen #table-nav {
   text-align: right;
   clear: bottom;
   margin: -31px 220px 10px 0;
 }
-/* line 38, ../../stylesheets/screen.scss */
+/* line 39, ../../stylesheets/screen.scss */
 body #screen #logo {
   padding: 0 0 17px 25px;
 }
-/* line 39, ../../stylesheets/screen.scss */
+/* line 40, ../../stylesheets/screen.scss */
 body #screen #page {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1106,12 +1125,12 @@ body #screen #page {
   padding: 30px 25px;
   margin-bottom: 30px;
 }
-/* line 46, ../../stylesheets/screen.scss */
+/* line 47, ../../stylesheets/screen.scss */
 body #screen #page table.listings thead {
   padding: 0 15px 0 15px;
   margin-bottom: 5px;
 }
-/* line 47, ../../stylesheets/screen.scss */
+/* line 48, ../../stylesheets/screen.scss */
 body #screen #page table.listings th {
   cursor: pointer;
   font-size: 12px;
@@ -1121,12 +1140,12 @@ body #screen #page table.listings th {
   padding: 5px 0 10px 10px;
   border-bottom: dashed 1px #bbbbbb;
 }
-/* line 48, ../../stylesheets/screen.scss */
+/* line 49, ../../stylesheets/screen.scss */
 body #screen #page table.listings td {
   padding: 10px;
   border-bottom: dashed 1px #bbbbbb;
 }
-/* line 51, ../../stylesheets/screen.scss */
+/* line 52, ../../stylesheets/screen.scss */
 body #screen #page-footer {
   display: inline;
   float: left;
@@ -1139,7 +1158,7 @@ body #screen #page-footer {
 * html body #screen #page-footer {
   overflow-x: hidden;
 }
-/* line 52, ../../stylesheets/screen.scss */
+/* line 53, ../../stylesheets/screen.scss */
 body #screen #left-column {
   position: absolute;
   display: inline;
@@ -1151,7 +1170,7 @@ body #screen #left-column {
 * html body #screen #left-column {
   overflow-x: hidden;
 }
-/* line 57, ../../stylesheets/screen.scss */
+/* line 58, ../../stylesheets/screen.scss */
 body #screen #sidebar {
   position: absolute;
   top: 129px;
@@ -1159,7 +1178,7 @@ body #screen #sidebar {
   margin-top: 40px;
   margin-left: 958px;
 }
-/* line 63, ../../stylesheets/screen.scss */
+/* line 64, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1181,7 +1200,7 @@ body #screen #sidebar #nav {
   padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 71, ../../stylesheets/screen.scss */
+/* line 72, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1202,7 +1221,7 @@ body #screen #sidebar #mypicks {
   background-image: linear-gradient(top, #fdf8b9, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
-/* line 81, ../../stylesheets/screen.scss */
+/* line 82, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -1216,16 +1235,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 86, ../../stylesheets/screen.scss */
+/* line 87, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 88, ../../stylesheets/screen.scss */
+/* line 89, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 91, ../../stylesheets/screen.scss */
+/* line 92, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -1236,7 +1255,7 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 93, ../../stylesheets/screen.scss */
+/* line 94, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -1248,13 +1267,13 @@ body #screen #map #map_container #gmaps4rails_map {
   width: 640px;
   height: 490px;
 }
-/* line 94, ../../stylesheets/screen.scss */
+/* line 95, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #bbbbbb;
   height: 300px;
   width: 300px;
 }
-/* line 98, ../../stylesheets/screen.scss */
+/* line 99, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -1276,23 +1295,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 106, ../../stylesheets/screen.scss */
+/* line 107, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 108, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 109, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 113, ../../stylesheets/screen.scss */
+/* line 114, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 115, ../../stylesheets/screen.scss */
+/* line 116, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

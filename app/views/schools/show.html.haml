@@ -4,6 +4,9 @@
     
 #left-column
   #page
+    - if @school.id.to_s == session[:sibling_school]
+      #flash.bold.large.center.yellow-background
+        This school qualifies for Sibling Priority, which significantly increases your odds of admission
     - if @school.eligibility =~ /Walk Zone/
       #flash.bold.large.center.green-background
         This school is in your Walk Zone and qualifies for priority selection status
@@ -61,6 +64,8 @@
         
         %td.align-top
           - if @school.description.present?
+            .gray-background
+              %h4 Introduction
             %span.medium
               = simple_format(@school.description)
           %table
@@ -147,3 +152,8 @@
                   =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
                 %td.large
                   =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
+                  
+          %span.italic.small
+            * Walk times and drive times are estimates, only.
+            %br/
+            † Historical data are from the previous school year, unless otherwise noted.
