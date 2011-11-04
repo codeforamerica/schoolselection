@@ -652,6 +652,7 @@ form div {
 /* line 43, ../../stylesheets/partials/_general.scss */
 .hidden_gem {
   position: absolute;
+  display: none;
 }
 
 /* line 44, ../../stylesheets/partials/_general.scss */

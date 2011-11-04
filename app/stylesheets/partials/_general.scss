@@ -40,7 +40,7 @@ form div { margin: 10px 10px 10px 0; }
 .notes{ padding: 10px; margin-bottom: 20px; background-color: $lighterblue;}
 .rounded-corners{ @include border-radius(7px); }
 .star-icon{ margin-bottom: -3px;}
-.hidden_gem{ position: absolute; }
+.hidden_gem{ position: absolute; display: none; }
 .external_link{ margin-left: 3px; }
 #download_links{ margin-top: 30px; }
 #footnotes{ margin-top: 30px; }

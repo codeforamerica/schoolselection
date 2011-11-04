@@ -61,7 +61,6 @@ module SchoolsHelper
       '&zoom=10' +
       "&maptype=roadmap" +
       "&sensor=false" +
-      "&markers=size:tiny|color:0xee002c|#{@hidden_gems.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
@@ -100,7 +99,6 @@ module SchoolsHelper
   
   def markers_json
     array = []
-    array << @hidden_gems.map {|x| create_listing_hash(x, 'red')}
     array << @walk_zone_schools.map {|x| create_listing_hash(x, 'green')}
     array << @assignment_zone_schools.map {|x| create_listing_hash(x, 'yellow')}
     array << @citywide_schools.map {|x| create_listing_hash(x, 'gray')}    

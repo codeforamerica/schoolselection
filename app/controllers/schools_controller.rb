@@ -83,20 +83,22 @@ class SchoolsController < ApplicationController
     @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
     @assignment_zone = AssignmentZone.find_by_location(@geocoded_address).first
 
-    walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
-    assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
-    citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
-    [ [walk_zone_schools,"Walk Zone",1], [assignment_zone_schools,"Assignment Zone",2], [citywide_schools,"Citywide",3] ].each do |schools,type,index|
+    @walk_zone_schools = @grade_level.schools.find_all_within_radius(@geocoded_address, @grade_level.walk_zone_radius_in_meters).with_distance(@geocoded_address).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
         s.eligibility = type
         s.eligibility_index = index
       end
     end
-    @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.hidden_gem == true}
-    @walk_zone_schools = walk_zone_schools - @hidden_gems
-    @assignment_zone_schools = assignment_zone_schools - @hidden_gems
-    @citywide_schools = citywide_schools - @hidden_gems
-    @all_schools = (@hidden_gems + @walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+
+    # @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.hidden_gem == true}
+    # @walk_zone_schools = walk_zone_schools - @hidden_gems
+    # @assignment_zone_schools = assignment_zone_schools - @hidden_gems
+    # @citywide_schools = citywide_schools - @hidden_gems
+    
     if params[:sibling_school] && (sib_school = @all_schools.find {|s| s.id == params[:sibling_school].to_i})
       #raise "in here"
       sib_school.eligibility = "Sibling School / "+sib_school.eligibility
