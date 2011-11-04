@@ -38,27 +38,27 @@ run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current data
 [0.2 psql -d <databasename>, \d <table name>, confirm that geometry columns are now text.]
 [0.3 update column types locally - see below]
 
-1) become beta user.
-2) heroku addons:add spacialdb:test 
-3) heroku pg:info, heroku config
-4) heroku config:add DATABASE_URL=postgres://(contents of SPATIALDB_URL)
-[why can't I pg:promote the spatial db? it's not on pg:info. why?]
-5) heroku db:push
-[this takes a long time. a long time. especially on spatial_ref_s. it failed once.]
-6) heroku pg:psql - can't. it's not a matching database.
-7) reread the email, and install spacialdb gem
-8) we don't need to create an account
-9) look at heroku:config to get username/password [dan:randomstring]
-10) except that username/password don't work.
-11) give up and connect directly with:
+1. become beta user.
+2. heroku addons:add spacialdb:test 
+3. heroku pg:info, heroku config
+4. heroku config:add DATABASE_URL=postgres://(contents of SPATIALDB_URL)
+  [why can't I pg:promote the spatial db? it's not on pg:info. why?]
+5. heroku db:push
+  [this takes a long time. a long time. especially on spatial_ref_s. it failed once.]
+6. heroku pg:psql - can't. it's not a matching database.
+7. reread the email, and install spacialdb gem
+8. we don't need to create an account
+9. look at heroku:config to get username/password [dan:randomstring]
+10. except that username/password don't work.
+11. give up and connect directly with:
 "psql -d heroku_dan_4fb9 -h beta.spacialdb.com -p 9999 -U dan --password", using given password.
 it works.
-12) use \d <tablename> to verify geometry is text 
+12. use \d <tablename> to verify geometry is text 
     update columns per 0.3
     \d <tablename> to verify geometry is geometry
-13) 'heroku run console', Parcel.first.geometry.class, to confirm need for postgis.
+13. 'heroku run console', Parcel.first.geometry.class, to confirm need for postgis.
     update DATABASE_URL to use postgis:// (this resets app)
-14) visit site. test. see odd saved form fields . . . .
+14. visit site. test. see odd saved form fields . . . .
 
 *requires setting config/database.yml back to postgres, and DATABASE_URL to postgress://
 
