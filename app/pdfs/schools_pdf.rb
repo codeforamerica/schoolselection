@@ -11,7 +11,7 @@ class SchoolsPdf < Prawn::Document
     image "#{Rails.root}/public/images/logo-blue-small.png"
     title
     schools_table
-    created_at
+    page_url
   end
   
   def title
@@ -55,8 +55,8 @@ class SchoolsPdf < Prawn::Document
     "#{@view.distance_in_miles_from_meters(distance)} mi"
   end
   
-  def created_at
-    move_down 20
-    text "#{Date.today}"
+  def page_url
+    move_down 30
+    formatted_text [{:text => "http://www.discoverbps.org/schools", :link => "http://www.discoverbps.org/schools", :color => '008cd9', :style => :bold, :valign => :bottom}]
   end
 end

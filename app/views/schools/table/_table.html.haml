@@ -34,8 +34,15 @@
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => 'favorited'}
         - else
           = render :partial => 'schools/table/rows/visible_row', :locals => {:school => school, :row_classes => ''}
-%span.italic.small
+    
+%table#download_links
+  %tr
+    %td{:width=>'24px'}
+      == #{raw link_to image_tag('icons/icon_PDF_big.png', :class => 'pdf_icon'), schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)} 
+    %td{:style => "font-weight: bold; padding: 0;"}
+      == #{link_to 'Download PDF', schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)}
+
+#footnotes.italic.small
   * Walk times and drive times are estimates, only.
   %br/
   † Historical data are from the previous school year, unless otherwise noted.
-  

@@ -659,39 +659,49 @@ form div {
   margin-left: 3px;
 }
 
+/* line 45, ../../stylesheets/partials/_general.scss */
+#download_links {
+  margin-top: 30px;
+}
+
 /* line 46, ../../stylesheets/partials/_general.scss */
+#footnotes {
+  margin-top: 30px;
+}
+
+/* line 48, ../../stylesheets/partials/_general.scss */
 .favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 47, ../../stylesheets/partials/_general.scss */
+/* line 49, ../../stylesheets/partials/_general.scss */
 .small_image_column {
   width: 95px;
 }
 
-/* line 48, ../../stylesheets/partials/_general.scss */
+/* line 50, ../../stylesheets/partials/_general.scss */
 .medium_image_column {
   width: 120px;
 }
 
-/* line 49, ../../stylesheets/partials/_general.scss */
+/* line 51, ../../stylesheets/partials/_general.scss */
 .title_column {
   width: 240px;
 }
 
-/* line 50, ../../stylesheets/partials/_general.scss */
+/* line 52, ../../stylesheets/partials/_general.scss */
 .eligibility_column {
   width: 160px;
 }
 
-/* line 51, ../../stylesheets/partials/_general.scss */
+/* line 53, ../../stylesheets/partials/_general.scss */
 .view_button_column {
   width: 55px;
 }
 
-/* line 52, ../../stylesheets/partials/_general.scss */
+/* line 54, ../../stylesheets/partials/_general.scss */
 .favorite_button_column {
   width: 30px;
 }

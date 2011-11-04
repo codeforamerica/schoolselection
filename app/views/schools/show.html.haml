@@ -20,11 +20,11 @@
       %tr
         %td.align-top.medium{:width=>'290'}
           - if @school.eligibility =~ /Walk Zone/
-            = link_to static_school_map(280, 210, '53e200'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+            = link_to image_tag(static_school_map(280, 210, '53e200'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
           - elsif @school.eligibility =~ /Assignment Zone/
-            = link_to static_school_map(280, 210, 'fcef08'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+            = link_to image_tag(static_school_map(280, 210, 'fcef08'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
           - else
-            = link_to static_school_map(280, 210, 'c8c8c8'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+            = link_to image_tag(static_school_map(280, 210, 'c8c8c8'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
 
           - if @school.address.present?
             == #{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}
@@ -61,7 +61,14 @@
             = @school.surround_care_hours
 
           = render :partial => 'schools/favorite_text_button', :locals => {:school => @school}
-        
+          
+          %table#download_links
+            %tr
+              %td{:width=>'24px'}
+                == #{raw link_to image_tag('icons/icon_PDF_big.png', :class => 'pdf_icon'), school_path(@school, :address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)} 
+              %td{:style => "font-weight: bold; padding: 0;"}
+                == #{link_to 'Download PDF', school_path(@school, :address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)}
+
         %td.align-top
           - if @school.description.present?
             .gray-background
@@ -152,8 +159,8 @@
                   =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
                 %td.large
                   =raw grade.try(:demand) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
-                  
-          %span.italic.small
+                
+          #footnotes.italic.small
             * Walk times and drive times are estimates, only.
             %br/
             † Historical data are from the previous school year, unless otherwise noted.

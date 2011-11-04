@@ -70,13 +70,12 @@ module SchoolsHelper
   end
   
   def static_school_map(width, height, color)
-    image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=#{width}x#{height}" + 
-      '&zoom=14' +
-      "&maptype=roadmap" +
-      "&sensor=false" +
-      "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }",      
-      :alt => "Map View", :class => 'static-map-image')
+    "http://maps.google.com/maps/api/staticmap?" + 
+    "size=#{width}x#{height}" + 
+    '&zoom=14' +
+    "&maptype=roadmap" +
+    "&sensor=false" +
+    "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }"
   end
   
   ####### SINGLE SCHOOL MAP #######
