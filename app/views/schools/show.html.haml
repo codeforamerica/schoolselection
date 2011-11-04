@@ -56,16 +56,8 @@
             %span.bold
               Surround Care:
             = @school.surround_care_hours
-            
-          .favorites-button.bold
-            - if session[:favorites].try(:include?, @school.id)
-              = link_to image_tag('star-gray.png', :class => 'star-icon'), unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'gray-button', :title => 'Unfavorite'
-              %span.favorites_button_text
-                = link_to "Remove from Favorites", unfavorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
-            - else
-              = link_to image_tag('star.png', :class => 'star-icon'), favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post, :class => 'yellow-button', :title => 'Favorite'
-              %span.favorites_button_text
-                = link_to "Add to My Favorites", favorite_school_path(@school.id, address: session[:address], zipcode: session[:zipcode], grade_level: session[:grade_level]), :remote => true, :method => :post
+
+          = render :partial => 'schools/favorite_text_button', :locals => {:school => @school}
         
         %td.align-top
           - if @school.description.present?

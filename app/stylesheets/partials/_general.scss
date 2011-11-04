@@ -35,7 +35,7 @@ form div { margin: 10px 10px 10px 0; }
 .green-background{ background-color: $green; @include border-radius(7px); }
 .yellow-background{ background-color: $yellow !important; @include border-radius(7px); }
 .lightbox-button{ margin-top: 30px; }
-.favorites-button{ margin-top: 30px; }
+#favorite_text_button{ margin-top: 30px; }
 .favorites_button_text{ padding-left: 4px; }
 .notes{ padding: 10px; margin-bottom: 20px; background-color: $lighterblue;}
 .rounded-corners{ @include border-radius(7px); }
