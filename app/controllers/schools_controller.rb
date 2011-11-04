@@ -16,7 +16,13 @@ class SchoolsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js 
+      format.js
+      format.pdf do
+        pdf = SchoolsPdf.new(@all_schools, @grade_levels, @grade_level, @geocoded_address, view_context, session)
+        send_data pdf.render, filename: "schools.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
@@ -28,6 +34,12 @@ class SchoolsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @school }
+      format.pdf do
+        pdf = SchoolPdf.new(@school, @grade_level, view_context, session)
+        send_data pdf.render, filename: "#{@school.permalink}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
   

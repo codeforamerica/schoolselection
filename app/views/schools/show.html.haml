@@ -6,10 +6,10 @@
   #page
     - if @school.id.to_s == session[:sibling_school]
       #flash.bold.large.center.yellow-background
-        This school qualifies for Sibling Priority, which significantly increases your odds of admission
+        This school qualifies for Sibling Priority
     - if @school.eligibility =~ /Walk Zone/
       #flash.bold.large.center.green-background
-        This school is in your Walk Zone and qualifies for priority selection status
+        This school qualifies for Walk Zone Priority
     - if @school.special_admissions?
       #flash.bold.large.center
         This school requires special admissions
@@ -65,12 +65,12 @@
         %td.align-top
           - if @school.description.present?
             .gray-background
-              %h4 Introduction
+              %h4.bold Introduction
             %span.medium
               = simple_format(@school.description)
           %table
             .gray-background
-              %h4 Transportation
+              %h4.bold Transportation
             %thead
               %tr
                 %th Transportation Eligibility
@@ -100,14 +100,14 @@
           - if grade.mcas_ela_total.present?
             %table
               .gray-background
-                %h4 MCAS Scores
+                %h4.bold MCAS Scores
               %thead
                 %tr
                   %th 
-                  %th Advanced
-                  %th Proficient
-                  %th Needs Improvement
-                  %th Warning/Failing
+                  %th Advanced†
+                  %th Proficient†
+                  %th Needs Improvement†
+                  %th Warning/Failing†
               %tr
                 %td.large English
                 %td.large
@@ -132,7 +132,7 @@
           - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
             %table
               .gray-background
-                %h4 Admissions
+                %h4.bold Admissions
               %thead
                 %tr
                   %th Open Seats†
@@ -151,7 +151,7 @@
                 %td.large
                   =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
                 %td.large
-                  =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
+                  =raw grade.try(:demand) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
                   
           %span.italic.small
             * Walk times and drive times are estimates, only.
