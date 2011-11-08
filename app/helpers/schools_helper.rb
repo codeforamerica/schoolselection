@@ -80,21 +80,17 @@ module SchoolsHelper
   ####### SINGLE SCHOOL MAP #######
   
   def school_map
-    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "circles" => {"data" => walk_zone_json }, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   ####### ALL SCHOOLS MAP #######
   
   def walk_zone_map
-    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "circles" => {"data" => walk_zone_json }, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
+    gmaps("markers" => {"data" => markers_json, "options" => {"list_container" => "markers_list"}}, "polygons" => {"data" => assignment_zones_json, "options" => { "fillColor" => "#ffff00", "fillOpacity" => 0.3, "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 }}, "map_options" => { "provider" => "googlemaps", "auto_adjust" => true })
   end
   
   def assignment_zones_json
     @assignment_zone.shape_to_json
-  end
-  
-  def walk_zone_json
-    [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.4, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def markers_json
