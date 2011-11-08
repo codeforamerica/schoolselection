@@ -1,7 +1,7 @@
 %table#favorite-schools.listings
   %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background'}
     %td.handle
-      = image_tag('handle.png')
+      = image_tag('icons/handle.png')
     %td.favorite_number_column.bold.right
       = counter            
     %td.medium-image-column
@@ -11,9 +11,3 @@
       %span.italic
         == #{school.address}, #{school.city.try(:name)}
     %td{:width=>'200'} &nbsp;
-    %td.large
-      - if school.phone.present?
-        %br/
-        %span.bold
-          Call Today:&nbsp;
-        = school.phone
