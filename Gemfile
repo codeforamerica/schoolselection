@@ -9,6 +9,7 @@ gem 'rails', '3.1.0'
 # Gems used only for assets and not required
 # in production environments by default.
 
+gem "airbrake"
 gem 'aws-s3'
 gem "thin"
 gem 'jquery-rails'
@@ -25,6 +26,8 @@ gem "activerecord-postgis-adapter"
 gem 'dbf'
 gem 'bootstrap-sass'
 gem 'rails_admin', :git => 'git://github.com/joelmahoney/rails_admin.git'
+gem "devise"
+gem 'prawn'
 
 group :assets do
   gem 'sass-rails'
@@ -50,4 +53,3 @@ group :test do
   gem "factory_girl"
   gem 'turn', :require => false
 end
-gem "devise"

@@ -6,7 +6,7 @@
     = image_tag(school.image(:thumb), :class => 'rounded-corners')
   %td.title_column
     %h4.bold
-      = link_to school.name, school_path(school), :rel => 'facebox'
+      = link_to school.name, school_path(school.permalink)
     %span.italic
       == #{school.address}, #{school.city.try(:name)}
 
@@ -19,6 +19,6 @@
   = render :partial => 'schools/table/columns/admissions', :locals => {:school => school}
   
   %td.view_button_column
-    = link_to "View", school_path(school), :rel => 'facebox', :class => 'blue-button'
+    = link_to "View", school_path(school.permalink), :class => 'blue-button'
   %td.favorite_button
     = render :partial => 'schools/favorite_button', :locals => {:school => school}

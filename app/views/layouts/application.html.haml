@@ -1,7 +1,7 @@
 %html
   %head
     %title Discover BPS
-    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'screen.css', :media => 'all'
     = stylesheet_link_tag 'facebox.css', :media => 'screen, projection'
     = stylesheet_link_tag 'print.css', :media => 'print'
     = javascript_include_tag 'application'
@@ -10,7 +10,7 @@
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
   %body
     #container
-      #header
+      #header          
         = link_to image_tag('logo-blue.png'), root_url
       #screen
         = yield

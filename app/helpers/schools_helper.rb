@@ -61,7 +61,6 @@ module SchoolsHelper
       '&zoom=10' +
       "&maptype=roadmap" +
       "&sensor=false" +
-      "&markers=size:tiny|color:0xee002c|#{@hidden_gems.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0x53e200|#{@walk_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xfcef08|#{@assignment_zone_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
       "&markers=size:tiny|color:0xc8c8c8|#{@citywide_schools.map {|x|"#{x.lat},#{x.lng}"} * "|" }" +
@@ -70,13 +69,12 @@ module SchoolsHelper
   end
   
   def static_school_map(width, height, color)
-    image_tag("http://maps.google.com/maps/api/staticmap?" + 
-      "size=#{width}x#{height}" + 
-      '&zoom=14' +
-      "&maptype=roadmap" +
-      "&sensor=false" +
-      "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }",      
-      :alt => "Map View", :class => 'static-map-image')
+    "http://maps.google.com/maps/api/staticmap?" + 
+    "size=#{width}x#{height}" + 
+    '&zoom=14' +
+    "&maptype=roadmap" +
+    "&sensor=false" +
+    "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }"
   end
   
   ####### SINGLE SCHOOL MAP #######
@@ -101,7 +99,6 @@ module SchoolsHelper
   
   def markers_json
     array = []
-    array << @hidden_gems.map {|x| create_listing_hash(x, 'red')}
     array << @walk_zone_schools.map {|x| create_listing_hash(x, 'green')}
     array << @assignment_zone_schools.map {|x| create_listing_hash(x, 'yellow')}
     array << @citywide_schools.map {|x| create_listing_hash(x, 'gray')}    
@@ -110,6 +107,6 @@ module SchoolsHelper
   end
   
   def create_listing_hash(x, color)
-    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<ul class='horizontal-list'><li>#{image_tag(x.image(:thumb))}</li><li><h3 class='bold'>#{x.name}</h3>#{x.address}<br />#{x.city.try(:name)} MA, #{x.zipcode}<br /><strong>#{link_to 'View More', x, :rel => 'facebox'}</strong></li></ul>", :sidebar => "#{x.name}"}
+    {:lng => x.lng, :lat => x.lat, :picture => "/images/#{color}-marker.png", :width => '21', :height => '38', :shadow_picture => '/images/shadow.png', :shadow_width => '43', :shadow_height => '38', :shadow_anchor => [10, 33], :description => "<ul class='horizontal-list'><li>#{image_tag(x.image(:thumb))}</li><li><h3 class='bold'>#{x.name}</h3>#{x.address}<br />#{x.city.try(:name)} MA, #{x.zipcode}<br /><strong>#{link_to 'View More', school_path(x.permalink)}</strong></li></ul>", :sidebar => "#{x.name}"}
   end
 end

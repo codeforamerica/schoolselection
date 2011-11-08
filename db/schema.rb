@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102205659) do
+ActiveRecord::Schema.define(:version => 20111103232425) do
 
   create_table "address_ranges", :force => true do |t|
     t.integer "geocode_id"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20111102205659) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month"
+    t.integer  "month",      :limit => 2
     t.integer  "year",       :limit => 8
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -204,6 +204,8 @@ ActiveRecord::Schema.define(:version => 20111102205659) do
     t.boolean  "hidden_gem",                    :default => false
     t.boolean  "special_admissions",            :default => false
     t.text     "surround_care_hours"
+    t.string   "email"
+    t.string   "permalink"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"

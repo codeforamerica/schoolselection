@@ -31,14 +31,19 @@ form div { margin: 10px 10px 10px 0; }
 .static-map-image{ @include border-radius(7px); border: solid 1px $bordergray; margin: 0 0 20px 0;}
 .align-top{ vertical-align: top;}
 .transportation-icon{ margin: 0 7px -10px 0 !important; }
+.gray-background{ background-color: $gray; padding: 1px 5px 0 5px; }
 .green-background{ background-color: $green; @include border-radius(7px); }
 .yellow-background{ background-color: $yellow !important; @include border-radius(7px); }
 .lightbox-button{ margin-top: 30px; }
-.favorites-button{ margin-top: 30px; }
+#favorite_text_button{ margin-top: 30px; }
+.favorites_button_text{ padding-left: 4px; }
 .notes{ padding: 10px; margin-bottom: 20px; background-color: $lighterblue;}
 .rounded-corners{ @include border-radius(7px); }
 .star-icon{ margin-bottom: -3px;}
-.hidden_gem{ position: absolute; }
+.hidden_gem{ position: absolute; display: none; }
+.external_link{ margin-left: 3px; }
+#download_links{ margin-top: 30px; }
+#footnotes{ margin-top: 30px; }
 
 .favorite_number_column{ font-size: 2em; text-align: center; width: 30px; }
 .small_image_column{ width: 95px; }

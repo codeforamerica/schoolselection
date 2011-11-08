@@ -1,10 +1,11 @@
 class SchoolsController < ApplicationController
-  layout 'application', :except => :show
+  # layout 'application', :except => :show
   
   def index
     address, session[:address] = params[:address], params[:address]
     zipcode, session[:zipcode] = params[:zipcode], params[:zipcode]
     grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
+    session[:sibling_school] = params[:sibling_school]
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     address.present? ? @geocoded_address = geocode_address("#{address}, #{zipcode}") : @geocoded_address = geocode_address('26 Court Street, Boston, MA 02109')
     
@@ -15,18 +16,30 @@ class SchoolsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.js 
+      format.js
+      format.pdf do
+        pdf = SchoolsPdf.new(@all_schools, @grade_levels, @grade_level, @geocoded_address, view_context, session)
+        send_data pdf.render, filename: "schools.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
   def show
     shared_variables
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
-    @school = @all_schools.find {|x| x.id == params[:id].to_i }
+    @school = @all_schools.find {|x| x.permalink == params[:id] }
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @school }
+      format.pdf do
+        pdf = SchoolPdf.new(@school, @grade_level, view_context, session)
+        send_data pdf.render, filename: "#{@school.permalink}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
   
@@ -75,20 +88,22 @@ class SchoolsController < ApplicationController
     @geocode = address_range.first.geocode
     @assignment_zone = @geocode.assignment_zone
 
-    walk_zone_schools = School.walkzone_by_geocode_and_grade(@geocode,@grade_level).with_distance(@geocoded_address).order('distance ASC')
-    assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
-    citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - walk_zone_schools
-    [ [walk_zone_schools,"Walk Zone",1], [assignment_zone_schools,"Assignment Zone",2], [citywide_schools,"Citywide",3] ].each do |schools,type,index|
+    @walk_zone_schools = School.walkzone_by_geocode_and_grade(@geocode,@grade_level).with_distance(@geocoded_address).order('distance ASC')
+    @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide).with_distance(@geocoded_address).order('distance ASC') - @walk_zone_schools
+    [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
         s.eligibility = type
         s.eligibility_index = index
       end
     end
-    @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.hidden_gem == true}
-    @walk_zone_schools = walk_zone_schools - @hidden_gems
-    @assignment_zone_schools = assignment_zone_schools - @hidden_gems
-    @citywide_schools = citywide_schools - @hidden_gems
-    @all_schools = (@hidden_gems + @walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+
+    # @hidden_gems = (walk_zone_schools + assignment_zone_schools + citywide_schools).find_all {|x| x.hidden_gem == true}
+    # @walk_zone_schools = walk_zone_schools - @hidden_gems
+    # @assignment_zone_schools = assignment_zone_schools - @hidden_gems
+    # @citywide_schools = citywide_schools - @hidden_gems
+    
     if params[:sibling_school] && (sib_school = @all_schools.find {|s| s.id == params[:sibling_school].to_i})
       #raise "in here"
       sib_school.eligibility = "Sibling School / "+sib_school.eligibility
