@@ -1,2 +1,0 @@
-class AddressRangesController < ApplicationController
-end
