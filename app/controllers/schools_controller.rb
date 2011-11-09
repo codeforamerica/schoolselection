@@ -75,6 +75,15 @@ class SchoolsController < ApplicationController
     end
   end
   
+  def sort
+    @favorite_schools = params[:school].map {|x| School.find(x)}
+    session[:favorites] = []
+    @favorite_schools.each do |school|
+      session[:favorites] << school.id
+    end
+    render :nothing => true
+  end
+  
   private
   
   def shared_variables

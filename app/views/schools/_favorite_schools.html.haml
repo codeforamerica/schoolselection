@@ -1,13 +1,11 @@
 %table#favorite-schools.listings
   %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background'}
     %td.handle
-      = image_tag('icons/handle.png')
-    %td.favorite_number_column.bold.right
-      = counter            
+      = image_tag('icons/handle.png')         
     %td.medium-image-column
       = image_tag(school.image.url(:small), :class => 'rounded-corners')          
     %td.title_column
       %h3.bold= school.name
       %span.italic
         == #{school.address}, #{school.city.try(:name)}
-    %td{:width=>'200'} &nbsp;
+    %td{:width=>'430'} &nbsp;
