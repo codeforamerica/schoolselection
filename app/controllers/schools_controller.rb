@@ -9,9 +9,9 @@ class SchoolsController < ApplicationController
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
     address.present? ? @geocoded_address = geocode_address("#{address}, #{zipcode}") : @geocoded_address = geocode_address('26 Court Street, Boston, MA 02109')
     
-    if address.present? && grade_level.present? && @geocoded_address.success == true && AssignmentZone.find_by_location(@geocoded_address).present?
+    begin
       shared_variables
-    else
+    rescue
       @all_schools = School.all
     end
     respond_to do |format|
