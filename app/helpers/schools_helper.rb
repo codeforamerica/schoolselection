@@ -151,7 +151,7 @@ module SchoolsHelper
             <h3 class='bold'>#{x.name}</h3>
             #{x.address}<br />
             #{x.city.try(:name)} MA, #{x.zipcode}<br />
-            <strong>#{link_to 'View More', school_path(x.permalink)}</strong>
+            <strong>#{link_to 'Learn More', school_path(x.permalink)}</strong>
           </li>
         </ul>
       },
@@ -161,9 +161,9 @@ module SchoolsHelper
   
   def alert(x)
     if x.id.to_s == session[:sibling_school]
-      "<div id='flash' class='normal bold center yellow-background smaller'>This school qualifies for Sibling Priority</div>"
+      "<div id='flash' class='normal bold center yellow-background'>This school qualifies for Sibling Priority</div>"
     elsif x.eligibility =~ /Walk Zone/
-      "<div id='flash' class='normal bold center green-background smaller'>This school qualifies for Walk Zone Priority</div>"
+      "<div id='flash' class='normal bold center green-background'>This school qualifies for Walk Zone Priority</div>"
     end
   end
 end
