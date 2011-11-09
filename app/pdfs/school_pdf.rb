@@ -11,6 +11,7 @@ class SchoolPdf < Prawn::Document
     image "#{Rails.root}/public/images/logo-blue-small.png"
     title
     description
+    information
     transportation
     admissions
     mcas
@@ -44,6 +45,14 @@ class SchoolPdf < Prawn::Document
   def description
     move_down 10
     text "#{@school.description}" 
+  end
+  
+  #### GENERAL INFORMATION #####
+  
+  def information
+    move_down 20
+    text "General Information", :size => 14, :style => :bold
+    table [["Address:", "#{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}"]] + [["Phone:", @school.phone]] + [["Fax:", @school.fax]] + [["Website", @school.website]] + [["Email:", @school.email]] + [["Hours:", @school.grade(@session[:grade_level]).try(:hours)]] + [["Surround Care:", @school.surround_care_hours]]
   end
   
   #### TRANSPORTATION ####
