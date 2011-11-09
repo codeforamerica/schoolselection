@@ -52,7 +52,14 @@ class SchoolPdf < Prawn::Document
   def information
     move_down 20
     text "General Information", :size => 14, :style => :bold
-    table [["Address:", "#{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}"]] + [["Phone:", @school.phone]] + [["Fax:", @school.fax]] + [["Website", @school.website]] + [["Email:", @school.email]] + [["Hours:", @school.grade(@session[:grade_level]).try(:hours)]] + [["Surround Care:", @school.surround_care_hours]]
+    text "#{@school.address} #{@school.city.try(:name)} MA, #{@school.zipcode}"
+    text "Phone: #{@school.phone}" if @school.phone.present?
+    text "Fax: #{@school.fax}" if @school.fax.present?
+    formatted_text [{:text => "#{@school.website}", :link => "#{@school.website}", :color => '008cd9', :style => :bold, :valign => :bottom}] if @school.website.present?
+    text "Email: #{@school.email}" if @school.email.present?
+    move_down 10
+    text "Hours: #{@school.grade(@session[:grade_level]).hours}" if @school.grade(@session[:grade_level]).try(:hours)
+    text "Surround Care: #{@school.surround_care_hours}" if @school.surround_care_hours.present?
   end
   
   #### TRANSPORTATION ####
