@@ -50,6 +50,7 @@ body {
       }
     }
     #page-footer{ @include column(20, true); text-align: center; margin-bottom: 40px; }
+    #center-column{ position: absolute; @include column(23, true);}
     #left-column{ 
       position: absolute;
       @include column(20, true);

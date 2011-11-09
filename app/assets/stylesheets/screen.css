@@ -1170,6 +1170,18 @@ body #screen #page-footer {
   overflow-x: hidden;
 }
 /* line 53, ../../stylesheets/screen.scss */
+body #screen #center-column {
+  position: absolute;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 1103.583px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #center-column {
+  overflow-x: hidden;
+}
+/* line 54, ../../stylesheets/screen.scss */
 body #screen #left-column {
   position: absolute;
   display: inline;
@@ -1181,7 +1193,7 @@ body #screen #left-column {
 * html body #screen #left-column {
   overflow-x: hidden;
 }
-/* line 58, ../../stylesheets/screen.scss */
+/* line 59, ../../stylesheets/screen.scss */
 body #screen #sidebar {
   position: absolute;
   top: 129px;
@@ -1189,7 +1201,7 @@ body #screen #sidebar {
   margin-top: 40px;
   margin-left: 958px;
 }
-/* line 64, ../../stylesheets/screen.scss */
+/* line 65, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1211,7 +1223,7 @@ body #screen #sidebar #nav {
   padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 72, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1232,7 +1244,7 @@ body #screen #sidebar #mypicks {
   background-image: linear-gradient(top, #fdf8b9, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 83, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -1246,16 +1258,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 88, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 89, ../../stylesheets/screen.scss */
+/* line 90, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 93, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -1266,7 +1278,7 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 94, ../../stylesheets/screen.scss */
+/* line 95, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -1278,13 +1290,13 @@ body #screen #map #map_container #gmaps4rails_map {
   width: 640px;
   height: 490px;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 96, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #bbbbbb;
   height: 300px;
   width: 300px;
 }
-/* line 99, ../../stylesheets/screen.scss */
+/* line 100, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -1306,23 +1318,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 108, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 109, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 109, ../../stylesheets/screen.scss */
+/* line 110, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 114, ../../stylesheets/screen.scss */
+/* line 115, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 116, ../../stylesheets/screen.scss */
+/* line 117, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;
