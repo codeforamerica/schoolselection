@@ -39,13 +39,14 @@
         .wrapper
           %ul.horizontal-list
             - featured_schools.each do |school|
-              %li
-                %table.no-padding
-                  %tr
-                    %td.valign-top.no-padding
-                      = image_tag(school.image(:original), :width=>'500')
-                      .slider_label
-                        = school.name
+              - if school.image.present?
+                %li
+                  %table.no-padding
+                    %tr
+                      %td.valign-top.no-padding
+                        = image_tag(school.image(:original), :width=>'500')
+                        .slider_label
+                          = school.name
         
 %div.clear-both.italic
   %p== Please note that this tool cannot be used to register a student; it is intended only to support your efforts to learn about your options. Visit #{link_to 'www.bostonpublicschools.org/register', 'http://www.bostonpublicschools.org/register'} for more on school registration. 
