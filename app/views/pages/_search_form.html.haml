@@ -49,8 +49,9 @@
                           = school.name
         
 %div.clear-both.italic
-  %p== Please note that this tool cannot be used to register a student; it is intended only to support your efforts to learn about your options. Visit #{link_to 'www.bostonpublicschools.org/register', 'http://www.bostonpublicschools.org/register'} for more on school registration. 
-  %p== This application has just been released.  If you encounter any problems, please #{mail_to 'boston@codeforamerica.org', 'let us know'}.
+  %ul
+    %li== This tool cannot be used to register a student. Visit #{link_to 'www.bostonpublicschools.org/register', 'http://www.bostonpublicschools.org/register'} for more on school registration. 
+    %li== This application has just been released.  If you encounter any problems, please #{mail_to 'boston@codeforamerica.org', 'let us know'}.
   
 - content_for :scripts do
   = javascript_tag do
