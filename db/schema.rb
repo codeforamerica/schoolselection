@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109002906) do
+ActiveRecord::Schema.define(:version => 20111109053242) do
 
   create_table "address_ranges", :force => true do |t|
     t.integer "geocode_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
+    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
   end
 
   create_table "cities", :force => true do |t|
@@ -37,13 +37,6 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
   end
 
   add_index "cities", ["state_id"], :name => "index_cities_on_state_id"
-
-  create_table "classes", :id => false, :force => true do |t|
-    t.integer "id"
-    t.integer "type_id"
-    t.string  "name",    :limit => 200
-    t.float   "cost"
-  end
 
   create_table "coordinates", :force => true do |t|
     t.integer  "assignment_zone_id"
@@ -91,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
     t.float    "mcas_science_proficient"
     t.float    "mcas_science_needsimprovement"
     t.float    "mcas_science_failing"
+    t.text     "uniform_policy"
   end
 
   add_index "grade_level_schools", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
@@ -111,15 +105,8 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
     t.datetime "updated_at"
   end
 
-  create_table "nodes", :id => false, :force => true do |t|
-    t.integer "id",                                                   :null => false
-    t.decimal "lon",                   :precision => 11, :scale => 8
-    t.decimal "lat",                   :precision => 11, :scale => 8
-    t.integer "numofuse", :limit => 2
-  end
-
   create_table "parcels", :force => true do |t|
-    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"multi_polygon", :geographic=>true}
+    t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
     t.string   "build_name"
     t.string   "address"
     t.integer  "city_id"
@@ -150,19 +137,6 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "relation_ways", :id => false, :force => true do |t|
-    t.integer "relation_id"
-    t.integer "way_id"
-    t.string  "type",        :limit => 200
-  end
-
-  create_table "relations", :id => false, :force => true do |t|
-    t.integer "relation_id"
-    t.integer "type_id"
-    t.integer "class_id"
-    t.string  "name",        :limit => 200
-  end
-
   create_table "school_levels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -183,7 +157,6 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
   create_table "schools", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "features"
     t.string   "address"
     t.integer  "city_id"
     t.integer  "state_id"
@@ -219,13 +192,15 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "vertex_id"
+    t.text     "features"
     t.string   "orgcode"
+    t.integer  "vertex_id"
     t.boolean  "hidden_gem",                    :default => false
     t.boolean  "special_admissions",            :default => false
     t.text     "surround_care_hours"
     t.string   "email"
     t.string   "permalink"
+    t.text     "preview_hours"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
@@ -241,11 +216,6 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
     t.string   "abbreviation"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "types", :id => false, :force => true do |t|
-    t.integer "id"
-    t.string  "name", :limit => 200
   end
 
   create_table "users", :force => true do |t|
@@ -266,47 +236,11 @@ ActiveRecord::Schema.define(:version => 20111109002906) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
-  create_table "vertices_tmp", :id => false, :force => true do |t|
-    t.integer "id",                                                                   :null => false
-    t.spatial "the_geom", :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-  end
-
-  add_index "vertices_tmp", ["the_geom"], :name => "vertices_tmp_idx", :spatial => true
-
   create_table "walk_zones", :force => true do |t|
     t.string   "name"
     t.decimal  "distance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "way_tag", :id => false, :force => true do |t|
-    t.integer "type_id"
-    t.integer "class_id"
-    t.integer "way_id"
-  end
-
-  create_table "ways", :id => false, :force => true do |t|
-    t.integer "gid"
-    t.integer "class_id",                                                          :null => false
-    t.float   "length"
-    t.string  "name",         :limit => 200
-    t.float   "x1"
-    t.float   "y1"
-    t.float   "x2"
-    t.float   "y2"
-    t.float   "reverse_cost"
-    t.text    "rule"
-    t.float   "to_cost"
-    t.integer "osm_id"
-    t.spatial "the_geom",     :limit => {:srid=>4326, :type=>"multi_line_string"}
-    t.integer "source"
-    t.integer "target"
-  end
-
-  add_index "ways", ["gid"], :name => "ways_gid_idx", :unique => true
-  add_index "ways", ["source"], :name => "source_idx"
-  add_index "ways", ["target"], :name => "target_idx"
-  add_index "ways", ["the_geom"], :name => "geom_idx", :spatial => true
 
 end
