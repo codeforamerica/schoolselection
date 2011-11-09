@@ -83,9 +83,8 @@ class SchoolsController < ApplicationController
     @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
 
     m, num, street = session[:address].match(/(\d+)\s+(.*)/).to_a
-    address_range = AddressRange.find_by_address(num.to_i,street,session[:zipcode])
+    @geocode = AddressRange.geocode_by_address(num.to_i,street,session[:zipcode])
     #todo: make sure the address range is actually found, first
-    @geocode = address_range.first.geocode
     @assignment_zone = @geocode.assignment_zone
 
     @walk_zone_schools = School.walkzone_by_geocode_and_grade(@geocode,@grade_level)
