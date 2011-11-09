@@ -2,14 +2,14 @@
   %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background draggable'}
     %td.handle_column
       = image_tag('icons/handle.png')
-    %td
-      = image_tag(school.image(:icon))
+    %td{:height=>'90px' }
+      = image_tag(school.image(:icon), :class => 'rounded-corners')
     %td.title_column
       %h3.bold= school.name
       %span.italic
         == #{school.address}, #{school.city.try(:name)}
     %td &nbsp;
-    %td{:width=>'390'}
+    %td{:width=>'300'}
       Preview Hours:
       = school.preview_hours
     %td.view_button_column.right_padded
