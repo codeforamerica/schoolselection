@@ -46,12 +46,12 @@ class GradeLevelSchool < ActiveRecord::Base
   end
   
   def ela_percentile
-    scores = SchoolGrade.find_all_by_grade_number(self.grade_number).map(&:ela_score).compact.sort
+    scores = GradeLevelSchool.find_all_by_grade_number(self.grade_number).map(&:ela_score).compact.sort
     ((scores.index(self.ela_score) / scores.size.to_f) * 100).to_i
   end
   
   def math_percentile
-    scores = SchoolGrade.find_all_by_grade_number(self.grade_number).map(&:math_score).compact.sort
+    scores = GradeLevelSchool.find_all_by_grade_number(self.grade_number).map(&:math_score).compact.sort
     ((scores.index(self.math_score) / scores.size.to_f) * 100).to_i
   end
 end

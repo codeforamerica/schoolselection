@@ -7,23 +7,51 @@
       = image_tag('icons/lightbulb.png')
       == &nbsp;As part of the school selection process, parents may submit an ordered list of five or more schools.  Below are your favorites. You can sort the list by dragging-and-dropping the handle icon on the left side of each listing. Before submitting your choices, we encourage you to contact each school and schedule an in-person visit.
     
-    %ul#favorites-list.no-bullets
-      - counter = 0
-      - @favorite_schools.each do |school|
-        = content_tag_for :li, school do
-          - counter += 1
-          = render :partial => 'schools/favorite_schools', :locals => {:school => school, :counter => counter}
+    %table.no-bottom-margin
+      %tr
+        %td#numbers_column
+          %div{:style=>"margin-top: 50px"} &nbsp;
+          - @favorite_schools.each_with_index do |school, index|
+            .favorite_number
+              %h1= index + 1
+        %td
+          %ul#favorites-list.no-bullets
+            - counter = 0
+            - @favorite_schools.each do |school|
+              = content_tag_for :li, school do
+                - counter += 1
+                = render :partial => 'schools/favorite_schools', :locals => {:school => school, :counter => counter}
     
-    %br/
     %h3.bold Online Pre-Registration
     %p
       %span.bold
         BPSExpress 
       enables parents and guardians to complete some of the school registration process before visiting a Family Resource Center. This pre-registration application is only for families registering a child not currently enrolled in the Boston Public Schools. If your child already attends BPS, he or she will receive a registration form at school.
     %p= link_to "Pre-Register for Schools", 'https://externalweb.mybps.org/ExternalWeb/login.aspx?tabindex=0&tabid=30', :class => 'blue-button'
-    = link_to '< Return to List View', schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list'), :class => 'bold'
-    
         
   = render :partial => 'layouts/page_footer'
   
-  
+- content_for :scripts do
+  = javascript_tag do
+    // Sorting the list
+
+    $(document).ready(function(){
+    $('#favorites-list').sortable({
+    axis: 'y',
+    dropOnEmpty: false,
+    handle: '.favorite-school',
+    cursor: 'crosshair',
+    items: 'li',
+    opacity: 0.4,
+    scroll: true,
+    update: function(){
+    $.ajax({
+    type: 'post',
+    data: $('#favorites-list').sortable('serialize'),
+    dataType: 'script',
+    complete: function(request){
+    },
+    url: '/schools/sort'})
+    }
+    });
+    });

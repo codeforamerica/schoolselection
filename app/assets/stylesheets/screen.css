@@ -279,7 +279,7 @@ a.gray-button:visited {
   text-align: center;
   font-weight: bold;
   font-size: 120%;
-  padding: 7px 5px 7px 0;
+  padding: 7px 10px 7px 10px;
   margin-bottom: 20px;
   border: none;
 }
@@ -377,12 +377,17 @@ table.gray-background td {
   background-color: #e3e4e5 !important;
 }
 
-/* line 7, ../../stylesheets/partials/_general.scss */
+/* line 8, ../../stylesheets/partials/_general.scss */
+table.padded td {
+  padding: 15px 15px 15px 0;
+}
+
+/* line 10, ../../stylesheets/partials/_general.scss */
 h3.adjust {
   margin-bottom: -8px;
 }
 
-/* line 8, ../../stylesheets/partials/_general.scss */
+/* line 11, ../../stylesheets/partials/_general.scss */
 th {
   background-color: white !important;
   font-size: 12px;
@@ -390,7 +395,7 @@ th {
   font-weight: normal !important;
 }
 
-/* line 9, ../../stylesheets/partials/_general.scss */
+/* line 12, ../../stylesheets/partials/_general.scss */
 ul.horizontal-list {
   margin: 0;
   padding: 0;
@@ -423,7 +428,7 @@ ul.horizontal-list li.last {
   padding-right: 0;
 }
 
-/* line 10, ../../stylesheets/partials/_general.scss */
+/* line 13, ../../stylesheets/partials/_general.scss */
 ul.no-bullets {
   list-style: none;
 }
@@ -434,7 +439,12 @@ ul.no-bullets li {
   margin-left: 0px;
 }
 
-/* line 11, ../../stylesheets/partials/_general.scss */
+/* line 14, ../../stylesheets/partials/_general.scss */
+ul#favorites-list {
+  padding: 0;
+}
+
+/* line 15, ../../stylesheets/partials/_general.scss */
 input {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -447,13 +457,13 @@ input {
   border: 1px solid #bbbbbb;
 }
 
-/* line 12, ../../stylesheets/partials/_general.scss */
+/* line 16, ../../stylesheets/partials/_general.scss */
 select {
   font-size: 13px;
   margin: 0 10px 0 1px;
 }
 
-/* line 13, ../../stylesheets/partials/_general.scss */
+/* line 17, ../../stylesheets/partials/_general.scss */
 input[type='submit'] {
   background-color: gray;
   color: white !important;
@@ -462,71 +472,76 @@ input[type='submit'] {
   margin: 10px 10px 10px 0;
 }
 
-/* line 14, ../../stylesheets/partials/_general.scss */
+/* line 18, ../../stylesheets/partials/_general.scss */
 form div {
   margin: 10px 10px 10px 0;
 }
 
-/* line 16, ../../stylesheets/partials/_general.scss */
+/* line 20, ../../stylesheets/partials/_general.scss */
 .clear-both {
   clear: both;
 }
 
-/* line 17, ../../stylesheets/partials/_general.scss */
+/* line 21, ../../stylesheets/partials/_general.scss */
 .right {
   text-align: right;
 }
 
-/* line 18, ../../stylesheets/partials/_general.scss */
+/* line 22, ../../stylesheets/partials/_general.scss */
 .center {
   text-align: center;
 }
 
-/* line 19, ../../stylesheets/partials/_general.scss */
+/* line 23, ../../stylesheets/partials/_general.scss */
 .hidden {
   display: none;
 }
 
-/* line 20, ../../stylesheets/partials/_general.scss */
+/* line 24, ../../stylesheets/partials/_general.scss */
 .italic {
   font-style: italic;
 }
 
-/* line 21, ../../stylesheets/partials/_general.scss */
+/* line 25, ../../stylesheets/partials/_general.scss */
 .bold {
   font-weight: bold;
 }
 
-/* line 22, ../../stylesheets/partials/_general.scss */
+/* line 26, ../../stylesheets/partials/_general.scss */
 .nobold {
   font-weight: normal;
 }
 
-/* line 23, ../../stylesheets/partials/_general.scss */
+/* line 27, ../../stylesheets/partials/_general.scss */
 .smaller {
   font-size: .65em;
 }
 
-/* line 24, ../../stylesheets/partials/_general.scss */
+/* line 28, ../../stylesheets/partials/_general.scss */
+.normal {
+  font-size: 13px !important;
+}
+
+/* line 29, ../../stylesheets/partials/_general.scss */
 .medium {
   font-size: 1.1em;
   line-height: 1.5em;
   margin-bottom: 0;
 }
 
-/* line 25, ../../stylesheets/partials/_general.scss */
+/* line 30, ../../stylesheets/partials/_general.scss */
 .large {
   font-size: 1.2em;
   line-height: 1.75em !important;
   margin-bottom: 0;
 }
 
-/* line 26, ../../stylesheets/partials/_general.scss */
+/* line 31, ../../stylesheets/partials/_general.scss */
 .larger {
   font-size: 1.4em;
 }
 
-/* line 27, ../../stylesheets/partials/_general.scss */
+/* line 32, ../../stylesheets/partials/_general.scss */
 .alert {
   color: #bf1300;
   font-size: 1.2em;
@@ -536,7 +551,7 @@ form div {
   border: none;
 }
 
-/* line 28, ../../stylesheets/partials/_general.scss */
+/* line 33, ../../stylesheets/partials/_general.scss */
 .notice {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -552,17 +567,17 @@ form div {
   color: white;
 }
 
-/* line 29, ../../stylesheets/partials/_general.scss */
+/* line 34, ../../stylesheets/partials/_general.scss */
 .heart {
   margin: 0 0 -1px 4px;
 }
 
-/* line 30, ../../stylesheets/partials/_general.scss */
+/* line 35, ../../stylesheets/partials/_general.scss */
 .favorited {
   background-color: #fdf8b9;
 }
 
-/* line 31, ../../stylesheets/partials/_general.scss */
+/* line 36, ../../stylesheets/partials/_general.scss */
 .static-map-image {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -574,23 +589,23 @@ form div {
   margin: 0 0 20px 0;
 }
 
-/* line 32, ../../stylesheets/partials/_general.scss */
+/* line 37, ../../stylesheets/partials/_general.scss */
 .align-top {
   vertical-align: top;
 }
 
-/* line 33, ../../stylesheets/partials/_general.scss */
+/* line 38, ../../stylesheets/partials/_general.scss */
 .transportation-icon {
   margin: 0 7px -10px 0 !important;
 }
 
-/* line 34, ../../stylesheets/partials/_general.scss */
+/* line 39, ../../stylesheets/partials/_general.scss */
 .gray-background {
   background-color: #e3e4e5;
   padding: 1px 5px 0 5px;
 }
 
-/* line 35, ../../stylesheets/partials/_general.scss */
+/* line 40, ../../stylesheets/partials/_general.scss */
 .green-background {
   background-color: #a5e188;
   -moz-border-radius: 7px;
@@ -601,7 +616,7 @@ form div {
   border-radius: 7px;
 }
 
-/* line 36, ../../stylesheets/partials/_general.scss */
+/* line 41, ../../stylesheets/partials/_general.scss */
 .yellow-background {
   background-color: #faf4a5 !important;
   -moz-border-radius: 7px;
@@ -612,29 +627,36 @@ form div {
   border-radius: 7px;
 }
 
-/* line 37, ../../stylesheets/partials/_general.scss */
+/* line 42, ../../stylesheets/partials/_general.scss */
+.darkyellow-background {
+  background-color: #bfbb7e;
+  margin-top: 10px;
+  padding: 1px 5px 0 5px;
+}
+
+/* line 43, ../../stylesheets/partials/_general.scss */
 .lightbox-button {
   margin-top: 30px;
 }
 
-/* line 38, ../../stylesheets/partials/_general.scss */
+/* line 44, ../../stylesheets/partials/_general.scss */
 #favorite_text_button {
   margin-top: 30px;
 }
 
-/* line 39, ../../stylesheets/partials/_general.scss */
+/* line 45, ../../stylesheets/partials/_general.scss */
 .favorites_button_text {
   padding-left: 4px;
 }
 
-/* line 40, ../../stylesheets/partials/_general.scss */
+/* line 46, ../../stylesheets/partials/_general.scss */
 .notes {
   padding: 10px;
   margin-bottom: 20px;
   background-color: #dcebf2;
 }
 
-/* line 41, ../../stylesheets/partials/_general.scss */
+/* line 47, ../../stylesheets/partials/_general.scss */
 .rounded-corners {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -644,65 +666,82 @@ form div {
   border-radius: 7px;
 }
 
-/* line 42, ../../stylesheets/partials/_general.scss */
+/* line 48, ../../stylesheets/partials/_general.scss */
 .star-icon {
   margin-bottom: -3px;
 }
 
-/* line 43, ../../stylesheets/partials/_general.scss */
+/* line 49, ../../stylesheets/partials/_general.scss */
 .hidden_gem {
   position: absolute;
   display: none;
 }
 
-/* line 44, ../../stylesheets/partials/_general.scss */
+/* line 50, ../../stylesheets/partials/_general.scss */
 .external_link {
   margin-left: 3px;
 }
 
-/* line 45, ../../stylesheets/partials/_general.scss */
+/* line 51, ../../stylesheets/partials/_general.scss */
 #download_links {
   margin-top: 30px;
 }
 
-/* line 46, ../../stylesheets/partials/_general.scss */
+/* line 52, ../../stylesheets/partials/_general.scss */
 #footnotes {
   margin-top: 30px;
 }
 
-/* line 48, ../../stylesheets/partials/_general.scss */
+/* line 53, ../../stylesheets/partials/_general.scss */
+.draggable:hover {
+  cursor: move;
+}
+
+/* line 54, ../../stylesheets/partials/_general.scss */
+.favorite_number {
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+/* line 56, ../../stylesheets/partials/_general.scss */
+.handle_column {
+  text-align: center;
+  width: 30px;
+}
+
+/* line 57, ../../stylesheets/partials/_general.scss */
 .favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 49, ../../stylesheets/partials/_general.scss */
+/* line 58, ../../stylesheets/partials/_general.scss */
 .small_image_column {
   width: 95px;
 }
 
-/* line 50, ../../stylesheets/partials/_general.scss */
+/* line 59, ../../stylesheets/partials/_general.scss */
 .medium_image_column {
   width: 120px;
 }
 
-/* line 51, ../../stylesheets/partials/_general.scss */
+/* line 60, ../../stylesheets/partials/_general.scss */
 .title_column {
   width: 240px;
 }
 
-/* line 52, ../../stylesheets/partials/_general.scss */
+/* line 61, ../../stylesheets/partials/_general.scss */
 .eligibility_column {
   width: 160px;
 }
 
-/* line 53, ../../stylesheets/partials/_general.scss */
+/* line 62, ../../stylesheets/partials/_general.scss */
 .view_button_column {
   width: 55px;
 }
 
-/* line 54, ../../stylesheets/partials/_general.scss */
+/* line 63, ../../stylesheets/partials/_general.scss */
 .favorite_button_column {
   width: 30px;
 }
@@ -1170,6 +1209,18 @@ body #screen #page-footer {
   overflow-x: hidden;
 }
 /* line 53, ../../stylesheets/screen.scss */
+body #screen #center-column {
+  position: absolute;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 1103.583px;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html body #screen #center-column {
+  overflow-x: hidden;
+}
+/* line 54, ../../stylesheets/screen.scss */
 body #screen #left-column {
   position: absolute;
   display: inline;
@@ -1181,7 +1232,7 @@ body #screen #left-column {
 * html body #screen #left-column {
   overflow-x: hidden;
 }
-/* line 58, ../../stylesheets/screen.scss */
+/* line 59, ../../stylesheets/screen.scss */
 body #screen #sidebar {
   position: absolute;
   top: 129px;
@@ -1189,7 +1240,7 @@ body #screen #sidebar {
   margin-top: 40px;
   margin-left: 958px;
 }
-/* line 64, ../../stylesheets/screen.scss */
+/* line 65, ../../stylesheets/screen.scss */
 body #screen #sidebar #nav {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1211,7 +1262,7 @@ body #screen #sidebar #nav {
   padding: 17px 20px 15px 25px;
   margin-bottom: 30px;
 }
-/* line 72, ../../stylesheets/screen.scss */
+/* line 73, ../../stylesheets/screen.scss */
 body #screen #sidebar #mypicks {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -1232,7 +1283,7 @@ body #screen #sidebar #mypicks {
   background-image: linear-gradient(top, #fdf8b9, #faf4a5);
   padding: 20px 20px 25px 25px;
 }
-/* line 82, ../../stylesheets/screen.scss */
+/* line 83, ../../stylesheets/screen.scss */
 body #screen #map #map-list {
   display: inline;
   float: left;
@@ -1246,16 +1297,16 @@ body #screen #map #map-list {
 * html body #screen #map #map-list {
   overflow-x: hidden;
 }
-/* line 87, ../../stylesheets/screen.scss */
+/* line 88, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list {
   padding-left: 15px;
 }
-/* line 89, ../../stylesheets/screen.scss */
+/* line 90, ../../stylesheets/screen.scss */
 body #screen #map #map-list ul#markers_list li {
   padding-bottom: 7px;
   font-weight: bold;
 }
-/* line 92, ../../stylesheets/screen.scss */
+/* line 93, ../../stylesheets/screen.scss */
 body #screen #map #map_container {
   display: inline;
   float: left;
@@ -1266,7 +1317,7 @@ body #screen #map #map_container {
 * html body #screen #map #map_container {
   overflow-x: hidden;
 }
-/* line 94, ../../stylesheets/screen.scss */
+/* line 95, ../../stylesheets/screen.scss */
 body #screen #map #map_container #gmaps4rails_map {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -1278,13 +1329,13 @@ body #screen #map #map_container #gmaps4rails_map {
   width: 640px;
   height: 490px;
 }
-/* line 95, ../../stylesheets/screen.scss */
+/* line 96, ../../stylesheets/screen.scss */
 body #screen #map #map_container .balloon {
   border: solid 1px #bbbbbb;
   height: 300px;
   width: 300px;
 }
-/* line 99, ../../stylesheets/screen.scss */
+/* line 100, ../../stylesheets/screen.scss */
 body #screen #search-form {
   display: inline;
   float: left;
@@ -1306,23 +1357,23 @@ body #screen #search-form {
 * html body #screen #search-form {
   overflow-x: hidden;
 }
-/* line 107, ../../stylesheets/screen.scss */
+/* line 108, ../../stylesheets/screen.scss */
 body #screen #search-form .address {
   width: 250px;
 }
-/* line 108, ../../stylesheets/screen.scss */
+/* line 109, ../../stylesheets/screen.scss */
 body #screen #search-form .zipcode {
   width: 80px;
 }
-/* line 109, ../../stylesheets/screen.scss */
+/* line 110, ../../stylesheets/screen.scss */
 body #screen #search-form table.search {
   width: 450px !important;
 }
-/* line 114, ../../stylesheets/screen.scss */
+/* line 115, ../../stylesheets/screen.scss */
 body #footer {
   background-color: #cccbbe;
 }
-/* line 116, ../../stylesheets/screen.scss */
+/* line 117, ../../stylesheets/screen.scss */
 body #footer #inner-footer {
   width: 1152px;
   margin: 0 auto;

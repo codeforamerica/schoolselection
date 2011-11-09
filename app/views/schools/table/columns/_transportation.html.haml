@@ -1,8 +1,12 @@
 %td.tabbable.transportation.large.hidden
-  - if @grade_level.name == "High"
-    =raw school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('city-bus.png', :class=> 'transportation-icon')}&nbsp;MBTA"
+  - if (school.eligibility =~ /Walk Zone/) && !school.transportation_eligible?
+    == #{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking
   - else
-    =raw school.eligibility =~ /Walk Zone/ ? "#{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking" : "#{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus"
+    - if @grade_level.name == "High"
+      == #{image_tag('city-bus.png', :class=> 'transportation-icon')}&nbsp;MBTA
+    - else
+      == #{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus
+
 %td.tabbable.transportation.hidden.larger
   =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.transportation.hidden.larger

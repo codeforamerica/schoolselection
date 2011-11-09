@@ -4,10 +4,14 @@ table.gray-background{
   th{ background-color: $gray !important; }
   td{ background-color: $gray !important; }
 }
+table.padded{
+  td{ padding: 15px 15px 15px 0; }
+}
 h3.adjust{ margin-bottom: -8px; }
 th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal !important; }
 ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
 ul.no-bullets{ @include no-bullets; }
+ul#favorites-list{ padding: 0;}
 input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray;}
 select{ font-size: 13px; margin: 0 10px 0 1px; }
 input[type='submit']{ background-color: gray; color: white !important; border: solid 1px gray; padding: 5px 7px 5px 7px; margin: 10px 10px 10px 0; }
@@ -21,6 +25,7 @@ form div { margin: 10px 10px 10px 0; }
 .bold{ font-weight: bold; }
 .nobold{ font-weight: normal; }
 .smaller{ font-size: .65em;}
+.normal{ font-size: 13px !important;}
 .medium{ font-size: 1.1em; line-height: 1.5em; margin-bottom: 0; }
 .large{ font-size: 1.2em; line-height: 1.75em !important; margin-bottom: 0; }
 .larger{ font-size: 1.4em; }
@@ -34,6 +39,7 @@ form div { margin: 10px 10px 10px 0; }
 .gray-background{ background-color: $gray; padding: 1px 5px 0 5px; }
 .green-background{ background-color: $green; @include border-radius(7px); }
 .yellow-background{ background-color: $yellow !important; @include border-radius(7px); }
+.darkyellow-background{ background-color: $darkyellow; margin-top: 10px; padding: 1px 5px 0 5px; }
 .lightbox-button{ margin-top: 30px; }
 #favorite_text_button{ margin-top: 30px; }
 .favorites_button_text{ padding-left: 4px; }
@@ -44,7 +50,10 @@ form div { margin: 10px 10px 10px 0; }
 .external_link{ margin-left: 3px; }
 #download_links{ margin-top: 30px; }
 #footnotes{ margin-top: 30px; }
+.draggable:hover{cursor: move;}
+.favorite_number{ height: 90px; margin-bottom: 20px; }
 
+.handle_column{ text-align: center; width: 30px; }
 .favorite_number_column{ font-size: 2em; text-align: center; width: 30px; }
 .small_image_column{ width: 95px; }
 .medium_image_column{ width: 120px;}

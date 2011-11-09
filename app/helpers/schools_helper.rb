@@ -144,17 +144,26 @@ module SchoolsHelper
       :shadow_width => '43', :shadow_height => '38',
       :shadow_anchor => [10, 33],
       :description => %{
+        #{alert(x)}
         <ul class='horizontal-list'>
-          <li>#{image_tag(x.image(:thumb))}</li>
+          <li>#{image_tag(x.image(:thumb), :class => 'rounded-corners')}</li>
           <li>
             <h3 class='bold'>#{x.name}</h3>
             #{x.address}<br />
             #{x.city.try(:name)} MA, #{x.zipcode}<br />
-            <strong>#{link_to 'View More', school_path(x.permalink)}</strong>
+            <strong>#{link_to 'Learn More', school_path(x.permalink)}</strong>
           </li>
         </ul>
       },
       :sidebar => "#{x.name}"
     }
+  end
+  
+  def alert(x)
+    if x.id.to_s == session[:sibling_school]
+      "<div id='flash' class='normal bold center yellow-background'>This school qualifies for Sibling Priority</div>"
+    elsif x.eligibility =~ /Walk Zone/
+      "<div id='flash' class='normal bold center green-background'>This school qualifies for Walk Zone Priority</div>"
+    end
   end
 end

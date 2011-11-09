@@ -1,13 +1,16 @@
-%table#favorite-schools.listings
-  %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background'}
-    %td.handle
+%table.padded.favorite-school
+  %tr{:id=>"favorite_school_#{school.id}", :class => 'yellow-background draggable'}
+    %td.handle_column
       = image_tag('icons/handle.png')
-    %td.favorite_number_column.bold.right
-      = counter            
-    %td.medium-image-column
-      = image_tag(school.image.url(:small), :class => 'rounded-corners')          
+    %td{:height=>'90px' }
+      = image_tag(school.image(:icon), :class => 'rounded-corners')
     %td.title_column
       %h3.bold= school.name
       %span.italic
         == #{school.address}, #{school.city.try(:name)}
-    %td{:width=>'200'} &nbsp;
+    %td &nbsp;
+    %td{:width=>'380'}
+      Preview Hours:
+      = school.preview_hours
+    %td.view_button_column.right_padded
+      = link_to "View", school_path(school.permalink), :class => 'blue-button'

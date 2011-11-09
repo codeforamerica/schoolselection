@@ -65,9 +65,9 @@
           %table#download_links
             %tr
               %td{:width=>'24px'}
-                = link_to image_tag('icons/icon_PDF_big.png', :class => 'pdf_icon'), "http://www.bostonpublicschools.org/files/reportcards/sch#{@school.bpsid}.pdf"              
+                == #{raw link_to image_tag('icons/icon_PDF_big.png', :class => 'pdf_icon'), school_path(@school.permalink, :address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)}                  
               %td{:style => "font-weight: bold; padding: 0;"}
-                = link_to 'Download PDF', "http://www.bostonpublicschools.org/files/reportcards/sch#{@school.bpsid}.pdf"
+                == #{link_to 'Download PDF', school_path(@school.permalink, :address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)}
 
         %td.align-top
           - if @school.description.present?
@@ -107,7 +107,7 @@
           - if grade.mcas_ela_total.present?
             %table
               .gray-background
-                %h4.bold MCAS Scores
+                %h4.bold== MCAS Scores (Grade #{session[:grade_level]})
               %thead
                 %tr
                   %th 
@@ -139,7 +139,7 @@
           - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
             %table
               .gray-background
-                %h4.bold Admissions
+                %h4.bold== Admissions (Grade #{session[:grade_level]})
               %thead
                 %tr
                   %th Open Seats†
