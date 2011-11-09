@@ -1,4 +1,4 @@
-class SchoolGrade < ActiveRecord::Base
+class GradeLevelSchool < ActiveRecord::Base
   belongs_to :school
   belongs_to :grade_level
   

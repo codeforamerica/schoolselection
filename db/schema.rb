@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103232425) do
+ActiveRecord::Schema.define(:version => 20111109002906) do
+
+  create_table "address_ranges", :force => true do |t|
+    t.integer "geocode_id"
+    t.integer "num_start"
+    t.integer "num_end"
+    t.boolean "is_even"
+    t.string  "street"
+    t.string  "zipcode"
+  end
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -37,19 +46,55 @@ ActiveRecord::Schema.define(:version => 20111103232425) do
     t.datetime "updated_at"
   end
 
+  create_table "geocode_grade_walkzone_schools", :force => true do |t|
+    t.boolean "transportation_eligible"
+    t.integer "geocode_id"
+    t.integer "grade_level_id"
+    t.integer "school_id"
+  end
+
+  create_table "geocodes", :force => true do |t|
+    t.integer "assignment_zone_id"
+  end
+
+  create_table "grade_level_schools", :force => true do |t|
+    t.integer  "school_id"
+    t.integer  "grade_level_id"
+    t.string   "grade_number"
+    t.string   "hours"
+    t.integer  "open_seats"
+    t.integer  "first_choice"
+    t.integer  "second_choice"
+    t.integer  "third_choice"
+    t.integer  "fourth_higher_choice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mcas_ela_total"
+    t.float    "mcas_ela_advanced"
+    t.float    "mcas_ela_proficient"
+    t.float    "mcas_ela_needsimprovement"
+    t.float    "mcas_ela_failing"
+    t.integer  "mcas_math_total"
+    t.float    "mcas_math_advanced"
+    t.float    "mcas_math_proficient"
+    t.float    "mcas_math_needsimprovement"
+    t.float    "mcas_math_failing"
+    t.integer  "mcas_science_total"
+    t.float    "mcas_science_advanced"
+    t.float    "mcas_science_proficient"
+    t.float    "mcas_science_needsimprovement"
+    t.float    "mcas_science_failing"
+  end
+
+  add_index "grade_level_schools", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
+  add_index "grade_level_schools", ["school_id"], :name => "index_school_grades_on_school_id"
+
   create_table "grade_levels", :force => true do |t|
     t.string   "number"
     t.float    "walk_zone_radius"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-  end
-
-  create_table "grade_levels_schools", :id => false, :force => true do |t|
-    t.integer  "grade_level_id"
-    t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "neighborhoods", :force => true do |t|
@@ -90,38 +135,6 @@ ActiveRecord::Schema.define(:version => 20111103232425) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
-
-  create_table "school_grades", :force => true do |t|
-    t.integer  "school_id"
-    t.integer  "grade_level_id"
-    t.string   "grade_number"
-    t.string   "hours"
-    t.integer  "open_seats"
-    t.integer  "first_choice"
-    t.integer  "second_choice"
-    t.integer  "third_choice"
-    t.integer  "fourth_higher_choice"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "mcas_ela_total"
-    t.float    "mcas_ela_advanced"
-    t.float    "mcas_ela_proficient"
-    t.float    "mcas_ela_needsimprovement"
-    t.float    "mcas_ela_failing"
-    t.integer  "mcas_math_total"
-    t.float    "mcas_math_advanced"
-    t.float    "mcas_math_proficient"
-    t.float    "mcas_math_needsimprovement"
-    t.float    "mcas_math_failing"
-    t.integer  "mcas_science_total"
-    t.float    "mcas_science_advanced"
-    t.float    "mcas_science_proficient"
-    t.float    "mcas_science_needsimprovement"
-    t.float    "mcas_science_failing"
-  end
-
-  add_index "school_grades", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
-  add_index "school_grades", ["school_id"], :name => "index_school_grades_on_school_id"
 
   create_table "school_levels", :force => true do |t|
     t.string   "name"
