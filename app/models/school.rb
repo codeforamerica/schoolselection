@@ -40,7 +40,6 @@ class School < ActiveRecord::Base
       self.joins(:geocode_grade_walkzone_schools)
         .where(:geocode_grade_walkzone_schools => {:geocode_id => geocode, :grade_level_id => grade_level})
         .select("geocode_grade_walkzone_schools.transportation_eligible as transportation_eligible")
-        .select("schools.*")
     end
   end
   

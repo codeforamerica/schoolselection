@@ -89,19 +89,20 @@ class SchoolsController < ApplicationController
     @assignment_zone = @geocode.assignment_zone
 
     @walk_zone_schools = School.walkzone_by_geocode_and_grade(@geocode,@grade_level)
+      .select("schools.*")
       .with_distance(@geocoded_address)
       .includes(:grade_level_schools, :city)
       .order('distance ASC')
     @assignment_zone_schools = @grade_level.schools.where(:assignment_zone_id => @assignment_zone)
+      .select("schools.*")
       .with_distance(@geocoded_address)
       .includes(:grade_level_schools, :city)
-      .order('distance ASC')
-       - @walk_zone_schools
+      .order('distance ASC') - @walk_zone_schools
     @citywide_schools = @grade_level.schools.where(:assignment_zone_id => AssignmentZone.citywide)
+      .select("schools.*")
       .with_distance(@geocoded_address)
       .includes(:grade_level_schools, :city)
-      .order('distance ASC')
-      - @walk_zone_schools
+      .order('distance ASC') - @walk_zone_schools
 
     [ [@walk_zone_schools,"Walk Zone",1], [@assignment_zone_schools,"Assignment Zone",2], [@citywide_schools,"Citywide",3] ].each do |schools,type,index|
       schools.each do |s|
