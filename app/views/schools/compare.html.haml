@@ -7,20 +7,12 @@
       = image_tag('icons/lightbulb.png')
       == &nbsp;As part of the school selection process, parents may submit an ordered list of five or more schools.  Below are your favorites. You can sort the list by dragging-and-dropping the handle icon on the left side of each listing. Before submitting your choices, we encourage you to contact each school and schedule an in-person visit.
     
-    %table.no-bottom-margin
-      %tr
-        %td#numbers_column
-          %div{:style=>"margin-top: 50px"} &nbsp;
-          - @favorite_schools.each_with_index do |school, index|
-            .favorite_number
-              %h1= index + 1
-        %td
-          %ul#favorites-list.no-bullets
-            - counter = 0
-            - @favorite_schools.each do |school|
-              = content_tag_for :li, school do
-                - counter += 1
-                = render :partial => 'schools/favorite_schools', :locals => {:school => school, :counter => counter}
+    %ul#favorites-list.no-bullets
+      - counter = 0
+      - @favorite_schools.each do |school|
+        = content_tag_for :li, school do
+          - counter += 1
+          = render :partial => 'schools/favorite_schools', :locals => {:school => school, :counter => counter}
     
     %h3.bold Online Pre-Registration
     %p
