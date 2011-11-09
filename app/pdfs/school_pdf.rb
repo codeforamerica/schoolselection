@@ -92,7 +92,7 @@ class SchoolPdf < Prawn::Document
   def admissions
     if @grade.open_seats.present?
       move_down 25
-      text "Admissions", :size => 14, :style => :bold
+      text "Admissions (Grade #{@session[:grade_level]})", :size => 14, :style => :bold
       table [["Open Seats", "1st Choices", "2nd Choices", "3rd Choices", "Applicants per Open Seat"]] + [[@grade.open_seats, @grade.first_choice, @grade.second_choice, @grade.third_choice, "#{@grade.demand.to_i} : 1"]] do
         row(0).font_style = :italic
       end
@@ -104,7 +104,7 @@ class SchoolPdf < Prawn::Document
   def mcas
     if @grade.mcas_ela_advanced.present?
       move_down 25
-      text "MCAS Scores", :size => 14, :style => :bold
+      text "MCAS Scores (Grade #{@session[:grade_level]})", :size => 14, :style => :bold
       table [["", "Advanced", "Proficient", "Needs Improvement", "Warning/Failing"]] + 
             [["English", number_to_percentage(@grade.mcas_ela_advanced), number_to_percentage(@grade.mcas_ela_proficient), number_to_percentage(@grade.mcas_ela_needsimprovement), number_to_percentage(@grade.mcas_ela_failing)]] +
              [["Math", number_to_percentage(@grade.mcas_math_advanced), number_to_percentage(@grade.mcas_math_proficient), number_to_percentage(@grade.mcas_math_needsimprovement), number_to_percentage(@grade.mcas_math_failing)]] do

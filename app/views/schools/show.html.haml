@@ -107,7 +107,7 @@
           - if grade.mcas_ela_total.present?
             %table
               .gray-background
-                %h4.bold MCAS Scores
+                %h4.bold== MCAS Scores (Grade #{session[:grade_level]})
               %thead
                 %tr
                   %th 
@@ -139,7 +139,7 @@
           - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
             %table
               .gray-background
-                %h4.bold Admissions
+                %h4.bold== Admissions (Grade #{session[:grade_level]})
               %thead
                 %tr
                   %th Open Seats†
