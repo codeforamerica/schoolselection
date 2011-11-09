@@ -45,7 +45,7 @@ class School < ActiveRecord::Base
   ##### INSTANCE METHODS #####
   
   def grade(number)
-    self.grades.find_by_grade_number(number)
+    grade_level_schools.detect {|x| x.grade_number == number}
   end
 
   def geocode_address!
