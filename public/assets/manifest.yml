@@ -1,5 +1,5 @@
 ---
-BPS-logo-small.png: BPS-logo-small-1f825c13f4108ba461063527f05422bf.png
+BPS-logo-small.png: BPS-logo-small-38227c7f5f8222ad0e7f9adf40d67e92.png
 canvas.jpg: canvas-ebd2154d51d8f5dbc304293bf640873c.jpg
 cfa_logo.png: cfa_logo-ef73e9cba36c0dc71f47f4be2a2c8682.png
 city-bus.png: city-bus-e92c61e9837ceb72875912cdb809e84d.png
@@ -186,7 +186,7 @@ gmaps4rails/gmaps4rails.googlemaps.js: gmaps4rails/gmaps4rails.googlemaps-14c495
 gmaps4rails/gmaps4rails.mapquest.js: gmaps4rails/gmaps4rails.mapquest-e2d8215148c21f49bcbd989437cdd62a.js
 gmaps4rails/gmaps4rails.openlayers.js: gmaps4rails/gmaps4rails.openlayers-fdc8d469c416c55b22d25bf94770c572.js
 marker.png: marker-d415d21ede882102638e89eb987f8702.png
-application.js: application-22e85cdae194ef5c584e1870f36cdaed.js
-application.css: application-67d35f5b3806a442a68b4d6c222778dc.css
+application.js: application-2bc1155932d8ffeacf58173cf0c79dd7.js
+application.css: application-ab3597b4bd88a508f883a2ff69153a8b.css
 rails_admin/activo/application.js: rails_admin/activo/application-6e6e76d06f3d2c33f2cf1c45afe2e77c.js
 rails_admin/application.js: rails_admin/application-af3a5da507562e4a6bdc405bb60bdae6.js
