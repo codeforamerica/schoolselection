@@ -279,7 +279,7 @@ a.gray-button:visited {
   text-align: center;
   font-weight: bold;
   font-size: 120%;
-  padding: 7px 5px 7px 0;
+  padding: 7px 10px 7px 10px;
   margin-bottom: 20px;
   border: none;
 }
@@ -518,25 +518,30 @@ form div {
 }
 
 /* line 28, ../../stylesheets/partials/_general.scss */
+.normal {
+  font-size: 13px !important;
+}
+
+/* line 29, ../../stylesheets/partials/_general.scss */
 .medium {
   font-size: 1.1em;
   line-height: 1.5em;
   margin-bottom: 0;
 }
 
-/* line 29, ../../stylesheets/partials/_general.scss */
+/* line 30, ../../stylesheets/partials/_general.scss */
 .large {
   font-size: 1.2em;
   line-height: 1.75em !important;
   margin-bottom: 0;
 }
 
-/* line 30, ../../stylesheets/partials/_general.scss */
+/* line 31, ../../stylesheets/partials/_general.scss */
 .larger {
   font-size: 1.4em;
 }
 
-/* line 31, ../../stylesheets/partials/_general.scss */
+/* line 32, ../../stylesheets/partials/_general.scss */
 .alert {
   color: #bf1300;
   font-size: 1.2em;
@@ -546,7 +551,7 @@ form div {
   border: none;
 }
 
-/* line 32, ../../stylesheets/partials/_general.scss */
+/* line 33, ../../stylesheets/partials/_general.scss */
 .notice {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -562,17 +567,17 @@ form div {
   color: white;
 }
 
-/* line 33, ../../stylesheets/partials/_general.scss */
+/* line 34, ../../stylesheets/partials/_general.scss */
 .heart {
   margin: 0 0 -1px 4px;
 }
 
-/* line 34, ../../stylesheets/partials/_general.scss */
+/* line 35, ../../stylesheets/partials/_general.scss */
 .favorited {
   background-color: #fdf8b9;
 }
 
-/* line 35, ../../stylesheets/partials/_general.scss */
+/* line 36, ../../stylesheets/partials/_general.scss */
 .static-map-image {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -584,23 +589,23 @@ form div {
   margin: 0 0 20px 0;
 }
 
-/* line 36, ../../stylesheets/partials/_general.scss */
+/* line 37, ../../stylesheets/partials/_general.scss */
 .align-top {
   vertical-align: top;
 }
 
-/* line 37, ../../stylesheets/partials/_general.scss */
+/* line 38, ../../stylesheets/partials/_general.scss */
 .transportation-icon {
   margin: 0 7px -10px 0 !important;
 }
 
-/* line 38, ../../stylesheets/partials/_general.scss */
+/* line 39, ../../stylesheets/partials/_general.scss */
 .gray-background {
   background-color: #e3e4e5;
   padding: 1px 5px 0 5px;
 }
 
-/* line 39, ../../stylesheets/partials/_general.scss */
+/* line 40, ../../stylesheets/partials/_general.scss */
 .green-background {
   background-color: #a5e188;
   -moz-border-radius: 7px;
@@ -611,7 +616,7 @@ form div {
   border-radius: 7px;
 }
 
-/* line 40, ../../stylesheets/partials/_general.scss */
+/* line 41, ../../stylesheets/partials/_general.scss */
 .yellow-background {
   background-color: #faf4a5 !important;
   -moz-border-radius: 7px;
@@ -622,36 +627,36 @@ form div {
   border-radius: 7px;
 }
 
-/* line 41, ../../stylesheets/partials/_general.scss */
+/* line 42, ../../stylesheets/partials/_general.scss */
 .darkyellow-background {
   background-color: #bfbb7e;
   margin-top: 10px;
   padding: 1px 5px 0 5px;
 }
 
-/* line 42, ../../stylesheets/partials/_general.scss */
+/* line 43, ../../stylesheets/partials/_general.scss */
 .lightbox-button {
   margin-top: 30px;
 }
 
-/* line 43, ../../stylesheets/partials/_general.scss */
+/* line 44, ../../stylesheets/partials/_general.scss */
 #favorite_text_button {
   margin-top: 30px;
 }
 
-/* line 44, ../../stylesheets/partials/_general.scss */
+/* line 45, ../../stylesheets/partials/_general.scss */
 .favorites_button_text {
   padding-left: 4px;
 }
 
-/* line 45, ../../stylesheets/partials/_general.scss */
+/* line 46, ../../stylesheets/partials/_general.scss */
 .notes {
   padding: 10px;
   margin-bottom: 20px;
   background-color: #dcebf2;
 }
 
-/* line 46, ../../stylesheets/partials/_general.scss */
+/* line 47, ../../stylesheets/partials/_general.scss */
 .rounded-corners {
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -661,82 +666,82 @@ form div {
   border-radius: 7px;
 }
 
-/* line 47, ../../stylesheets/partials/_general.scss */
+/* line 48, ../../stylesheets/partials/_general.scss */
 .star-icon {
   margin-bottom: -3px;
 }
 
-/* line 48, ../../stylesheets/partials/_general.scss */
+/* line 49, ../../stylesheets/partials/_general.scss */
 .hidden_gem {
   position: absolute;
   display: none;
 }
 
-/* line 49, ../../stylesheets/partials/_general.scss */
+/* line 50, ../../stylesheets/partials/_general.scss */
 .external_link {
   margin-left: 3px;
 }
 
-/* line 50, ../../stylesheets/partials/_general.scss */
+/* line 51, ../../stylesheets/partials/_general.scss */
 #download_links {
   margin-top: 30px;
 }
 
-/* line 51, ../../stylesheets/partials/_general.scss */
+/* line 52, ../../stylesheets/partials/_general.scss */
 #footnotes {
   margin-top: 30px;
 }
 
-/* line 52, ../../stylesheets/partials/_general.scss */
+/* line 53, ../../stylesheets/partials/_general.scss */
 .draggable:hover {
   cursor: move;
 }
 
-/* line 53, ../../stylesheets/partials/_general.scss */
+/* line 54, ../../stylesheets/partials/_general.scss */
 .favorite_number {
   height: 90px;
   margin-bottom: 20px;
 }
 
-/* line 55, ../../stylesheets/partials/_general.scss */
+/* line 56, ../../stylesheets/partials/_general.scss */
 .handle_column {
   text-align: center;
   width: 30px;
 }
 
-/* line 56, ../../stylesheets/partials/_general.scss */
+/* line 57, ../../stylesheets/partials/_general.scss */
 .favorite_number_column {
   font-size: 2em;
   text-align: center;
   width: 30px;
 }
 
-/* line 57, ../../stylesheets/partials/_general.scss */
+/* line 58, ../../stylesheets/partials/_general.scss */
 .small_image_column {
   width: 95px;
 }
 
-/* line 58, ../../stylesheets/partials/_general.scss */
+/* line 59, ../../stylesheets/partials/_general.scss */
 .medium_image_column {
   width: 120px;
 }
 
-/* line 59, ../../stylesheets/partials/_general.scss */
+/* line 60, ../../stylesheets/partials/_general.scss */
 .title_column {
   width: 240px;
 }
 
-/* line 60, ../../stylesheets/partials/_general.scss */
+/* line 61, ../../stylesheets/partials/_general.scss */
 .eligibility_column {
   width: 160px;
 }
 
-/* line 61, ../../stylesheets/partials/_general.scss */
+/* line 62, ../../stylesheets/partials/_general.scss */
 .view_button_column {
   width: 55px;
 }
 
-/* line 62, ../../stylesheets/partials/_general.scss */
+/* line 63, ../../stylesheets/partials/_general.scss */
 .favorite_button_column {
   width: 30px;
 }

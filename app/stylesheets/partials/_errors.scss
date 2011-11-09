@@ -1,4 +1,4 @@
-#flash{ text-align: center; font-weight: bold; font-size: 120%; padding: 7px 5px 7px 0; margin-bottom: 20px; border: none; }
+#flash{ text-align: center; font-weight: bold; font-size: 120%; padding: 7px 10px 7px 10px; margin-bottom: 20px; border: none; }
 #flash.notice{ color: #006600; background-color: $flashgreen; display: none; }
 #flash.alert{ color: #333333; background-color: $flashred; display: none; }  
 .fieldWithErrors{ padding: 2px; background-color: $flashred; display: table; }
