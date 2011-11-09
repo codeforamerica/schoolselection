@@ -4,6 +4,8 @@
   %span.bold
     DiscoverBPS 
   allows parents and students to find eligible schools and create a customized list of favorites. To get started, please enter your home address and the student’s upcoming grade level in the search form, below, and then click “Search.”
+%p.italic
+  == Note: this application has just been released.  Please #{mail_to 'boston@codeforamerica.org', 'let us know'} if you encounter any problems
 
 #search-form
   - session[:address].blank? ? session[:address] = '26 Court St' : session[:address]
