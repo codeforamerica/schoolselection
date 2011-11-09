@@ -1,0 +1,23 @@
+.anythingSlider                         { width: 500px; height: 330px; position: relative; margin: 0 auto 0; }
+.anythingSlider .wrapper                { width: 500px; overflow: auto; height: 330px; margin: 0 0 0 -8px; position: absolute; top: 0; left: 0; }
+.anythingSlider .wrapper ul             { width: 9999px; list-style: none; position: absolute; top: 0; left: 0; margin: 0; }
+.anythingSlider ul li                   { display: block; float: left; padding: 0; height: 330px; width: 500px; margin: 0; }
+.anythingSlider .arrow                  { display: none; }
+.anythingSlider .forward                { background-position: 0 0; right: -20px; }
+.anythingSlider .back                   { background-position: -27px 0; left: 0; }
+.anythingSlider .forward:hover          { background-position: 0 -200px; }
+.anythingSlider .back:hover             { background-position: -27px -200px; }
+
+.slider_image                           { width: 100%; }
+.slider_label                           { position: absolute; width: 480px; margin: -38px 0 0 -8px; padding: 10px; background-color: rgba(255,169,0,0.7); color: black; font-size: 15px; text-align: right; }
+
+
+#start-stop                             { display: none; }
+#start-stop.playing                     { display: none; }
+#start-stop:hover                       { display: none; }
+
+/*
+  Prevents
+*/
+.anythingSlider .wrapper ul ul          { position: static; margin: 0; background: none; overflow: visible; width: auto; border: 0; }
+.anythingSlider .wrapper ul ul li       { float: none; height: auto; width: auto; background: none; }
