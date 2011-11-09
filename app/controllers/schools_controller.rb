@@ -44,12 +44,7 @@ class SchoolsController < ApplicationController
   end
   
   def compare
-    @grade_level = GradeLevel.find_by_number(session[:grade_level])
-    @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
-    @favorite_schools = @grade_level.schools.where("schools.id IN (?)", session[:favorites])
-      .select("schools.*")
-      .with_distance(@geocoded_address)
-      .includes(:grade_level_schools, :city)
+    @favorite_schools = session[:favorites].map {|x| School.find(x)}
   end
   
   ####### AJAX #######
