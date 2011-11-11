@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109053242) do
+ActiveRecord::Schema.define(:version => 20111111051310) do
 
   create_table "address_ranges", :force => true do |t|
     t.integer "geocode_id"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20111109053242) do
     t.string  "street"
     t.string  "zipcode"
   end
+
+  add_index "address_ranges", ["geocode_id"], :name => "index_address_ranges_on_geocode_id"
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -46,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20111109053242) do
     t.datetime "updated_at"
   end
 
+  add_index "coordinates", ["assignment_zone_id"], :name => "index_coordinates_on_assignment_zone_id"
+
   create_table "geocode_grade_walkzone_schools", :force => true do |t|
     t.boolean "transportation_eligible"
     t.integer "geocode_id"
@@ -53,9 +57,15 @@ ActiveRecord::Schema.define(:version => 20111109053242) do
     t.integer "school_id"
   end
 
+  add_index "geocode_grade_walkzone_schools", ["geocode_id"], :name => "index_geocode_grade_walkzone_schools_on_geocode_id"
+  add_index "geocode_grade_walkzone_schools", ["grade_level_id"], :name => "index_geocode_grade_walkzone_schools_on_grade_level_id"
+  add_index "geocode_grade_walkzone_schools", ["school_id"], :name => "index_geocode_grade_walkzone_schools_on_school_id"
+
   create_table "geocodes", :force => true do |t|
     t.integer "assignment_zone_id"
   end
+
+  add_index "geocodes", ["assignment_zone_id"], :name => "index_geocodes_on_assignment_zone_id"
 
   create_table "grade_level_schools", :force => true do |t|
     t.integer  "school_id"
@@ -104,6 +114,8 @@ ActiveRecord::Schema.define(:version => 20111109053242) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "neighborhoods", ["city_id"], :name => "index_neighborhoods_on_city_id"
 
   create_table "parcels", :force => true do |t|
     t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
@@ -204,6 +216,9 @@ ActiveRecord::Schema.define(:version => 20111109053242) do
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
+  add_index "schools", ["neighborhood_id"], :name => "index_schools_on_neighborhood_id"
+  add_index "schools", ["parcel_id"], :name => "index_schools_on_parcel_id"
+  add_index "schools", ["permalink"], :name => "index_schools_on_permalink"
   add_index "schools", ["principal_id"], :name => "index_schools_on_principal_id"
 
   create_table "schools_walk_zones", :id => false, :force => true do |t|
