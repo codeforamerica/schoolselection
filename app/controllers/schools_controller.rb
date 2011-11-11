@@ -7,7 +7,7 @@ class SchoolsController < ApplicationController
     grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
     session[:sibling_school] = params[:sibling_school]
     session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
-    m, @street_number, @street_name = session[:address].match(/(\d+)\s+(.*)/).to_a
+    m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)
     
     if address.blank?
       redirect_to(root_url, alert: "You must enter an address")
