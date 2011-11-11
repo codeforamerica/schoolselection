@@ -24,7 +24,7 @@ class SchoolsController < ApplicationController
           @address = @address_ranges.first
           @grade_levels = GradeLevel.all
           @grade_level = GradeLevel.find_by_number(session[:grade_level])
-          @geocoded_address ||= geocode_address("#{session[:address]}, #{session[:zipcode]}")
+          @geocoded_address ||= geocode_address("#{@street_number} #{@street_name}, #{session[:zipcode]}")
           geocode = @address_ranges.first.geocode
           @assignment_zone = geocode.assignment_zone
           @walk_zone_schools = School.walkzone_by_geocode_and_grade(geocode,@grade_level)
