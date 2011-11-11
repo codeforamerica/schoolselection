@@ -13,4 +13,4 @@
       Preview Hours:
       = school.preview_hours
     %td.view_button_column.right_padded
-      = link_to "View", school_path(school.permalink), :class => 'blue-button'
+      = link_to "View", school_path(school.permalink, search_params()), :class => 'blue-button'
