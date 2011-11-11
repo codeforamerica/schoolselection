@@ -27,3 +27,7 @@ a.yellow-button:active{ color: white; }
 a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($gray, $mediumgray)); @include border-radius(10px); border: solid 1px $darkgray; color: white; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.gray-button:hover{ color: white; text-decoration: none; }
 a.gray-button:visited{ color: white; }
+
+a.white{ color: white; }
+a.white:hover{ color: white; text-decoration: underline !important; }
+a.white:visited{ color: white; }

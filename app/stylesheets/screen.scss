@@ -19,6 +19,7 @@ body {
   @include establish-baseline;
   font-size: $base-font-size;
   font-family: 'Gotham', 'Helvetica', 'Verdana';
+  color: #333;
   text-align: left;
   line-height: 150% !important;
   height: 100%;
@@ -39,7 +40,7 @@ body {
     #table-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
     #logo{ padding: 0 0 17px 25px; }
     #page{ 
-      @include box-shadow; 
+      @include box-shadow(#444444,0,0,7px); 
       @include border-radius(10px);
       background-color: white;
       padding: 30px 25px;
@@ -99,11 +100,10 @@ body {
     }
     
     #search-form{
-      height: 370px;
-      padding: 0 25px 0 25px;
-      margin: 0 20px 10px 0;
-      border-right: solid 1px #ddd;
-      .address{ width: 250px; }
+      height: 400px;
+      padding: 0 15px 0 25px;
+      margin: 0 0 20px 0;
+      .address{ width: 210px; }
       .zipcode{ width: 80px; }
       table.search{ 
         td{ padding: 0; }
