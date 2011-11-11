@@ -913,7 +913,7 @@ table.slider .zipcode {
   text-align: right;
 }
 
-/* line 18, ../../stylesheets/partials/_anythingslider.scss */
+/* line 19, ../../stylesheets/partials/_anythingslider.scss */
 .picture-frame {
   border: solid 20px white;
   border-bottom: solid 40px white;
@@ -923,17 +923,17 @@ table.slider .zipcode {
   box-shadow: 0 0 7px #777777;
 }
 
-/* line 22, ../../stylesheets/partials/_anythingslider.scss */
+/* line 21, ../../stylesheets/partials/_anythingslider.scss */
 #start-stop {
   display: none;
 }
 
-/* line 23, ../../stylesheets/partials/_anythingslider.scss */
+/* line 22, ../../stylesheets/partials/_anythingslider.scss */
 #start-stop.playing {
   display: none;
 }
 
-/* line 24, ../../stylesheets/partials/_anythingslider.scss */
+/* line 23, ../../stylesheets/partials/_anythingslider.scss */
 #start-stop:hover {
   display: none;
 }
@@ -941,7 +941,7 @@ table.slider .zipcode {
 /*
   Prevents
 */
-/* line 29, ../../stylesheets/partials/_anythingslider.scss */
+/* line 28, ../../stylesheets/partials/_anythingslider.scss */
 .anythingSlider .wrapper ul ul {
   position: static;
   margin: 0;
@@ -951,7 +951,7 @@ table.slider .zipcode {
   border: 0;
 }
 
-/* line 30, ../../stylesheets/partials/_anythingslider.scss */
+/* line 29, ../../stylesheets/partials/_anythingslider.scss */
 .anythingSlider .wrapper ul ul li {
   float: none;
   height: auto;
