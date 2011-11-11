@@ -1,0 +1,81 @@
+%tr{:id=>"visible_school_#{school.id}", :class => "#{row_classes}"}
+  %td.small_image_column
+    = image_tag(school.image(:thumb), :class => 'rounded-corners')
+  %td.title_column
+    %h4.bold
+      = link_to school.name, school_path(school.permalink, search_params())
+    %span.italic
+      == #{school.address}, #{school.city.try(:name)}
+
+  - grade = school.grade(session[:grade_level])
+  
+  / OVERVIEW /
+  %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
+    =raw school.eligibility.present? ? eligibility_title(school) : '&nbsp;'
+    - if params[:sibling_school] == school.id.to_s && School.find(params[:sibling_school].try(:to_i)).present?
+      Sibling School
+  %td.tabbable.overview.large      
+    - if (school.eligibility =~ /Walk Zone/) && !school.transportation_eligible?
+      = image_tag('walking.png')
+    - else
+      - if @grade_level.name == "High"
+        = image_tag('city-bus.png')
+      - else
+        = image_tag('school-bus.png')
+  %td.tabbable.overview.large
+    =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
+  %td.tabbable.overview
+    =raw school.grade(session[:grade_level]).try(:hours).present? ? school.grade(session[:grade_level]).try(:hours) : '&nbsp;'
+  
+  / TRANSPORTATION /
+  %td.tabbable.transportation.large.hidden
+    - if (school.eligibility =~ /Walk Zone/) && !school.transportation_eligible?
+      == #{image_tag('walking.png', :class=> 'transportation-icon')}&nbsp;Walking
+    - else
+      - if @grade_level.name == "High"
+        == #{image_tag('city-bus.png', :class=> 'transportation-icon')}&nbsp;MBTA
+      - else
+        == #{image_tag('school-bus.png', :class=> 'transportation-icon')}&nbsp;School Bus
+
+  %td.tabbable.transportation.hidden.larger
+    =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)} <span class='small'>mi</span>" : '&nbsp;'
+  %td.tabbable.transportation.hidden.larger
+    - if school.eligibility =~ /Walk Zone/
+      =raw school.distance.present? ? "#{walk_time(school.distance)} <span class='small'>min</span>" : '&nbsp;'
+    - else
+      &nbsp;
+  %td.tabbable.transportation.hidden.larger
+    =raw school.distance.present? ? "#{drive_time(school.distance)} <span class='small'>min</span>" : '&nbsp;'
+
+
+  / ACADEMICS /
+  %td.tabbable.academics.hidden.larger
+    =raw school.teachers_count.present? ? school.teachers_count : '&nbsp;'
+
+  %td.tabbable.academics.hidden.larger
+    =raw school.students_count.present? ? school.students_count : '&nbsp;'
+
+  %td.tabbable.academics.hidden.larger
+    - if grade.present? && grade.mcas_ela_advanced.present?
+      =raw grade.ela_percentile.present? ? grade.ela_percentile : '&nbsp;'
+
+  %td.tabbable.academics.hidden.larger
+    - if grade.present? && grade.mcas_math_advanced.present?
+      =raw grade.math_percentile.present? ? grade.math_percentile : '&nbsp;'
+
+  / ADMISSIONS /
+  %td.tabbable.admissions.hidden.larger
+    =raw grade.try(:open_seats) ? grade.open_seats : '&nbsp;'
+  %td.tabbable.admissions.hidden.larger
+    =raw grade.try(:first_choice) ? grade.first_choice : '&nbsp;'
+  %td.tabbable.admissions.hidden.larger
+    =raw grade.try(:second_choice) ? grade.second_choice : '&nbsp;'
+  %td.tabbable.admissions.hidden.larger
+    =raw grade.try(:third_choice) ? grade.third_choice : '&nbsp;'
+  %td.tabbable.admissions.hidden.larger
+    =raw grade.try(:total_choices) ? "#{number_with_precision(grade.demand, :precision => 0)} : 1" : '&nbsp;'
+  
+  %td.view_button_column
+    = link_to "View", school_path(school.permalink, search_params()), :class => 'blue-button'
+  %td.favorite_button
+    = render :partial => 'schools/favorite_button', :locals => {:school => school}

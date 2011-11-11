@@ -27,7 +27,54 @@
       = image_tag('icons/lightbulb.png')
       &nbsp;Below are your eligible schools. Click the tabs above to see more information, or click the column headings to sort the listings.  You can also view your eligible schools on a map by clicking the map icon at right.
 
-    = render :partial => 'schools/table/table'
+    %table#visible-schools.listings.sortable
+      %thead
+        %tr
+          %th.icon_column &nbsp;
+          %th.title_column.sorttable School Name
+          %th.eligibility_column.tabbable.overview Eligibility<span id="sorttable_sortfwdind">&nbsp;▾</span>
+          %th.tabbable.overview.sorttable Transit
+          %th.tabbable.overview.sorttable_numeric Distance
+          %th.tabbable.overview.sorttable 2011 Hours
+
+          %th.tabbable.transportation.hidden.sorttable Transportation Eligibility
+          %th.tabbable.transportation.hidden.sorttable_numeric Distance
+          %th.tabbable.transportation.hidden.sorttable_numeric Walk Time*
+          %th.tabbable.transportation.hidden.sorttable_numeric Drive Time*
+
+          %th.tabbable.academics.hidden Teachers†
+          %th.tabbable.academics.hidden Students†
+          %th.tabbable.academics.hidden MCAS English Percentile†
+          %th.tabbable.academics.hidden MCAS Math Percentile†
+
+          %th.tabbable.admissions.hidden Open Seats†
+          %th.tabbable.admissions.hidden 1st Choices†
+          %th.tabbable.admissions.hidden 2nd Choices†
+          %th.tabbable.admissions.hidden 3rd Choices†
+          %th.tabbable.admissions.hidden.sorttable_numeric Applicants per Open Seat†
+
+          %th{:width=>'50px'} &nbsp;
+          %th{:width=>'50px'} &nbsp;
+
+      %tbody
+        - if @all_schools.present?
+          - @all_schools.each do |school|
+            - if session[:favorites].try(:include?, school.id)
+              = render :partial => 'schools/school_row', :locals => {:school => school, :row_classes => 'favorited'}
+            - else
+              = render :partial => 'schools/school_row', :locals => {:school => school, :row_classes => ''}
+
+    %table#download_links
+      %tr
+        %td{:width=>'24px'}
+          == #{raw link_to image_tag('icons/icon_PDF_big.png', :class => 'pdf_icon'), schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)} 
+        %td{:style => "font-weight: bold; padding: 0;"}
+          == #{link_to 'Download PDF', schools_path(:address => params[:address], :zipcode => params[:zipcode], :grade_level => params[:grade_level], :sibling_school => params[:sibling_school], :format => :pdf)}
+
+    #footnotes.italic.small
+      * Walk times and drive times are estimates, only.
+      %br/
+      † Historical data are from the previous school year, unless otherwise noted.
         
   = render :partial => 'layouts/page_footer'
 
