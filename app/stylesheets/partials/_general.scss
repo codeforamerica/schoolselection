@@ -10,12 +10,6 @@ table.no-padding{
 table.padded{
   td{ padding: 15px 15px 15px 0; }
 }
-table.slider{ 
-  background-color: $lighterblue;
-  @include border-radius(10px);
-  margin-top: 20px;
-  td{ padding: 20px 20px 20px 0; }
-}
 
 h3.adjust{ margin-bottom: -8px; }
 th{ background-color: white !important; font-size: 12px; font-style: italic; font-weight: normal !important; }

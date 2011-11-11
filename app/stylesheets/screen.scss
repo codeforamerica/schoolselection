@@ -97,18 +97,7 @@ body {
         #gmaps4rails_map { @include border-radius(7px); border: solid 1px $bordergray; width: 640px; height: 490px; }
         .balloon{ border: solid 1px $bordergray; height: 300px; width: 300px; } 
       }
-    }
-    
-    #search-form{
-      height: 400px;
-      padding: 0 15px 0 25px;
-      margin: 0 0 20px 0;
-      .address{ width: 210px; }
-      .zipcode{ width: 80px; }
-      table.search{ 
-        td{ padding: 0; }
-      }
-    }    
+    }   
   }
   
   

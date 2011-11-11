@@ -1,7 +1,12 @@
-.anythingSlider                         { width: 550px; height: 410px; position: relative; margin: 0 auto 0; }
-.anythingSlider .wrapper                { width: 550px; overflow: auto; height: 410px; margin: 0 0 0 -8px; position: absolute; top: 0; left: 0; }
+table.slider                            { background-color: $lighterblue; @include border-radius(10px); margin-top: 20px; }
+table.slider td                         { padding: 25px }
+table.slider .address                   { width: 210px; }
+table.slider .zipcode                   { width: 80px; } 
+
+.anythingSlider                         { width: 540px; height: 410px; position: relative; margin: 0 auto 0; }
+.anythingSlider .wrapper                { width: 540px; overflow: auto; height: 410px; margin: 0 0 0 -8px; position: absolute; top: 0; left: 0; }
 .anythingSlider .wrapper ul             { width: 9999px; list-style: none; position: absolute; top: 0; left: 0; margin: 0 0 0 5px; }
-.anythingSlider ul li                   { display: block; float: left; padding: 0; height: 400px; width: 560px; margin: 5px 0; }
+.anythingSlider ul li                   { display: block; float: left; padding: 0; height: 400px; width: 550px; margin: 5px 0; }
 .anythingSlider .arrow                  { display: none; }
 .anythingSlider .forward                { background-position: 0 0; right: -20px; }
 .anythingSlider .back                   { background-position: -27px 0; left: 0; }
@@ -9,7 +14,7 @@
 .anythingSlider .back:hover             { background-position: -27px -200px; }
 
 .slider_image                           { width: 100%; }
-.slider_label                           { position: absolute; width: 520px; padding-right: 20px; margin-top: -28px; font-size: 15px; text-align: right; }
+.slider_label                           { position: absolute; width: 510px; padding-right: 20px; margin-top: -28px; font-size: 15px; text-align: right; }
 .picture-frame{ border: solid 20px white; border-bottom: solid 40px white; @include box-shadow(#777777,0,0,7px);}
 
 
