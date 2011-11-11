@@ -48,7 +48,7 @@
           - if @school.email.present?
             = mail_to @school.email, @school.email
             %br/
-          - if @school.grade(session[:grade_level]).try(:hours).present?
+          - if @school.grade(session[:grade_level]).try(:hours).try(:present?)
             %br/
             %span.bold
               Hours:
@@ -136,7 +136,7 @@
                 %td.large
                   =raw grade.mcas_math_failing.present? ? number_to_percentage((grade.mcas_math_failing * 100), :precision => 0) : '&nbsp;'
       
-          - if @school.grade(session[:grade_level]).try(:open_seats).present?
+          - if @school.grade(session[:grade_level]).try(:open_seats).try(:present?)
             %table
               .gray-background
                 %h4.bold== Admissions (Grade #{session[:grade_level]})
