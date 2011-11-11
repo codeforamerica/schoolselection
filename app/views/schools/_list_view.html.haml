@@ -10,9 +10,9 @@
 #table-nav
   = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
   = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
-  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:mcas_ela_advanced) }.try(:compact).try(:present?)
+  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:mcas_ela_advanced) }.try(:compact).present?
     = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
-  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).try(:present?)
+  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).present?
     = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
 #left-column    
   #page

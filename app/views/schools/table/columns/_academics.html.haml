@@ -7,9 +7,9 @@
   =raw school.students_count.present? ? school.students_count : '&nbsp;'
   
 %td.tabbable.academics.hidden.larger
-  - if grade.present? && grade.mcas_ela_advanced.try(:present?)
+  - if grade.present? && grade.mcas_ela_advanced.present?
     =raw grade.ela_percentile.present? ? grade.ela_percentile : '&nbsp;'
   
 %td.tabbable.academics.hidden.larger
-  - if grade.present? && grade.mcas_math_advanced.try(:present?)
+  - if grade.present? && grade.mcas_math_advanced.present?
     =raw grade.math_percentile.present? ? grade.math_percentile : '&nbsp;'

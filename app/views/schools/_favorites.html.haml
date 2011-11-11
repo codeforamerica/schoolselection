@@ -1,6 +1,6 @@
 #favorites_sidebar
   %h3.bold My Favorites
-  - unless session[:favorites].try(:present?)
+  - unless session[:favorites].present?
     To create a customized list of your top schools, click the star button beside each listing.
   - else
     %ol#favorite-list

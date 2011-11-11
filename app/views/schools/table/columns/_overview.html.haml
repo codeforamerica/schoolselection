@@ -1,5 +1,5 @@
 %td.tabbable.overview.large{:sorttable_customkey=>school.eligibility_index}
-  =raw school.eligibility.try(:present?) ? eligibility_title(school) : '&nbsp;'
+  =raw school.eligibility.present? ? eligibility_title(school) : '&nbsp;'
   - if params[:sibling_school] == school.id.to_s && School.find(params[:sibling_school].try(:to_i)).present?
     Sibling School
 %td.tabbable.overview.large      
@@ -11,6 +11,6 @@
     - else
       = image_tag('school-bus.png')
 %td.tabbable.overview.large
-  =raw school.distance.try(:present?) ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
+  =raw school.distance.present? ? "#{distance_in_miles_from_meters(school.distance)}&nbsp;<span class='small'>mi</span>" : '&nbsp;'
 %td.tabbable.overview
-  =raw school.grade(session[:grade_level]).try(:hours).try(:present?) ? school.grade(session[:grade_level]).try(:hours) : '&nbsp;'
+  =raw school.grade(session[:grade_level]).try(:hours).present? ? school.grade(session[:grade_level]).try(:hours) : '&nbsp;'

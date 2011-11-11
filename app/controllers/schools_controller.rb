@@ -1,5 +1,4 @@
 class SchoolsController < ApplicationController
-  # layout 'application', :except => :show
   
   def index
     address, session[:address] = params[:address], params[:address]
