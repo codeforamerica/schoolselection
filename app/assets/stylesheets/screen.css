@@ -824,7 +824,7 @@ form div {
 /* line 1, ../../stylesheets/partials/_anythingslider.scss */
 .anythingSlider {
   width: 550px;
-  height: 420px;
+  height: 410px;
   position: relative;
   margin: 0 auto 0;
 }
@@ -833,7 +833,7 @@ form div {
 .anythingSlider .wrapper {
   width: 550px;
   overflow: auto;
-  height: 420px;
+  height: 410px;
   margin: 0 0 0 -8px;
   position: absolute;
   top: 0;

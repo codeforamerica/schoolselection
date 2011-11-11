@@ -53,7 +53,7 @@
             - featured_schools.each do |school|
               - if school.image.present?
                 %li
-                  %table.no-padding
+                  %table.no-padding.no-bottom-margin
                     %tr
                       %td.valign-top.no-padding
                         = image_tag(school.image(:slider), :class => 'picture-frame')
