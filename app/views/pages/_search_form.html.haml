@@ -14,7 +14,7 @@
             - for address in @address_ranges
               %li
                 %span.large
-                  = link_to "#{@street_number} #{address.street.titleize}, #{address.zipcode}", schools_path(:address => "#{@street_number} #{address.street.titleize}", :zipcode => "#{address.zipcode}", :grade_level => params[:grade_level])
+                  = link_to "#{@street_number} #{address.street.titleize}, #{address.zipcode}", schools_path(:address => "#{@street_number} #{address.street.titleize}", :zipcode => "#{address.zipcode}", :grade_level => params[:grade_level], :sibling_school => params[:sibling_school])
       - else
         = form_tag('/schools', :method => :get) do
           = hidden_field_tag 'view', 'list'
