@@ -35,7 +35,8 @@ class SchoolsController < ApplicationController
 
   def show
     set_session_variables
-    m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)    
+    m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)
+    @address_ranges = AddressRange.find_all_by_search_params(@street_number.to_i, @street_name, session[:zipcode])
     shared_variables
     @school = @all_schools.find {|x| x.permalink == params[:id] }
 
@@ -107,12 +108,11 @@ class SchoolsController < ApplicationController
   end
   
   def shared_variables
-    @address_ranges = AddressRange.find_all_by_search_params(@street_number.to_i, @street_name, session[:zipcode])
     @address = @address_ranges.first
     @grade_levels = GradeLevel.all
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
-    @geocoded_address ||= geocode_address("#{@street_number} #{@street_name}, #{session[:zipcode]}")
-    @geocode = @address_ranges.first.geocode
+    @geocoded_address ||= geocode_address("#{@street_number} #{@street_name}, Boston, MA #{session[:zipcode]}")
+    @geocode = @address.geocode
     @assignment_zone = @geocode.assignment_zone
     @walk_zone_schools = School.walkzone_schools(@geocode, @grade_level, @geocoded_address)
     @assignment_zone_schools = @grade_level.assignment_zone_schools(@geocoded_address, @assignment_zone) - @walk_zone_schools
