@@ -1,6 +1,36 @@
 class GradeLevel < ActiveRecord::Base
   has_many :grade_level_schools
   has_many :schools, :through => :grade_level_schools
+  
+  def assignment_zone_schools(geocoded_address, assignment_zone)
+    schools = self.schools.where(:assignment_zone_id => assignment_zone)
+      .select("schools.*")
+      .with_distance(geocoded_address)
+      .includes(:grade_level_schools, :city)
+      .order('distance ASC')
+    [[schools,"Assignment Zone",2]].each do |schools,type,index|
+      schools.each do |s|
+        s.eligibility = type
+        s.eligibility_index = index
+      end
+    end
+    schools
+  end
+  
+  def citywide_schools(geocoded_address, assignment_zone)
+    schools = self.schools.where(:assignment_zone_id => assignment_zone)
+      .select("schools.*")
+      .with_distance(geocoded_address)
+      .includes(:grade_level_schools, :city)
+      .order('distance ASC')
+    [[schools,"Citywide",3]].each do |schools,type,index|
+      schools.each do |s|
+        s.eligibility = type
+        s.eligibility_index = index
+      end
+    end
+    schools
+  end
 
   def walk_zone_radius_in_meters
     self.walk_zone_radius * METERS_PER_MILE

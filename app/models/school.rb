@@ -36,10 +36,21 @@ class School < ActiveRecord::Base
   ##### CLASS METHODS #####
   
   class << self
-    def walkzone_by_geocode_and_grade(geocode,grade_level)
-      self.joins(:geocode_grade_walkzone_schools)
+    def walkzone_schools(geocode, grade_level, geocoded_address)
+      schools = self.joins(:geocode_grade_walkzone_schools)
         .where(:geocode_grade_walkzone_schools => {:geocode_id => geocode, :grade_level_id => grade_level})
         .select("geocode_grade_walkzone_schools.transportation_eligible as transportation_eligible")
+        .select("schools.*")
+        .with_distance(geocoded_address)
+        .includes(:grade_level_schools, :city)
+        .order('distance ASC')
+      [[schools,"Walk Zone",1]].each do |schools,type,index|
+        schools.each do |s|
+          s.eligibility = type
+          s.eligibility_index = index
+        end
+      end
+      schools
     end
   end
   
