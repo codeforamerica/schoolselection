@@ -1,7 +1,7 @@
 #sidebar
   #nav
     %h3.bold
-      = link_to "List View", schools_path(address: params[:address], zipcode: params[:zipcode], grade_level: params[:grade_level], :sibling_school => params[:sibling_school], view: 'list', :class => 'sidebar-nav')
+      = link_to "List View", schools_path(search_params(:view => 'list')), :class => 'sidebar-nav'
   #mypicks
     = render :partial => 'favorites'
       

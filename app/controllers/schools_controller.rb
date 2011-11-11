@@ -1,16 +1,13 @@
 class SchoolsController < ApplicationController
   
   def index
-    address, session[:address] = params[:address], params[:address]
-    zipcode, session[:zipcode] = params[:zipcode], params[:zipcode]
-    grade_level, session[:grade_level] = params[:grade_level], params[:grade_level]
-    session[:sibling_school] = params[:sibling_school]
-    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
+    set_session_variables
+    
     m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)
     
-    if address.blank?
+    if session[:address].blank?
       redirect_to(root_url, alert: "You must enter an address")
-    elsif zipcode.blank?
+    elsif session[:zipcode].blank?
       redirect_to(root_url, alert: "You must enter a zipcode")
     elsif m.blank?
       redirect_to(root_url, alert: "We couldn't locate that address - please try again")
@@ -37,11 +34,18 @@ class SchoolsController < ApplicationController
   end
 
   def show
-    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
-    m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)
-    @address_ranges = AddressRange.find_all_by_search_params(@street_number.to_i, @street_name, session[:zipcode])    
+    set_session_variables
+    m, @street_number, @street_name = session[:address].try(:match, (/(\d+)\s+(.*)/)).try(:to_a)    
     shared_variables
     @school = @all_schools.find {|x| x.permalink == params[:id] }
+
+    if @school.eligibility =~ /Walk Zone/
+      @map_flag_color = '53e200'
+    elsif @school.eligibility =~ /Assignment Zone/
+      @map_flag_color = 'fcef08'
+    else
+      @map_flag_color = 'c8c8c8'
+    end
 
     respond_to do |format|
       format.html
@@ -95,7 +99,15 @@ class SchoolsController < ApplicationController
   
   private
   
+  def set_session_variables
+    session[:address]         = params[:address]
+    session[:zipcode]         = params[:zipcode]
+    session[:grade_level]     = params[:grade_level]
+    session[:sibling_school]  = params[:sibling_school]
+  end
+  
   def shared_variables
+    @address_ranges = AddressRange.find_all_by_search_params(@street_number.to_i, @street_name, session[:zipcode])
     @address = @address_ranges.first
     @grade_levels = GradeLevel.all
     @grade_level = GradeLevel.find_by_number(session[:grade_level])
@@ -106,5 +118,6 @@ class SchoolsController < ApplicationController
     @assignment_zone_schools = @grade_level.assignment_zone_schools(@geocoded_address, @assignment_zone) - @walk_zone_schools
     @citywide_schools = @grade_level.citywide_schools(@geocoded_address, AssignmentZone.citywide) - @walk_zone_schools
     @all_schools = (@walk_zone_schools + @assignment_zone_schools + @citywide_schools)
+    session[:favorites].present? ? @favorite_schools = session[:favorites].map {|x| School.find(x)} : @favorite_schools = []
   end
 end

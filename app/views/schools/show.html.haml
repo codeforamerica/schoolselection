@@ -19,12 +19,7 @@
     %table.no-bottom-margin
       %tr
         %td.align-top.medium{:width=>'290'}
-          - if @school.eligibility =~ /Walk Zone/
-            = link_to image_tag(static_school_map(280, 210, '53e200'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
-          - elsif @school.eligibility =~ /Assignment Zone/
-            = link_to image_tag(static_school_map(280, 210, 'fcef08'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
-          - else
-            = link_to image_tag(static_school_map(280, 210, 'c8c8c8'), :alt => "Map View", :class => 'static-map-image'), schools_path(:address => session[:address], :zipcode => session[:zipcode], :grade_level => session[:grade_level], :view => 'map')
+          = link_to image_tag(static_school_map(280, 210, @map_flag_color), :alt => "Map View", :class => 'static-map-image'), schools_path(search_params(:view => 'map'))
 
           - if @school.address.present?
             == #{@school.address}, #{@school.city.try(:name)} MA, #{@school.zipcode}

@@ -9,7 +9,7 @@
       %h2.bold.darkblue Find Your Schools
       - if @address_ranges.present? && @address_ranges.size > 1
         .medium
-          %p.red.italic We found several matching results - please select your address from the list below
+          %p.red.italic== #{image_tag('icons/error.png')} We found #{@address_ranges.size} addresses - please select the best match below
           %ul
             - for address in @address_ranges
               %li
