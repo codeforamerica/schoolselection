@@ -41,7 +41,6 @@
             = submit_tag "Search"
         
     %td.valign-top
-      %h2.bold.darkblue.adjust_right Featured Schools
       - featured_schools = School.all.find_all {|x| x.hidden_gem? }
       .anythingSlider
         .wrapper
