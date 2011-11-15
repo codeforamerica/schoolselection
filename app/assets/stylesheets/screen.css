@@ -1365,7 +1365,7 @@ body #screen ul#table-nav {
   font-size: 1.1em;
   font-weight: bold;
   float: left;
-  margin: 0 20px 15px 385px;
+  margin: 5px 20px 15px 10px;
 }
 /* line 60, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body #screen ul#table-nav li {
@@ -1375,8 +1375,8 @@ body #screen ul#table-nav li {
   white-space: nowrap;
   display: inline;
   float: left;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 /* line 48, ../../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/typography/lists/_horizontal-list.scss */
 body #screen ul#table-nav li:first-child, body #screen ul#table-nav li.first {
