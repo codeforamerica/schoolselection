@@ -25,39 +25,7 @@ module SchoolsHelper
       "Citywide"
     end      
   end
-  
-  def admissions_odds(open_seats, first_choices)
-    if open_seats.blank? || first_choices.blank?
-      '&nbsp'
-    elsif (open_seats.to_f / first_choices.to_f) >= 1
-      'High'
-    elsif (open_seats.to_f / first_choices.to_f) > 0.66
-      'High'
-    elsif (open_seats.to_f / first_choices.to_f) > 0.33
-      'Medium'
-    elsif (open_seats.to_f / first_choices.to_f) > 0
-      'Low'
-    end
-  end
-    
-  def normal_results_title
-    if params[:grade_level].blank?
-      "<h2>All Schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
-    elsif @walk_zone_schools.present?
-      "<h2>Other #{params[:grade_level]} schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
-    else
-      "<h2>#{params[:grade_level].humanize} schools <span class='small nobold'>&nbsp;(#{@schools.size} results)</span></h2>"
-    end
-  end
-  
-  def map_legend
-    %{
-      #{image_tag('green-marker-small.png')} Walk Zone School <br />
-      #{image_tag('yellow-marker-small.png')} Assignment Zone School <br />
-      #{image_tag('gray-marker-small.png')} Citywide School"
-    }
-  end
-  
+        
   include EncodePolyline
   def static_schools_map(width, height)
     zone_boundry = encode_line(simplify_points(@assignment_zone.geometry[0].exterior_ring.points,0.001,0.01))
@@ -82,38 +50,26 @@ module SchoolsHelper
     "&markers=size:large|color:0x#{color}|#{[@school].map {|x|"#{x.lat},#{x.lng}"} * "|" }"
   end
   
-  ####### SINGLE SCHOOL MAP #######
-  
-  def school_map
-    gmaps("markers" => {
-      "data" => markers_json,
-      "options" => {"list_container" => "markers_list"}},
-      "polygons" => {
-        "data" => assignment_zones_json,
-        "options" => {
-          "fillColor" => "#ffff00", "fillOpacity" => 0.3,
-          "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 
-        }
-      },
-      "map_options" => {"provider" => "googlemaps", "auto_adjust" => true }
-    )
+  ####### ALL SCHOOLS MAP #######
+    
+  def walk_zone_map
+      gmaps("markers" => {
+        "data" => markers_json, 
+        "options" => {"list_container" => "markers_list"}}, 
+        "polygons" => {
+          "data" => assignment_zones_json, 
+          "options" => { 
+            "fillColor" => "#ffff00", "fillOpacity" => 0.3, 
+            "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 
+          }
+        }, 
+        "circles" => {"data" => walk_zone_json }, 
+        "map_options" => { "provider" => "googlemaps", "auto_adjust" => true }
+      )
   end
   
-  ####### ALL SCHOOLS MAP #######
-  
-  def walk_zone_map
-    gmaps("markers" => {
-      "data" => markers_json,
-      "options" => {"list_container" => "markers_list"}},
-      "polygons" => {
-        "data" => assignment_zones_json,
-        "options" => {
-          "fillColor" => "#ffff00", "fillOpacity" => 0.3,
-          "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6
-        }
-      },
-      "map_options" => {"provider" => "googlemaps", "auto_adjust" => true}
-    )
+  def walk_zone_json
+      [{:lng => @geocoded_address.lng, :lat => @geocoded_address.lat, :radius => @grade_level.walk_zone_radius * METERS_PER_MILE, :fillColor => '#61d60e', :fillOpacity => 0.4, :strokeColor => '#000000', :strokeOpacity => 0.6, :strokeWeight => 1.5}].to_json
   end
   
   def assignment_zones_json

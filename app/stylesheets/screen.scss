@@ -37,7 +37,8 @@ body {
   #screen{
     margin-top: 20px; 
     .full-width{ @include column(24, true); padding: 20px; clear: both; }
-    #table-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
+    #main-nav{ text-align: right; clear: bottom; margin: -31px 220px 10px 0; }
+    ul#table-nav{ @include horizontal-list(7px); font-size: 1.1em; font-weight: bold; float: left; margin: 0 20px 15px 385px;}
     #logo{ padding: 0 0 17px 25px; }
     #page{ 
       @include box-shadow(#444444,0,0,7px); 

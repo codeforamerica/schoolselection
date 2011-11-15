@@ -4,13 +4,14 @@
       = link_to "List View", schools_path(search_params(:view => 'list')), :class => 'sidebar-nav'
   #mypicks
     = render :partial => 'favorites'
-      
+  
+= render :partial => 'layouts/navigation'   
 #left-column
   #page
     %h2.bold
       %span.small.nobold.italic
         Eligible Schools for:&nbsp;
-      == #{@geocoded_address.street_address}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{params[:grade_level]}
+      == #{@street_number} #{@street_name}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
       %span.smaller.nobold
         == &nbsp;#{link_to 'Search Again', page_path('home')}
     

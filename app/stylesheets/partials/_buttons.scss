@@ -1,23 +1,22 @@
-a{ color: $blue; text-decoration: none !important; }
-a:hover{ color: $blue; text-decoration: underline; }
-a:active{ color: $blue; text-decoration: underline; }
-a:visited{ color: $blue; text-decoration: none; }
+a{ color: $blue !important; text-decoration: none !important; }
+a:hover{ color: $blue !important; text-decoration: underline; }
+a:active{ color: $blue !important; text-decoration: underline; }
+a:visited{ color: $blue !important; text-decoration: none; }
 
-a.main-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
-.main-nav.active{ font-weight: bold; font-size: 1.1em; padding: 5px 0 3px 0; }
+a.main-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $gray; @include linear-gradient(color-stops($lightgray, $gray)); color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
+a.main-nav:hover{ text-decoration: underline; }
+a.main-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; @include linear-gradient(color-stops(white, white)); }
+a.main-nav.active:hover{ text-decoration: none; }
 
 a.sidebar-nav{ color: $blue; font-weight: bold; padding: 5px 0 3px 0; }
 .sidebar-nav.active{ font-weight: bold; padding: 5px 0 3px 0; }
 
-a.table-nav{ @include box-shadow; @include border-radius(10px 10px 0 0); background-color: $gray; @include linear-gradient(color-stops($lightgray, $gray)); color: $blue; font-weight: bold; font-size: 1.1em; padding: 13px 15px 15px 15px; }
-a.table-nav:hover{ text-decoration: underline; }
-a.table-nav.active{ @include box-shadow; @include border-radius(10px 10px 0 0); color: #333; background-color: white; @include linear-gradient(color-stops(white, white)); }
-a.table-nav.active:hover{ text-decoration: none; }
+a.table-nav{ }
 
-a.blue-button{ background-color: $blue; @include linear-gradient(color-stops($lightblue, $blue)); @include border-radius(10px); border: solid 1px #999; color: white; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px;}
-a.blue-button:hover{ color: white; text-decoration: none; }
-a.blue-button:visited{ color: white; }
-a.blue-button:active{ color: white; }
+a.blue-button{ background-color: $blue; @include linear-gradient(color-stops($lightblue, $blue)); @include border-radius(10px); border: solid 1px #999; color: white !important; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px;}
+a.blue-button:hover{ color: white !important; text-decoration: none; }
+a.blue-button:visited{ color: white !important; }
+a.blue-button:active{ color: white !important; }
 
 a.yellow-button{ background-color: $yellow; font-weight: bold; @include linear-gradient(color-stops($lightyellow, $yellow)); @include border-radius(10px); border: solid 1px #bbb; color: #222; padding: 7px 9px 7px 9px; font-size: 13px;}
 a.yellow-button:hover{ color: #222; text-decoration: underline; }
@@ -28,6 +27,5 @@ a.gray-button{ background-color: $blue; @include linear-gradient(color-stops($gr
 a.gray-button:hover{ color: white; text-decoration: none; }
 a.gray-button:visited{ color: white; }
 
-a.white{ color: white; }
-a.white:hover{ color: white; text-decoration: underline !important; }
-a.white:visited{ color: white; }
+a.orange{ color: $orange; }
+a.orange:hover{ color: $orange; text-decoration: underline; }

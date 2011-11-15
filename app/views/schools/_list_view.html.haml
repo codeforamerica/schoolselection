@@ -7,13 +7,8 @@
   #mypicks
     = render :partial => 'favorites'
     
-#table-nav
-  = link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab', :class => 'table-nav active'
-  = link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab', :class => 'table-nav'
-  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:mcas_ela_advanced) }.try(:compact).present?
-    = link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab', :class => 'table-nav'
-  - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).present?
-    = link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab', :class => 'table-nav'
+= render :partial => 'layouts/navigation'
+
 #left-column    
   #page
     %h2.bold
@@ -25,8 +20,17 @@
     
     .notes.rounded-corners
       = image_tag('icons/lightbulb.png')
-      &nbsp;Below are your eligible schools. Click the tabs above to see more information, or click the column headings to sort the listings.  You can also view your eligible schools on a map by clicking the map icon at right.
-
+      &nbsp;Below are your eligible schools. Click the 'Views' buttons to see more information, or click the column headings to sort the listings.  You can also view your eligible schools on a map by clicking the map icon at right.
+    
+    %ul#table-nav
+      %li Views: 
+      %li= link_to 'Overview', switch_tab_schools_path(:tab => 'overview'), :remote => true, :id => 'overview-tab'
+      %li= link_to 'Transportation', switch_tab_schools_path(:tab => 'transportation'), :remote => true, :id => 'transportation-tab'
+      - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:mcas_ela_advanced) }.try(:compact).present?
+        %li= link_to 'Academics', switch_tab_schools_path(:tab => 'academics'), :remote => true, :id => 'academics-tab'
+      - if @all_schools.map {|x| x.grade(params[:grade_level]).try(:open_seats) }.try(:compact).present?
+        %li= link_to 'Admissions', switch_tab_schools_path(:tab => 'admissions'), :remote => true, :id => 'admissions-tab'
+      
     %table#visible-schools.listings.sortable
       %thead
         %tr

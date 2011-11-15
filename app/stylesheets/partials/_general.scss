@@ -18,7 +18,7 @@ td.no-padding{ padding: 0 !important;}
 ul.horizontal-list{ @include horizontal-list; vertical-align: middle; }
 ul.no-bullets{ @include no-bullets; }
 ul#favorites-list{ padding: 0 0 20px 0; margin: 0 0;}
-input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid $bordergray; color: #555;}
+input{ @include border-radius(5px); font-size: 14px; margin-right: 10px; border: 1px solid #777; color: #555;}
 input[type='submit']{ @include linear-gradient(color-stops($lightblue, $blue)); @include border-radius(10px); border: solid 1px #999; color: white; font-weight: bold; padding: 7px 9px 7px 9px; font-size: 13px; margin: 10px 10px 10px 0; }
 form div { margin: 10px 10px 10px 0; }
 .label{ margin: 10px 0 0 0;}

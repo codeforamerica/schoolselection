@@ -1,7 +1,8 @@
 #sidebar
   #mypicks
     = render :partial => 'favorites'
-    
+
+= render :partial => 'layouts/navigation' 
 #left-column
   #page
     - if @school.id.to_s == session[:sibling_school]
@@ -159,3 +160,5 @@
             * Walk times and drive times are estimates, only.
             %br/
             † Historical data are from the previous school year, unless otherwise noted.
+            
+  = render :partial => 'layouts/page_footer'

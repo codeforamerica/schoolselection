@@ -9,7 +9,7 @@
       %h2.bold.darkblue Find Your Schools
       - if @address_ranges.present? && @address_ranges.size > 1
         .medium
-          %p.red.italic== #{image_tag('icons/error.png')} We found #{@address_ranges.size} addresses - please select the best match below
+          %p.red.italic== #{image_tag('icons/error.png')} We found #{@address_ranges.size} possible matches - please select your address from the options below
           %ul
             - for address in @address_ranges
               %li
@@ -41,7 +41,7 @@
             = submit_tag "Search"
         
     %td.valign-top
-      %h2.bold.darkblue &nbsp;&nbsp;Featured Schools
+      %h2.bold.darkblue.adjust_right Featured Schools
       - featured_schools = School.all.find_all {|x| x.hidden_gem? }
       .anythingSlider
         .wrapper

@@ -17,7 +17,7 @@ table.slider .zipcode                   { width: 80px; }
 .slider_label                           { position: absolute; width: 510px; padding-right: 20px; margin-top: -28px; font-size: 15px; text-align: right; }
 
 .picture-frame{ border: solid 20px white; border-bottom: solid 40px white; @include box-shadow(#777777,0,0,7px);}
-
+h2.adjust_right                         { margin-left: 10px; }
 #start-stop                             { display: none; }
 #start-stop.playing                     { display: none; }
 #start-stop:hover                       { display: none; }

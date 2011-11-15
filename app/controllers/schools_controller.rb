@@ -59,7 +59,17 @@ class SchoolsController < ApplicationController
   end
   
   def compare
-    @favorite_schools = session[:favorites].map {|x| School.find(x)}
+    if session[:address].blank?
+      redirect_to(root_url, alert: "You must enter an address")
+    elsif session[:zipcode].blank?
+      redirect_to(root_url, alert: "You must enter a zipcode")
+    else
+      @favorite_schools = session[:favorites].map {|x| School.find(x)}
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
   end
   
   ####### AJAX #######
