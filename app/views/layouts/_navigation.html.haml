@@ -1,15 +1,22 @@
 #main-nav
-  - if params[:controller] == 'high_voltage/pages' && params[:id] == 'home'
-    = link_to 'Search', root_url(search_params()), :class => 'main-nav active'
-  - else
-    = link_to 'Search', root_url(search_params()), :class => 'main-nav'
+  - if params[:address] && params[:zipcode]
+    - if params[:controller] == 'high_voltage/pages' && params[:id] == 'home'
+      = link_to 'Search', root_url(search_params()), :class => 'main-nav active'
+    - else
+      = link_to 'Search', root_url(search_params()), :class => 'main-nav'
+
+    - if params[:controller] == 'schools' && (params[:action] == 'index' || params[:action] == 'show')
+      = link_to 'Schools', schools_url(search_params()), :class => 'main-nav active'
+    - else
+      = link_to 'Schools', schools_url(search_params()), :class => 'main-nav'
   
-  - if params[:controller] == 'schools' && (params[:action] == 'index' || params[:action] == 'show')
+    - if params[:controller] == 'schools' && params[:action] == 'compare'
+      = link_to 'My Favorites', compare_schools_url(search_params()), :class => 'main-nav active'
+    - else
+      = link_to 'My Favorites', compare_schools_url(search_params()), :class => 'main-nav'
+  - else
     = link_to 'Schools', schools_url(search_params()), :class => 'main-nav active'
-  - else
-    = link_to 'Schools', schools_url(search_params()), :class => 'main-nav'
-    
-  - if params[:controller] == 'schools' && params[:action] == 'compare'
-    = link_to 'My Favorites', compare_schools_url(search_params()), :class => 'main-nav active'
-  - else
-    = link_to 'My Favorites', compare_schools_url(search_params()), :class => 'main-nav'
+    %span.main-nav-off
+      Schools
+    %span.main-nav-off
+      My Favorites
