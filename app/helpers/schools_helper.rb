@@ -107,7 +107,7 @@ module SchoolsHelper
             <h3 class='bold'>#{x.name}</h3>
             #{x.address}<br />
             #{x.city.try(:name)} MA, #{x.zipcode}<br />
-            <strong>#{link_to 'Learn More', school_path(x.permalink)}</strong>
+            <strong>#{link_to 'Learn More', school_path(x.permalink, search_params())}</strong>
           </li>
         </ul>
       },
