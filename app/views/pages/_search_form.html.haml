@@ -53,7 +53,7 @@
                       %td.valign-top.no-padding
                         = image_tag(school.image(:slider), :width=>'490px', :class => 'picture-frame')
                         .slider_label
-                          = school.name
+                          == #{school.name} - #{school.try(:assignment_zone).try(:name)} Assignment Zone
         
 %div.clear-both.italic
   %ul
