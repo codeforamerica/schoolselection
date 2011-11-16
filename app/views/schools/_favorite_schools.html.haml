@@ -11,8 +11,11 @@
         - if school.phone.present?
           == Phone: #{school.phone}
     %td &nbsp;
-    %td{:width=>'380'}
-      Preview Hours:
-      = school.preview_hours
+    %td{:width=>'340'}
+      - if school.preview_hours.present?
+        Preview Hours:
+        = school.preview_hours
     %td.view_button_column.right_padded
       = link_to "View", school_path(school.permalink, search_params()), :class => 'blue-button'
+    %td.favorite_button_column
+      = render :partial => 'schools/favorite_button', :locals => {:school => school}

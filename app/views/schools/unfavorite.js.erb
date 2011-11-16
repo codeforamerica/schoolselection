@@ -1,3 +1,4 @@
+$("#school_<%= @school.id %>").remove();
 $("#favorite_text_button").replaceWith("<%= escape_javascript(render :partial => 'schools/favorite_text_button', :locals => {:school => @school}) %>");
 $("#favorite_button_<%= @school.id %>").replaceWith("<%= escape_javascript(render :partial => 'schools/favorite_button', :locals => {:school => @school}) %>");
 $("#visible_school_<%= @school.id %>").removeClass('favorited');
