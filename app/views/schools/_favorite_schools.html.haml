@@ -8,6 +8,8 @@
       %h3.bold= school.name
       %span.italic
         == #{school.address}, #{school.city.try(:name)}
+        - if school.phone.present?
+          == Phone: #{school.phone}
     %td &nbsp;
     %td{:width=>'380'}
       Preview Hours:
