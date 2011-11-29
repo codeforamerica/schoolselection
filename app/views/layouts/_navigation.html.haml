@@ -15,7 +15,7 @@
     - else
       = link_to 'My Favorites', compare_schools_url(search_params()), :class => 'main-nav'
   - else
-    = link_to 'Schools', schools_url(search_params()), :class => 'main-nav active'
+    = link_to 'Search', root_url(search_params()), :class => 'main-nav active'
     %span.main-nav-off
       Schools
     %span.main-nav-off
