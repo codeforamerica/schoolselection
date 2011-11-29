@@ -67,14 +67,6 @@ class School < ActiveRecord::Base
   def grade(number)
     grade_level_schools.detect {|x| x.grade_number == number}
   end
-
-  def geocode_address
-    # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
-    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA, #{zipcode}")
-    errors.add(:address, "Could not Geocode address") if !geo.success
-    self.lat, self.lng = geo.lat,geo.lng if geo.success
-    self.save
-  end
   
   def gmaps4rails_address
     #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
@@ -82,6 +74,13 @@ class School < ActiveRecord::Base
   end
   
   private
+  
+  def geocode_address
+    # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
+    geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA, #{zipcode}")
+    errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
+  end
   
   def create_permalink
     string = self.name
