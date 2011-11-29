@@ -18,6 +18,8 @@ class School < ActiveRecord::Base
   before_save :geocode_address
   before_save :create_permalink
   
+  validates_uniqueness_of :name
+  
   
   if Rails.env == 'development'
     has_attached_file :image, :styles => {:original => "850x600", :slider => "490x330#", :large => "280x200", :medium => "120x90>", :small => "95x71#", :thumb => "85x63#", :icon => "50x50#"}, :path => "#{Rails.root}/public/system/images/:id/:style/:filename"
