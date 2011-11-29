@@ -15,7 +15,7 @@ class School < ActiveRecord::Base
   
   attr_accessor :eligibility, :eligibility_index
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO
-  # before_save :geocode_address!
+  before_save :geocode_address
   before_save :create_permalink
   
   
@@ -68,7 +68,7 @@ class School < ActiveRecord::Base
     grade_level_schools.detect {|x| x.grade_number == number}
   end
 
-  def geocode_address!
+  def geocode_address
     # boston_bounds = Geokit::Geocoders::GoogleGeocoder.geocode('Boston, MA').suggested_bounds
     geo = Geokit::Geocoders::MultiGeocoder.geocode("#{address}, #{city.try(:name)}, MA, #{zipcode}")
     errors.add(:address, "Could not Geocode address") if !geo.success
