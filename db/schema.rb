@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111051310) do
+ActiveRecord::Schema.define(:version => 20111129190707) do
 
   create_table "address_ranges", :force => true do |t|
     t.integer "geocode_id"
@@ -178,9 +178,6 @@ ActiveRecord::Schema.define(:version => 20111111051310) do
     t.string   "website"
     t.integer  "assignment_zone_id"
     t.string   "early_dismissal_time"
-    t.string   "breakfast"
-    t.string   "lunch"
-    t.string   "dinner"
     t.integer  "principal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -189,13 +186,7 @@ ActiveRecord::Schema.define(:version => 20111111051310) do
     t.integer  "bpsid"
     t.integer  "org_code"
     t.integer  "teachers_count"
-    t.integer  "core_areas_teachers_count"
-    t.float    "licensed_teachers_percentage"
-    t.float    "qualified_teachers_percentage"
-    t.float    "qualified_classes_percentage"
     t.string   "staff_to_student_ratio"
-    t.string   "school_level_name"
-    t.string   "school_type_name"
     t.string   "short_name"
     t.integer  "neighborhood_id"
     t.integer  "parcel_id"
@@ -207,8 +198,8 @@ ActiveRecord::Schema.define(:version => 20111111051310) do
     t.text     "features"
     t.string   "orgcode"
     t.integer  "vertex_id"
-    t.boolean  "hidden_gem",                    :default => false
-    t.boolean  "special_admissions",            :default => false
+    t.boolean  "hidden_gem",             :default => false
+    t.boolean  "special_admissions",     :default => false
     t.text     "surround_care_hours"
     t.string   "email"
     t.string   "permalink"
