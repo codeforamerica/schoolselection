@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111129190707) do
+ActiveRecord::Schema.define(:version => 20111130204721) do
 
   create_table "address_ranges", :force => true do |t|
     t.integer "geocode_id"
@@ -196,7 +196,6 @@ ActiveRecord::Schema.define(:version => 20111129190707) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "features"
-    t.string   "orgcode"
     t.integer  "vertex_id"
     t.boolean  "hidden_gem",             :default => false
     t.boolean  "special_admissions",     :default => false
