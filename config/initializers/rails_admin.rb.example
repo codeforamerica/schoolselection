@@ -6,7 +6,7 @@
 #          888  `88b.  d8(  888   888   888  o.  )88b  .8'     `888.  888   888   888   888   888   888   888   888  
 #         o888o  o888o `Y888""8o o888o o888o 8""888P' o88o     o8888o `Y8bod88P" o888o o888o o888o o888o o888o o888o 
 
-# RailsAdmin config file. Generated on October 04, 2011 23:53
+# RailsAdmin config file. Generated on November 30, 2011 12:35
 # See github.com/sferik/rails_admin for more informations
 
 RailsAdmin.config do |config|
@@ -57,10 +57,10 @@ RailsAdmin.config do |config|
   
   #  ==> Included models
   # Add all excluded models here:
-  # config.excluded_models << [AssignmentZone, City, GradeLevel, GradeLevelHour, MailCluster, Neighborhood, Parcel, Principal, School, SchoolGradeAdmission, SchoolGroup, State, User]
+  # config.excluded_models << [AddressRange, AssignmentZone, City, Geocode, GeocodeGradeWalkzoneSchool, GradeLevel, GradeLevelSchool, Neighborhood, Parcel, Principal, School, State, User]
   
   # Add models here if you want to go 'whitelist mode':
-  # config.included_models << [AssignmentZone, City, GradeLevel, GradeLevelHour, MailCluster, Neighborhood, Parcel, Principal, School, SchoolGradeAdmission, SchoolGroup, State, User]
+  # config.included_models << [AddressRange, AssignmentZone, City, Geocode, GeocodeGradeWalkzoneSchool, GradeLevel, GradeLevelSchool, Neighborhood, Parcel, Principal, School, State, User]
   
   # Application wide tried label methods for models' instances
   # config.label_methods << [:description] # Default is [:name, :title]
@@ -134,6 +134,36 @@ RailsAdmin.config do |config|
 #  - has_many/has_one associations in list section (hidden by default for performance reasons)
 # Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
 
+  # config.model AddressRange do
+  #   # Found associations: 
+  #   field :geocode, :belongs_to_association
+  #   # Found columns:
+  #   field :id, :integer
+  #   field :geocode_id, :integer        # Hidden
+  #   field :num_start, :integer
+  #   field :num_end, :integer
+  #   field :is_even, :boolean
+  #   field :street, :string
+  #   field :zipcode, :string
+  #   # Sections: 
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  #  end
+
+# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
+# There can be different reasons for that:
+#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
+#  - associations are hidden if they have no matchable model found (model not included or non-existant)
+#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
+# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
+#  - non-editable columns (:id, :created_at, ..) in edit sections
+#  - has_many/has_one associations in list section (hidden by default for performance reasons)
+# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
+
   # config.model AssignmentZone do
   #   # Found associations: 
   #   field :schools, :has_many_association
@@ -192,10 +222,67 @@ RailsAdmin.config do |config|
 #  - has_many/has_one associations in list section (hidden by default for performance reasons)
 # Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
 
+  # config.model Geocode do
+  #   # Found associations: 
+  #   field :address_ranges, :has_many_association
+  #   field :geocode_grade_walkzone_schools, :has_many_association
+  #   field :assignment_zone, :belongs_to_association
+  #   # Found columns:
+  #   field :id, :integer
+  #   field :assignment_zone_id, :integer        # Hidden
+  #   # Sections: 
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  #  end
+
+# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
+# There can be different reasons for that:
+#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
+#  - associations are hidden if they have no matchable model found (model not included or non-existant)
+#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
+# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
+#  - non-editable columns (:id, :created_at, ..) in edit sections
+#  - has_many/has_one associations in list section (hidden by default for performance reasons)
+# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
+
+  # config.model GeocodeGradeWalkzoneSchool do
+  #   # Found associations: 
+  #   field :geocode, :belongs_to_association
+  #   field :grade_level, :belongs_to_association
+  #   field :school, :belongs_to_association
+  #   # Found columns:
+  #   field :id, :integer
+  #   field :transportation_eligible, :boolean
+  #   field :geocode_id, :integer        # Hidden
+  #   field :grade_level_id, :integer        # Hidden
+  #   field :school_id, :integer        # Hidden
+  #   # Sections: 
+  #   list do; end
+  #   export do; end
+  #   show do; end
+  #   edit do; end
+  #   create do; end
+  #   update do; end
+  #  end
+
+# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
+# There can be different reasons for that:
+#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
+#  - associations are hidden if they have no matchable model found (model not included or non-existant)
+#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
+# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
+#  - non-editable columns (:id, :created_at, ..) in edit sections
+#  - has_many/has_one associations in list section (hidden by default for performance reasons)
+# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
+
   # config.model GradeLevel do
   #   # Found associations: 
-  #   field :schools, :has_and_belongs_to_many_association
-  #   field :grade_level_hours, :has_many_association
+  #   field :grade_level_schools, :has_many_association
+  #   field :schools, :has_many_association
   #   # Found columns:
   #   field :id, :integer
   #   field :number, :string
@@ -222,45 +309,39 @@ RailsAdmin.config do |config|
 #  - has_many/has_one associations in list section (hidden by default for performance reasons)
 # Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
 
-  # config.model GradeLevelHour do
+  # config.model GradeLevelSchool do
   #   # Found associations: 
+  #   field :school, :belongs_to_association
   #   field :grade_level, :belongs_to_association
-  #   field :school, :belongs_to_association
   #   # Found columns:
   #   field :id, :integer
-  #   field :grade_level_id, :integer        # Hidden
   #   field :school_id, :integer        # Hidden
-  #   field :grade_level_number, :string
+  #   field :grade_level_id, :integer        # Hidden
+  #   field :grade_number, :string
   #   field :hours, :string
+  #   field :open_seats, :integer
+  #   field :first_choice, :integer
+  #   field :second_choice, :integer
+  #   field :third_choice, :integer
+  #   field :fourth_higher_choice, :integer
   #   field :created_at, :datetime
   #   field :updated_at, :datetime
-  #   # Sections: 
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  #  end
-
-# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
-# There can be different reasons for that:
-#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
-#  - associations are hidden if they have no matchable model found (model not included or non-existant)
-#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
-# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
-#  - non-editable columns (:id, :created_at, ..) in edit sections
-#  - has_many/has_one associations in list section (hidden by default for performance reasons)
-# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
-
-  # config.model MailCluster do
-  #   # Found associations: 
-  #   field :school, :belongs_to_association
-  #   # Found columns:
-  #   field :id, :integer
-  #   field :name, :string
-  #   field :created_at, :datetime
-  #   field :updated_at, :datetime
+  #   field :mcas_ela_total, :integer
+  #   field :mcas_ela_advanced, :float
+  #   field :mcas_ela_proficient, :float
+  #   field :mcas_ela_needsimprovement, :float
+  #   field :mcas_ela_failing, :float
+  #   field :mcas_math_total, :integer
+  #   field :mcas_math_advanced, :float
+  #   field :mcas_math_proficient, :float
+  #   field :mcas_math_needsimprovement, :float
+  #   field :mcas_math_failing, :float
+  #   field :mcas_science_total, :integer
+  #   field :mcas_science_advanced, :float
+  #   field :mcas_science_proficient, :float
+  #   field :mcas_science_needsimprovement, :float
+  #   field :mcas_science_failing, :float
+  #   field :uniform_policy, :text
   #   # Sections: 
   #   list do; end
   #   export do; end
@@ -372,22 +453,19 @@ RailsAdmin.config do |config|
 
   # config.model School do
   #   # Found associations: 
-  #   field :grade_levels, :has_and_belongs_to_many_association
-  #   field :grade_level_hours, :has_many_association
-  #   field :grade_level_admissions, :has_many_association
+  #   field :grade_level_schools, :has_many_association
+  #   field :grade_levels, :has_many_association
   #   field :assignment_zone, :belongs_to_association
   #   field :city, :belongs_to_association
   #   field :neighborhood, :belongs_to_association
-  #   field :mail_cluster, :belongs_to_association
   #   field :parcel, :belongs_to_association
   #   field :principal, :belongs_to_association
-  #   field :school_group, :belongs_to_association
   #   field :state, :belongs_to_association
+  #   field :geocode_grade_walkzone_schools, :has_many_association
   #   # Found columns:
   #   field :id, :integer
   #   field :name, :string
   #   field :description, :text
-  #   field :features, :text
   #   field :address, :string
   #   field :city_id, :integer        # Hidden
   #   field :state_id, :integer        # Hidden
@@ -396,13 +474,7 @@ RailsAdmin.config do |config|
   #   field :fax, :string
   #   field :website, :string
   #   field :assignment_zone_id, :integer        # Hidden
-  #   field :mail_cluster_id, :integer        # Hidden
-  #   field :school_group_id, :integer        # Hidden
-  #   field :hours, :string
   #   field :early_dismissal_time, :string
-  #   field :breakfast, :string
-  #   field :lunch, :string
-  #   field :dinner, :string
   #   field :principal_id, :integer        # Hidden
   #   field :created_at, :datetime
   #   field :updated_at, :datetime
@@ -411,82 +483,25 @@ RailsAdmin.config do |config|
   #   field :bpsid, :integer
   #   field :org_code, :integer
   #   field :teachers_count, :integer
-  #   field :core_areas_teachers_count, :integer
-  #   field :licensed_teachers_percentage, :float
-  #   field :qualified_teachers_percentage, :float
-  #   field :qualified_classes_percentage, :float
   #   field :staff_to_student_ratio, :string
-  #   field :school_level_name, :string
-  #   field :school_type_name, :string
   #   field :short_name, :string
   #   field :neighborhood_id, :integer        # Hidden
   #   field :parcel_id, :integer        # Hidden
   #   field :students_count, :integer
-  #   field :image_file_name, :string
-  #   field :image_content_type, :string
-  #   field :image_file_size, :integer
-  #   field :image_updated_at, :datetime
-  #   # Sections: 
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  #  end
-
-# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
-# There can be different reasons for that:
-#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
-#  - associations are hidden if they have no matchable model found (model not included or non-existant)
-#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
-# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
-#  - non-editable columns (:id, :created_at, ..) in edit sections
-#  - has_many/has_one associations in list section (hidden by default for performance reasons)
-# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
-
-  # config.model SchoolGradeAdmission do
-  #   # Found associations: 
-  #   field :school, :belongs_to_association
-  #   field :grade_level, :belongs_to_association
-  #   # Found columns:
-  #   field :id, :integer
-  #   field :school_id, :integer        # Hidden
-  #   field :grade_level_id, :integer        # Hidden
-  #   field :open_seats, :integer
-  #   field :first_choice, :integer
-  #   field :second_choice, :integer
-  #   field :third_choice, :integer
-  #   field :fourth_higher_choice, :integer
-  #   field :created_at, :datetime
-  #   field :updated_at, :datetime
-  #   # Sections: 
-  #   list do; end
-  #   export do; end
-  #   show do; end
-  #   edit do; end
-  #   create do; end
-  #   update do; end
-  #  end
-
-# All fields marked as 'hidden' won't be shown anywhere in the rails_admin unless you mark them as visible.
-# There can be different reasons for that:
-#  - belongs_to _id and _type (polymorphic) columns are hidden in favor of their associations
-#  - associations are hidden if they have no matchable model found (model not included or non-existant)
-#  - they are part of a bigger plan in a plugin (Devise/Paperclip) and hidden by contract
-# Some fields may be hidden depending on the section, if they aren't deemed suitable for display or edition on that section
-#  - non-editable columns (:id, :created_at, ..) in edit sections
-#  - has_many/has_one associations in list section (hidden by default for performance reasons)
-# Fields may also be marked as read_only (and thus not editable) if they are not mass-assignable by current_user
-
-  # config.model SchoolGroup do
-  #   # Found associations: 
-  #   field :schools, :has_many_association
-  #   # Found columns:
-  #   field :id, :integer
-  #   field :name, :string
-  #   field :created_at, :datetime
-  #   field :updated_at, :datetime
+  #   field :image_file_name, :string        # Hidden
+  #   field :image_content_type, :string        # Hidden
+  #   field :image_file_size, :integer        # Hidden
+  #   field :image_updated_at, :datetime        # Hidden
+  #   field :image, :paperclip_file
+  #   field :features, :text
+  #   field :orgcode, :string
+  #   field :vertex_id, :integer
+  #   field :hidden_gem, :boolean
+  #   field :special_admissions, :boolean
+  #   field :surround_care_hours, :text
+  #   field :email, :string
+  #   field :permalink, :string
+  #   field :preview_hours, :text
   #   # Sections: 
   #   list do; end
   #   export do; end
