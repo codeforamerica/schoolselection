@@ -468,13 +468,12 @@ RailsAdmin.config do |config|
   config.model School do
     # Found columns:
     field :id, :integer
+    field :name, :string
     field :bpsid, :integer
     field :org_code, :integer
-    field :name, :string
+    field :permalink, :string
     field :hidden_gem, :boolean
     field :special_admissions, :boolean
-    field :short_name, :string
-    field :permalink, :string
     field :description, :text
     field :features, :text
     field :address, :string
