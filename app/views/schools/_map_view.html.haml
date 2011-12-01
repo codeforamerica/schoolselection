@@ -11,7 +11,7 @@
     %h2.bold
       %span.small.nobold.italic
         Eligible Schools for:&nbsp;
-      == #{@street_number} #{@street_name}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
+      == #{@street_number} #{@street_name.try(:titleize)}, #{@geocoded_address.city}, #{@geocoded_address.state} / Grade #{session[:grade_level]}
       %span.smaller.nobold
         == &nbsp;#{link_to 'Search Again', page_path('home')}
     
