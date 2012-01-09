@@ -56,7 +56,7 @@
                           = school.name
                           - if school.assignment_zone.present?
                             - if school.assignment_zone.name == 'Citywide'
-                              '- Citywide'
+                              == - Citywide
                             - else
                               == - #{school.assignment_zone.name} Zone
         
