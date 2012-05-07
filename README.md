@@ -1,5 +1,8 @@
-#School Discovery App
-The School Discovery App is designed to help parents 1) identify the schools to which their children are eligible to apply and 2) understand the odds of their children getting admitted. To search for schools, parents enter an address and a grade level.  The search engine logic works as follows:
+# School Discovery App
+The School Discovery App is designed to help parents 1) identify the schools to
+which their children are eligible to apply and 2) understand the odds of their
+children getting admitted. To search for schools, parents enter an address and
+a grade level.  The search engine logic works as follows:
 
 1. if no parameters are entered -> display a blank map and a welcome note (the default page)
 2. if a grade level and no address are entered -> display the default page with an alert message
@@ -8,14 +11,13 @@ The School Discovery App is designed to help parents 1) identify the schools to 
 5. if a grade level and valid address are entered -> display the walk zone and assignment zone schools for that address
 6. if high school and a valid address are entered -> display the walk zone schools and all of the other high schools throughout the city
 
-
 [http://schoolselection.herokuapp.com/](http://schoolselection.herokuapp.com/)
 
-## <a name="installation">Installation</a>
+## Installation
   git clone git@heroku.com:schoolselection.git
 
 
-## <a name="deploying">DEPLOYING TO HEROKU:</a>
+## Deploying to Heroku
 there are a couple of obstacles to hosting this app on heroku.
 
 1) You need to have a postgis-enabled database, which means that you need to have a private Heroku database, set up with "heroku addons:add heroku-postgresql postgis=true". Then promote it to your database with "heroku pg:promote"
@@ -31,7 +33,7 @@ run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current data
 
 5. Run 'heroku restart', to make sure your app loads the database correctly.
 
-## <a name="deploying">SPACIALDB:</a>
+## Spacialdb
 
 [step 0 not necessarily applicable]
 [0.1 heroku db:pull*]
@@ -39,7 +41,7 @@ run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current data
 [0.3 update column types locally - see below]
 
 1. become beta user.
-2. heroku addons:add spacialdb:test 
+2. heroku addons:add spacialdb:test
 3. heroku pg:info, heroku config
 4. heroku config:add DATABASE_URL=postgres://(contents of SPATIALDB_URL)
   [why can't I pg:promote the spatial db? it's not on pg:info. why?]
@@ -51,9 +53,9 @@ run "heroku config:add DATABASE_URL=NEW_URL", where NEW_URL is your current data
 9. look at heroku:config to get username/password [dan:randomstring]
 10. except that username/password don't work.
 11. give up and connect directly with:
-"psql -d heroku_dan_4fb9 -h beta.spacialdb.com -p 9999 -U dan --password", using given password.
-it works.
-12. use \d <tablename> to verify geometry is text 
+    "psql -d heroku_dan_4fb9 -h beta.spacialdb.com -p 9999 -U dan --password", using given password.
+    it works.
+12. use \d <tablename> to verify geometry is text
     update columns per 0.3
     \d <tablename> to verify geometry is geometry
 13. 'heroku run console', Parcel.first.geometry.class, to confirm need for postgis.
@@ -67,8 +69,11 @@ it works.
 
 postgres://dan:83d37cb80a@beta.spacialdb.com:9999/heroku_dan_4fb9
 
-## <a name="contributing">Contributing</a>
-In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
+## Contributing
+In the spirit of [free software][free-sw], **everyone** is encouraged to help improve
+this project.
+
+[free-sw]: http://www.fsf.org/licensing/essays/free-sw.html
 
 Here are some ways *you* can contribute:
 
@@ -77,35 +82,48 @@ Here are some ways *you* can contribute:
 * by suggesting new features
 * by writing or editing documentation
 * by writing specifications
-* by writing code (**no patch is too small**: fix typos, add comments, clean up inconsistent whitespace)
+* by writing code (**no patch is too small**: fix typos, add comments, clean up
+  inconsistent whitespace)
 * by refactoring code
-* by resolving [issues](https://github.com/codeforamerica/schoolselection/issues)
+* by fixing [issues][]
 * by reviewing patches
-* [financially](https://secure.codeforamerica.org/page/contribute)
+* [financially][]
 
-## <a name="issues">Submitting an Issue</a>
-We use the [GitHub issue tracker](https://github.com/codeforamerica/schoolselection/issues)
-to track bugs and features. Before submitting a bug report or feature request,
-check to make sure it hasn't already been submitted. You can indicate support
-for an existing issuse by voting it up. When submitting a bug report, please
-include a [Gist](https://gist.github.com/) that includes a stack trace and any
-details that may be necessary to reproduce the bug, including your gem version,
-Ruby version, and operating system. Ideally, a bug report should include a pull
-request with failing specs.
+[issues]: https://github.com/codeforamerica/schoolselection/issues
+[financially]: https://secure.codeforamerica.org/page/contribute
 
-## <a name="pulls">Submitting a Pull Request</a>
-1. Fork the project.
-2. Create a topic branch.
-3. Implement your feature or bug fix.
-4. Add documentation for your feature or bug fix.
-5. Run <tt>bundle exec rake doc:yard</tt>. If your changes are not 100% documented, go back to step 4.
-6. Add specs for your feature or bug fix.
-7. Run <tt>bundle exec rake spec</tt>. If your changes are not 100% covered, go back to step 6.
-8. Commit and push your changes.
-9. Submit a pull request. Please do not include changes to the gemspec, version, or history file. (If you want to create your own version for some reason, please do so in a separate commit.)
+## Submitting an Issue
+We use the [GitHub issue tracker][issues] to track bugs and features. Before
+submitting a bug report or feature request, check to make sure it hasn't
+already been submitted. When submitting a bug report, please include a [Gist][]
+that includes a stack trace and any details that may be necessary to reproduce
+the bug, including your gem version, Ruby version, and operating system.
+Ideally, a bug report should include a pull request with failing specs.
 
-## <a name="copyright">Copyright</a>
-Copyright (c) 2011 Code for America.
-See [LICENSE](https://github.com/codeforamerica/schoolselection/blob/master/LICENSE.md) for details.
+[gist]: https://gist.github.com/
+
+## Submitting a Pull Request
+1. [Fork the repository.][fork]
+2. [Create a topic branch.][branch]
+3. Add specs for your unimplemented feature or bug fix.
+4. Run `bundle exec rake spec`. If your specs pass, return to step 3.
+5. Implement your feature or bug fix.
+6. Run `bundle exec rake spec`. If your specs fail, return to step 5.
+7. Run `open coverage/index.html`. If your changes are not completely covered
+   by your tests, return to step 3.
+8. Add documentation for your feature or bug fix.
+9. Run `bundle exec rake yard`. If your changes are not 100% documented, go
+   back to step 8.
+10. Add, commit, and push your changes.
+11. [Submit a pull request.][pr]
+
+[fork]: http://help.github.com/fork-a-repo/
+[branch]: http://learn.github.com/p/branching.html
+[pr]: http://help.github.com/send-pull-requests/
+
+## Copyright
+Copyright (c) 2011 Code for America. See [LICENSE][] for details.
+
+[license]: https://github.com/codeforamerica/schoolselection/blob/master/LICENSE.md
 
 [![Code for America Tracker](http://stats.codeforamerica.org/codeforamerica/schoolselection.png)](http://stats.codeforamerica.org/projects/schoolselection)
