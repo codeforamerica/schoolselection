@@ -16,7 +16,7 @@
                 %span.large
                   = link_to "#{@street_number} #{address.street.titleize}, #{address.zipcode}", schools_path(:address => "#{@street_number} #{address.street.titleize}", :zipcode => "#{address.zipcode}", :grade_level => params[:grade_level], :sibling_school => params[:sibling_school])
       - else
-        = form_tag('/schools', :method => :get) do
+        = form_tag('/schools', :method => :get, :id => 'search_form') do
           = hidden_field_tag 'view', 'list'
           - if flash[:alert].present?
             .red.medium
