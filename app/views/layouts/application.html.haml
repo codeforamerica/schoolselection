@@ -7,6 +7,7 @@
     = csrf_meta_tag 
     /[if lt IE 8]
       = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+
   %body
     #container
       #header
@@ -44,4 +45,19 @@
     feedback_widget_options.color = "#222";
     feedback_widget_options.style = "idea";
     var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+    </script>
+
+    <script type="text/javascript">
+    var _kmq = _kmq || [];
+    var _kmk = _kmk || '28b265cb5e8ae2b83af26363580813bc71966d6f';
+    function _kms(u){
+    setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+    }, 1);
+    }
+    _kms('//i.kissmetrics.com/i.js');
+    _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
