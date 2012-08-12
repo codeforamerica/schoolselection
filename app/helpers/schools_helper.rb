@@ -63,7 +63,7 @@ module SchoolsHelper
             "strokeColor" => "#000000", "strokeWeight" => 1.5, 'strokeOpacity' => 0.6 
           }
         }, 
-        # "circles" => {"data" => walk_zone_json }, 
+        "circles" => {"data" => walk_zone_json }, 
         "map_options" => { "provider" => "googlemaps", "auto_adjust" => true }
       )
   end
