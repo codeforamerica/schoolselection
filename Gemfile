@@ -18,6 +18,7 @@ gem "compass"
 gem "haml-rails"
 gem "geokit"
 gem 'gmaps4rails', '<= 0.11.0'
+gem 'heroku'
 gem "high_voltage"
 gem "rgeo"
 gem "rgeo-shapefile"
