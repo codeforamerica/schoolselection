@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009051309) do
+ActiveRecord::Schema.define(:version => 20111130204721) do
+
+  create_table "address_ranges", :force => true do |t|
+    t.integer "geocode_id"
+    t.integer "num_start"
+    t.integer "num_end"
+    t.boolean "is_even"
+    t.string  "street"
+    t.string  "zipcode"
+  end
+
+  add_index "address_ranges", ["geocode_id"], :name => "index_address_ranges_on_geocode_id"
 
   create_table "assignment_zones", :force => true do |t|
     t.string   "name"
@@ -37,6 +48,58 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.datetime "updated_at"
   end
 
+  add_index "coordinates", ["assignment_zone_id"], :name => "index_coordinates_on_assignment_zone_id"
+
+  create_table "geocode_grade_walkzone_schools", :force => true do |t|
+    t.boolean "transportation_eligible"
+    t.integer "geocode_id"
+    t.integer "grade_level_id"
+    t.integer "school_id"
+  end
+
+  add_index "geocode_grade_walkzone_schools", ["geocode_id"], :name => "index_geocode_grade_walkzone_schools_on_geocode_id"
+  add_index "geocode_grade_walkzone_schools", ["grade_level_id"], :name => "index_geocode_grade_walkzone_schools_on_grade_level_id"
+  add_index "geocode_grade_walkzone_schools", ["school_id"], :name => "index_geocode_grade_walkzone_schools_on_school_id"
+
+  create_table "geocodes", :force => true do |t|
+    t.integer "assignment_zone_id"
+  end
+
+  add_index "geocodes", ["assignment_zone_id"], :name => "index_geocodes_on_assignment_zone_id"
+
+  create_table "grade_level_schools", :force => true do |t|
+    t.integer  "school_id"
+    t.integer  "grade_level_id"
+    t.string   "grade_number"
+    t.string   "hours"
+    t.integer  "open_seats"
+    t.integer  "first_choice"
+    t.integer  "second_choice"
+    t.integer  "third_choice"
+    t.integer  "fourth_higher_choice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "mcas_ela_total"
+    t.float    "mcas_ela_advanced"
+    t.float    "mcas_ela_proficient"
+    t.float    "mcas_ela_needsimprovement"
+    t.float    "mcas_ela_failing"
+    t.integer  "mcas_math_total"
+    t.float    "mcas_math_advanced"
+    t.float    "mcas_math_proficient"
+    t.float    "mcas_math_needsimprovement"
+    t.float    "mcas_math_failing"
+    t.integer  "mcas_science_total"
+    t.float    "mcas_science_advanced"
+    t.float    "mcas_science_proficient"
+    t.float    "mcas_science_needsimprovement"
+    t.float    "mcas_science_failing"
+    t.text     "uniform_policy"
+  end
+
+  add_index "grade_level_schools", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
+  add_index "grade_level_schools", ["school_id"], :name => "index_school_grades_on_school_id"
+
   create_table "grade_levels", :force => true do |t|
     t.string   "number"
     t.float    "walk_zone_radius"
@@ -45,19 +108,14 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.string   "name"
   end
 
-  create_table "grade_levels_schools", :id => false, :force => true do |t|
-    t.integer  "grade_level_id"
-    t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "neighborhoods", :force => true do |t|
     t.integer  "city_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "neighborhoods", ["city_id"], :name => "index_neighborhoods_on_city_id"
 
   create_table "parcels", :force => true do |t|
     t.spatial  "geometry",   :limit => {:srid=>4326, :type=>"geometry", :geographic=>true}
@@ -91,25 +149,6 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "school_grades", :force => true do |t|
-    t.integer  "school_id"
-    t.integer  "grade_level_id"
-    t.string   "grade_number"
-    t.string   "hours"
-    t.integer  "open_seats"
-    t.integer  "first_choice"
-    t.integer  "second_choice"
-    t.integer  "third_choice"
-    t.integer  "fourth_higher_choice"
-    t.integer  "mcas_reading"
-    t.integer  "mcas_math"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "school_grades", ["grade_level_id"], :name => "index_school_grades_on_grade_level_id"
-  add_index "school_grades", ["school_id"], :name => "index_school_grades_on_school_id"
-
   create_table "school_levels", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -138,13 +177,7 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.string   "fax"
     t.string   "website"
     t.integer  "assignment_zone_id"
-    t.integer  "mail_cluster_id"
-    t.integer  "school_group_id"
-    t.string   "hours"
     t.string   "early_dismissal_time"
-    t.string   "breakfast"
-    t.string   "lunch"
-    t.string   "dinner"
     t.integer  "principal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -153,13 +186,7 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.integer  "bpsid"
     t.integer  "org_code"
     t.integer  "teachers_count"
-    t.integer  "core_areas_teachers_count"
-    t.float    "licensed_teachers_percentage"
-    t.float    "qualified_teachers_percentage"
-    t.float    "qualified_classes_percentage"
     t.string   "staff_to_student_ratio"
-    t.string   "school_level_name"
-    t.string   "school_type_name"
     t.string   "short_name"
     t.integer  "neighborhood_id"
     t.integer  "parcel_id"
@@ -169,14 +196,20 @@ ActiveRecord::Schema.define(:version => 20111009051309) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.text     "features"
-    t.string   "orgcode"
     t.integer  "vertex_id"
+    t.boolean  "hidden_gem",             :default => false
+    t.boolean  "special_admissions",     :default => false
+    t.text     "surround_care_hours"
+    t.string   "email"
+    t.string   "permalink"
+    t.text     "preview_hours"
   end
 
   add_index "schools", ["assignment_zone_id"], :name => "index_schools_on_assignment_zone_id"
-  add_index "schools", ["mail_cluster_id"], :name => "index_schools_on_mail_cluster_id"
+  add_index "schools", ["neighborhood_id"], :name => "index_schools_on_neighborhood_id"
+  add_index "schools", ["parcel_id"], :name => "index_schools_on_parcel_id"
+  add_index "schools", ["permalink"], :name => "index_schools_on_permalink"
   add_index "schools", ["principal_id"], :name => "index_schools_on_principal_id"
-  add_index "schools", ["school_group_id"], :name => "index_schools_on_school_group_id"
 
   create_table "schools_walk_zones", :id => false, :force => true do |t|
     t.integer "walk_zone_id"
