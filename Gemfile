@@ -9,26 +9,27 @@ gem 'rails', '3.1.0'
 # Gems used only for assets and not required
 # in production environments by default.
 
+gem "activerecord-postgis-adapter"
 gem "airbrake"
 gem 'aws-s3'
-gem "thin"
-gem 'jquery-rails'
-gem 'paperclip'
+gem 'bootstrap-sass'
 gem "compass"
-gem "haml-rails"
+gem "devise"
+gem 'dbf'
 gem "geokit"
 gem 'gmaps4rails', '<= 0.11.0'
+gem "haml-rails"
 gem 'heroku'
 gem "high_voltage"
+gem 'jquery-rails'
+gem 'paperclip'
+gem 'pg', :require => 'pg'
+gem 'prawn'
 gem "rgeo"
 gem "rgeo-shapefile"
 gem "rgeo-geojson", :require => 'rgeo/geo_json'
-gem "activerecord-postgis-adapter"
-gem 'dbf'
-gem 'bootstrap-sass'
 gem 'rails_admin', :git => 'git://github.com/joelmahoney/rails_admin.git'
-gem "devise"
-gem 'prawn'
+gem "thin"
 
 group :assets do
   gem 'sass-rails'
@@ -37,7 +38,6 @@ group :assets do
 end
 
 group :production do 
-  gem 'pg'
   gem 'newrelic_rpm'
 end
 
@@ -47,11 +47,11 @@ group :development do
   gem 'rails3-generators'
   gem 'nokogiri'
   gem 'mechanize'
-  gem 'pg', :require => 'pg'
+  gem 'sqlite3'
 end
 
 group :test do
-  gem "sqlite3"
+  gem 'sqlite3'
   gem "rspec"
   gem "rspec-rails"
   gem "factory_girl"
