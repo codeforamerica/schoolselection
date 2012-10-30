@@ -11,7 +11,7 @@ class School < ActiveRecord::Base
   belongs_to :parcel
   belongs_to :principal
   belongs_to :state
-  has_many :geocode_grade_walkzone_schools
+  has_many :geocode_grade_walkzone_schools, :dependent => :destroy
   
   attr_accessor :eligibility, :eligibility_index
   # before_save :recalculate_school_assignment so if they change a school location or add a school it will be reindexed TODO

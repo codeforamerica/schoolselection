@@ -1,6 +1,7 @@
 class GradeLevelSchool < ActiveRecord::Base
   belongs_to :school
   belongs_to :grade_level
+  before_destroy :delete_geocode_grade_walkzone_schools
   
   def total_choices
     if first_choice.present?
@@ -53,5 +54,11 @@ class GradeLevelSchool < ActiveRecord::Base
   def math_percentile
     scores = GradeLevelSchool.find_all_by_grade_number(self.grade_number).map(&:math_score).compact.sort
     ((scores.index(self.math_score) / scores.size.to_f) * 100).to_i
+  end
+  
+  private
+  
+  def delete_geocode_grade_walkzone_schools
+    GeocodeGradeWalkzoneSchool.where(grade_level_id: self.grade_level.try(:id), school_id: self.school.try(:id)).delete_all
   end
 end

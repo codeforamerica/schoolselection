@@ -1,6 +1,7 @@
 class GradeLevel < ActiveRecord::Base
-  has_many :grade_level_schools
+  has_many :grade_level_schools, :dependent => :destroy
   has_many :schools, :through => :grade_level_schools
+  has_many :geocode_grade_walkzone_schools, :dependent => :destroy
   
   def assignment_zone_schools(geocoded_address, assignment_zone)
     schools = self.schools.where(:assignment_zone_id => assignment_zone)
