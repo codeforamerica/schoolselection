@@ -42,6 +42,8 @@ group :production do
 end
 
 group :development do
+  gem 'heroku'
+  gem 'taps'
   gem 'rails3-generators'
   gem 'nokogiri'
   gem 'mechanize'
